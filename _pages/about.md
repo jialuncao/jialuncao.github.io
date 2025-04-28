@@ -43,7 +43,7 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 ### 2025
 
-📄 <strong style="color:#06C0B9">Jialun Cao</strong>, Songqiang Chen, Wuqi Zhang, Hau Ching Lo, Shing-Chi Cheung. _CodeCleaner: Elevating Standards with A Robust Data Contamination Mitigation Toolkit._ In Internetware 2025. 🔗[[Paper]](https://arxiv.org/abs/2411.10842) 💻 [[Github]](https://github.com/ArabelaTso/CodeCleaner-v1)
+📄 <strong style="color:#06C0B9">Jialun Cao</strong>, Songqiang Chen, Wuqi Zhang, Hau Ching Lo, Yeting Li, Shing-Chi Cheung. _CodeCleaner: Elevating Standards with A Robust Data Contamination Mitigation Toolkit._ In Internetware 2025. 🔗[[Paper]](https://arxiv.org/abs/2411.10842) 💻 [[Github]](https://github.com/ArabelaTso/CodeCleaner-v1)
 
 📚 <strong style="color:#06C0B9">Jialun Cao</strong>, Meiziniu Li, Ming Wen, Shing-chi Cheung. *A study on prompt design, advantages and limitations of chatgpt for deep learning program repair*. In Journal of Automated Software Engineering (**ASEJ**). 🔗[[arxiv]](https://arxiv.org/abs/2304.08191) 🔗[[Official]](https://link.springer.com/article/10.1007/s10515-025-00492-x)
 
