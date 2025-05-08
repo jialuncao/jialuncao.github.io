@@ -53,6 +53,8 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 - [C22] 📄 Mengyang Wu, Yuzhi Zhao, <strong style="color:#06C0B9">Jialun Cao</strong>, Mingjie Xu, zhongming Jiang, Xuehui Wang, Qinbin Li, Guangneng Hu, Shengchao Qin, Chi-Wing Fu. _ICM-Assistant: Instruction-tuning Multimodal Large Language Models for Rule-based Explainable Image Content Moderation._ In 39th Annual AAAI Conference on Artificial Intelligence (**AAAI 2025**). 🔗[[Paper]](https://arxiv.org/abs/2412.18216)
 
+- [J4] 📝 Meiziniu Li, Dongze Li, Jianmeng Liu, <strong style="color:#06C0B9">**Jialun Cao**</strong>, Yongqiang Tian, Shing-Chi Cheung. DLLens: Testing Deep Learning Libraries via LLM-aided Synthesis. In TOSEM 2025. 🔗[[Paper]](https://arxiv.org/abs/2406.07944)
+
 - [Pre1] 📝 <strong style="color:#06C0B9">Jialun Cao</strong>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang†, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. _How Should We Build A Benchmark? Revisiting 274 Code-Related Benchmarks For LLMs_. In arXiv 2025. 🔗[[Paper]](https://arxiv.org/pdf/2501.10711) 🇨🇳[[Chinese article]](https://mp.weixin.qq.com/s/noYYnJW3PHggxt0Wex-t-Q)
 
 - [Pre2] 📝 <strong style="color:#06C0B9">**Jialun Cao**</strong>, Yaojie Lu, Meiziniu Li, Haoyang Ma, Haokun Li, Mengda He, Cheng Wen, Le Sun, Hongyu Zhang, Shengchao Qin, Shing-Chi Cheung, Cong Tian. _From Informal to Formal -- Incorporating and Evaluating LLMs on Natural Language Requirements to Verifiable Formal Proofs_. In arXiv 2025. 🔗[[Paper]](https://arxiv.org/abs/2501.16207) 🤗 [[Huggingface]](https://huggingface.co/fm-universe) 🇨🇳[[Chinese article]](https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg)
@@ -63,7 +65,6 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 - [Pre5] 📝 Jiarong Wu, Songqiang Chen, <strong style="color:#06C0B9">Jialun Cao (Corresponding)</strong>, Hau Ching Lo, Shing-Chi Cheung (Corresponding). _Isolating Language-Coding from Problem-Solving: Benchmarking LLMs with PseudoEval._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2502.19149)
 
-- [Pre6] 📝 Meiziniu Li, Dongze Li, Jianmeng Liu, <strong style="color:#06C0B9">**Jialun Cao**</strong>, Yongqiang Tian, Shing-Chi Cheung. DLLens: Testing Deep Learning Libraries via LLM-aided Synthesis. In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2406.07944)
 
 - [Pre7] 📝 Jingyi Chen, Songqiang Chen, <strong style="color:#06C0B9">Jialun Cao (Corresponding)</strong>, Jiasi Shen (Corresponding), Shing-Chi Cheung. _When LLMs Meet API Documentation: Can Retrieval Augmentation Aid Code Generation Just as It Helps Developers?_ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2503.15231)
 
@@ -198,6 +199,7 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 - IEEE Transactions on Mobile Computing (TMC)	
 
 # 💬 Invited Talks
+- *2025.04*, **Exploring Code Generation and Reasoning Capabilities of LLMs.** In the Applied Mathematics Seminar at Peking University. 🔗 [[Link]](https://www.math.pku.edu.cn/kxyj/xsbg/tlb/informationsciences/167435.htm).
 - *2025.01*, **From Benchmarks to Practice: A Preliminary Study on the Code Capabilities of Large Language Models.** In the Next Era of AI-assisted R&D Seminar (2025华为AI辅助研发Next研讨会) by Huawei, Hong Kong. 📽️[[Recording]](https://www.chaspark.com/#/live/1095803543143456768?videoId=1100606948265017344)
 - *2025.01*, **From Requirement to Formal Specification andModel Generation via Large Language Models**. In Zhejiang University (Online).
 - *2024.11*, **Is Large Language Model a Rescue for Code Generation & Code Reasoning?** In Trusted Large Language Model Evaluation and Open-Source Technology Forum by CCF China Open Source Conference. 
