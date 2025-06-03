@@ -72,7 +72,7 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 - [Pre6] 📝 Xiaolei Li, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yepang Liu, Shing-Chi Cheung, Hailong Wang. _ReuseDroid: A VLM-empowered Android UI Test Migrator Boosted by Active Feedback._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2504.02357)
 
-- [Pre7] 📝 Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le. _SunEmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In arXiv. 🔗[[Paper]](https://www.researchgate.net/publication/392093991_EmbedAgent_Benchmarking_Large_Language_Models_in_Embedded_System_Development)
+- [Pre7] 📝 Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le. _EmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In arXiv. 🔗[[Paper]](https://www.researchgate.net/publication/392093991_EmbedAgent_Benchmarking_Large_Language_Models_in_Embedded_System_Development)
 
 ### 2024
 
