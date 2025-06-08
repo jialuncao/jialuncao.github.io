@@ -74,6 +74,8 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 - [Pre7] 📝 Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. _EmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In arXiv. 🔗[[Paper]](https://www.researchgate.net/publication/392093991_EmbedAgent_Benchmarking_Large_Language_Models_in_Embedded_System_Development)
 
+- [Pre8] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
+
 ### 2024
 
 - [C13] 📄 <strong style="color:#DE3163">Jialun Cao</strong>, Zhiyong Chen*, Jiarong Wu, Shing-chi Cheung, Chang Xu. _JavaBench: A Benchmark of Object-Oriented Code Generation for Evaluating Large Language Models_. In the 39th IEEE/ACM International Conference on Automated Software Engineering (**ASE 2024**). 🔗[[Paper]](https://arxiv.org/abs/2406.12902) 🎯[[Leaderboard]](https://java-bench.github.io/leaderboard.html) 💻 [[Github]](https://github.com/java-bench/JavaBench) 
