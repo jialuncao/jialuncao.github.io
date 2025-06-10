@@ -21,6 +21,8 @@ Jialun CAO received her PhD degree from the Department of Computer Science and E
 
 Her research interests lie in the intersection of <strong>Software Engineering (SE) and Large Language Models (LLMs)</strong>, with an emphasis on LLM4SE, and LLM Evaluation. She has published more than 20 papers at the top conferences and journals, including ICSE, FSE, ASE, TOSEM, CAV, Usenix Security, AAAI, etc. She serves as a program committee member in top conferences such as ICSE, FSE, and ASE, SANER, Internetware, APSEC, etc; and is a reviewer for top journals including TOSEM, TSE, EmSE, etc. 
 
+<strong style="color:#DE3163">I am looking for tenure-track Assistant Professor position. Contact me if it's suitable😊</strong>
+
 # 🔥 News
 - *2025.05.15*: &nbsp;🎉🎉 Two papers 📑 "[From Informal to Formal](https://arxiv.org/abs/2501.16207)" and 📑 "[CruxEval-X](https://arxiv.org/pdf/2408.13001)" have been accepted by **ACL 2025 to the main** conference! Congrats!
 - *2025.05.01*: &nbsp;🎉🎉 Our paper 📑 "[Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries](https://arxiv.org/abs/2406.07944)" has been accepted by **TOSEM**. Congrats to Ziniu!
