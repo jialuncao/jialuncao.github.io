@@ -58,7 +58,7 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 - [C23] 📝 Ruiyang Xu, <strong style="color:#DE3163">Jialun Cao (Co-1st)</strong>, Yaojie Lu, Ming Wen, Hongyu Lin, Xianpei Han, Ben He, Shing-Chi Cheung, Le Sun. _CruxEval-X: A Benchmark for Multilingual Code Reasoning, Understanding and Execution_. In **ACL Main 2025**. 🔗[[Paper]](https://arxiv.org/pdf/2408.13001) 🎯[[Leaderboard]](https://cruxeval-x.github.io/leaderboard.html) 💻 [[Github]](https://github.com/CRUXEVAL-X/cruxeval-x) 
 
-- [C24] 📄 Mengyang Wu, Yuzhi Zhao, <strong style="color:#DE3163">Jialun Cao</strong>, Mingjie Xu, zhongming Jiang, Xuehui Wang, Qinbin Li, Guangneng Hu, Shengchao Qin, Chi-Wing Fu. _ICM-Assistant: Instruction-tuning Multimodal Large Language Models for Rule-based Explainable Image Content Moderation._ In 39th Annual AAAI Conference on Artificial Intelligence (**AAAI 2025**). 🔗[[Paper]](https://arxiv.org/abs/2412.18216)
+- [C24] 📄 Mengyang Wu, Yuzhi Zhao, <strong style="color:#DE3163">Jialun Cao</strong>, Mingjie Xu, Zhongming Jiang, Xuehui Wang, Qinbin Li, Guangneng Hu, Shengchao Qin, Chi-Wing Fu. _ICM-Assistant: Instruction-tuning Multimodal Large Language Models for Rule-based Explainable Image Content Moderation._ In 39th Annual AAAI Conference on Artificial Intelligence (**AAAI 2025**). 🔗[[Paper]](https://arxiv.org/abs/2412.18216)
 
 - [J4] 📝 Meiziniu Li, Dongze Li, Jianmeng Liu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yongqiang Tian, Shing-Chi Cheung. Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries. In TOSEM 2025. 🔗[[Paper]](https://arxiv.org/abs/2406.07944)
 
@@ -77,6 +77,10 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 - [Pre7] 📝 Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. _EmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2506.11003).
 
 - [Pre8] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
+
+- [Pre9] 📝 Le Deng, Zhonghao Jiang, <strong style="color:#DE3163">**Jialun Cao**</strong>, Michael Pradel, Zhongxin Liu. _NoCode-bench: A Benchmark for Evaluating Natural Language-Driven Feature Addition._ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2507.18130). 🎯[[Leaderboard]](https://nocodebench.org/). 🤗 [[Huggingface]](https://huggingface.co/NoCode-bench).
+
+
 
 ### 2024
 
