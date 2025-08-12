@@ -80,6 +80,8 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 - [Pre9] 📝 Le Deng, Zhonghao Jiang, <strong style="color:#DE3163">**Jialun Cao**</strong>, Michael Pradel, Zhongxin Liu. _NoCode-bench: A Benchmark for Evaluating Natural Language-Driven Feature Addition._ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2507.18130). 🎯[[Leaderboard]](https://nocodebench.org/). 🤗 [[Huggingface]](https://huggingface.co/NoCode-bench).
 
+- [Pre10] 📝 Dongze Li, Songqiang Chen, <strong style="color:#DE3163">**Jialun Cao (Corresponding)**</strong>, Shing-Chi Cheung. _What Builds Effective In-Context Examples for Code Generation?_ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2508.06414).
+
 
 
 ### 2024
