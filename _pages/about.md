@@ -24,6 +24,7 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 <strong style="color:#DE3163">I am on the job market now, seeking a tenure-track Assistant Professor position. Contact me if it's suitable😊</strong>
 
 # 🔥 News
+- *2025.08.14*: &nbsp;🎉🎉 One paper 📑 "Vulnerability-Affected Versions Identification: How Far Are We?" has been accepted by **ASE 2025**! Congrats to Xingchu!
 - *2025.05.15*: &nbsp;🎉🎉 Two papers 📑 "[From Informal to Formal](https://arxiv.org/abs/2501.16207)" and 📑 "[CruxEval-X](https://arxiv.org/pdf/2408.13001)" have been accepted by **ACL 2025 to the main** conference! Congrats!
 - *2025.05.01*: &nbsp;🎉🎉 Our paper 📑 "[Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries](https://arxiv.org/abs/2406.07944)" has been accepted by **TOSEM**. Congrats to Ziniu!
 - *2025.03.31*: &nbsp;🎉🎉 Our paper 📑 "[CodeCleaner: Elevating Standards with A Robust Data Contamination Mitigation Toolkit](https://arxiv.org/abs/2411.10842)" has been accepted by **Internetware** 2025. Congrats!
@@ -60,9 +61,9 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 - [C24] 📄 Mengyang Wu, Yuzhi Zhao, <strong style="color:#DE3163">Jialun Cao</strong>, Mingjie Xu, Zhongming Jiang, Xuehui Wang, Qinbin Li, Guangneng Hu, Shengchao Qin, Chi-Wing Fu. _ICM-Assistant: Instruction-tuning Multimodal Large Language Models for Rule-based Explainable Image Content Moderation._ In 39th Annual AAAI Conference on Artificial Intelligence (**AAAI 2025**). 🔗[[Paper]](https://arxiv.org/abs/2412.18216)
 
-- [C25] Xingchu Chen, Chengwei Liu, <strong style="color:#DE3163">Jialun Cao</strong>, Yang Xiao, Xinyue Cai, Yeting Li, Jingyi Shi, Tianqi Sun, Haiming Chen, Wei Huo. _Vulnerability-Affected Versions Identification: How Far Are We?_. In Proceedings of the 40th IEEE/ACM International Conference on Automated Software Engineering (**ASE 2025**).
+- [C25] Xingchu Chen, Chengwei Liu, <strong style="color:#DE3163">Jialun Cao</strong>, Yang Xiao, Xinyue Cai, Yeting Li, Jingyi Shi, Tianqi Sun, Haiming Chen, Wei Huo. _Vulnerability-Affected Versions Identification: How Far Are We?_ In Proceedings of the 40th IEEE/ACM International Conference on Automated Software Engineering (**ASE 2025**).
 
-- [J4] 📝 Meiziniu Li, Dongze Li, Jianmeng Liu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yongqiang Tian, Shing-Chi Cheung. Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries. In TOSEM 2025. 🔗[[Paper]](https://arxiv.org/abs/2406.07944)
+- [J4] 📝 Meiziniu Li, Dongze Li, Jianmeng Liu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yongqiang Tian, Shing-Chi Cheung. Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries. In **TOSEM 2025**. 🔗[[Paper]](https://arxiv.org/abs/2406.07944)
 
 - [Pre1] 📝 <strong style="color:#DE3163">Jialun Cao</strong>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang†, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. _How Should We Build A Benchmark? Revisiting 274 Code-Related Benchmarks For LLMs_. In arXiv 2025. 🔗[[Paper]](https://arxiv.org/pdf/2501.10711) 🇨🇳[[Social media]](https://mp.weixin.qq.com/s/noYYnJW3PHggxt0Wex-t-Q)
 
