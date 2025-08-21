@@ -60,6 +60,8 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 - [C24] 📄 Mengyang Wu, Yuzhi Zhao, <strong style="color:#DE3163">Jialun Cao</strong>, Mingjie Xu, Zhongming Jiang, Xuehui Wang, Qinbin Li, Guangneng Hu, Shengchao Qin, Chi-Wing Fu. _ICM-Assistant: Instruction-tuning Multimodal Large Language Models for Rule-based Explainable Image Content Moderation._ In 39th Annual AAAI Conference on Artificial Intelligence (**AAAI 2025**). 🔗[[Paper]](https://arxiv.org/abs/2412.18216)
 
+- [C25] Xingchu Chen, Chengwei Liu, <strong style="color:#DE3163">Jialun Cao</strong>, Yang Xiao, Xinyue Cai, Yeting Li, Jingyi Shi, Tianqi Sun, Haiming Chen, Wei Huo. _Vulnerability-Affected Versions Identification: How Far Are We?_. In Proceedings of the 40th IEEE/ACM International Conference on Automated Software Engineering (**ASE 2025**).
+
 - [J4] 📝 Meiziniu Li, Dongze Li, Jianmeng Liu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yongqiang Tian, Shing-Chi Cheung. Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries. In TOSEM 2025. 🔗[[Paper]](https://arxiv.org/abs/2406.07944)
 
 - [Pre1] 📝 <strong style="color:#DE3163">Jialun Cao</strong>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang†, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. _How Should We Build A Benchmark? Revisiting 274 Code-Related Benchmarks For LLMs_. In arXiv 2025. 🔗[[Paper]](https://arxiv.org/pdf/2501.10711) 🇨🇳[[Social media]](https://mp.weixin.qq.com/s/noYYnJW3PHggxt0Wex-t-Q)
