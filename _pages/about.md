@@ -19,7 +19,7 @@ redirect_from:
 
 Jialun CAO received her PhD degree from the Department of Computer Science and Engineering at The Hong Kong University of Science and Technology <a href='https://hkust.edu.hk/'>(HKUST)</a>, under the supervision of <a href="https://www.cse.ust.hk/faculty/scc/">Prof. Shing-Chi Cheung</a> in the [CASTLE](https://aka.henryhc.net/castle) lab. She is now a [**Research Assistant Professor**](https://cse.hkust.edu.hk/admin/people/faculty/profile/jialuncao) in HKUST.
 
-Her research interests lie in the intersection of <strong>Software Engineering (SE) and Large Language Models (LLMs)</strong>, with an emphasis on LLM4SE, and LLM Evaluation. She has published more than 20 papers at the top conferences and journals, including ICSE, FSE, ASE, TOSEM, CAV, Usenix Security, AAAI, etc. She serves as a program committee member in top conferences such as ICSE, FSE, and ASE, SANER, Internetware, APSEC, etc; and is a reviewer for top journals including TOSEM, TSE, EmSE, etc. 
+Her research interests lie in the intersection of <strong>Software Engineering (SE) and Large Language Models (LLMs)</strong>, with an emphasis on LLM4SE, and LLM Evaluation. She has publications at top conferences and journals, including ICSE, FSE, ASE, TOSEM, CAV, Usenix Security, AAAI, etc. She serves as a program committee member in top conferences such as ICSE, FSE, and ASE, SANER, Internetware, APSEC, etc; and is a reviewer for top journals including TOSEM, TSE, EmSE, etc. To date 
 
 <strong style="color:#DE3163">I am on the job market now, seeking a tenure-track Assistant Professor position. Contact me if it's suitable😊</strong>
 
