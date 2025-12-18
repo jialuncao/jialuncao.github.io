@@ -17,13 +17,14 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Jialun CAO received her PhD degree from the Department of Computer Science and Engineering at The Hong Kong University of Science and Technology <a href='https://hkust.edu.hk/'>(HKUST)</a>, under the supervision of <a href="https://www.cse.ust.hk/faculty/scc/">Prof. Shing-Chi Cheung</a> in the [CASTLE](https://aka.henryhc.net/castle) lab. She is now a [**Research Assistant Professor**](https://cse.hkust.edu.hk/admin/people/faculty/profile/jialuncao) in HKUST.
+I received the PhD degree from the Department of Computer Science and Engineering at The Hong Kong University of Science and Technology <a href='https://hkust.edu.hk/'>(HKUST)</a>, under the supervision of <a href="https://www.cse.ust.hk/faculty/scc/">Prof. Shing-Chi Cheung</a> in the [CASTLE](https://aka.henryhc.net/castle) lab. I am now a [**Research Assistant Professor**](https://cse.hkust.edu.hk/admin/people/faculty/profile/jialuncao) in HKUST.
 
-Her research interests lie in the intersection of <strong>Software Engineering (SE) and Large Language Models (LLMs)</strong>, with an emphasis on LLM4SE, and LLM Evaluation. She has publications at top conferences and journals, including ICSE, FSE, ASE, TOSEM, CAV, Usenix Security, AAAI, etc. She serves as a program committee member in top conferences such as ICSE, FSE, and ASE, SANER, Internetware, APSEC, etc; and is a reviewer for top journals including TOSEM, TSE, EmSE, etc. To date 
+My research focuses on applying advanced AI techniques to **automate software implementation, testing, and program verification**, with the goal of producing software that is reliable by construction. My research interests lie in the intersection of Software Engineering (SE) and Large Language Models (LLMs), with an emphasis on LLM4SE, LLM4FM, and LLM Evaluation/Benchmarking. I have publications at top conferences and journals, including ICSE, FSE, ASE, TOSEM, CAV, Usenix Security, AAAI, etc. I serve as a program committee member in top conferences such as ICSE, FSE, ASE, SANER, Internetware, APSEC, etc, and am a reviewer for top journals including TOSEM, TSE, EmSE, etc. My doctoral dissertation, “Towards Automatic Testing and Fault Localization in Natural Language Processing Systems”, was recognized with the  🏆 **ACM SIGSOFT Outstanding Doctoral Dissertation Award for 2025** (Only 1~2 worldwide per year). Additionally, I received the 🏆 **2025 Young Scientist Award in Engineering Science** (Only 1 in Hong Kong per year). 
 
-<strong style="color:#DE3163">I am on the job market now, seeking a tenure-track Assistant Professor position. Contact me if it's suitable😊</strong>
 
 # 🔥 News
+- *2025.12.17*: &nbsp;🎉🎉 One paper 📑 "EmbedAgent: Benchmarking Large Language Models in Embedded System Development" has been accepted by **ICSE 2026**! Congrats to Ruiyang!
+- *2025.12.13*: &nbsp;🎉🎉 I am honored to receive the 🏆 **2025 Young Scientist Award in Engineering Science**, awarded by Hong Kong Institution of Science (HKIST). Only 1 recipient each year in Hong Kong 🎉
 - *2025.08.14*: &nbsp;🎉🎉 One paper 📑 "Vulnerability-Affected Versions Identification: How Far Are We?" has been accepted by **ASE 2025**! Congrats to Xingchu!
 - *2025.05.15*: &nbsp;🎉🎉 Two papers 📑 "[From Informal to Formal](https://arxiv.org/abs/2501.16207)" and 📑 "[CruxEval-X](https://arxiv.org/pdf/2408.13001)" have been accepted by **ACL 2025 to the main** conference! Congrats!
 - *2025.05.01*: &nbsp;🎉🎉 Our paper 📑 "[Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries](https://arxiv.org/abs/2406.07944)" has been accepted by **TOSEM**. Congrats to Ziniu!
@@ -31,13 +32,11 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 - *2025.03.08*: Our 🤗<a href='https://huggingface.co/fm-universe'>Huggingface repo</a> reached 1.6k+ downloads. Contributions are welcomed 👉 <a href='https://huggingface.co/fm-universe'>[Link]</a> The <a href='https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg'>social media</a> has reached 37k+ reads👀 and 2k+ forwards↗️. Full paper 👉 <a href='https://arxiv.org/abs/2501.16207'>[Paper]</a>
 - *2025.02.12*: &nbsp;🎉🎉 Our paper 📑 "SemBIC: Semantic-aware Identification of Bug-inducing Commits" has been accepted to **FSE 2025**. Congrats to Xiao!
 - *2025.02.02*: &nbsp;🎉🎉 Our paper 📑 "A study on Prompt Design, Advantages and Limitations of ChatGPT for Deep Learning Program Repair" has been accepted to **JASE 2025**. Finally!
-- *2025.01.23*: &nbsp;🎉🎉 I am honored to receive the prestigious 🏆<a href='https://www2.sigsoft.org/awards/dissertation/'><strong style="color:#D20F39">ACM SIGSOFT 2025 Outstanding Dissertation Award</strong></a>! Only 1 or 2 award receivers worldwide per year 🎉 🔗[[News]](https://cse.hkust.edu.hk/News/SIGSOFT2025/)
+- *2025.01.23*: &nbsp;🎉🎉 I am honored to receive the prestigious 🏆<a href='https://www2.sigsoft.org/awards/dissertation/'><strong style="color:#D20F39">ACM SIGSOFT 2025 Outstanding Dissertation Award</strong></a>! Only 1 or 2 award receipients worldwide per year 🎉 🔗[[News]](https://cse.hkust.edu.hk/News/SIGSOFT2025/)
 - *2024.12.10*: &nbsp;🎉🎉 Our paper 📑 "<a href='https://arxiv.org/pdf/2408.13204'>DomainEval: An Auto-Constructed Benchmark for Multi-Domain Code Generation</a>" has been accepted to **AAAI 2025**. Congrats to Qiming!
 
 
 # 🌍 Visiting & Program Experience 
-
-- *2024.12*. I am honored to be mentored by [**Prof. Paola Ricaurte Quijano**](https://cyber.harvard.edu/people/paola-ricaurte-quijano) at **Harvard University** in the 5th cohort of the [Asia Pacific Women in Leadership (APWiL) Mentoring Program](https://www.apru.org/our-work/pacific-rim-challenges/asia-pacific-women-in-leadership/).
 
 - *2024.10*. I am honored to visit [**Prof. Michael Pradel**](https://software-lab.org/people/Michael_Pradel.html) at the **University of Stuttgart**.
 - *2024.03*. I am honored to visit [**Prof. Pinjia He**](https://pinjiahe.github.io/) at the **Chinese University of Hong Kong, Shenzhen**.
@@ -65,6 +64,8 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 
 - [J4] 📝 Meiziniu Li, Dongze Li, Jianmeng Liu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yongqiang Tian, Shing-Chi Cheung. Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries. In **TOSEM 2025**. 🔗[[Paper]](https://arxiv.org/abs/2406.07944)
 
+- [C26] 📝 *Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. _EmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In ICSE2026. 🔗[[Paper]](https://www.arxiv.org/abs/2506.11003).
+
 - [Pre1] 📝 <strong style="color:#DE3163">Jialun Cao</strong>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang†, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. _How Should We Build A Benchmark? Revisiting 274 Code-Related Benchmarks For LLMs_. In arXiv 2025. 🔗[[Paper]](https://arxiv.org/pdf/2501.10711) 🇨🇳[[Social media]](https://mp.weixin.qq.com/s/noYYnJW3PHggxt0Wex-t-Q)
 
 - [Pre2] 📝 <strong style="color:#DE3163">**Jialun Cao**</strong>, Wuqi Zhang, Shing-Chi Cheung. _Concerned with Data Contamination? Assessing Countermeasures in Code Language Model_. In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2403.16898)
@@ -76,8 +77,6 @@ Her research interests lie in the intersection of <strong>Software Engineering (
 - [Pre5] 📝 Dekun Dai, MingWei Liu, Anji Li, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yanlin Wang, Chong Wang, Xin Peng, Zibin Zheng. _FeedbackEval: A Benchmark for Evaluating Large Language Models in Feedback-Driven Code Repair Tasks._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2504.06939)
 
 - [Pre6] 📝 Xiaolei Li, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yepang Liu, Shing-Chi Cheung, Hailong Wang. _ReuseDroid: A VLM-empowered Android UI Test Migrator Boosted by Active Feedback._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2504.02357)
-
-- [Pre7] 📝 Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. _EmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2506.11003).
 
 - [Pre8] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
 
