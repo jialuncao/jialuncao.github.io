@@ -23,6 +23,7 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 
 # 🔥 News
+- *2026.01.08*: &nbsp;🎉🎉 One paper 📑 ["Can Emulating Semantic Translation Help LLMs with CodeTranslation? A Study Based on Pseudocode"](https://arxiv.org/abs/2510.00920) has been accepted by **TOSEM 2026**! Congrats to Songqiang!
 - *2025.12.17*: &nbsp;🎉🎉 One paper 📑 "EmbedAgent: Benchmarking Large Language Models in Embedded System Development" has been accepted by **ICSE 2026**! Congrats to Ruiyang!
 - *2025.12.13*: &nbsp;🎉🎉 I am honored to receive the 🏆 **2025 Young Scientist Award in Engineering Science**, awarded by Hong Kong Institution of Science (HKIST). Only 1 recipient each year in Hong Kong 🎉
 - *2025.08.14*: &nbsp;🎉🎉 One paper 📑 "Vulnerability-Affected Versions Identification: How Far Are We?" has been accepted by **ASE 2025**! Congrats to Xingchu!
