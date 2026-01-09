@@ -41,9 +41,9 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 ### 2026
 
-- [C27] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In ICSE 2026. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
+- [C27] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In **ICSE** 2026. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
 
-- [J5] 📚 Songqiang Chen, Congying Xu, Jingyi Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiarong Wu, Shing-Chi Cheung (Corresponding) _Can Emulating Semantic Translation Help LLMs with Code Translation? A Study Based on Pseudocode._ In TOSEM 2026. 🔗[[Paper]](https://arxiv.org/abs/2510.00920)
+- [J5] 📚 Songqiang Chen, Congying Xu, Jingyi Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiarong Wu, Shing-Chi Cheung (Corresponding) _Can Emulating Semantic Translation Help LLMs with Code Translation? A Study Based on Pseudocode._ In **TOSEM** 2026. 🔗[[Paper]](https://arxiv.org/abs/2510.00920)
 
 
 ### 2025
