@@ -26,15 +26,9 @@ My research focuses on applying advanced AI techniques to **automate software im
 - *2026.01.08*: &nbsp;🎉🎉 One paper 📑 ["Can Emulating Semantic Translation Help LLMs with CodeTranslation? A Study Based on Pseudocode"](https://arxiv.org/abs/2510.00920) has been accepted by **TOSEM 2026**! Congrats to Songqiang!
 - *2025.12.17*: &nbsp;🎉🎉 One paper 📑 "EmbedAgent: Benchmarking Large Language Models in Embedded System Development" has been accepted by **ICSE 2026**! Congrats to Ruiyang!
 - *2025.12.13*: &nbsp;🎉🎉 I am honored to receive the 🏆 **2025 Young Scientist Award in Engineering Science**, awarded by Hong Kong Institution of Science (HKIST). Only 1 recipient each year in Hong Kong 🎉
-- *2025.08.14*: &nbsp;🎉🎉 One paper 📑 "Vulnerability-Affected Versions Identification: How Far Are We?" has been accepted by **ASE 2025**! Congrats to Xingchu!
 - *2025.05.15*: &nbsp;🎉🎉 Two papers 📑 "[From Informal to Formal](https://arxiv.org/abs/2501.16207)" and 📑 "[CruxEval-X](https://arxiv.org/pdf/2408.13001)" have been accepted by **ACL 2025 to the main** conference! Congrats!
-- *2025.05.01*: &nbsp;🎉🎉 Our paper 📑 "[Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries](https://arxiv.org/abs/2406.07944)" has been accepted by **TOSEM**. Congrats to Ziniu!
-- *2025.03.31*: &nbsp;🎉🎉 Our paper 📑 "[CodeCleaner: Elevating Standards with A Robust Data Contamination Mitigation Toolkit](https://arxiv.org/abs/2411.10842)" has been accepted by **Internetware** 2025. Congrats!
 - *2025.03.08*: Our 🤗<a href='https://huggingface.co/fm-universe'>Huggingface repo</a> reached 1.6k+ downloads. Contributions are welcomed 👉 <a href='https://huggingface.co/fm-universe'>[Link]</a> The <a href='https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg'>social media</a> has reached 37k+ reads👀 and 2k+ forwards↗️. Full paper 👉 <a href='https://arxiv.org/abs/2501.16207'>[Paper]</a>
-- *2025.02.12*: &nbsp;🎉🎉 Our paper 📑 "SemBIC: Semantic-aware Identification of Bug-inducing Commits" has been accepted to **FSE 2025**. Congrats to Xiao!
-- *2025.02.02*: &nbsp;🎉🎉 Our paper 📑 "A study on Prompt Design, Advantages and Limitations of ChatGPT for Deep Learning Program Repair" has been accepted to **JASE 2025**. Finally!
 - *2025.01.23*: &nbsp;🎉🎉 I am honored to receive the prestigious 🏆<a href='https://www2.sigsoft.org/awards/dissertation/'><strong style="color:#D20F39">ACM SIGSOFT 2025 Outstanding Dissertation Award</strong></a>! Only 1 or 2 award receipients worldwide per year 🎉 🔗[[News]](https://cse.hkust.edu.hk/News/SIGSOFT2025/)
-- *2024.12.10*: &nbsp;🎉🎉 Our paper 📑 "<a href='https://arxiv.org/pdf/2408.13204'>DomainEval: An Auto-Constructed Benchmark for Multi-Domain Code Generation</a>" has been accepted to **AAAI 2025**. Congrats to Qiming!
 
 
 # 🌍 Visiting & Program Experience 
@@ -44,6 +38,13 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 
 # 📝 Publications 
+
+### 2026
+
+- [C27] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In ICSE 2026. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
+
+- [J5] 📚 Songqiang Chen, Congying Xu, Jingyi Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiarong Wu, Shing-Chi Cheung (Corresponding) _Can Emulating Semantic Translation Help LLMs with Code Translation? A Study Based on Pseudocode._ In TOSEM 2026. 🔗[[Paper]](https://arxiv.org/abs/2510.00920)
+
 
 ### 2025
 
@@ -79,11 +80,9 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 - [Pre6] 📝 Xiaolei Li, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yepang Liu, Shing-Chi Cheung, Hailong Wang. _ReuseDroid: A VLM-empowered Android UI Test Migrator Boosted by Active Feedback._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2504.02357)
 
-- [Pre8] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
+- [Pre7] 📝 Le Deng, Zhonghao Jiang, <strong style="color:#DE3163">**Jialun Cao**</strong>, Michael Pradel, Zhongxin Liu. _NoCode-bench: A Benchmark for Evaluating Natural Language-Driven Feature Addition._ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2507.18130). 🎯[[Leaderboard]](https://nocodebench.org/). 🤗 [[Huggingface]](https://huggingface.co/NoCode-bench).
 
-- [Pre9] 📝 Le Deng, Zhonghao Jiang, <strong style="color:#DE3163">**Jialun Cao**</strong>, Michael Pradel, Zhongxin Liu. _NoCode-bench: A Benchmark for Evaluating Natural Language-Driven Feature Addition._ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2507.18130). 🎯[[Leaderboard]](https://nocodebench.org/). 🤗 [[Huggingface]](https://huggingface.co/NoCode-bench).
-
-- [Pre10] 📝 Dongze Li, Songqiang Chen, <strong style="color:#DE3163">**Jialun Cao (Corresponding)**</strong>, Shing-Chi Cheung. _What Builds Effective In-Context Examples for Code Generation?_ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2508.06414).
+- [Pre8] 📝 Dongze Li, Songqiang Chen, <strong style="color:#DE3163">**Jialun Cao (Corresponding)**</strong>, Shing-Chi Cheung. _What Builds Effective In-Context Examples for Code Generation?_ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2508.06414).
 
 
 
