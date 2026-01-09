@@ -41,7 +41,7 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 ### 2026
 
-- [C27] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In **ICSE** 2026. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
+- [C26] 📝 *Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. _EmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In ICSE2026. 🔗[[Paper]](https://www.arxiv.org/abs/2506.11003).
 
 - [J5] 📚 Songqiang Chen, Congying Xu, Jingyi Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiarong Wu, Shing-Chi Cheung (Corresponding) _Can Emulating Semantic Translation Help LLMs with Code Translation? A Study Based on Pseudocode._ In **TOSEM** 2026. 🔗[[Paper]](https://arxiv.org/abs/2510.00920)
 
@@ -66,8 +66,6 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 - [J4] 📝 Meiziniu Li, Dongze Li, Jianmeng Liu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yongqiang Tian, Shing-Chi Cheung. Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries. In **TOSEM 2025**. 🔗[[Paper]](https://arxiv.org/abs/2406.07944)
 
-- [C26] 📝 *Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. _EmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In ICSE2026. 🔗[[Paper]](https://www.arxiv.org/abs/2506.11003).
-
 - [Pre1] 📝 <strong style="color:#DE3163">Jialun Cao</strong>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang†, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. _How Should We Build A Benchmark? Revisiting 274 Code-Related Benchmarks For LLMs_. In arXiv 2025. 🔗[[Paper]](https://arxiv.org/pdf/2501.10711) 🇨🇳[[Social media]](https://mp.weixin.qq.com/s/noYYnJW3PHggxt0Wex-t-Q)
 
 - [Pre2] 📝 <strong style="color:#DE3163">**Jialun Cao**</strong>, Wuqi Zhang, Shing-Chi Cheung. _Concerned with Data Contamination? Assessing Countermeasures in Code Language Model_. In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2403.16898)
@@ -84,7 +82,7 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 - [Pre8] 📝 Dongze Li, Songqiang Chen, <strong style="color:#DE3163">**Jialun Cao (Corresponding)**</strong>, Shing-Chi Cheung. _What Builds Effective In-Context Examples for Code Generation?_ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2508.06414).
 
-
+- [Pre9] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In arxiv 2025. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
 
 ### 2024
 
