@@ -23,6 +23,7 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 
 # 🔥 News
+- *2026.02.21*: [✨ Skills-4-SE](https://github.com/ArabelaTso/Skills-4-SE/) is released! A curated list of 180+ useful **Claude Skills for Software Engineering** and resources for customizing AI for SE workflows (Under maintenance, contributions are welcome). 🌐 [Website](https://arabelatso.github.io/Skills-4-SE/) to quick browse skills.
 - *2026.01.08*: &nbsp;🎉🎉 One paper 📑 ["Can Emulating Semantic Translation Help LLMs with CodeTranslation? A Study Based on Pseudocode"](https://arxiv.org/abs/2510.00920) has been accepted by **TOSEM 2026**! Congrats to Songqiang!
 - *2025.12.17*: &nbsp;🎉🎉 One paper 📑 "EmbedAgent: Benchmarking Large Language Models in Embedded System Development" has been accepted by **ICSE 2026**! Congrats to Ruiyang!
 - *2025.12.13*: &nbsp;🎉🎉 I am honored to receive the 🏆 <strong style="color:#D20F39">2025 Young Scientist Award in Engineering Science</strong>, awarded by Hong Kong Institution of Science (HKIS). Only 1 recipient each year in Hong Kong 🎉 🔗[[News]](https://cse.hkust.edu.hk/News/HKIS_YoungScientist2025/)
