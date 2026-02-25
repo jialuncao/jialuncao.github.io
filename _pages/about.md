@@ -46,7 +46,7 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 - [J5] 📚 Songqiang Chen, Congying Xu, Jingyi Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiarong Wu, Shing-Chi Cheung (Corresponding) _Can Emulating Semantic Translation Help LLMs with Code Translation? A Study Based on Pseudocode._ In **TOSEM** 2026. 🔗[[Paper]](https://arxiv.org/abs/2510.00920)
 
-- [Pre1'] 📝 <strong style="color:#DE3163">Jialun Cao</strong>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang†, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. _Rigor, Reliability, and Reproducibility Matter: A Decade-Scale Survey of 572 Code Benchmarks_. In arXiv 2026. 🔗[[Paper]]([https://arxiv.org/pdf/2501.10711](https://arxiv.org/pdf/2501.10711))
+- [Pre1'] 📝 <strong style="color:#DE3163">Jialun Cao</strong>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang†, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. _Rigor, Reliability, and Reproducibility Matter: A Decade-Scale Survey of 572 Code Benchmarks_. In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2501.10711)
 
 
 ### 2025
