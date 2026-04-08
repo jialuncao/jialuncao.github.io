@@ -42,11 +42,17 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 ### 2026
 
-- [C26] 📝 *Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. _EmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In ICSE2026. 🔗[[Paper]](https://www.arxiv.org/abs/2506.11003).
+- [C26] 📝 *Ruiyang Xu*, <strong style="color:#DE3163">**Jialun Cao (Co-1st)**</strong>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. _EmbedAgent: Benchmarking Large Language Models in Embedded System Development._ In **ICSE** 2026. 🔗[[Paper]](https://www.arxiv.org/abs/2506.11003).
 
 - [J5] 📚 Songqiang Chen, Congying Xu, Jingyi Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiarong Wu, Shing-Chi Cheung (Corresponding) _Can Emulating Semantic Translation Help LLMs with Code Translation? A Study Based on Pseudocode._ In **TOSEM** 2026. 🔗[[Paper]](https://arxiv.org/abs/2510.00920)
 
+- [C27] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In **ACL findings** 2026. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
+
+- [C28] 📝 Zhiyong Chen, <strong style="color:#DE3163">**Jialun Cao**</strong>, Chang Xu, Shing-Chi Cheung. _ModelWisdom: An Integrated Toolkit for TLA+ Model Visualization, Digest and Repair._ In **FM** 2026 Tool track. 🔗[[Paper]](https://arxiv.org/abs/2602.12058)
+
 - [Pre1'] 📝 <strong style="color:#DE3163">Jialun Cao</strong>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang†, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. _Rigor, Reliability, and Reproducibility Matter: A Decade-Scale Survey of 572 Code Benchmarks_. In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2501.10711)
+  
+- [Pre9] Zhiyong Chen, <strong style="color:#DE3163">Jialun Cao</strong>, Jiarong Wu, Chang Xu, Shing-Chi Cheung _Can Large Language Models Model Programs Formally?_ In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2604.01851)
 
 
 ### 2025
@@ -85,7 +91,6 @@ My research focuses on applying advanced AI techniques to **automate software im
 
 - [Pre8] 📝 Dongze Li, Songqiang Chen, <strong style="color:#DE3163">**Jialun Cao (Corresponding)**</strong>, Shing-Chi Cheung. _What Builds Effective In-Context Examples for Code Generation?_ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2508.06414).
 
-- [Pre9] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In arxiv 2025. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
 
 ### 2024
 
