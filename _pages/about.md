@@ -21,6 +21,30 @@ I am a **Research Assistant Professor** at the [Department of Computer Science a
 
 My research focuses on applying advanced AI techniques to **automate software implementation, testing, and program verification**, to produce software that is reliable by construction. My research interests lie in the intersection of Software Engineering (SE), Large Language Models (LLMs), with an emphasis on LLM4SE, LLM4FM (formal methods), and LLM Evaluation/Benchmarking. I have 30 publications at top conferences and journals, including ICSE, FSE, ASE, TOSEM, CAV, Usenix Security, AAAI, etc. I serve as a program committee member in top conferences such as ICSE, FSE, ASE, and ISSTA, and am a reviewer for TOSEM, TSE, and EmSE. My doctoral dissertation, “Towards Automatic Testing and Fault Localization in Natural Language Processing Systems”, was recognized with the  🏆 **ACM SIGSOFT Outstanding Doctoral Dissertation Award for 2025**. Additionally, I was honored with the 🏆 **2025 Young Scientist Award in Engineering Science** (one awardee per year in Hong Kong). 
 
+# 🔥 Hiring 
+
+I'm looking for highly self-motivated students who enjoy building agentic systems and solving hard problems. **Let's do something interesting and impactful!**
+
+**Looking for**:
+- 2–3 fully funded PhD students
+- Self-funded / visiting PhD students
+- Remote RAs/interns
+
+**Research Direction**:
+- 🤖 AI for Software Engineering
+- 📐 AI for Formal Verification
+- 🛠️ Coding & Testing Agents
+
+**Preferred Experience**:
+- 🤖 AI agents development (able to build working systems)
+- 🧩 AI infrastructure / large-scale systems
+- 🧪 Software testing/program analysis in large systems
+- 📐 Formal verification (theorem proving, model checking, etc.)
+
+**📩 Contact**: 
+Send your CV + 1~2 representative works +  research plan to:
+jialuncao [at] ust [dot] hk
+
 
 # 🔥 News
 - *2026.05.02*: &nbsp;🎉🎉 Two papers have been accepted by ICML 2026! 📑[SWE-ABS: Adversarial Benchmark Strengthening Exposes Inflated Success Rates on Test-based Benchmark](https://arxiv.org/abs/2603.00520) and 📑[Position: Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility](https://arxiv.org/abs/2501.10711). Congrats!
