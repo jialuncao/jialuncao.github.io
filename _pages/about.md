@@ -85,8 +85,10 @@ jialuncao [at] ust [dot] hk
 - [J6] 📝 Jingyi Chen, Songqiang Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiasi Shen (Corresponding), Shing-Chi Cheung. _When Retrieval Augmentation Meets API Documentation: Can LLMs Code with Less-Common Libraries?_ In TOSEM 2026. 🔗[[Paper]](https://arxiv.org/abs/2503.15231)
 
 - [Pre8] Zhiyong Chen, <strong style="color:#DE3163">Jialun Cao</strong>, Jiarong Wu, Chang Xu, Shing-Chi Cheung _Can Large Language Models Model Programs Formally?_ In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2604.01851)
+
+- [Pre9] Dong Xu, Jialun Cao, Guozhao Mo, Junjie Hu, Cheng Wen, Hongyu Lin, Xianpei Han, Shengchao Qin, Cong Tian, Shing-Chi Cheung, Le Sun, Yaojie Lu. _LiveFMBench: Unveiling the Power and Limits of Agentic Workflows in Specification Generation._ In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2605.01394v1) 🤗 [[Huggingface]](https://huggingface.co/datasets/fm-universe/Live-FM-Bench)
   
-- [Pre9] Yuanyi Wang, Yifan Yang, Su Lu, Yanggan Gu, Pengkai Wang, Wenjun Wang, Zhaoyi Yan, Congkai Xie, Jianmin Wu, <strong style="color:#DE3163">Jialun Cao</strong>, Shing-Chi Cheung, Hongxia Yang. _Geometry Conflict: Explaining and Controlling Forgetting in LLM Continual Post-Training._ In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2605.09608v1)
+- [Pre9] Yuanyi Wang, Yifan Yang, Su Lu, Yanggan Gu, Pengkai Wan<strong style="color:#DE3163">Jialun Cao</strong>g, Wenjun Wang, Zhaoyi Yan, Congkai Xie, Jianmin Wu, <strong style="color:#DE3163">Jialun Cao</strong>, Shing-Chi Cheung, Hongxia Yang. _Geometry Conflict: Explaining and Controlling Forgetting in LLM Continual Post-Training._ In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2605.09608v1)
 
 
 ### 2025
