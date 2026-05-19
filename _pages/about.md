@@ -74,7 +74,7 @@ jialuncao [at] ust [dot] hk
 
 - [C27] 📝 Qiming Zhu, <strong style="color:#DE3163">**Jialun Cao**</strong>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. _Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation._ In **ACL findings** 2026. 🔗[[Paper]](https://arxiv.org/abs/2506.03535)
 
-- [C28] 📝 Zhiyong Chen, <strong style="color:#DE3163">**Jialun Cao**</strong>, Chang Xu, Shing-Chi Cheung. _ModelWisdom: An Integrated Toolkit for TLA+ Model Visualization, Digest and Repair._ In **FM** 2026 Tool track. 🔗[[Paper]](https://arxiv.org/abs/2602.12058)
+- [C28] 📝 Zhiyong Chen, <strong style="color:#DE3163">**Jialun Cao**</strong>, Chang Xu, Shing-Chi Cheung. _ModelWisdom: An Integrated Toolkit for TLA+ Model Visualization, Digest and Repair._ In **FM** 2026 Tool track. 🔗[[Paper]](https://arxiv.org/abs/2602.12058) 🌍 [[Website]](https://modelwisdom-staging.pacificstudio.ai/)
 
 - [C29] 📝 Junyi Wang, <strong style="color:#DE3163">**Jialun Cao**</strong>, Zhongxin Liu. _iCoRe: An Iterative Correlation-Aware Retriever for Bug Reproduction Test Generation_. In **FSE 2026**. 🔗[[Paper]](https://arxiv.org/abs/2604.19224)
 
@@ -85,6 +85,8 @@ jialuncao [at] ust [dot] hk
 - [J6] 📝 Jingyi Chen, Songqiang Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiasi Shen (Corresponding), Shing-Chi Cheung. _When Retrieval Augmentation Meets API Documentation: Can LLMs Code with Less-Common Libraries?_ In TOSEM 2026. 🔗[[Paper]](https://arxiv.org/abs/2503.15231)
 
 - [Pre8] Zhiyong Chen, <strong style="color:#DE3163">Jialun Cao</strong>, Jiarong Wu, Chang Xu, Shing-Chi Cheung _Can Large Language Models Model Programs Formally?_ In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2604.01851)
+  
+- [Pre9] Yuanyi Wang, Yifan Yang, Su Lu, Yanggan Gu, Pengkai Wang, Wenjun Wang, Zhaoyi Yan, Congkai Xie, Jianmin Wu, <strong style="color:#DE3163">Jialun Cao</strong>, Shing-Chi Cheung, Hongxia Yang. _Geometry Conflict: Explaining and Controlling Forgetting in LLM Continual Post-Training._ In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2605.09608v1)
 
 
 ### 2025
