@@ -82,7 +82,9 @@ jialuncao [at] ust [dot] hk
   
 - [C31] 📝Boxi Yu, Yang Cao, Yuzhong Zhang, Liting Lin, Junjielong Xu, Zhiqing Zhong, Qinghua Xu, Guancheng Wang,  <strong style="color:#DE3163">**Jialun Cao**</strong>, Shing-Chi Cheung, Pinjia He, Lionel Briand. _SWE-ABS: Adversarial Benchmark Strengthening Exposes Inflated Success Rates on Test-based Benchmark._ In **ICML 2026 Regular**. 🔗[[Paper]](https://arxiv.org/abs/2603.00520)
 
-- [Pre9] Zhiyong Chen, <strong style="color:#DE3163">Jialun Cao</strong>, Jiarong Wu, Chang Xu, Shing-Chi Cheung _Can Large Language Models Model Programs Formally?_ In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2604.01851)
+- [J6] 📝 Jingyi Chen, Songqiang Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiasi Shen (Corresponding), Shing-Chi Cheung. _When Retrieval Augmentation Meets API Documentation: Can LLMs Code with Less-Common Libraries?_ In TOSEM 2026. 🔗[[Paper]](https://arxiv.org/abs/2503.15231)
+
+- [Pre8] Zhiyong Chen, <strong style="color:#DE3163">Jialun Cao</strong>, Jiarong Wu, Chang Xu, Shing-Chi Cheung _Can Large Language Models Model Programs Formally?_ In arXiv 2026. 🔗[[Paper]](https://arxiv.org/abs/2604.01851)
 
 
 ### 2025
@@ -111,15 +113,13 @@ jialuncao [at] ust [dot] hk
 
 - [Pre3] 📝 Jiarong Wu, Songqiang Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Hau Ching Lo, Shing-Chi Cheung (Corresponding). _Isolating Language-Coding from Problem-Solving: Benchmarking LLMs with PseudoEval._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2502.19149)
 
-- [Pre4] 📝 Jingyi Chen, Songqiang Chen, <strong style="color:#DE3163">Jialun Cao (Corresponding)</strong>, Jiasi Shen (Corresponding), Shing-Chi Cheung. _When LLMs Meet API Documentation: Can Retrieval Augmentation Aid Code Generation Just as It Helps Developers?_ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2503.15231)
+- [Pre4] 📝 Dekun Dai, MingWei Liu, Anji Li, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yanlin Wang, Chong Wang, Xin Peng, Zibin Zheng. _FeedbackEval: A Benchmark for Evaluating Large Language Models in Feedback-Driven Code Repair Tasks._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2504.06939)
 
-- [Pre5] 📝 Dekun Dai, MingWei Liu, Anji Li, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yanlin Wang, Chong Wang, Xin Peng, Zibin Zheng. _FeedbackEval: A Benchmark for Evaluating Large Language Models in Feedback-Driven Code Repair Tasks._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2504.06939)
+- [Pre5] 📝 Xiaolei Li, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yepang Liu, Shing-Chi Cheung, Hailong Wang. _ReuseDroid: A VLM-empowered Android UI Test Migrator Boosted by Active Feedback._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2504.02357)
 
-- [Pre6] 📝 Xiaolei Li, <strong style="color:#DE3163">**Jialun Cao**</strong>, Yepang Liu, Shing-Chi Cheung, Hailong Wang. _ReuseDroid: A VLM-empowered Android UI Test Migrator Boosted by Active Feedback._ In arXiv. 🔗[[Paper]](https://arxiv.org/abs/2504.02357)
+- [Pre6] 📝 Le Deng, Zhonghao Jiang, <strong style="color:#DE3163">**Jialun Cao**</strong>, Michael Pradel, Zhongxin Liu. _NoCode-bench: A Benchmark for Evaluating Natural Language-Driven Feature Addition._ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2507.18130). 🎯[[Leaderboard]](https://nocodebench.org/). 🤗 [[Huggingface]](https://huggingface.co/NoCode-bench).
 
-- [Pre7] 📝 Le Deng, Zhonghao Jiang, <strong style="color:#DE3163">**Jialun Cao**</strong>, Michael Pradel, Zhongxin Liu. _NoCode-bench: A Benchmark for Evaluating Natural Language-Driven Feature Addition._ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2507.18130). 🎯[[Leaderboard]](https://nocodebench.org/). 🤗 [[Huggingface]](https://huggingface.co/NoCode-bench).
-
-- [Pre8] 📝 Dongze Li, Songqiang Chen, <strong style="color:#DE3163">**Jialun Cao (Corresponding)**</strong>, Shing-Chi Cheung. _What Builds Effective In-Context Examples for Code Generation?_ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2508.06414).
+- [Pre7] 📝 Dongze Li, Songqiang Chen, <strong style="color:#DE3163">**Jialun Cao (Corresponding)**</strong>, Shing-Chi Cheung. _What Builds Effective In-Context Examples for Code Generation?_ In arXiv. 🔗[[Paper]](https://www.arxiv.org/abs/2508.06414).
 
 
 ### 2024
