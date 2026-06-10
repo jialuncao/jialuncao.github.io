@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jialun Cao's Homepage</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --primary: #0000C4;
+    --primary-soft: #3333d8;
+    --primary-glow: rgba(0,0,196,0.07);
+    --primary-10: rgba(0,0,196,0.06);
+    --primary-20: rgba(0,0,196,0.12);
+    --gray-50: #f7f8fb;
+    --gray-100: #eef0f5;
+    --gray-200: #dde1ea;
+    --gray-300: #a0a7b8;
+    --gray-400: #727a90;
+    --gray-500: #515972;
+    --gray-700: #2d3348;
+    --gray-900: #111318;
+    --white: #ffffff;
+    --accent-warm: #D20F39;
+    --accent-gold: #c59a1a;
+    --sidebar-bg: #f4f5f9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--gray-700); background: var(--white);
+    line-height: 1.6; font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    zoom: 1.25;
+  }
+
+  a { color: var(--primary); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { font-weight: 600; }
+
+  /* ===== LAYOUT ===== */
+  .page { display: flex; min-height: 100vh; }
+
+  /* ===== SIDEBAR (light) ===== */
+  .sidebar {
+    width: 240px; flex-shrink: 0;
+    background: var(--sidebar-bg);
+    color: var(--gray-700);
+    position: fixed; top: 0; bottom: 0; left: 0;
+    overflow-y: auto; z-index: 10;
+    display: flex; flex-direction: column;
+    padding: 2.5rem 1.5rem 1.5rem;
+    border-right: 1px solid var(--gray-100);
+  }
+  .sidebar::-webkit-scrollbar { width: 0; }
+
+  .s-avatar {
+    width: 140px; height: 140px; border-radius: 50%;
+    object-fit: cover; display: block; margin: 0 auto 1rem;
+    border: 3px solid var(--gray-200);
+    transition: border-color 0.3s;
+  }
+  .s-avatar:hover { border-color: var(--primary); }
+  .s-name {
+    text-align: center; font-size: 1.35rem; font-weight: 700;
+    color: var(--gray-900); letter-spacing: -0.3px; margin-bottom: 0.25rem;
+  }
+  .s-role { text-align: center; font-size: 0.82rem; color: var(--gray-700); margin-bottom: 1.25rem; line-height: 1.5; }
+  .s-divider { height: 1px; background: var(--gray-200); margin: 0.75rem 0; }
+
+  .s-nav { list-style: none; flex: 1; }
+  .s-nav li { margin-bottom: 1px; }
+  .s-nav a {
+    display: block; padding: 0.45rem 0.75rem; border-radius: 6px;
+    font-size: 0.82rem; font-weight: 500; color: var(--gray-700);
+    text-decoration: none; transition: all 0.15s;
+  }
+  .s-nav a:hover { color: var(--gray-900); background: var(--gray-200); text-decoration: none; }
+  .s-nav a.active { color: var(--white); background: var(--primary); }
+
+  .s-links {
+    padding-top: 0.75rem; border-top: 1px solid var(--gray-200);
+    display: flex; flex-direction: column; gap: 0.2rem;
+  }
+  .s-links a {
+    font-size: 0.8rem; color: var(--gray-700); text-decoration: none;
+    padding: 0.2rem 0; transition: color 0.15s;
+  }
+  .s-links a:hover { color: var(--primary); text-decoration: none; }
+
+  /* ===== MAIN ===== */
+  .main { margin-left: 240px; flex: 1; max-width: 1060px; }
+
+  /* ===== HERO (light) ===== */
+  .hero {
+    background: var(--white);
+    padding: 2.5rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--gray-100);
+    position: relative;
+  }
+  .hero-content { max-width: 720px; position: relative; }
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--primary);
+    margin-bottom: 0.6rem; display: inline-block;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.15rem;
+    min-width: 280px; min-height: 1.1em;
+  }
+  .hero h1 {
+    font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px;
+    line-height: 1.3; margin-bottom: 0.85rem; color: var(--gray-900);
+  }
+  .hero h1 .line { display: block; }
+  .hero h1 .hl {
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p { font-size: 0.95rem; color: var(--gray-500); line-height: 1.7; }
+  .hero-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1rem; }
+  .hero-tag {
+    font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.7rem;
+    background: var(--primary-10); color: var(--primary);
+    border: 1px solid var(--primary-20);
+    border-radius: 20px; letter-spacing: 0.2px; text-transform: uppercase;
+  }
+  /* geometric accent */
+  .hero-geo {
+    position: absolute; right: -20px; top: -10px;
+    width: 120px; height: 120px;
+    border: 2px solid var(--primary-20);
+    border-radius: 50%; opacity: 0.5;
+    pointer-events: none;
+  }
+  .hero-geo-2 {
+    position: absolute; right: 30px; bottom: 0;
+    width: 60px; height: 60px;
+    background: var(--primary-10);
+    transform: rotate(45deg); opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* ===== BIO ===== */
+  .intro { font-size: 0.92rem; color: var(--gray-700); line-height: 1.7; margin-bottom: 0.75rem; }
+  .intro a { color: var(--primary); text-decoration: none; }
+  .intro a:hover { text-decoration: underline; }
+
+  /* ===== AWARDS BANNER ===== */
+  .awards-banner {
+    display: flex; gap: 0.75rem; padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #fffbeb 0%, #fef2f2 50%, #eef0ff 100%);
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .ab-card {
+    flex: 1; display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.75rem 1rem; border-radius: 10px;
+    background: rgba(255,255,255,0.8); border: 1px solid rgba(0,0,0,0.06);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .ab-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 2px 12px var(--primary-glow);
+  }
+  .ab-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .ab-text strong { font-size: 0.85rem; color: var(--gray-900); display: block; line-height: 1.35; }
+  .ab-text span { font-size: 0.74rem; color: var(--gray-400); }
+
+  /* ===== CONTENT SECTIONS ===== */
+  .sec {
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .sec:last-child { border-bottom: none; }
+  .sec.alt { background: var(--gray-50); }
+
+  .sec-head {
+    display: flex; align-items: center; gap: 0.6rem;
+    margin-bottom: 1.15rem;
+  }
+  .sec-bar {
+    width: 4px; height: 20px; border-radius: 2px;
+    background: var(--primary); flex-shrink: 0;
+  }
+  .sec-title {
+    font-size: 1.1rem; font-weight: 700; letter-spacing: -0.2px;
+    color: var(--gray-900);
+  }
+  .sec-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; color: var(--gray-400);
+    background: var(--gray-100); padding: 0.15rem 0.5rem;
+    border-radius: 10px; margin-left: auto;
+  }
+
+  /* ===== HIRING ===== */
+  .hiring {
+    border-radius: 10px; padding: 1.35rem 1.5rem;
+    background: rgba(0,0,196,0.06); border: 1px solid rgba(0,0,196,0.12);
+    color: var(--gray-700);
+  }
+  .hiring h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--primary); }
+  .hiring p, .hiring li { font-size: 0.88rem; color: var(--gray-500); }
+  .hiring ul { margin-left: 1.2em; margin-bottom: 0.4rem; }
+  .hiring-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.6rem; }
+  .h-tag {
+    font-size: 0.72rem; font-weight: 600; padding: 0.22rem 0.65rem;
+    border: 1px solid rgba(0,0,196,0.15); border-radius: 20px;
+    color: var(--primary); text-transform: uppercase; letter-spacing: 0.3px;
+    background: white;
+  }
+  .hiring-sub { font-size: 0.85rem; font-weight: 600; color: var(--gray-900); margin-top: 0.6rem; margin-bottom: 0.2rem; }
+
+  /* ===== NEWS ===== */
+  .news-item {
+    display: flex; gap: 0.75rem; padding: 0.4rem 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 0.88rem; align-items: flex-start;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .n-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem; color: var(--gray-400);
+    min-width: 72px; flex-shrink: 0; padding-top: 0.1rem;
+  }
+  .news-item strong { color: var(--gray-900); }
+  .n-hl { color: var(--accent-warm); font-weight: 600; }
+
+  /* ===== FEATURED WORKS (chatgpt style) ===== */
+  .fw-list { display: flex; flex-direction: column; gap: 10px; }
+  .fw {
+    display: flex; gap: 14px; padding: 12px 16px;
+    border-radius: 8px; background: var(--gray-50);
+    transition: background 0.15s;
+  }
+  .fw:hover { background: var(--gray-100); }
+  .fw-venue {
+    font-size: 11px; font-weight: 600; color: var(--primary);
+    min-width: 56px; flex-shrink: 0; padding-top: 2px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .fw h3 { font-size: 13.5px; font-weight: 600; line-height: 1.4; }
+  .fw .fw-meta { font-size: 12.5px; color: var(--gray-500); margin-top: 2px; }
+  .fw .fw-meta .me { color: var(--accent-warm); font-weight: 600; }
+  .fw .fw-impact { font-size: 11.5px; color: var(--primary); margin-top: 1px; }
+  .fw-links { display: flex; gap: 4px; margin-top: 5px; }
+  .fw-link { font-size: 11px; color: var(--primary); padding: 2px 8px; border-radius: 4px; background: white; text-decoration: none; border: 1px solid var(--gray-100); transition: all 0.15s; }
+  .fw-link:hover { border-color: var(--primary); text-decoration: none; }
+
+  /* ===== PUB CATEGORY CARDS ===== */
+  .pub-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1.25rem; }
+  .pub-cat {
+    padding: 0.75rem 0.85rem; border-radius: 8px;
+    border: 1px solid var(--gray-200); background: white;
+    transition: all 0.2s; position: relative; overflow: hidden;
+    cursor: default;
+  }
+  .pub-cat:hover {
+    border-color: var(--cat-color, var(--primary));
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .pub-cat::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--cat-color, var(--primary));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .pub-cat:hover::before { transform: scaleX(1); }
+  .pc-name { font-size: 0.82rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.1rem; }
+  .pc-n { font-size: 0.72rem; color: var(--gray-400); }
+  .pc-kw {
+    display: flex; flex-wrap: wrap; gap: 0.2rem;
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: all 0.25s; margin-top: 0;
+  }
+  .pub-cat:hover .pc-kw { max-height: 50px; opacity: 1; margin-top: 0.4rem; }
+  .kw {
+    font-size: 0.62rem; font-weight: 500; padding: 0.1rem 0.4rem;
+    border-radius: 3px; background: var(--gray-50); color: var(--gray-500);
+    border: 1px solid var(--gray-100); transition: all 0.2s;
+  }
+  .pub-cat:hover .kw { border-color: var(--cat-color, var(--primary)); color: var(--cat-color, var(--primary)); }
+  .pub-cat.c1 { --cat-color: #0000C4; background: rgba(0,0,196,0.05); border-color: rgba(0,0,196,0.15); }
+  .pub-cat.c2 { --cat-color: #c2410c; background: rgba(194,65,12,0.05); border-color: rgba(194,65,12,0.15); }
+  .pub-cat.c3 { --cat-color: #0d7c5f; background: rgba(13,124,95,0.05); border-color: rgba(13,124,95,0.15); }
+  .pub-cat.c4 { --cat-color: #6d28d9; background: rgba(109,40,217,0.05); border-color: rgba(109,40,217,0.15); }
+
+  /* chatgpt-style colorful pub cats */
+  .pub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .pub-cat.cat-bench { --cat-color: #1d4ed8; background: #eef4ff; border-color: #a5c0ff; }
+  .pub-cat.cat-se { --cat-color: #e85d04; background: #fff5ed; border-color: #ffbd8a; }
+  .pub-cat.cat-fm { --cat-color: #0d9488; background: #eefcfa; border-color: #81e0d5; }
+  .pub-cat.cat-seai { --cat-color: #9333ea; background: #f5edff; border-color: #c9a5ff; }
+  .pub-grid .pc-name { color: var(--cat-color); }
+  .pub-grid .pc-n { color: var(--cat-color); font-weight: 600; background: rgba(255,255,255,0.7); padding: 1px 8px; border-radius: 10px; }
+  .pub-grid .pc-head { position: relative; padding-left: 18px; }
+  .pub-grid .pc-head::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--cat-color); border-radius: 0 2px 2px 0;
+  }
+  .pub-grid .kw { background: rgba(255,255,255,0.65); color: var(--cat-color); }
+
+  /* ===== YEAR BLOCKS ===== */
+  .year-block {
+    margin-bottom: 3px; border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--gray-100);
+    transition: border-color 0.2s;
+  }
+  .year-block:hover { border-color: var(--gray-200); }
+  .year-header {
+    display: flex; align-items: center; padding: 0.5rem 0.85rem;
+    cursor: pointer; user-select: none;
+    background: var(--gray-50); transition: background 0.15s;
+    position: relative; gap: 0.5rem;
+  }
+  .year-header:hover { background: var(--gray-100); }
+  .year-label {
+    font-size: 0.95rem; font-weight: 700; color: var(--gray-900);
+    min-width: 100px;
+  }
+  .year-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem; color: var(--gray-400);
+    background: white; border: 1px solid var(--gray-200);
+    padding: 0.1rem 0.45rem; border-radius: 10px;
+  }
+  .year-venues {
+    display: flex; gap: 0.25rem; flex-wrap: wrap;
+    opacity: 0; transition: opacity 0.25s;
+    margin-left: 0.4rem;
+  }
+  .year-header:hover .year-venues { opacity: 1; }
+  .year-venue-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem; font-weight: 500; padding: 0.1rem 0.4rem;
+    border-radius: 3px; background: white; color: var(--primary);
+    border: 1px solid rgba(0,0,196,0.12);
+  }
+  .year-arrow {
+    font-size: 0.7rem; color: var(--gray-400); transition: transform 0.2s;
+    margin-left: auto;
+  }
+  .year-block.open .year-arrow { transform: rotate(90deg); }
+  .year-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .year-block.open .year-body { max-height: 5000px; }
+  .year-body-inner { padding: 0.4rem 0.85rem 0.65rem; }
+  .pub-item {
+    padding: 0.35rem 0; border-bottom: 1px solid var(--gray-100);
+    font-size: 0.85rem; line-height: 1.55;
+  }
+  .pub-item:last-child { border-bottom: none; }
+  .pub-item a { font-size: 0.78rem; }
+  .me { color: var(--accent-warm); font-weight: 600; }
+
+  /* ===== STATS ROW ===== */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.65rem;
+    margin-bottom: 1.25rem;
+  }
+  .stat-card {
+    text-align: center; padding: 0.85rem;
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: 8px;
+  }
+  .stat-num { font-size: 1.75rem; font-weight: 800; color: var(--primary); line-height: 1; }
+  .stat-label { font-size: 0.7rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.3px; margin-top: 0.2rem; }
+
+  /* ===== AWARDS LIST ===== */
+  .awards-list { list-style: none; }
+  .awards-list li {
+    padding: 0.35rem 0; border-bottom: 1px solid var(--gray-100);
+    font-size: 0.85rem;
+  }
+  .awards-list li:last-child { border-bottom: none; }
+
+  /* ===== TIMELINE ===== */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .col-title {
+    font-size: 0.7rem; font-weight: 700; color: var(--gray-400);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.35rem; border-bottom: 2px solid var(--primary);
+    display: inline-block;
+  }
+  .tl { padding: 0.3rem 0; }
+  .tl + .tl { border-top: 1px solid var(--gray-100); }
+  .tl-y { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--primary); }
+  .tl-t { font-size: 0.88rem; font-weight: 600; color: var(--gray-900); }
+  .tl-d { font-size: 0.8rem; color: var(--gray-500); }
+
+  /* ===== SERVICE ===== */
+  .svc-group { margin-bottom: 0.6rem; }
+  .svc-label { font-size: 0.82rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.2rem; }
+  .svc-body { font-size: 0.82rem; color: var(--gray-500); line-height: 1.55; }
+  .svc-body ul { margin-left: 1.2em; }
+  .svc-body li { padding: 0.08rem 0; }
+
+  /* ===== LIST ITEMS ===== */
+  .list-item {
+    display: flex; gap: 0.6rem; padding: 0.35rem 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 0.85rem; align-items: flex-start;
+  }
+  .list-item:last-child { border-bottom: none; }
+  .li-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; color: var(--gray-400);
+    min-width: 52px; flex-shrink: 0; padding-top: 0.1rem;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 0.85rem 2.5rem; border-top: 1px solid var(--gray-100);
+    font-size: 0.75rem; color: var(--gray-400); text-align: center;
+  }
+
+  /* ===== MARQUEE ===== */
+  .marquee-wrap {
+    overflow: hidden; padding: 0.6rem 0;
+    border-top: 1px solid var(--gray-100); border-bottom: 1px solid var(--gray-100);
+    background: var(--gray-50);
+  }
+  .marquee-track {
+    display: flex; gap: 3rem; white-space: nowrap; will-change: transform;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; font-weight: 500; color: var(--gray-400);
+    text-transform: uppercase; letter-spacing: 1.5px;
+  }
+  .marquee-track span { flex-shrink: 0; }
+  .marquee-track .mq-dot { color: var(--primary); }
+
+  /* ===== RESEARCH TOPIC BLOCKS ===== */
+  .research-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    margin-bottom: 20px;
+  }
+  .research-topic {
+    padding: 0; position: relative; overflow: hidden;
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: 14px; display: flex; flex-direction: column;
+    transition: border-color 0.3s;
+  }
+  .research-topic:hover { border-color: var(--topic-color, var(--primary)); }
+  .research-topic::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--topic-color, var(--primary));
+  }
+  .research-topic-inner {
+    padding: 20px; display: flex; flex-direction: column; flex: 1;
+  }
+  .topic-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
+  }
+  .topic-num {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+    padding: 3px 8px; border-radius: 5px;
+  }
+  .topic-title {
+    font-size: 17px; font-weight: 800; letter-spacing: -0.3px;
+  }
+  .topic-desc {
+    color: var(--gray-400); font-size: 12px; margin-bottom: 12px; line-height: 1.5;
+  }
+
+  .topic-animation-box {
+    background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: 10px; padding: 16px; margin-bottom: 14px;
+    min-height: 180px; position: relative; overflow: hidden;
+  }
+
+  .topic-papers {
+    display: flex; flex-direction: column; gap: 4px; flex: 1;
+  }
+  .topic-paper {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 6px 10px; border-radius: 6px;
+    background: var(--gray-50); border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .topic-paper:hover { border-color: var(--gray-200); }
+  .topic-paper .venue {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+    padding: 2px 6px; border-radius: 3px; white-space: nowrap;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .topic-paper .paper-title {
+    font-size: 12px; color: var(--gray-500); line-height: 1.4;
+  }
+  .topic-paper .paper-title a { color: var(--gray-500); transition: color 0.2s; }
+  .topic-paper .paper-title a:hover { color: var(--gray-900); }
+
+  /* Benchmark animation */
+  .bench-switcher {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;
+  }
+  .bench-btn {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 6px 14px;
+    border-radius: 8px; border: 1px solid var(--gray-200);
+    background: transparent; color: var(--gray-500); cursor: pointer;
+    transition: all 0.2s;
+  }
+  .bench-btn.active, .bench-btn:hover {
+    border-color: #60a5fa; color: #60a5fa;
+    background: rgba(96,165,250,0.08);
+  }
+  .bench-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+    height: 32px;
+  }
+  .bench-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+  .bench-name {
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500;
+    width: 90px; flex-shrink: 0; color: var(--gray-500);
+  }
+  .bench-bar-bg {
+    flex: 1; height: 24px; background: var(--gray-100);
+    border-radius: 6px; overflow: hidden; position: relative;
+  }
+  .bench-bar {
+    height: 100%; border-radius: 6px; width: 0;
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bench-score {
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;
+    width: 48px; text-align: right; flex-shrink: 0; color: var(--gray-700);
+  }
+
+  /* Code transform animation */
+  .code-transform-container {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch;
+  }
+  .code-block {
+    background: #1a1a2e; border-radius: 10px; padding: 16px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.7;
+    overflow: hidden; border: 1px solid var(--gray-200); color: #e8e8ed;
+  }
+  .code-block .label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 12px; display: block;
+  }
+  .code-line {
+    opacity: 0; white-space: pre;
+  }
+  .code-arrow {
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 16px; font-size: 14px; font-family: 'IBM Plex Mono', monospace;
+    color: var(--gray-400);
+  }
+  .code-arrow .arrow-inner {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .arrow-line {
+    width: 2px; height: 40px; background: var(--gray-200); border-radius: 1px;
+  }
+  .arrow-text {
+    font-size: 11px; font-weight: 600; padding: 6px 12px;
+    border-radius: 6px; border: 1px solid var(--gray-200);
+    background: var(--gray-50);
+    white-space: nowrap;
+  }
+
+  /* code syntax keyword colors (prefixed to avoid conflict with .kw tag class) */
+  .syn-kw { color: #c084fc; }
+  .fn { color: #60a5fa; }
+  .str { color: #34d399; }
+  .cm { color: #55556a; }
+  .num { color: #fb923c; }
+  .op { color: #e8e8ed; }
+  .err { color: #f87171; text-decoration: line-through; }
+  .fix { color: #34d399; }
+
+  /* Pipeline animation */
+  .pipeline-container {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; padding: 20px 0;
+    flex-wrap: wrap;
+  }
+  .pipeline-node {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0.3; transition: opacity 0.5s;
+  }
+  .pipeline-node.active { opacity: 1; }
+  .pipeline-icon {
+    width: 64px; height: 64px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; border: 2px solid var(--gray-200);
+    background: var(--gray-50); position: relative;
+    transition: all 0.5s; color: var(--gray-700);
+  }
+  .pipeline-node.active .pipeline-icon {
+    border-color: #34d399;
+    box-shadow: 0 0 20px rgba(52,211,153,0.2);
+  }
+  .pipeline-label {
+    font-size: 12px; font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+    color: var(--gray-400); text-align: center; max-width: 100px;
+  }
+  .pipeline-node.active .pipeline-label { color: #34d399; }
+  .pipeline-connector {
+    width: 60px; height: 2px; background: var(--gray-200); position: relative;
+    flex-shrink: 0; margin: 0 4px;
+  }
+  .pipeline-connector .connector-glow {
+    position: absolute; top: -1px; left: 0; width: 0; height: 4px;
+    background: #34d399; border-radius: 2px;
+    box-shadow: 0 0 10px #34d399;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Testing grid animation */
+  .test-grid-container {
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+  }
+  .test-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;
+    width: fit-content;
+  }
+  .test-cell {
+    width: 44px; height: 44px; border-radius: 6px;
+    background: var(--gray-100); border: 1px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; opacity: 0.3;
+    transition: all 0.4s;
+  }
+  .test-cell.pass {
+    opacity: 1; border-color: rgba(52,211,153,0.3);
+    background: rgba(52,211,153,0.06); color: #34d399;
+  }
+  .test-cell.fail {
+    opacity: 1; border-color: rgba(248,113,113,0.3);
+    background: rgba(248,113,113,0.06); color: #f87171;
+    box-shadow: 0 0 12px rgba(248,113,113,0.15);
+  }
+  .test-counter {
+    font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600;
+    display: flex; gap: 24px;
+  }
+  .test-counter span { color: var(--gray-400); }
+  .counter-val { color: var(--gray-900); }
+  .counter-bugs { color: #f87171; }
+
+  /* ===== GSAP targets ===== */
+  .gsap-fade { opacity: 0; transform: translateY(20px); }
+  .gsap-fade-right { opacity: 0; transform: translateX(-20px); }
+  .gsap-scale { opacity: 0; transform: scale(0.95); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .sidebar { position: relative; width: 100%; flex-direction: row; flex-wrap: wrap; padding: 1.5rem; justify-content: center; border-right: none; border-bottom: 1px solid var(--gray-100); }
+    .s-nav { display: none; }
+    .main { margin-left: 0 !important; max-width: 100%; }
+    .hero, .sec { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .awards-banner { padding: 1rem 1.5rem; flex-direction: column; }
+    .pub-grid { grid-template-columns: 1fr; }
+    .research-grid { grid-template-columns: 1fr; }
+    .code-transform-container { grid-template-columns: 1fr; }
+    .code-arrow { padding: 12px 0; }
+    .code-arrow .arrow-inner { flex-direction: row; }
+    .arrow-line { width: 40px; height: 2px; }
+    .pipeline-container { flex-direction: column; }
+    .pipeline-connector { width: 2px; height: 40px; }
+    .pipeline-connector .connector-glow { width: 4px !important; height: 0; transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .test-grid { grid-template-columns: repeat(4, 1fr); }
+    .test-cell { width: 48px; height: 48px; }
+    .bench-name { width: 70px; font-size: 11px; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <img src="images/avatar.jpg" alt="Jialun Cao" class="s-avatar">
+  <h1 class="s-name">Jialun Cao</h1>
+  <p class="s-role">Research Assistant Professor<br>HKUST &rarr; Imperial College London</p>
+  <div class="s-divider"></div>
+  <ul class="s-nav">
+    <li><a href="#about" class="active">About</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#featured">Featured Works</a></li>
+    <li><a href="#pubs">Publications</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#edu">Education</a></li>
+    <li><a href="#svc">Service</a></li>
+    <li><a href="#talks">Invited Talks</a></li>
+  </ul>
+  <div class="s-links">
+    <a href="mailto:jialuncao@ust.hk">&#9993; jialuncao@ust.hk</a>
+    <a href="https://github.com/ArabelaTso">GitHub</a>
+    <a href="https://scholar.google.com/citations?user=UsLXSAEAAAAJ&hl=en">Google Scholar</a>
+    <a href="https://dblp.org/pid/224/1601.html">DBLP</a>
+    <a href="https://orcid.org/0000-0003-4892-6294">ORCID</a>
+    <a href="https://www.researchgate.net/profile/Jialun-Cao">ResearchGate</a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- Hero -->
+<div class="hero" id="about">
+  <div class="hero-content">
+    <div class="hero-geo"></div>
+    <div class="hero-geo-2"></div>
+    <div class="hero-eyebrow">Research Vision</div>
+    <h1 id="scramble-target">
+      <span class="line">Applying <span class="hl">advanced AI</span> to automate</span>
+      <span class="line">software implementation, testing, and <span class="hl">program verification</span></span>
+    </h1>
+    <div class="hero-tags">
+      <span class="hero-tag">LLM4SE</span>
+      <span class="hero-tag">LLM4FM</span>
+      <span class="hero-tag">Code Agents</span>
+      <span class="hero-tag">Benchmarking</span>
+    </div>
+  </div>
+</div>
+
+<!-- Bio -->
+<div class="sec gsap-fade" id="about-me">
+  <p class="intro">
+    I am a <strong>Research Assistant Professor</strong> at the <a href="https://cse.hkust.edu.hk">Department of Computer Science and Engineering</a>, <a href="https://hkust.edu.hk/"><strong>The Hong Kong University of Science and Technology</strong></a>. I will join the <a href="https://www.imperial.ac.uk/computing/">Department of Computing</a>, <a href="https://www.imperial.ac.uk/"><strong>Imperial College London</strong></a> as an <strong>Assistant Professor</strong> in late 2026. I received the PhD degree from the Department of Computer Science and Engineering at The Hong Kong University of Science and Technology (HKUST), under the supervision of <a href="https://www.cse.ust.hk/faculty/scc/">Prof. Shing-Chi Cheung</a> in the <a href="https://aka.henryhc.net/castle">CASTLE</a> lab.
+  </p>
+  <p class="intro">
+    My research focuses on applying advanced AI techniques to <strong>automate software implementation, testing, and program verification</strong>, to produce software that is reliable by construction. My research interests lie in the intersection of Software Engineering (SE), Large Language Models (LLMs), with an emphasis on LLM4SE, LLM4FM (formal methods), and LLM Evaluation/Benchmarking. I have 30 publications at top conferences and journals, including ICSE, FSE, ASE, TOSEM, CAV, Usenix Security, AAAI, etc. I serve as a program committee member in top conferences such as ICSE, FSE, ASE, and ISSTA, and am a reviewer for TOSEM, TSE, and EmSE. My doctoral dissertation, "Towards Automatic Testing and Fault Localization in Natural Language Processing Systems", was recognized with the &#127942; <strong style="color:var(--accent-warm)">ACM SIGSOFT Outstanding Doctoral Dissertation Award for 2025</strong>. Additionally, I was honored with the &#127942; <strong style="color:var(--accent-warm)">2025 Young Scientist Award in Engineering Science</strong> (one awardee per year in Hong Kong).
+  </p>
+</div>
+
+<!-- Awards Banner -->
+<div class="awards-banner">
+  <div class="ab-card">
+    <span class="ab-icon">&#127942;</span>
+    <div class="ab-text">
+      <strong>ACM SIGSOFT Outstanding Dissertation Award 2025</strong>
+      <span>1-2 recipients worldwide per year</span>
+    </div>
+  </div>
+  <div class="ab-card">
+    <span class="ab-icon">&#127942;</span>
+    <div class="ab-text">
+      <strong>Young Scientist Award in Engineering Science 2025</strong>
+      <span>1 recipient per year in Hong Kong</span>
+    </div>
+  </div>
+</div>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <span>ICSE</span><span class="mq-dot">&bull;</span><span>FSE</span><span class="mq-dot">&bull;</span><span>ASE</span><span class="mq-dot">&bull;</span><span>CAV</span><span class="mq-dot">&bull;</span><span>ACL</span><span class="mq-dot">&bull;</span><span>ICML</span><span class="mq-dot">&bull;</span><span>AAAI</span><span class="mq-dot">&bull;</span><span>USENIX Security</span><span class="mq-dot">&bull;</span><span>TOSEM</span><span class="mq-dot">&bull;</span><span>TSE</span><span class="mq-dot">&bull;</span>
+    <span>ICSE</span><span class="mq-dot">&bull;</span><span>FSE</span><span class="mq-dot">&bull;</span><span>ASE</span><span class="mq-dot">&bull;</span><span>CAV</span><span class="mq-dot">&bull;</span><span>ACL</span><span class="mq-dot">&bull;</span><span>ICML</span><span class="mq-dot">&bull;</span><span>AAAI</span><span class="mq-dot">&bull;</span><span>USENIX Security</span><span class="mq-dot">&bull;</span><span>TOSEM</span><span class="mq-dot">&bull;</span><span>TSE</span><span class="mq-dot">&bull;</span>
+  </div>
+</div>
+
+<!-- Hiring -->
+<div class="sec gsap-fade">
+  <div class="hiring">
+    <h3>&#128293; Open Positions &mdash; Imperial College London</h3>
+    <p>I'm looking for highly self-motivated students who enjoy building agentic systems and solving hard problems. <strong style="color:var(--primary);">Let's do something interesting and impactful!</strong></p>
+    <div class="hiring-sub">Looking for:</div>
+    <ul><li>2&ndash;3 fully funded PhD students</li><li>Self-funded / visiting PhD students</li><li>Remote RAs/interns</li></ul>
+    <div class="hiring-tags">
+      <span class="h-tag">AI for Software Engineering</span>
+      <span class="h-tag">AI for Formal Verification</span>
+      <span class="h-tag">Coding & Testing Agents</span>
+    </div>
+    <p style="margin-top:0.75rem; font-size:0.82rem;">&#128233; Send CV + representative works + research plan to: jialuncao [at] ust [dot] hk</p>
+  </div>
+</div>
+
+<!-- News -->
+<div class="sec alt gsap-fade" id="news">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">News</div></div>
+  <div class="news-item"><span class="n-date">2026.05.02</span><span>&#127881; Two papers accepted by <strong>ICML 2026</strong>! <a href="https://arxiv.org/abs/2603.00520">SWE-ABS</a> and <a href="https://arxiv.org/abs/2501.10711">Position: Code Benchmarks</a>.</span></div>
+  <div class="news-item"><span class="n-date">2026.04</span><span>Joining <span class="n-hl">Imperial College London</span> as <strong>Assistant Professor</strong> in late 2026!</span></div>
+  <div class="news-item"><span class="n-date">2026.02.21</span><span><a href="https://github.com/ArabelaTso/Skills-4-SE/">Skills-4-SE</a> released &mdash; 180+ <strong>Claude Skills for SE</strong>. <a href="https://arabelatso.github.io/Skills-4-SE/">[Website]</a></span></div>
+  <div class="news-item"><span class="n-date">2026.01.08</span><span>&#127881; Paper accepted by <strong>TOSEM 2026</strong>. Congrats to Songqiang!</span></div>
+  <div class="news-item"><span class="n-date">2025.12.17</span><span>&#127881; Paper accepted by <strong>ICSE 2026</strong>. Congrats to Ruiyang!</span></div>
+  <div class="news-item"><span class="n-date">2025.12.13</span><span>&#127942; Honored with <span class="n-hl">Young Scientist Award in Engineering Science</span>. <a href="https://cse.hkust.edu.hk/News/HKIS_YoungScientist2025/">[News]</a></span></div>
+  <div class="news-item"><span class="n-date">2025.05.15</span><span>&#127881; Two papers accepted by <strong>ACL 2025 Main</strong>!</span></div>
+  <div class="news-item"><span class="n-date">2025.03.08</span><span>HuggingFace repo reached 1.6k+ downloads. Social media reached 37k+ reads.</span></div>
+  <div class="news-item"><span class="n-date">2025.01.23</span><span>&#127942; Received <a href="https://www2.sigsoft.org/awards/dissertation/"><span class="n-hl">ACM SIGSOFT Outstanding Dissertation Award</span></a>. <a href="https://cse.hkust.edu.hk/News/SIGSOFT2025/">[News]</a></span></div>
+</div>
+
+<!-- Featured Works -->
+<div class="sec gsap-fade" id="featured">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Featured Works</div></div>
+  <div class="fw-list">
+    <div class="fw"><span class="fw-venue">ACL '25</span><div><h3>From Informal to Formal &mdash; Incorporating and Evaluating LLMs on Natural Language Requirements to Verifiable Formal Proofs</h3><div class="fw-meta"><span class="me">Jialun Cao</span>, Yaojie Lu, Meiziniu Li, Haoyang Ma, Haokun Li, Mengda He, Cheng Wen, Le Sun, Hongyu Zhang, Shengchao Qin, Shing-Chi Cheung, Cong Tian</div><div class="fw-impact">1.6k+ HuggingFace downloads &middot; 37k+ social media reads &middot; 2k+ forwards</div><div class="fw-links"><a href="https://arxiv.org/abs/2501.16207" class="fw-link">Paper</a><a href="https://huggingface.co/fm-universe" class="fw-link">HuggingFace</a><a href="https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg" class="fw-link">Media</a></div></div></div>
+    <div class="fw"><span class="fw-venue">ICML '26</span><div><h3>SWE-ABS: Adversarial Benchmark Strengthening Exposes Inflated Success Rates on Test-based Benchmark</h3><div class="fw-meta">Boxi Yu, Yang Cao, Yuzhong Zhang, Liting Lin, Junjielong Xu, Zhiqing Zhong, Qinghua Xu, Guancheng Wang, <span class="me">Jialun Cao</span>, Shing-Chi Cheung, Pinjia He, Lionel Briand</div><div class="fw-links"><a href="https://arxiv.org/abs/2603.00520" class="fw-link">Paper</a></div></div></div>
+    <div class="fw"><span class="fw-venue">ICML '26</span><div><h3>Position: Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility</h3><div class="fw-meta"><span class="me">Jialun Cao</span>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang&dagger;, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung</div><div class="fw-links"><a href="https://arxiv.org/abs/2501.10711" class="fw-link">Paper</a><a href="https://mp.weixin.qq.com/s/noYYnJW3PHggxt0Wex-t-Q" class="fw-link">Media</a></div></div></div>
+    <div class="fw"><span class="fw-venue">CAV '24</span><div><h3>Enchanting Program Specification Synthesis by Large Language Models using Static Analysis and Program Verification</h3><div class="fw-meta">Cheng Wen, <span class="me">Jialun Cao (Corresponding)</span>, Jie Su, Zhiwu Xu, Shengchao Qin, Mengda He, Haokun Li, Shing-Chi Cheung, Cong Tian</div><div class="fw-links"><a href="https://arxiv.org/pdf/2404.00762" class="fw-link">Paper</a><a href="https://sites.google.com/view/autospecification" class="fw-link">Homepage</a></div></div></div>
+    <div class="fw"><span class="fw-venue">ICSE '22</span><div><h3>DeepFD: Automated Fault Diagnosis and Localization for Deep Learning Programs</h3><div class="fw-meta"><span class="me">Jialun Cao</span>, Meiziniu Li, Xiao Chen, Ming Wen, Yongqiang Tian, Bo Wu, Shing-chi Cheung</div><div class="fw-links"><a href="https://dl.acm.org/doi/10.1145/3510003.3510099" class="fw-link">Paper</a><a href="https://github.com/ArabelaTso/DeepFD" class="fw-link">Code</a></div></div></div>
+  </div>
+</div>
+
+<!-- Visiting -->
+<div class="sec gsap-fade">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Visiting & Program Experience</div></div>
+  <div class="list-item"><span class="li-date">2024.10</span><span>Honored to visit <a href="https://software-lab.org/people/Michael_Pradel.html"><strong>Prof. Michael Pradel</strong></a> at the <strong>University of Stuttgart</strong>.</span></div>
+  <div class="list-item"><span class="li-date">2024.03</span><span>Honored to visit <a href="https://pinjiahe.github.io/"><strong>Prof. Pinjia He</strong></a> at the <strong>Chinese University of Hong Kong, Shenzhen</strong>.</span></div>
+</div>
+
+<!-- Publications -->
+<div class="sec alt gsap-fade" id="pubs">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Publications</div><span class="sec-count">30+</span></div>
+
+  <div class="research-grid">
+
+  <!-- TOPIC 1: LLM Benchmark -->
+  <div class="research-topic" id="topic-benchmark" style="--topic-color:#60a5fa">
+    <div class="research-topic-inner">
+      <div class="topic-header">
+        <span class="topic-num" style="background:rgba(96,165,250,0.1);color:#60a5fa;">01</span>
+        <h2 class="topic-title" style="color:#60a5fa;">LLM Benchmark</h2>
+      </div>
+      <p class="topic-desc">Rigorous evaluation of LLMs for code generation, reasoning, and SE tasks.</p>
+      <div class="topic-animation-box" id="benchmarkAnim">
+        <div class="bench-switcher">
+          <button class="bench-btn active" data-bench="humaneval">HumanEval+</button>
+          <button class="bench-btn" data-bench="mbpp">MBPP+</button>
+          <button class="bench-btn" data-bench="livecodebench">LiveCodeBench</button>
+          <button class="bench-btn" data-bench="swebench">SWE-bench</button>
+          <button class="bench-btn" data-bench="cruxeval">CruxEval-X</button>
+        </div>
+        <div id="benchRows"></div>
+      </div>
+      <div class="topic-papers">
+        <div class="topic-paper"><span class="venue" style="background:rgba(96,165,250,0.1);color:#60a5fa;">ICML '26</span><span class="paper-title"><a href="https://arxiv.org/abs/2501.10711">Position: Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(96,165,250,0.1);color:#60a5fa;">ICML '26</span><span class="paper-title"><a href="https://arxiv.org/abs/2603.00520">SWE-ABS: Adversarial Benchmark Strengthening</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(96,165,250,0.1);color:#60a5fa;">ACL '25</span><span class="paper-title"><a href="https://arxiv.org/pdf/2408.13001">CruxEval-X: Multilingual Code Reasoning Benchmark</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(96,165,250,0.1);color:#60a5fa;">AAAI '25</span><span class="paper-title"><a href="https://arxiv.org/pdf/2408.13204">DomainEval: Multi-Domain Code Generation</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(96,165,250,0.1);color:#60a5fa;">ASE '24</span><span class="paper-title"><a href="https://arxiv.org/abs/2406.12902">JavaBench: Object-Oriented Code Generation</a></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPIC 2: LLM for SE -->
+  <div class="research-topic" id="topic-llm4se" style="--topic-color:#fb923c">
+    <div class="research-topic-inner">
+      <div class="topic-header">
+        <span class="topic-num" style="background:rgba(251,146,60,0.1);color:#fb923c;">02</span>
+        <h2 class="topic-title" style="color:#fb923c;">LLM for SE</h2>
+      </div>
+      <p class="topic-desc">LLMs for bug fixing, code translation, test generation, and program repair.</p>
+      <div class="topic-animation-box" id="codeTransformAnim">
+        <div class="code-transform-container">
+          <div class="code-block" id="codeLeft">
+            <span class="label" style="color:#f87171;">Buggy Code</span>
+            <div class="code-line" data-delay="0"><span class="syn-kw">def</span> <span class="fn">binary_search</span>(arr, target):</div>
+            <div class="code-line" data-delay="1"><span class="cm">    # Find target in sorted array</span></div>
+            <div class="code-line" data-delay="2">    low, high = <span class="num">0</span>, len(arr)</div>
+            <div class="code-line" data-delay="3">    <span class="syn-kw">while</span> low <span class="err">&lt;=</span> high:</div>
+            <div class="code-line" data-delay="4">        mid = <span class="err">(low + high) / 2</span></div>
+            <div class="code-line" data-delay="5">        <span class="syn-kw">if</span> arr[mid] == target:</div>
+            <div class="code-line" data-delay="6">            <span class="syn-kw">return</span> mid</div>
+            <div class="code-line" data-delay="7">        <span class="syn-kw">elif</span> arr[mid] &lt; target:</div>
+            <div class="code-line" data-delay="8">            low = mid</div>
+            <div class="code-line" data-delay="9">    <span class="syn-kw">return</span> <span class="num">-1</span></div>
+          </div>
+          <div class="code-arrow">
+            <div class="arrow-inner">
+              <div class="arrow-line"></div>
+              <span class="arrow-text" style="color:#fb923c;">LLM</span>
+              <div class="arrow-line"></div>
+            </div>
+          </div>
+          <div class="code-block" id="codeRight">
+            <span class="label" style="color:#34d399;">Fixed Code</span>
+            <div class="code-line" data-delay="5"><span class="syn-kw">def</span> <span class="fn">binary_search</span>(arr, target):</div>
+            <div class="code-line" data-delay="6"><span class="cm">    # Find target in sorted array</span></div>
+            <div class="code-line" data-delay="7">    low, high = <span class="num">0</span>, len(arr) <span class="fix">- 1</span></div>
+            <div class="code-line" data-delay="8">    <span class="syn-kw">while</span> low <span class="fix">&lt;=</span> high:</div>
+            <div class="code-line" data-delay="9">        mid = <span class="fix">(low + high) // 2</span></div>
+            <div class="code-line" data-delay="10">        <span class="syn-kw">if</span> arr[mid] == target:</div>
+            <div class="code-line" data-delay="11">            <span class="syn-kw">return</span> mid</div>
+            <div class="code-line" data-delay="12">        <span class="syn-kw">elif</span> arr[mid] &lt; target:</div>
+            <div class="code-line" data-delay="13">            low = mid <span class="fix">+ 1</span></div>
+            <div class="code-line" data-delay="14">    <span class="syn-kw">return</span> <span class="num">-1</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="topic-papers">
+        <div class="topic-paper"><span class="venue" style="background:rgba(251,146,60,0.1);color:#fb923c;">ICSE '26</span><span class="paper-title"><a href="https://www.arxiv.org/abs/2506.11003">EmbedAgent: LLMs in Embedded System Development</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(251,146,60,0.1);color:#fb923c;">TOSEM '26</span><span class="paper-title"><a href="https://arxiv.org/abs/2510.00920">Code Translation via Pseudocode</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(251,146,60,0.1);color:#fb923c;">FSE '26</span><span class="paper-title"><a href="https://arxiv.org/abs/2604.19224">iCoRe: Bug Reproduction Test Generation</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(251,146,60,0.1);color:#fb923c;">FSE '25</span><span class="paper-title"><a href="https://scholar.henryhc.net/files/publications/2025/FSE2025-SemBIC.pdf">SemBIC: Bug-inducing Commit Identification</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(251,146,60,0.1);color:#fb923c;">ASE '24</span><span class="paper-title"><a href="https://arxiv.org/pdf/2408.15815">MR-Adopt: Metamorphic Testing</a></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPIC 3: LLM for Formal Methods -->
+  <div class="research-topic" id="topic-fm" style="--topic-color:#34d399">
+    <div class="research-topic-inner">
+      <div class="topic-header">
+        <span class="topic-num" style="background:rgba(52,211,153,0.1);color:#34d399;">03</span>
+        <h2 class="topic-title" style="color:#34d399;">LLM for Formal Methods</h2>
+      </div>
+      <p class="topic-desc">Bridging NL and formal specifications for program verification and spec synthesis.</p>
+      <div class="topic-animation-box" id="pipelineAnim">
+        <div class="pipeline-container">
+          <div class="pipeline-node" id="pn1"><div class="pipeline-icon">NL</div><div class="pipeline-label">Natural Language</div></div>
+          <div class="pipeline-connector"><div class="connector-glow" id="pc1"></div></div>
+          <div class="pipeline-node" id="pn2"><div class="pipeline-icon">AI</div><div class="pipeline-label">LLM</div></div>
+          <div class="pipeline-connector"><div class="connector-glow" id="pc2"></div></div>
+          <div class="pipeline-node" id="pn3"><div class="pipeline-icon">{}</div><div class="pipeline-label">Formal Spec</div></div>
+          <div class="pipeline-connector"><div class="connector-glow" id="pc3"></div></div>
+          <div class="pipeline-node" id="pn4"><div class="pipeline-icon" style="font-size:20px;">&#10003;</div><div class="pipeline-label">Verified</div></div>
+        </div>
+      </div>
+      <div class="topic-papers">
+        <div class="topic-paper"><span class="venue" style="background:rgba(52,211,153,0.1);color:#34d399;">ACL '25</span><span class="paper-title"><a href="https://arxiv.org/abs/2501.16207">From Informal to Formal &mdash; NL to Verifiable Formal Proofs</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(52,211,153,0.1);color:#34d399;">CAV '24</span><span class="paper-title"><a href="https://arxiv.org/pdf/2404.00762">Enchanting Program Specification Synthesis by LLMs</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(52,211,153,0.1);color:#34d399;">FM '26</span><span class="paper-title"><a href="https://arxiv.org/abs/2602.12058">ModelWisdom: TLA+ Model Visualization and Repair</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(52,211,153,0.1);color:#34d399;">arXiv</span><span class="paper-title"><a href="https://arxiv.org/abs/2604.01851">Can LLMs Model Programs Formally?</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(52,211,153,0.1);color:#34d399;">arXiv</span><span class="paper-title"><a href="https://arxiv.org/abs/2605.01394v1">LiveFMBench: Agentic Workflows in Spec Generation</a></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPIC 4: SE for AI -->
+  <div class="research-topic" id="topic-se4ai" style="--topic-color:#c084fc">
+    <div class="research-topic-inner">
+      <div class="topic-header">
+        <span class="topic-num" style="background:rgba(192,132,252,0.1);color:#c084fc;">04</span>
+        <h2 class="topic-title" style="color:#c084fc;">SE for AI</h2>
+      </div>
+      <p class="topic-desc">Testing, debugging, and analysis to improve AI/DL system reliability.</p>
+      <div class="topic-animation-box" id="testGridAnim">
+        <div class="test-grid-container">
+          <div class="test-counter">
+            <span>Tests: <span class="counter-val" id="testCount">0</span>/24</span>
+            <span>Bugs Found: <span class="counter-bugs" id="bugCount">0</span></span>
+          </div>
+          <div class="test-grid" id="testGrid"></div>
+        </div>
+      </div>
+      <div class="topic-papers">
+        <div class="topic-paper"><span class="venue" style="background:rgba(192,132,252,0.1);color:#c084fc;">ICSE '22</span><span class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3510003.3510099">DeepFD: Fault Diagnosis for Deep Learning Programs</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(192,132,252,0.1);color:#c084fc;">FSE '23</span><span class="paper-title"><a href="https://dl.acm.org/doi/pdf/10.1145/3611643.3616258">Testing Coreference Resolution Systems</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(192,132,252,0.1);color:#c084fc;">TOSEM</span><span class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3490488">SemMT: Semantic-Based Testing for Machine Translation</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(192,132,252,0.1);color:#c084fc;">ASE '24</span><span class="paper-title"><a href="https://github.com/CGCL-codes/PathEval/blob/main/PathEval_Preprint.pdf">Distinguished Paper &mdash; LLMs on Directed Test Input Generation</a></span></div>
+        <div class="topic-paper"><span class="venue" style="background:rgba(192,132,252,0.1);color:#c084fc;">TOSEM '25</span><span class="paper-title"><a href="https://arxiv.org/abs/2406.07944">Enhancing Differential Testing for DL Libraries</a></span></div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="year-block open">
+    <div class="year-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="year-label">2026 <span class="year-count">11 papers</span>
+        <div class="year-venues"><span class="year-venue-tag">ICML</span><span class="year-venue-tag">ICSE</span><span class="year-venue-tag">FSE</span><span class="year-venue-tag">ACL</span><span class="year-venue-tag">FM</span><span class="year-venue-tag">TOSEM</span></div>
+      </div>
+      <span class="year-arrow">&#9654;</span>
+    </div>
+    <div class="year-body"><div class="year-body-inner">
+      <div class="pub-item">[C26] Ruiyang Xu, <span class="me">Jialun Cao (Co-1st)</span>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. <em>EmbedAgent: Benchmarking Large Language Models in Embedded System Development.</em> In <strong>ICSE 2026</strong>. <a href="https://www.arxiv.org/abs/2506.11003">[Paper]</a></div>
+      <div class="pub-item">[J5] Songqiang Chen, Congying Xu, Jingyi Chen, <span class="me">Jialun Cao (Corresponding)</span>, Jiarong Wu, Shing-Chi Cheung. <em>Can Emulating Semantic Translation Help LLMs with Code Translation? A Study Based on Pseudocode.</em> In <strong>TOSEM 2026</strong>. <a href="https://arxiv.org/abs/2510.00920">[Paper]</a></div>
+      <div class="pub-item">[C27] Qiming Zhu, <span class="me">Jialun Cao</span>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung. <em>Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation.</em> In <strong>ACL findings 2026</strong>. <a href="https://arxiv.org/abs/2506.03535">[Paper]</a></div>
+      <div class="pub-item">[C28] Zhiyong Chen, <span class="me">Jialun Cao</span>, Chang Xu, Shing-Chi Cheung. <em>ModelWisdom: An Integrated Toolkit for TLA+ Model Visualization, Digest and Repair.</em> In <strong>FM 2026</strong> Tool track. <a href="https://arxiv.org/abs/2602.12058">[Paper]</a> <a href="https://modelwisdom-staging.pacificstudio.ai/">[Website]</a></div>
+      <div class="pub-item">[C29] Junyi Wang, <span class="me">Jialun Cao</span>, Zhongxin Liu. <em>iCoRe: Iterative Correlation-Aware Retriever for Bug Reproduction.</em> <strong>FSE 2026</strong>. <a href="https://arxiv.org/abs/2604.19224">[Paper]</a></div>
+      <div class="pub-item">[C30] <span class="me">Jialun Cao</span>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang&dagger;, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. <em>Position: Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility.</em> <strong>ICML Position 2026</strong>. <a href="https://arxiv.org/abs/2501.10711">[Paper]</a></div>
+      <div class="pub-item">[C31] Boxi Yu, Yang Cao, Yuzhong Zhang, Liting Lin, Junjielong Xu, Zhiqing Zhong, Qinghua Xu, Guancheng Wang, <span class="me">Jialun Cao</span>, Shing-Chi Cheung, Pinjia He, Lionel Briand. <em>SWE-ABS: Adversarial Benchmark Strengthening Exposes Inflated Success Rates on Test-based Benchmark.</em> <strong>ICML 2026</strong>. <a href="https://arxiv.org/abs/2603.00520">[Paper]</a></div>
+      <div class="pub-item">[J6] Jingyi Chen, Songqiang Chen, <span class="me">Jialun Cao (Corresponding)</span>, Jiasi Shen, Shing-Chi Cheung. <em>When Retrieval Augmentation Meets API Documentation: Can LLMs Code with Less-Common Libraries?</em> <strong>TOSEM 2026</strong>. <a href="https://arxiv.org/abs/2503.15231">[Paper]</a></div>
+      <div class="pub-item">[Pre8] Zhiyong Chen, <span class="me">Jialun Cao</span>, Jiarong Wu, Chang Xu, Shing-Chi Cheung. <em>Can Large Language Models Model Programs Formally?</em> arXiv. <a href="https://arxiv.org/abs/2604.01851">[Paper]</a></div>
+      <div class="pub-item">[Pre9] Dong Xu, Jialun Cao, Guozhao Mo, Junjie Hu, Cheng Wen, Hongyu Lin, Xianpei Han, Shengchao Qin, Cong Tian, Shing-Chi Cheung, Le Sun, Yaojie Lu. <em>LiveFMBench: Unveiling the Power and Limits of Agentic Workflows in Specification Generation.</em> arXiv. <a href="https://arxiv.org/abs/2605.01394v1">[Paper]</a> <a href="https://huggingface.co/datasets/fm-universe/Live-FM-Bench">[HF]</a></div>
+      <div class="pub-item">[Pre10] Yuanyi Wang, Yifan Yang, Su Lu, Yanggan Gu, Pengkai Wang, Wenjun Wang, Zhaoyi Yan, Congkai Xie, Jianmin Wu, <span class="me">Jialun Cao</span>, Shing-Chi Cheung, Hongxia Yang. <em>Geometry Conflict: Explaining and Controlling Forgetting in LLM Continual Post-Training.</em> arXiv. <a href="https://arxiv.org/abs/2605.09608v1">[Paper]</a></div>
+    </div></div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-header" onclick="this.parentElement.classList.toggle('open')"><span class="year-label">2025</span><span class="year-count">16 papers</span><div class="year-venues"><span class="year-venue-tag">ACL</span><span class="year-venue-tag">FSE</span><span class="year-venue-tag">AAAI</span><span class="year-venue-tag">ASE</span><span class="year-venue-tag">TOSEM</span></div><span class="year-arrow">&#9654;</span></div>
+    <div class="year-body"><div class="year-body-inner">
+      <div class="pub-item">[C19] <span class="me">Jialun Cao</span>, Songqiang Chen, Wuqi Zhang, Hau Ching Lo, Yeting Li, Shing-Chi Cheung. <em>CodeCleaner: Elevating Standards with A Robust Data Contamination Mitigation Toolkit.</em> <strong>Internetware 2025</strong>. <a href="https://arxiv.org/abs/2411.10842">[Paper]</a> <a href="https://github.com/ArabelaTso/CodeCleaner-v1">[Code]</a></div>
+      <div class="pub-item">[J3] <span class="me">Jialun Cao</span>, Meiziniu Li, Ming Wen, Shing-chi Cheung. <em>A study on prompt design, advantages and limitations of chatgpt for deep learning program repair.</em> <strong>ASEJ</strong>. <a href="https://arxiv.org/abs/2304.08191">[arxiv]</a> <a href="https://link.springer.com/article/10.1007/s10515-025-00492-x">[Official]</a></div>
+      <div class="pub-item">[C20] <span class="me">Jialun Cao</span>, Yaojie Lu, Meiziniu Li, Haoyang Ma, Haokun Li, Mengda He, Cheng Wen, Le Sun, Hongyu Zhang, Shengchao Qin, Shing-Chi Cheung, Cong Tian. <em>From Informal to Formal &mdash; Incorporating and Evaluating LLMs on Natural Language Requirements to Verifiable Formal Proofs.</em> <strong>ACL Main 2025</strong>. <a href="https://arxiv.org/abs/2501.16207">[Paper]</a> <a href="https://huggingface.co/fm-universe">[HF]</a> <a href="https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg">[Media]</a></div>
+      <div class="pub-item">[C21] Xiao Chen, Hengcheng Zhu, <span class="me">Jialun Cao (Corresponding)</span>, Ming Wen, Shing-Chi Cheung. <em>SemBIC: Semantic-aware Identification of Bug-inducing Commits.</em> <strong>FSE 2025</strong>. <a href="https://scholar.henryhc.net/files/publications/2025/FSE2025-SemBIC.pdf">[Paper]</a></div>
+      <div class="pub-item">[C22] Qiming Zhu, <span class="me">Jialun Cao (Co-1st)</span>, Yaojie Lu, Hongyu Lin, Xianpei Han, Ben He, Le Sun, Shing-Chi Cheung. <em>DomainEval: An Auto-Constructed Benchmark for Multi-Domain Code Generation.</em> <strong>AAAI 2025</strong>. <a href="https://arxiv.org/pdf/2408.13204">[Paper]</a> <a href="https://domaineval.github.io/leaderboard.html">[Leaderboard]</a> <a href="https://github.com/domaineval/DomainEval">[Code]</a></div>
+      <div class="pub-item">[C23] Ruiyang Xu, <span class="me">Jialun Cao (Co-1st)</span>, Yaojie Lu, Ming Wen, Hongyu Lin, Xianpei Han, Ben He, Shing-Chi Cheung, Le Sun. <em>CruxEval-X: A Benchmark for Multilingual Code Reasoning, Understanding and Execution.</em> <strong>ACL Main 2025</strong>. <a href="https://arxiv.org/pdf/2408.13001">[Paper]</a> <a href="https://cruxeval-x.github.io/leaderboard.html">[Leaderboard]</a> <a href="https://github.com/CRUXEVAL-X/cruxeval-x">[Code]</a></div>
+      <div class="pub-item">[C24] Mengyang Wu, Yuzhi Zhao, <span class="me">Jialun Cao</span>, Mingjie Xu, Zhongming Jiang, Xuehui Wang, Qinbin Li, Guangneng Hu, Shengchao Qin, Chi-Wing Fu. <em>ICM-Assistant: Instruction-tuning Multimodal Large Language Models for Rule-based Explainable Image Content Moderation.</em> <strong>AAAI 2025</strong>. <a href="https://arxiv.org/abs/2412.18216">[Paper]</a></div>
+      <div class="pub-item">[C25] Xingchu Chen, Chengwei Liu, <span class="me">Jialun Cao</span>, Yang Xiao, Xinyue Cai, Yeting Li, Jingyi Shi, Tianqi Sun, Haiming Chen, Wei Huo. <em>Vulnerability-Affected Versions Identification: How Far Are We?</em> <strong>ASE 2025</strong>.</div>
+      <div class="pub-item">[J4] Meiziniu Li, Dongze Li, Jianmeng Liu, <span class="me">Jialun Cao</span>, Yongqiang Tian, Shing-Chi Cheung. <em>Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries.</em> <strong>TOSEM 2025</strong>. <a href="https://arxiv.org/abs/2406.07944">[Paper]</a></div>
+      <div class="pub-item">[Pre1] <span class="me">Jialun Cao</span>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang&dagger;, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung. <em>How Should We Build A Benchmark? Revisiting 274 Code-Related Benchmarks For LLMs.</em> arXiv. <a href="https://arxiv.org/pdf/2501.10711">[Paper]</a></div>
+      <div class="pub-item">[Pre2] <span class="me">Jialun Cao</span>, Wuqi Zhang, Shing-Chi Cheung. <em>Concerned with Data Contamination? Assessing Countermeasures in Code Language Model.</em> arXiv. <a href="https://arxiv.org/abs/2403.16898">[Paper]</a></div>
+      <div class="pub-item">[Pre3] Jiarong Wu, Songqiang Chen, <span class="me">Jialun Cao (Corresponding)</span>, Hau Ching Lo, Shing-Chi Cheung. <em>Isolating Language-Coding from Problem-Solving: Benchmarking LLMs with PseudoEval.</em> arXiv. <a href="https://arxiv.org/abs/2502.19149">[Paper]</a></div>
+      <div class="pub-item">[Pre4] Dekun Dai, MingWei Liu, Anji Li, <span class="me">Jialun Cao</span>, Yanlin Wang, Chong Wang, Xin Peng, Zibin Zheng. <em>FeedbackEval: A Benchmark for Evaluating Large Language Models in Feedback-Driven Code Repair Tasks.</em> arXiv. <a href="https://arxiv.org/abs/2504.06939">[Paper]</a></div>
+      <div class="pub-item">[Pre5] Xiaolei Li, <span class="me">Jialun Cao</span>, Yepang Liu, Shing-Chi Cheung, Hailong Wang. <em>ReuseDroid: A VLM-empowered Android UI Test Migrator Boosted by Active Feedback.</em> arXiv. <a href="https://arxiv.org/abs/2504.02357">[Paper]</a></div>
+      <div class="pub-item">[Pre6] Le Deng, Zhonghao Jiang, <span class="me">Jialun Cao</span>, Michael Pradel, Zhongxin Liu. <em>NoCode-bench: A Benchmark for NL-Driven Feature Addition.</em> arXiv. <a href="https://www.arxiv.org/abs/2507.18130">[Paper]</a> <a href="https://nocodebench.org/">[Leaderboard]</a> <a href="https://huggingface.co/NoCode-bench">[HF]</a></div>
+      <div class="pub-item">[Pre7] Dongze Li, Songqiang Chen, <span class="me">Jialun Cao (Corresponding)</span>, Shing-Chi Cheung. <em>What Builds Effective In-Context Examples for Code Generation?</em> arXiv. <a href="https://www.arxiv.org/abs/2508.06414">[Paper]</a></div>
+    </div></div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-header" onclick="this.parentElement.classList.toggle('open')"><span class="year-label">2024</span><span class="year-count">6 papers</span><div class="year-venues"><span class="year-venue-tag">ASE</span><span class="year-venue-tag">CAV</span><span class="year-venue-tag">APSEC</span><span class="year-venue-tag">TASE</span></div><span class="year-arrow">&#9654;</span></div>
+    <div class="year-body"><div class="year-body-inner">
+      <div class="pub-item">[C13] <span class="me">Jialun Cao</span>, Zhiyong Chen*, Jiarong Wu, Shing-chi Cheung, Chang Xu. <em>JavaBench: A Benchmark of Object-Oriented Code Generation for Evaluating Large Language Models.</em> <strong>ASE 2024</strong>. <a href="https://arxiv.org/abs/2406.12902">[Paper]</a> <a href="https://java-bench.github.io/leaderboard.html">[Leaderboard]</a> <a href="https://github.com/java-bench/JavaBench">[Code]</a></div>
+      <div class="pub-item">&#127942; [C14] <strong style="color:var(--accent-warm)">Distinguished paper award</strong>. Zongze Jiang, Ming Wen, <span class="me">Jialun Cao</span>, Xuanhua Shi, Hai Jin. <em>Towards Understanding the Effectiveness of Large Language Models on Directed Test Input Generation.</em> <strong>ASE 2024</strong>. <a href="https://github.com/CGCL-codes/PathEval/blob/main/PathEval_Preprint.pdf">[Paper]</a> <a href="https://github.com/CGCL-codes/PathEval">[Code]</a></div>
+      <div class="pub-item">[C15] Congying Xu, Songqiang Chen, Jiarong Wu, Valerio Terragni, Shing-chi Cheung, Hengcheng Zhu, <span class="me">Jialun Cao (Corresponding)</span>. <em>MR-Adopt: Automatic Deduction of Input Transformation Function for Metamorphic Testing.</em> <strong>ASE 2024</strong>. <a href="https://arxiv.org/pdf/2408.15815">[Paper]</a></div>
+      <div class="pub-item">[C16] Cheng Wen, <span class="me">Jialun Cao (Corresponding)</span>, Jie Su, Zhiwu Xu, Shengchao Qin, Mengda He, Haokun Li, Shing-Chi Cheung, Cong Tian. <em>Enchanting Program Specification Synthesis by Large Language Models using Static Analysis and Program Verification.</em> <strong>CAV 2024</strong>. <a href="https://arxiv.org/pdf/2404.00762">[Paper]</a> <a href="https://sites.google.com/view/autospecification">[Homepage]</a></div>
+      <div class="pub-item">[C17] Bo Yang, Jiawei Hu, <span class="me">Jialun Cao (Corresponding)</span>. <em>SDEFL: A Lightweight Fault Detection and Localization Method for Deep Neural Networks.</em> <strong>APSEC 2024</strong>.</div>
+      <div class="pub-item">[C18] Kunpeng Jian, Yanyan Zou, Yeting Li, <span class="me">Jialun Cao</span>, Menghao Li, Jian Sun, Jingyi Shi, Wei Huo. <em>Fuzzing for Stateful Protocol Implementations: Are We There Yet?</em> <strong>TASE 2024</strong>.</div>
+    </div></div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-header" onclick="this.parentElement.classList.toggle('open')"><span class="year-label">2022 &ndash; 2023</span><span class="year-count">6 papers</span><div class="year-venues"><span class="year-venue-tag">ICSE</span><span class="year-venue-tag">FSE</span><span class="year-venue-tag">USENIX</span><span class="year-venue-tag">TOSEM</span></div><span class="year-arrow">&#9654;</span></div>
+    <div class="year-body"><div class="year-body-inner">
+      <div class="pub-item">[C11] <span class="me">Jialun Cao</span>, Yaojie Lu, Ming Wen, Shing-Chi Cheung. <em>Testing Coreference Resolution Systems without Labeled Test Sets.</em> <strong>ESEC/FSE 2023</strong>. <a href="https://dl.acm.org/doi/pdf/10.1145/3611643.3616258">[Paper]</a> <a href="https://github.com/ArabelaTso/Crest-artifacts">[Code]</a></div>
+      <div class="pub-item">[C12] Xiaohu Du, Xiao Chen, <span class="me">Jialun Cao</span>, Ming Wen, Shing-Chi Cheung, Hai Jin. <em>Understanding the Bug Characteristics and Fix Strategies of Federated Learning Systems.</em> <strong>ESEC/FSE 2023</strong>. <a href="https://dl.acm.org/doi/pdf/10.1145/3611643.3616347">[Paper]</a></div>
+      <div class="pub-item">[J2] Meiziniu Li, <span class="me">Jialun Cao</span>, Yongqiang Tian, Tsz On Li, Ming Wen, Shing-Chi Cheung. <em>COMET: Coverage-guided Model Generation For Deep Learning Library Testing.</em> <strong>TOSEM</strong>. <a href="https://dl.acm.org/doi/10.1145/3583566">[Paper]</a> <a href="https://github.com/maybeLee/COMET">[Code]</a></div>
+      <div class="pub-item">[J1] <span class="me">Jialun Cao</span>, Meiziniu Li, Yeting Li, Ming Wen, Shing-chi Cheung. <em>SemMT: A Semantic-Based Testing Approach for Machine Translation Systems.</em> <strong>TOSEM</strong>. <a href="https://dl.acm.org/doi/10.1145/3490488">[Paper]</a> <a href="https://github.com/ArabelaTso/SemMT">[Code]</a></div>
+      <div class="pub-item">[C9] <span class="me">Jialun Cao</span>, Meiziniu Li, Xiao Chen, Ming Wen, Yongqiang Tian, Bo Wu, Shing-chi Cheung. <em>DeepFD: Automated Fault Diagnosis and Localization for Deep Learning Programs.</em> <strong>ICSE 2022</strong>. <a href="https://dl.acm.org/doi/10.1145/3510003.3510099">[Paper]</a> <a href="https://github.com/ArabelaTso/DeepFD">[Code]</a></div>
+      <div class="pub-item">[C10] Yeting Li, Yecheng Sun, Zhiwu Xu, <span class="me">Jialun Cao</span>, Yuekang Li, Rongchen Li, Haiming Chen, Shing-Chi Cheung, Yang Liu, Yang Xiao. <em>RegexScalpel: Regular Expression Denial of Service (ReDoS) Defense by Localize-and-Fix.</em> <strong>USENIX Security 2022</strong>. <a href="https://www.usenix.org/conference/usenixsecurity22/presentation/li-yeting">[Paper]</a></div>
+    </div></div>
+  </div>
+
+  <div class="year-block">
+    <div class="year-header" onclick="this.parentElement.classList.toggle('open')"><span class="year-label">2018 &ndash; 2021</span><span class="year-count">8 papers</span><div class="year-venues"><span class="year-venue-tag">ICSE</span><span class="year-venue-tag">USENIX</span><span class="year-venue-tag">ICDE</span><span class="year-venue-tag">ASE</span></div><span class="year-arrow">&#9654;</span></div>
+    <div class="year-body"><div class="year-body-inner">
+      <div class="pub-item">[C7] Yeting Li, Zixuan Chen, <span class="me">Jialun Cao</span>, Zhiwu Xu, Qiancheng Peng, Haiming Chen, Liyuan Chen, Shing-Chi Cheung. <em>ReDoSHunter: A Combined Static and Dynamic Approach for Regular Expression DoS Detection.</em> <strong>USENIX Security 2021</strong>. <a href="https://www.usenix.org/conference/usenixsecurity21/presentation/li-yeting">[Paper]</a></div>
+      <div class="pub-item">[C8] Yeting Li, Shuaimin Li, Zhiwu Xu, <span class="me">Jialun Cao</span>, Zixuan Chen, Yun Hu, Haiming Chen, Shing-Chi Cheung. <em>TransRegex: Multi-modal Regular Expression Synthesis by Generate-and-Repair.</em> <strong>ICSE 2021</strong>. <a href="https://ieeexplore.ieee.org/document/9401951">[Paper]</a></div>
+      <div class="pub-item">[C5] Yeting Li, <span class="me">Jialun Cao</span>, Haiming Chen, Tingjian Ge, Zhiwu Xu, Qiancheng Peng. <em>FlashSchema: Achieving High Quality XML Schemas with Powerful Inference Algorithms and Large-scale Schema Data.</em> <strong>ICDE 2020</strong>. <a href="https://ieeexplore.ieee.org/document/9101818">[Paper]</a></div>
+      <div class="pub-item">[C6] Yeting Li, Zhiwu Xu, <span class="me">Jialun Cao</span>, Haiming Chen, Tingjian Ge, Shing-Chi Cheung. <em>FlashRegex: Deducing Anti-ReDoS Regexes from Examples.</em> <strong>ASE 2020</strong>. <a href="https://dl.acm.org/doi/10.1145/3324884.3416556">[Paper]</a></div>
+      <div class="pub-item">[C3] Yongjian Li, <span class="me">Jialun Cao (1st student author)</span>, Jun Pang. <em>A Learning-Based Framework for Automatic Parameterized Verification.</em> <strong>ICCD 2019</strong>. <a href="https://ieeexplore.ieee.org/document/8988606">[Paper]</a></div>
+      <div class="pub-item">[C4] Yeting Li, Xiaolan Zhang, <span class="me">Jialun Cao</span>, Haiming Chen, Chong Gao. <em>Learning k-Occurrence Regular Expressions with Interleaving.</em> <strong>DASFAA 2019</strong>. <a href="https://link.springer.com/chapter/10.1007/978-3-030-18579-4_5">[Paper]</a></div>
+      <div class="pub-item">[C1] <span class="me">Jialun Cao</span>, Yongjian Li, Jun Pang. <em>L-CMP: an automatic learning-based parameterized verification tool.</em> <strong>ASE 2018 Demo</strong>. <a href="https://dl.acm.org/doi/10.1145/3238147.3240487">[Paper]</a> <a href="https://github.com/ArabelaTso/Learning-Based-ParaVerifer">[Code]</a> <a href="https://www.youtube.com/watch?v=6Dl2HiiiS4E">[Video]</a></div>
+      <div class="pub-item">[C2] Yongjian Li, <span class="me">Jialun Cao (1st student author)</span>, Kaiqiang Duan. <em>An automatic parameterized verification of FLASH cache coherence protocol.</em> <strong>QRS 2018</strong>. <a href="https://ieeexplore.ieee.org/abstract/document/8424956">[Paper]</a></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- Teaching -->
+<div class="sec gsap-fade" id="teaching">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Teaching</div></div>
+  <div class="list-item"><span class="li-date">2025 Spr</span><span><strong>Instructor</strong> in <a href="https://course.cse.ust.hk/comp1021/">COMP 1021</a> &mdash; Introduction to Computer Science. <a href="https://github.com/ArabelaTso/COMP1021-2025S">[Materials]</a></span></div>
+  <div class="list-item"><span class="li-date">2023 Fall</span><span><strong>Teaching Assistant</strong> in COMP 1021 &mdash; Introduction to Computer Science.</span></div>
+  <div class="list-item"><span class="li-date">2020 Fall</span><span><strong>Teaching Assistant</strong> in COMP 3021 &mdash; Java Programming.</span></div>
+  <div class="list-item"><span class="li-date">2020 Spr</span><span><strong>Teaching Assistant</strong> in COMP 3021 &mdash; Java Programming.</span></div>
+</div>
+
+<!-- Honors and Awards -->
+<div class="sec alt gsap-fade" id="awards">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Honors and Awards</div></div>
+  <ul class="awards-list">
+    <li><em>2025</em> &mdash; <a href="https://www2.sigsoft.org/awards/dissertation/">ACM SIGSOFT Outstanding Doctoral Dissertation Award</a> (1~2 worldwide/yr)</li>
+    <li><em>2024</em> &mdash; <a href="https://risingstarsasia.org/index.php">Rising Stars Women in Engineering Workshop</a> (Shortlisted)</li>
+    <li><em>2024</em> &mdash; Hong Kong Postgraduate Studentship</li>
+    <li><em>2024</em> &mdash; ACM SIGSOFT CAPS Travel Grant (ASE 2024)</li>
+    <li><em>2023</em> &mdash; ACM SIGSOFT CAPS Travel Grant (ESEC/FSE 2023)</li>
+    <li><em>2019-2023</em> &mdash; Huawei Fellowship Scholarship</li>
+    <li><em>2017</em> &mdash; China National Scholarship (Postgraduate, Rank 1/106, Top 1%)</li>
+    <li><em>2014</em> &mdash; China National Scholarship (Undergraduate, Rank 1/52, Top 2%)</li>
+  </ul>
+</div>
+
+<!-- Education -->
+<div class="sec gsap-fade" id="edu">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Education</div></div>
+  <div class="tl"><div class="tl-y">2019.09 - 2024.03</div><div class="tl-t">Ph.D., The Hong Kong University of Science and Technology</div><div class="tl-d">Computer Science and Engineering</div></div>
+  <div class="tl"><div class="tl-y">2016.09 - 2019.06</div><div class="tl-t">M.S., State Key Laboratory of Computer Science, Institute of Software, Chinese Academy of Sciences</div></div>
+  <div class="tl"><div class="tl-y">2012.09 - 2016.06</div><div class="tl-t">B.S., Shandong University</div></div>
+</div>
+
+<!-- Working Experience -->
+<div class="sec alt gsap-fade" id="exp">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Working Experience</div></div>
+  <div class="tl"><div class="tl-y">2024.08 - now</div><div class="tl-t">Research Assistant Professor</div><div class="tl-d">Department of Computer Science and Engineering, HKUST</div></div>
+  <div class="tl"><div class="tl-y">2024.04 - 2024.07</div><div class="tl-t">Postdoctoral Fellow</div><div class="tl-d">HKUST, working with <a href="https://www.cse.ust.hk/faculty/scc/">Prof. Shing-Chi Cheung</a></div></div>
+  <div class="tl"><div class="tl-y">2023.07 - 2023.09</div><div class="tl-t">Intern at Huawei (Hong Kong) &mdash; Fermat Lab</div></div>
+  <div class="tl"><div class="tl-y">2022.09 - 2023.01</div><div class="tl-t">Intern at Huawei &mdash; Trusted Software Engineering and Open Source Laboratory</div></div>
+  <div class="tl"><div class="tl-y">2021.09 - 2022.08</div><div class="tl-t">Intern at Huawei &mdash; Theory Lab</div></div>
+</div>
+
+<!-- Service -->
+<div class="sec gsap-fade" id="svc">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Service</div></div>
+  <div class="svc-group"><div class="svc-label">Award Committee Member</div><div class="svc-body"><ul>
+    <li>ACM SIGSOFT <a href="https://www2.sigsoft.org/awards/outstandingresearch/">Outstanding Research Award 2025</a></li>
+    <li>ACM SIGSOFT <a href="https://www2.sigsoft.org/awards/distinguishedservice/">Distinguished Service Award 2025</a></li>
+    <li>ACM SIGSOFT <a href="https://www2.sigsoft.org/awards/influentialeducator/">Influential Educator Award 2025</a></li>
+  </ul></div></div>
+  <div class="svc-group"><div class="svc-label">Program Committee Member</div><div class="svc-body"><ul>
+    <li><strong>ICSE 2026</strong> research track, <strong>ICSE 2025</strong> research track</li>
+    <li><strong>ASE 2025</strong> research track, <strong>FSE 2025</strong> research track, <strong>ISSRE 2024</strong> research track</li>
+    <li>RAIE 2025, APSEC 2024-25, Internetware 2024-25, CAIN 2025, Forge 2024-25, SANER 2024, AIware 2024</li>
+  </ul></div></div>
+  <div class="svc-group"><div class="svc-label">Session Chair</div><div class="svc-body"><ul>
+    <li>ASE 2024 &mdash; Code generation 3, Testing 1</li>
+    <li>Internetware 2024 &mdash; Code Generation and Transformation</li>
+  </ul></div></div>
+  <div class="svc-group"><div class="svc-label">Reviewer</div><div class="svc-body">TOSEM &middot; TSE &middot; EMSE &middot; JASE &middot; JSME &middot; TKDD &middot; TMC</div></div>
+</div>
+
+<!-- Invited Talks -->
+<div class="sec alt gsap-fade" id="talks">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Invited Talks</div></div>
+  <div class="list-item"><span class="li-date">2025.04</span><span><strong>Exploring Code Generation and Reasoning Capabilities of LLMs.</strong> Peking University. <a href="https://www.math.pku.edu.cn/kxyj/xsbg/tlb/informationsciences/167435.htm">[Link]</a></span></div>
+  <div class="list-item"><span class="li-date">2025.01</span><span><strong>From Benchmarks to Practice.</strong> Huawei AI R&amp;D Seminar. <a href="https://www.chaspark.com/#/live/1095803543143456768?videoId=1100606948265017344">[Recording]</a></span></div>
+  <div class="list-item"><span class="li-date">2025.01</span><span><strong>From Requirement to Formal Specification via LLMs.</strong> Zhejiang University.</span></div>
+  <div class="list-item"><span class="li-date">2024.11</span><span><strong>Is LLM a Rescue for Code Generation &amp; Reasoning?</strong> CCF China Open Source Conference.</span></div>
+  <div class="list-item"><span class="li-date">2024.10</span><span><strong>Automatic Testing and Verification using LLMs.</strong> Xidian University.</span></div>
+  <div class="list-item"><span class="li-date">2024.08</span><span><strong>Trusted Architecture of Intelligent CPS.</strong> Fudan University. <a href="https://mp.weixin.qq.com/s/03JZNjTbinRYmDirEapBoA">[Link]</a></span></div>
+  <div class="list-item"><span class="li-date">2024.08</span><span><strong>Can AI be a Panacea for Software Reliability?</strong> University College London.</span></div>
+  <div class="list-item"><span class="li-date">2024.07</span><span><strong>Data Contamination in Code LMs.</strong> IEEE Cloud &amp; AI Symposium.</span></div>
+  <div class="list-item"><span class="li-date">2024.05</span><span><strong>From Requirement to Formal Specification via LLMs.</strong> CCF FM Seminar. <a href="https://www.chaspark.com/#/live/994058991643467776?videoId=1006392740579553280">[Recording]</a></span></div>
+  <div class="list-item"><span class="li-date">2023.12</span><span><strong>Crafting Future: A Dancer's Leap into CS.</strong> ChinaSoft Women Scholars Forum.</span></div>
+  <div class="list-item"><span class="li-date">2023.12</span><span><strong>Data Contamination in the Era of LLMs.</strong> ChinaSoft AIGC Forum.</span></div>
+</div>
+
+<footer class="footer">Copyright &copy; 2026 Jialun Cao</footer>
+
+</div><!-- /main -->
+</div><!-- /page -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero — staggered line reveal
+// Text scramble effect on hero h1
+(function() {
+  const el = document.getElementById('scramble-target');
+  const lines = el.querySelectorAll('.line');
+  const origHTML = Array.from(lines).map(l => l.innerHTML);
+  const targets = [
+    ['Applying advanced AI to automate', 'software implementation, testing, and program verification'],
+  ];
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&<>?';
+
+  function scrambleLines(lineTexts, done) {
+    let completed = 0;
+    lineTexts.forEach((text, li) => {
+      const span = lines[li];
+      const len = text.length;
+      const locked = new Array(len).fill(false);
+      const display = new Array(len);
+      for (let i = 0; i < len; i++) display[i] = chars[Math.floor(Math.random() * chars.length)];
+
+      let lockIndex = 0;
+      const scrambleTimer = setInterval(() => {
+        for (let i = 0; i < len; i++) {
+          if (!locked[i]) display[i] = chars[Math.floor(Math.random() * chars.length)];
+        }
+        span.textContent = display.join('');
+      }, 40);
+
+      const lockTimer = setInterval(() => {
+        if (lockIndex >= len) {
+          clearInterval(scrambleTimer);
+          clearInterval(lockTimer);
+          span.innerHTML = origHTML[li];
+          completed++;
+          if (completed === lineTexts.length && done) done();
+          return;
+        }
+        locked[lockIndex] = true;
+        display[lockIndex] = text[lockIndex];
+        lockIndex++;
+      }, 45);
+    });
+  }
+
+  // Pre-scramble: show gibberish
+  lines.forEach((span, i) => {
+    const len = targets[0][i].length;
+    span.textContent = Array.from({length: len}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  });
+  const preTimer = setInterval(() => {
+    lines.forEach((span, i) => {
+      const len = targets[0][i].length;
+      span.textContent = Array.from({length: len}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    });
+  }, 40);
+
+  setTimeout(() => {
+    clearInterval(preTimer);
+    scrambleLines(targets[0]);
+  }, 600);
+})();
+// hero h1 handled by scramble effect
+gsap.from('.hero p', { opacity: 0, y: 15, duration: 0.6, delay: 0.9 });
+gsap.from('.hero-tag', { opacity: 0, y: 10, scale: 0.9, duration: 0.4, stagger: 0.08, delay: 1.1, ease: 'back.out(1.7)' });
+gsap.from('.hero-geo', { opacity: 0, scale: 0.5, rotation: -90, duration: 1.2, delay: 0.5, ease: 'power2.out' });
+gsap.from('.hero-geo-2', { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.8, ease: 'power2.out' });
+
+// Award cards — slide up
+gsap.from('.ab-card', { opacity: 0, y: 20, duration: 0.5, stagger: 0.15, delay: 1.3 });
+
+// Marquee — infinite scroll
+const marquee = document.getElementById('marquee');
+const mw = marquee.scrollWidth / 2;
+gsap.to(marquee, { x: -mw, duration: 25, ease: 'none', repeat: -1 });
+
+// Scroll-triggered sections
+document.querySelectorAll('.gsap-fade').forEach(el => {
+  gsap.to(el, {
+    opacity: 1, y: 0,
+    duration: 0.6, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 98%', once: true }
+  });
+});
+// Fallback: reveal any still-hidden sections after 3s
+setTimeout(() => {
+  document.querySelectorAll('.gsap-fade').forEach(el => {
+    if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
+      gsap.to(el, { opacity: 1, y: 0, duration: 0.4 });
+    }
+  });
+}, 3000);
+
+// Featured works — stagger slide in
+ScrollTrigger.create({
+  trigger: '.fw-list',
+  start: 'top 85%',
+  once: true,
+  onEnter: () => {
+    gsap.from('.fw', { opacity: 0, x: -15, duration: 0.4, stagger: 0.08, ease: 'power2.out' });
+  }
+});
+
+// Research topic blocks — stagger
+ScrollTrigger.create({
+  trigger: '.research-grid',
+  start: 'top 85%',
+  once: true,
+  onEnter: () => {
+    gsap.fromTo('.research-topic', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: 'power2.out' });
+  }
+});
+
+// Year blocks — stagger
+ScrollTrigger.create({
+  trigger: '.year-block',
+  start: 'top 88%',
+  once: true,
+  onEnter: () => {
+    gsap.from('.year-block', { opacity: 0, x: -15, duration: 0.4, stagger: 0.06, ease: 'power2.out' });
+  }
+});
+
+// Stats — count up
+ScrollTrigger.create({
+  trigger: '.stats-row',
+  start: 'top 85%',
+  once: true,
+  onEnter: () => {
+    document.querySelectorAll('.stat-num').forEach(el => {
+      const target = parseInt(el.textContent) || 0;
+      if (target > 0) {
+        gsap.from(el, { textContent: 0, duration: 1.2, ease: 'power1.out', snap: { textContent: 1 },
+          onUpdate: function() { el.textContent = Math.ceil(parseFloat(el.textContent)); }
+        });
+      }
+    });
+    gsap.from('.stat-card', { opacity: 0, y: 15, duration: 0.4, stagger: 0.08 });
+  }
+});
+
+// Section bars — grow in
+document.querySelectorAll('.sec-bar').forEach(bar => {
+  gsap.from(bar, {
+    scaleY: 0, transformOrigin: 'top',
+    duration: 0.4, ease: 'power2.out',
+    scrollTrigger: { trigger: bar, start: 'top 90%', once: true }
+  });
+});
+
+// Sidebar — subtle entrance (immediate on load)
+gsap.fromTo('.s-avatar', { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.6, delay: 0.1, ease: 'power2.out' });
+gsap.fromTo('.s-name', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, delay: 0.3 });
+gsap.fromTo('.s-role', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, delay: 0.4 });
+gsap.fromTo('.s-nav a', { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.04, delay: 0.5 });
+gsap.fromTo('.s-links a', { opacity: 0, y: 5 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.04, delay: 0.8 });
+
+// ══════════════════════════════════════════
+// TOPIC 1: Benchmark Bar Chart Race
+// ══════════════════════════════════════════
+const benchData = {
+  humaneval: [
+    { name: 'Claude', score: 92.1, color: '#c084fc' },
+    { name: 'GPT', score: 90.2, color: '#34d399' },
+    { name: 'Gemini', score: 88.4, color: '#60a5fa' },
+    { name: 'Llama', score: 82.7, color: '#fb923c' },
+    { name: 'DeepSeek', score: 89.5, color: '#22d3ee' },
+  ],
+  mbpp: [
+    { name: 'Claude', score: 88.3, color: '#c084fc' },
+    { name: 'GPT', score: 87.1, color: '#34d399' },
+    { name: 'Gemini', score: 85.9, color: '#60a5fa' },
+    { name: 'Llama', score: 79.4, color: '#fb923c' },
+    { name: 'DeepSeek', score: 86.2, color: '#22d3ee' },
+  ],
+  livecodebench: [
+    { name: 'Claude', score: 76.8, color: '#c084fc' },
+    { name: 'GPT', score: 72.5, color: '#34d399' },
+    { name: 'Gemini', score: 70.1, color: '#60a5fa' },
+    { name: 'Llama', score: 58.3, color: '#fb923c' },
+    { name: 'DeepSeek', score: 74.2, color: '#22d3ee' },
+  ],
+  swebench: [
+    { name: 'Claude', score: 49.0, color: '#c084fc' },
+    { name: 'GPT', score: 38.4, color: '#34d399' },
+    { name: 'Gemini', score: 32.8, color: '#60a5fa' },
+    { name: 'Llama', score: 22.0, color: '#fb923c' },
+    { name: 'DeepSeek', score: 42.0, color: '#22d3ee' },
+  ],
+  cruxeval: [
+    { name: 'Claude', score: 84.6, color: '#c084fc' },
+    { name: 'GPT', score: 81.2, color: '#34d399' },
+    { name: 'Gemini', score: 79.8, color: '#60a5fa' },
+    { name: 'Llama', score: 68.5, color: '#fb923c' },
+    { name: 'DeepSeek', score: 82.1, color: '#22d3ee' },
+  ],
+};
+
+function buildBenchRows() {
+  const container = document.getElementById('benchRows');
+  container.innerHTML = '';
+  const models = benchData.humaneval;
+  models.forEach(m => {
+    container.innerHTML += `
+      <div class="bench-row">
+        <span class="bench-dot" style="background:${m.color}"></span>
+        <span class="bench-name">${m.name}</span>
+        <div class="bench-bar-bg"><div class="bench-bar" data-model="${m.name}" style="background:${m.color}"></div></div>
+        <span class="bench-score" data-model="${m.name}">0</span>
+      </div>`;
+  });
+}
+buildBenchRows();
+
+function animateBench(benchKey) {
+  const data = benchData[benchKey];
+  const maxScore = 100;
+  data.forEach(m => {
+    const bar = document.querySelector(`.bench-bar[data-model="${m.name}"]`);
+    const score = document.querySelector(`.bench-score[data-model="${m.name}"]`);
+    if (bar && score) {
+      bar.style.width = '0';
+      score.textContent = '0';
+      setTimeout(() => {
+        bar.style.width = (m.score / maxScore * 100) + '%';
+        gsap.to({ val: 0 }, {
+          val: m.score, duration: 1,
+          onUpdate: function() { score.textContent = this.targets()[0].val.toFixed(1); }
+        });
+      }, 50);
+    }
+  });
+}
+
+// Benchmark switcher
+document.querySelectorAll('.bench-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.bench-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    animateBench(btn.dataset.bench);
+  });
+});
+
+// Trigger on scroll
+let benchTriggered = false;
+ScrollTrigger.create({
+  trigger: '#benchmarkAnim',
+  start: 'top 75%',
+  once: true,
+  onEnter: () => {
+    if (!benchTriggered) {
+      benchTriggered = true;
+      animateBench('humaneval');
+    }
+  }
+});
+
+// ══════════════════════════════════════════
+// TOPIC 2: Code Transform Animation
+// ══════════════════════════════════════════
+ScrollTrigger.create({
+  trigger: '#codeTransformAnim',
+  start: 'top 75%',
+  once: true,
+  onEnter: () => {
+    const lines = document.querySelectorAll('#codeTransformAnim .code-line');
+    lines.forEach(line => {
+      const delay = parseFloat(line.dataset.delay) * 0.18;
+      gsap.to(line, { opacity: 1, duration: 0.4, delay: delay });
+    });
+  }
+});
+
+// ══════════════════════════════════════════
+// TOPIC 3: Pipeline Flow Animation
+// ══════════════════════════════════════════
+ScrollTrigger.create({
+  trigger: '#pipelineAnim',
+  start: 'top 75%',
+  once: true,
+  onEnter: () => {
+    const nodes = ['pn1','pn2','pn3','pn4'];
+    const connectors = ['pc1','pc2','pc3'];
+    let d = 0;
+    nodes.forEach((id, i) => {
+      setTimeout(() => {
+        document.getElementById(id).classList.add('active');
+      }, d);
+      d += 600;
+      if (i < connectors.length) {
+        setTimeout(() => {
+          const el = document.getElementById(connectors[i]);
+          const isMobile = window.innerWidth <= 768;
+          if (isMobile) {
+            el.style.height = '100%';
+          } else {
+            el.style.width = '100%';
+          }
+        }, d);
+        d += 500;
+      }
+    });
+  }
+});
+
+// ══════════════════════════════════════════
+// TOPIC 4: Testing Grid Animation
+// ══════════════════════════════════════════
+(function() {
+  const grid = document.getElementById('testGrid');
+  const failIndices = [3, 7, 11, 17, 22];
+  for (let i = 0; i < 24; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'test-cell';
+    cell.dataset.index = i;
+    grid.appendChild(cell);
+  }
+
+  ScrollTrigger.create({
+    trigger: '#testGridAnim',
+    start: 'top 75%',
+    once: true,
+    onEnter: () => {
+      const cells = grid.querySelectorAll('.test-cell');
+      let tests = 0, bugs = 0;
+      const testCountEl = document.getElementById('testCount');
+      const bugCountEl = document.getElementById('bugCount');
+
+      cells.forEach((cell, i) => {
+        setTimeout(() => {
+          tests++;
+          if (failIndices.includes(i)) {
+            cell.classList.add('fail');
+            cell.textContent = '✗';
+            bugs++;
+            bugCountEl.textContent = bugs;
+          } else {
+            cell.classList.add('pass');
+            cell.textContent = '✓';
+          }
+          testCountEl.textContent = tests;
+        }, i * 120);
+      });
+    }
+  });
+})();
+
+// Topic papers stagger
+document.querySelectorAll('.topic-papers').forEach(container => {
+  ScrollTrigger.create({
+    trigger: container,
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.from(container.querySelectorAll('.topic-paper'), {
+        opacity: 0, y: 16, duration: 0.4, stagger: 0.08
+      });
+    }
+  });
+});
+
+</script>
+</body>
+</html>
