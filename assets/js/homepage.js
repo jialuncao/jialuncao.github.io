@@ -15,12 +15,77 @@ function updateThemeIcon() {
 }
 updateThemeIcon();
 
-// Hero — simple fade in
-gsap.from('.hero h1 .line', { opacity: 0, y: 20, duration: 0.6, stagger: 0.12, delay: 0.3, ease: 'power3.out' });
-gsap.from('.hero p', { opacity: 0, y: 15, duration: 0.6, delay: 0.7 });
+// Hero — text scramble effect (2 lines) + hover replay
+(function() {
+  var el = document.getElementById('scramble-target');
+  if (!el) return;
+  var lines = el.querySelectorAll('.line');
+  var origHTML = Array.from(lines).map(function(l) { return l.innerHTML; });
+  var lineTexts = [
+    'Applying advanced AI to automate',
+    'software implementation, testing, and program verification'
+  ];
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&<>?';
+  var scrambleLens = [22, 38];
+  var activeTimers = [];
+
+  function runScramble() {
+    activeTimers.forEach(function(t) { clearInterval(t); clearTimeout(t); });
+    activeTimers = [];
+
+    lines.forEach(function(span, i) {
+      span.textContent = Array.from({length: scrambleLens[i]}, function() { return chars[Math.floor(Math.random() * chars.length)]; }).join('');
+    });
+    var preTimer = setInterval(function() {
+      lines.forEach(function(span, i) {
+        span.textContent = Array.from({length: scrambleLens[i]}, function() { return chars[Math.floor(Math.random() * chars.length)]; }).join('');
+      });
+    }, 40);
+    activeTimers.push(preTimer);
+
+    var t = setTimeout(function() {
+      clearInterval(preTimer);
+      lineTexts.forEach(function(text, li) {
+        var span = lines[li];
+        var len = text.length;
+        var locked = new Array(len).fill(false);
+        var display = new Array(len);
+        for (var i = 0; i < len; i++) display[i] = chars[Math.floor(Math.random() * chars.length)];
+
+        var lockIndex = 0;
+        var scrambleTimer = setInterval(function() {
+          for (var i = 0; i < len; i++) {
+            if (!locked[i]) display[i] = chars[Math.floor(Math.random() * chars.length)];
+          }
+          span.textContent = display.join('');
+        }, 40);
+        activeTimers.push(scrambleTimer);
+
+        var lockTimer = setInterval(function() {
+          if (lockIndex >= len) {
+            clearInterval(scrambleTimer);
+            clearInterval(lockTimer);
+            span.innerHTML = origHTML[li];
+            return;
+          }
+          locked[lockIndex] = true;
+          display[lockIndex] = text[lockIndex];
+          lockIndex++;
+        }, 35);
+        activeTimers.push(lockTimer);
+      });
+    }, 400);
+    activeTimers.push(t);
+  }
+
+  // Run on page load
+  runScramble();
+
+  // Replay on hover
+  el.addEventListener('mouseenter', runScramble);
+})();
+gsap.from('.hero p', { opacity: 0, y: 15, duration: 0.6, delay: 2.2 });
 gsap.from('.hero-tag', { opacity: 0, y: 10, scale: 0.9, duration: 0.4, stagger: 0.08, delay: 1.1, ease: 'back.out(1.7)' });
-gsap.from('.hero-geo', { opacity: 0, scale: 0.5, rotation: -90, duration: 1.2, delay: 0.5, ease: 'power2.out' });
-gsap.from('.hero-geo-2', { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.8, ease: 'power2.out' });
 
 // Award cards — slide up
 gsap.from('.ab-card', { opacity: 0, y: 20, duration: 0.5, stagger: 0.15, delay: 1.3 });
