@@ -15,8 +15,9 @@ function updateThemeIcon() {
 }
 updateThemeIcon();
 
-// Hero — text scramble effect (2 lines) + hover replay
+// Hero — text scramble effect (2 lines) + hover replay — desktop only
 (function() {
+  if (window.innerWidth <= 900) return;
   var el = document.getElementById('scramble-target');
   if (!el) return;
   var lines = el.querySelectorAll('.line');
@@ -168,6 +169,18 @@ document.querySelectorAll('.sec-bar').forEach(bar => {
     scrollTrigger: { trigger: bar, start: 'top 90%', once: true }
   });
 });
+
+// Sync code-block widths: FM matches SE
+function syncCodeBlocks() {
+  var seBlocks = document.querySelectorAll('#nlToCodeAnim .code-block');
+  var fmBlocks = document.querySelectorAll('#acslAnim .code-block');
+  if (seBlocks.length === 2 && fmBlocks.length === 2) {
+    fmBlocks[0].style.width = seBlocks[0].offsetWidth + 'px';
+    fmBlocks[1].style.width = seBlocks[1].offsetWidth + 'px';
+  }
+}
+window.addEventListener('load', syncCodeBlocks);
+window.addEventListener('resize', syncCodeBlocks);
 
 // Sidebar — subtle entrance (immediate on load)
 gsap.fromTo('.s-avatar', { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.6, delay: 0.1, ease: 'power2.out' });
@@ -395,4 +408,18 @@ function buildGuppyTokenizer(json){var vocab=json.model.vocab,merges=json.model.
 async function ensureGuppyLoaded(){if(guppySession)return true;if(guppyLoading)return false;guppyLoading=true;try{var ort=await import('https://cdn.jsdelivr.net/npm/onnxruntime-web@1.21.0/dist/ort.min.mjs');window._ort=ort;ort.env.wasm.wasmPaths='https://cdn.jsdelivr.net/npm/onnxruntime-web@1.21.0/dist/';var[tokResp,modelResp]=await Promise.all([fetch(GUPPY_MODEL_BASE+'/tokenizer.json'),fetch(GUPPY_MODEL_BASE+'/model.onnx')]);guppyTokenizer=buildGuppyTokenizer(await tokResp.json());guppySession=await ort.InferenceSession.create(await modelResp.arrayBuffer(),{executionProviders:['wasm']});return true;}catch(e){console.error('guppyLM load failed:',e);guppyLoading=false;return false;}}
 async function guppyGenerate(inputIds){var ort=window._ort,ids=inputIds.slice();for(var i=0;i<GUPPY_GEN.max_tokens;i++){var seq=ids.slice(-GUPPY_CONFIG.max_seq_len);var tensor=new ort.Tensor('int64',BigInt64Array.from(seq.map(BigInt)),[1,seq.length]);var out=await guppySession.run({input_ids:tensor});var logits=out.logits.data;var offset=(seq.length-1)*GUPPY_CONFIG.vocab_size;var lastLogits=new Float32Array(GUPPY_CONFIG.vocab_size);for(var v=0;v<GUPPY_CONFIG.vocab_size;v++)lastLogits[v]=logits[offset+v]/GUPPY_GEN.temperature;if(GUPPY_GEN.top_k>0){var sorted=[...lastLogits].sort(function(a,b){return b-a;});var cutoff=sorted[Math.min(GUPPY_GEN.top_k,sorted.length)-1];for(var v2=0;v2<GUPPY_CONFIG.vocab_size;v2++)if(lastLogits[v2]<cutoff)lastLogits[v2]=-Infinity;}var maxVal=Math.max(...lastLogits.filter(function(v3){return v3!==-Infinity;}));var sumExp=0;var probs=new Float32Array(GUPPY_CONFIG.vocab_size);for(var v4=0;v4<GUPPY_CONFIG.vocab_size;v4++){probs[v4]=Math.exp(lastLogits[v4]-maxVal);sumExp+=probs[v4];}for(var v5=0;v5<GUPPY_CONFIG.vocab_size;v5++)probs[v5]/=sumExp;var r=Math.random(),acc=0,nextId=0;for(var v6=0;v6<GUPPY_CONFIG.vocab_size;v6++){acc+=probs[v6];if(acc>=r){nextId=v6;break;}}ids.push(nextId);if(nextId===GUPPY_CONFIG.eos_id)break;}return ids.slice(inputIds.length);}
 async function sendChat(){var input=document.getElementById('chatInput'),body=document.getElementById('chatBody'),text=input.value.trim();if(!text)return;body.innerHTML+='<div class="chat-msg user">'+text.replace(/</g,'&lt;')+'</div>';input.value='';body.scrollTop=body.scrollHeight;var bio=matchBio(text);if(bio){body.innerHTML+='<div class="chat-msg bot">'+bio.replace(/\n/g,'<br>')+'</div>';body.scrollTop=body.scrollHeight;return;}var typing=document.createElement('div');typing.className='chat-typing';body.appendChild(typing);body.scrollTop=body.scrollHeight;if(!guppySession){typing.textContent='loading guppyLM-9M (~10 MB, first time only)...';var ok=await ensureGuppyLoaded();if(!ok){var retryMsgs=['still loading, hang on...','almost there...','one more try...'];for(var ri=0;ri<3&&!ok;ri++){typing.textContent=retryMsgs[ri];await new Promise(function(r){setTimeout(r,2000);});guppyLoading=false;ok=await ensureGuppyLoaded();}if(!ok){typing.remove();var fallbacks=['blub... my tiny brain failed to load. Try again in a bit!','*swims in circles* Model loading hiccup — maybe try again?','The fish tank is too cold for inference right now. Try later!','blub blub... network might be slow. Give me another chance?'];body.innerHTML+='<div class="chat-msg bot">'+fallbacks[Math.floor(Math.random()*fallbacks.length)]+'</div>';body.scrollTop=body.scrollHeight;return;}}}typing.textContent='guppyLM-9M is thinking...';try{var prompt='<|im_start|>user\n'+text+'<|im_end|>\n<|im_start|>assistant\n';var inputIds=guppyTokenizer.encode(prompt);var outputIds=await guppyGenerate(inputIds);var reply=guppyTokenizer.decode(outputIds).trim();if(reply.includes('<|im_end|>'))reply=reply.split('<|im_end|>')[0];if(reply.includes('<|im_start|>'))reply=reply.split('<|im_start|>')[0];reply=reply.trim();if(!reply||reply.length<2||/^[^a-zA-Z0-9]*$/.test(reply)){reply="blub... I'm just a tiny 9M fish! Try asking about Jialun's research, publications, awards, open PhD positions, or contact info.";}typing.remove();body.innerHTML+='<div class="chat-msg bot">'+reply.replace(/</g,'&lt;').replace(/\n/g,'<br>')+'</div>';}catch(e){console.error('guppyLM error:',e);typing.remove();body.innerHTML+='<div class="chat-msg bot">blub... something went wrong. Try asking about Jialun\'s research, awards, or open positions!</div>';}body.scrollTop=body.scrollHeight;}
+
+// Research grid: switch to 1 column when 2-col box ratio < 1.5:1
+(function() {
+  var grid = document.querySelector('.research-grid');
+  if (!grid) return;
+  var GAP = 20, BOX_H = 320, MIN_RATIO = 1.5;
+  function update() {
+    var w = grid.offsetWidth;
+    var boxW = (w - GAP) / 2;
+    grid.style.gridTemplateColumns = (boxW / BOX_H) >= MIN_RATIO ? 'repeat(2, 1fr)' : '1fr';
+  }
+  update();
+  window.addEventListener('resize', update);
+})();
 
