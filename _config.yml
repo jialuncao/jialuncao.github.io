@@ -9,6 +9,8 @@
 title                    : "Jialun Cao's Homepage"
 description              : "LLM4SE, LLM4Verification"
 repository               : "jialuncao/jialuncao.github.io"
+url                      : "https://jialuncao.github.io"
+baseurl                  : ""
 google_scholar_stats_use_cdn : true
 
 # google analytics

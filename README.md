@@ -60,9 +60,10 @@ Some examples:
 
 1. Clone your REPO to local using `git clone`.
 1. Install Jekyll building environment, including `Ruby`, `RubyGems`, `GCC` and `Make` following [the installation guide](https://jekyllrb.com/docs/installation/#requirements).
-1. Run `bash run_server.sh` to start Jekyll livereload server.
-1. Open http://127.0.0.1:4000 in your browser.
-1. If you change the source code of the website, the livereload server will automatically refresh.
+1. Run `./scripts/bootstrap.sh` to install the gems declared in `Gemfile`.
+1. Run `./run_server.sh` (or `./scripts/dev.sh`) to build the site, watch for changes, and serve `_site` at http://127.0.0.1:4000.
+1. Refresh the browser after you edit the source files to load the rebuilt page.
+1. Run `./scripts/preview.sh` if you want to preview the production build locally before pushing to GitHub Pages. This serves the generated `_site` folder at http://127.0.0.1:4001.
 1. When you finish the modification of your homepage, `commit` your changings and `push` to your remote REPO using `git` command.
 
 # Acknowledges

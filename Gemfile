@@ -11,6 +11,10 @@ source "https://rubygems.org"
 
 gem "github-pages", group: :jekyll_plugins
 
+# Ruby 3.4+ no longer ships csv as a default gem, but Jekyll 3.9 still expects it.
+gem "csv", "~> 3.3"
+gem "bigdecimal", "~> 4.0"
+
 # If you want to use Jekyll native, uncomment the line below.
 # To upgrade, run `bundle update`.
 
