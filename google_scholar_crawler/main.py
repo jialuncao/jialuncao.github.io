@@ -1,12 +1,16 @@
-from scholarly import scholarly, ProxyGenerator
+from scholarly import scholarly
 import json
 from datetime import datetime
 import os
 
-pg = ProxyGenerator()
-success = pg.FreeProxies()
-if success:
-    scholarly.use_proxy(pg)
+try:
+    from scholarly import ProxyGenerator
+    pg = ProxyGenerator()
+    success = pg.FreeProxies()
+    if success:
+        scholarly.use_proxy(pg)
+except Exception:
+    pass
 
 author = scholarly.search_author_id(os.environ['GOOGLE_SCHOLAR_ID'])
 scholarly.fill(author, sections=['basics', 'indices', 'counts', 'publications'])
