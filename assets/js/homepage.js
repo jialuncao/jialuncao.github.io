@@ -423,35 +423,4 @@ async function sendChat(){var input=document.getElementById('chatInput'),body=do
   window.addEventListener('resize', update);
 })();
 
-// ══════════════════════════════════════════
-// Google Scholar Citation Stats
-// ══════════════════════════════════════════
-(function() {
-  var SCHOLAR_URL = 'https://raw.githubusercontent.com/jialuncao/jialuncao.github.io/google-scholar-stats/gs_data.json';
-
-  function animateCounter(el, target) {
-    if (target <= 0) { el.textContent = '0'; return; }
-    var duration = 1200;
-    var start = performance.now();
-    function step(now) {
-      var progress = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target);
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  fetch(SCHOLAR_URL)
-    .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(data) {
-      var container = document.getElementById('scholarStats');
-      if (!container) return;
-      container.style.display = 'flex';
-      animateCounter(document.getElementById('statCitations'), data.citedby || 0);
-      animateCounter(document.getElementById('statHIndex'), data.hindex || 0);
-      animateCounter(document.getElementById('statI10'), data.i10index || 0);
-    })
-    .catch(function() {});
-})();
 

@@ -79,28 +79,6 @@
   .theme-toggle .t-icon { font-size: 1.1rem; transition: transform 0.4s; }
   .theme-toggle:hover .t-icon { transform: rotate(45deg); }
 
-  /* ===== SIDEBAR SCHOLAR STATS ===== */
-  .s-stats {
-    display: flex; justify-content: center; gap: 0.5rem;
-    margin: 0.75rem 0 0;
-  }
-  .s-stat {
-    display: flex; flex-direction: column; align-items: center;
-    padding: 0.4rem 0.5rem; border-radius: 8px;
-    background: var(--primary-10); border: 1px solid var(--primary-20);
-    flex: 1; min-width: 0;
-  }
-  .s-stat-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.05rem; font-weight: 700; line-height: 1.2;
-    color: var(--primary);
-  }
-  .s-stat-label {
-    font-size: 0.58rem; font-weight: 500; color: var(--gray-400);
-    text-transform: uppercase; letter-spacing: 0.3px;
-    white-space: nowrap;
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
@@ -899,12 +877,8 @@
     .s-nav { display: none; }
     .s-divider { display: none; }
     .theme-toggle { order: 10; margin: 0; }
-    .s-stats {
-      order: 11; width: 100%; justify-content: center;
-      margin: 0.5rem 0 0;
-    }
     .s-links {
-      order: 12; width: 100%;
+      order: 11; width: 100%;
       flex-direction: row; flex-wrap: wrap;
       gap: 0.6rem; justify-content: center;
       padding-top: 0.5rem; border-top: 1px solid var(--gray-100);
@@ -964,9 +938,7 @@
     .s-role { text-align: center; font-size: 0.68rem; line-height: 1.4; }
     .s-links { font-size: 0.68rem; gap: 0.4rem; }
     .theme-toggle { font-size: 0.7rem; padding: 0.35rem 0.9rem; }
-    .s-stat-num { font-size: 0.9rem; }
-    .s-stat-label { font-size: 0.52rem; }
-    .s-stat { padding: 0.3rem 0.4rem; }
+
 
     .hero { padding: 1rem; }
     .hero-eyebrow { font-size: 0.5rem; min-width: auto; }
