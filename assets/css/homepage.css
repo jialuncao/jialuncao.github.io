@@ -816,6 +816,39 @@
   .chat-send { background: var(--primary); color: var(--white); border: none; padding: 0.6rem 1rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
   .chat-send:hover { opacity: 0.85; }
 
+  /* ===== VISITOR MAP ===== */
+  .visitor-stats {
+    display: flex; gap: 1.5rem; margin-bottom: 1.25rem;
+  }
+  .visitor-stat {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 0.75rem 1.5rem; border-radius: 10px;
+    background: var(--gray-50); border: 1px solid var(--gray-100);
+    flex: 1; max-width: 180px;
+  }
+  .visitor-num {
+    font-size: 1.8rem; font-weight: 700; color: var(--primary);
+    line-height: 1.1; font-family: 'IBM Plex Mono', monospace;
+  }
+  .visitor-label {
+    font-size: 0.72rem; color: var(--gray-400); margin-top: 0.25rem;
+    font-weight: 500;
+  }
+  .visitor-map-wrap {
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--gray-100);
+    background: var(--gray-50);
+  }
+  #visitor-map {
+    width: 100%; height: 360px;
+  }
+  .visitor-notice {
+    font-size: 0.72rem; color: var(--gray-400); margin-top: 0.5rem;
+    font-style: italic;
+  }
+  [data-theme="dark"] .visitor-stat { background: #1a1a22; border-color: var(--gray-200); }
+  [data-theme="dark"] .visitor-map-wrap { border-color: var(--gray-200); background: #1a1a22; }
+
   /* ===== RESPONSIVE ===== */
   /* ===== TABLET & MOBILE (top-down layout) ===== */
   @media (max-width: 900px) {
@@ -884,6 +917,8 @@
     .hiring { padding: 1rem; }
     .guppy-container { bottom: 14px; right: 14px; }
     .chat-panel { width: 280px; right: 14px; bottom: 78px; }
+    #visitor-map { height: 260px; }
+    .visitor-stat { max-width: none; }
   }
 
   /* ===== PHONE ===== */
@@ -954,6 +989,11 @@
     .hiring h3 { font-size: 0.85rem; }
     .hiring p, .hiring li { font-size: 0.75rem; }
     .h-tag { font-size: 0.6rem; }
+    #visitor-map { height: 200px; }
+    .visitor-stats { gap: 0.75rem; }
+    .visitor-stat { padding: 0.5rem 0.75rem; }
+    .visitor-num { font-size: 1.3rem; }
+    .visitor-label { font-size: 0.62rem; }
     .chat-panel { width: calc(100vw - 24px); right: 12px; bottom: 70px; }
     .guppy-fish { width: 40px; height: 40px; }
     .guppy-container { bottom: 12px; right: 12px; }

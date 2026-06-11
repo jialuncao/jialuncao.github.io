@@ -6,6 +6,7 @@
 <title>Jialun Cao's Homepage</title>
 <link rel="stylesheet" href="assets/css/homepage.css">
 <link rel="icon" href="images/favicon.ico">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
 
@@ -29,6 +30,7 @@
     <li><a href="#exp">Experience</a></li>
     <li><a href="#svc">Service</a></li>
     <li><a href="#talks">Invited Talks</a></li>
+    <li><a href="#visitors">Visitors</a></li>
   </ul>
   <div class="s-links">
     <span style="font-size:0.78rem;color:var(--gray-400)">&#9993; jialuncao [at] ust [dot] hk</span>
@@ -464,6 +466,19 @@
   <div class="list-item"><span class="li-date">2023.12</span><span><strong>Data Contamination in the Era of LLMs.</strong> ChinaSoft AIGC Forum.</span></div>
 </div>
 
+<!-- Visitors -->
+<div class="sec gsap-fade" id="visitors">
+  <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Visitors</div></div>
+  <div class="visitor-stats">
+    <div class="visitor-stat"><span class="visitor-num" id="visitor-count">0</span><span class="visitor-label">Unique Visitors</span></div>
+    <div class="visitor-stat"><span class="visitor-num" id="country-count">0</span><span class="visitor-label">Countries / Regions</span></div>
+  </div>
+  <div class="visitor-map-wrap">
+    <div id="visitor-map"></div>
+  </div>
+  <p class="visitor-notice" id="visitor-notice" style="display:none">Demo data shown. Configure Firebase to enable live tracking.</p>
+</div>
+
 <footer class="footer">Copyright &copy; 2026 Jialun Cao</footer>
 
 <div class="chat-panel" id="chatPanel"><div class="chat-header"><span>&#128032; guppyLLM-9M</span><button class="chat-close" onclick="document.getElementById('chatPanel').classList.remove('open')">&times;</button></div><div class="chat-body" id="chatBody"><div class="chat-msg bot">Hi! I'm <a href="https://huggingface.co/arman-bd/guppylm-9M" target="_blank" style="color:var(--primary-soft)">guppyLM-9M</a>-fish raised by Jialun. Ask about Jialun's research, awards, or open positions!</div></div><div class="chat-input-row"><input class="chat-input" id="chatInput" placeholder="Ask about Jialun, or type anything..." onkeydown="if(event.key==='Enter')sendChat()"><button class="chat-send" onclick="sendChat()">Send</button></div></div>
@@ -476,5 +491,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="assets/js/homepage.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/js/visitor-tracker.js"></script>
 </body>
 </html>
