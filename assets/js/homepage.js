@@ -445,18 +445,13 @@ async function sendChat(){var input=document.getElementById('chatInput'),body=do
   fetch(SCHOLAR_URL)
     .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function(data) {
-      var citations = data.citedby || 0;
-      var hindex = data.hindex || 0;
-      var i10index = data.i10index || 0;
       var container = document.getElementById('scholarStats');
       if (!container) return;
       container.style.display = 'flex';
-      animateCounter(document.getElementById('statCitations'), citations);
-      animateCounter(document.getElementById('statHIndex'), hindex);
-      animateCounter(document.getElementById('statI10'), i10index);
+      animateCounter(document.getElementById('statCitations'), data.citedby || 0);
+      animateCounter(document.getElementById('statHIndex'), data.hindex || 0);
+      animateCounter(document.getElementById('statI10'), data.i10index || 0);
     })
-    .catch(function() {
-      // Silently fail — stats section stays hidden
-    });
+    .catch(function() {});
 })();
 
