@@ -41,7 +41,9 @@
       minZoom: 2,
       maxZoom: 10,
       scrollWheelZoom: false,
-      attributionControl: false
+      attributionControl: false,
+      maxBounds: [[-90, -180], [90, 180]],
+      maxBoundsViscosity: 1.0
     });
 
     var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
