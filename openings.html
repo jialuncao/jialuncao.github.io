@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Positions — Jialun Cao</title>
+<link rel="stylesheet" href="assets/css/homepage.css">
+<link rel="icon" href="images/favicon.ico">
+<style>
+  /* Standalone layout for the openings page (design tokens come from homepage.css) */
+  .op-nav {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.7rem 1.5rem;
+    background: var(--white); border-bottom: 1px solid var(--gray-100);
+  }
+  [data-theme="dark"] .op-nav { background: var(--gray-50); border-color: var(--gray-200); }
+  .op-back { font-size: 0.85rem; font-weight: 600; color: var(--gray-700); }
+  .op-back:hover { color: var(--primary); text-decoration: none; }
+  .op-nav-title {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--gray-400);
+  }
+  .op-nav .theme-toggle { margin: 0 0 0 auto; padding: 0.3rem 0.9rem; }
+
+  .op-wrap { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .op-hero { margin-bottom: 2rem; }
+  .op-hero h1 {
+    font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px;
+    color: var(--gray-900); line-height: 1.3; margin: 0.5rem 0 0.6rem;
+  }
+  .op-hero h1 .hl {
+    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .op-hero .op-sub { font-size: 0.92rem; color: var(--gray-500); }
+
+  .op-facts { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem; }
+  .op-fact {
+    border: 1px solid rgba(0,0,196,0.15); border-radius: 10px;
+    background: var(--primary-10); padding: 0.55rem 0.9rem;
+    font-size: 0.8rem; color: var(--gray-700);
+  }
+  [data-theme="dark"] .op-fact { border-color: rgba(77,109,255,0.25); }
+  .op-fact strong { display: block; color: var(--primary); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.1rem; }
+
+  .op-sec { margin-bottom: 1.8rem; }
+  .op-sec p, .op-sec li { font-size: 0.9rem; color: var(--gray-500); margin-bottom: 0.6rem; }
+  .op-sec ul { margin: 0.2rem 0 0.6rem 1.3em; }
+  .op-sec li { margin-bottom: 0.35rem; }
+
+  .op-apply {
+    border-radius: 10px; padding: 1.2rem 1.4rem;
+    background: rgba(0,0,196,0.06); border: 1px solid rgba(0,0,196,0.12);
+  }
+  [data-theme="dark"] .op-apply { background: rgba(77,109,255,0.06); border-color: rgba(77,109,255,0.2); }
+  .op-apply p { font-size: 0.88rem; color: var(--gray-500); margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+
+<nav class="op-nav">
+  <a href="index.html" class="op-back">&larr; Jialun Cao</a>
+  <span class="op-nav-title">Open Positions</span>
+  <div class="theme-toggle" onclick="toggleTheme()"><span class="t-icon" id="themeIcon">&#9790;</span><span id="themeLabel">Light</span></div>
+</nav>
+
+<div class="op-wrap">
+
+  <!-- Header -->
+  <div class="op-hero">
+    <div class="hero-eyebrow">PhD Recruitment</div>
+    <h1>&#128293; Open Positions &mdash; <span class="hl">Imperial College London</span></h1>
+    <p class="op-sub">Department of Computing, Imperial College London</p>
+    <div class="op-facts">
+      <div class="op-fact"><strong>Positions</strong>&#127891; 1&ndash;2 fully funded PhD students</div>
+      <div class="op-fact"><strong>Intake</strong>&#128197; 2026 Fall &amp; 2027 Spring</div>
+      <div class="op-fact"><strong>Eligibility</strong>&#127757; Home &amp; International students</div>
+    </div>
+  </div>
+
+  <!-- Project -->
+  <div class="op-sec">
+    <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">&#127919; The PhD Project</div></div>
+    <p>The PhD project will target real-world <strong style="color:var(--primary);">software engineering and formal verification</strong> by building reliable, scalable, and cost-efficient AI systems.</p>
+    <div class="hiring-sub">Research directions include:</div>
+    <ul>
+      <li>Intelligent coding agents for complex software engineering tasks</li>
+      <li>AI-assisted formal verification</li>
+      <li>Efficient training and post-training of coding models</li>
+      <li>AI for software security</li>
+      <li>Program specification generation</li>
+      <li>Program abstraction and modeling</li>
+      <li>Verification-guided code generation</li>
+    </ul>
+    <p>Students will have opportunities to work on both <strong>foundational research</strong> and <strong>large-scale system building</strong>, spanning foundation models, agent systems, software infrastructure, and formal methods. Projects emphasize solving practical software engineering challenges through deployable systems, rigorous evaluation, and close engagement with real-world codebases and development workflows.</p>
+  </div>
+
+  <!-- Requirements -->
+  <div class="op-sec">
+    <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">&#128203; Requirements</div></div>
+    <p>Applicants are expected to have a <strong>First Class or Distinction Masters level degree</strong>, or equivalent, in a relevant scientific or technical discipline, such as computer science or mathematics, with a <strong>GPA above 87.5/100</strong> (or an equivalent level under other grading systems). Applicants must be <strong>fluent in spoken and written English</strong>.</p>
+    <div class="hiring-sub">&#9989; Ideal candidates</div>
+    <p>Candidates should have strong software engineering and coding skills, be proficient in modern AI-assisted development (<strong>Vibe Coding</strong>), and <strong style="color:var(--primary);">have hands-on experience in at least one of the following</strong>:</p>
+    <ul>
+      <li>&#129302; <strong style="color:var(--primary);">AI Agents:</strong> End-to-end development and iterative improvement of coding agents (or related AI agents).</li>
+      <li>&#129504; <strong style="color:var(--primary);">Foundation Models:</strong> Training or post-training of coding (or related) models, including data curation, pre-training, supervised fine-tuning, preference optimization, reinforcement learning, and evaluation.</li>
+      <li>&#128187; <strong style="color:var(--primary);">Real-world Software:</strong> Meaningful open-source contributions, substantial industrial internship experience, or full-time software engineering experience.</li>
+    </ul>
+    <p>&#11088; Research experience is <strong>a plus, but not required</strong>. First-author publications at top-tier venues or demonstrated independent research experience will be viewed favorably.</p>
+    <p>Successful candidates are expected to enjoy building real-world systems, thrive in a collaborative research environment, and demonstrate the initiative to pursue ambitious research with practical impact.</p>
+    <p>&#128640; Let's do something interesting and impactful!</p>
+  </div>
+
+  <!-- Apply -->
+  <div class="op-sec op-apply">
+    <div class="hiring-sub">&#128233; How to apply</div>
+    <p>To apply for this position, please follow the application guidelines at:<br><a href="http://www.imperial.ac.uk/computing/prospective-students/courses/phd/phd-application-guidelines/"><strong>http://www.imperial.ac.uk/computing/prospective-students/courses/phd/phd-application-guidelines/</strong></a></p>
+    <p>In the application form, please write <strong>&ldquo;AI for SE&rdquo;</strong> in the <strong>&ldquo;Proposed Research Topic&rdquo;</strong> field, and <strong>Jialun Cao</strong> in the <strong>&ldquo;Proposed Research Supervisor&rdquo;</strong> field.</p>
+    <p>Applicants are advised to visit <a href="http://www.imperial.ac.uk/computing/prospective-students/courses/phd/"><strong>http://www.imperial.ac.uk/computing/prospective-students/courses/phd/</strong></a> for general information on becoming a PhD student in the Department of Computing.</p>
+  </div>
+
+</div>
+
+<script>
+function toggleTheme() {
+  var d = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (d) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+  else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  updateThemeIcon();
+}
+function updateThemeIcon() {
+  var d = document.documentElement.getAttribute('data-theme') === 'dark';
+  var i = document.getElementById('themeIcon'), l = document.getElementById('themeLabel');
+  if (i) i.textContent = d ? '☀' : '☾';
+  if (l) l.textContent = d ? 'Dark' : 'Light';
+}
+if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+updateThemeIcon();
+</script>
+
+</body>
+</html>
