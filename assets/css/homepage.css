@@ -425,17 +425,17 @@
   .pub-item {
     padding: 0.35rem 0; border-bottom: 1px solid var(--gray-100);
     font-size: 0.85rem; line-height: 1.55;
-    display: flex; align-items: baseline; gap: 0;
+    text-align: left; padding-left: 6rem; text-indent: -6rem;
   }
   .pub-item:last-child { border-bottom: none; }
   .pub-item a { font-size: 0.78rem; }
   .pub-venue {
     display: inline-block; font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.62rem; font-weight: 600; padding: 0.1rem 0;
+    font-size: 0.62rem; font-weight: 600; padding: 0.1rem 0.35rem;
     border-radius: 4px; background: rgba(52,211,153,0.08); color: #2a9d6a;
     border: 1px solid rgba(52,211,153,0.2); margin-right: 0.4rem;
     vertical-align: middle; letter-spacing: 0.2px;
-    min-width: 5.8rem; width: 5.8rem; text-align: left; flex-shrink: 0; padding-left: 0.35rem;
+    min-width: 5rem; text-align: left;
   }
   .me { color: var(--accent-warm); font-weight: 600; }
 
