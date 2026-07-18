@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Benchmarking — Jialun Cao</title>
+<link rel="stylesheet" href="assets/css/showcase-benchmark.css">
+<link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a href="playground.html" class="nav-back">&larr; Playground</a>
+  <span class="nav-title">LLM Benchmarking</span>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#sec-survey" class="nav-link">Survey</a>
+      <a href="#sec-cruxeval" class="nav-link">CruxEval-X</a>
+      <a href="#sec-sweabs" class="nav-link">SWE-ABS</a>
+      <a href="#sec-javabench" class="nav-link">JavaBench</a>
+      <a href="#sec-domaineval" class="nav-link">DomainEval</a>
+      <a href="#sec-patheval" class="nav-link">PathEval</a>
+    </div>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9790; Light</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="live-dot"></span> Research Topic &middot; Benchmarking</div>
+    <h1>Measuring What <span class="hl">Code Models</span> Really Know</h1>
+    <p class="hero-sub">Rigorous, reliable, reproducible benchmarks for code generation, reasoning, and multilingual understanding — turning claims into evidence.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num" data-count="10">0</div><div class="hero-stat-label">Papers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" data-count="7">0</div><div class="hero-stat-label">Venues</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" data-count="572">0</div><div class="hero-stat-label">Benchmarks Surveyed</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to explore<br>&#9660;</div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 1: Position Paper — 572 Benchmarks Survey -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-survey">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Position</div>
+    <span class="sc-venue">ICML '26</span>
+    <h2 class="sc-title">Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility</h2>
+    <div class="sc-authors"><span class="me">Jialun Cao</span>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang&dagger;, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung</div>
+    <p class="sc-desc">A decade-scale survey of the code-benchmark landscape (2014–2025). We analyze 572 benchmarks and argue that the field must be anchored by three principles — the <strong>3R</strong>: Rigor, Reliability, and Reproducibility.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2501.10711" class="sc-link">Paper</a>
+      <a href="https://mp.weixin.qq.com/s/noYYnJW3PHggxt0Wex-t-Q" class="sc-link">Media</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Benchmarks published in 2025 ignoring code coverage already equal the total from the previous ten years — the field urgently needs the 3R framework.</div>
+
+    <!-- Headline stat tiles -->
+    <div class="stat-grid" id="surveyStats">
+      <div class="stat-tile">
+        <div class="stat-tile-icon">&#128202;</div>
+        <div class="stat-tile-num"><span data-count="572">0</span></div>
+        <div class="stat-tile-label">Code Benchmarks Surveyed</div>
+        <div class="stat-tile-sub">across the code-LLM landscape</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-tile-icon">&#128203;</div>
+        <div class="stat-tile-num"><span data-count="55">0</span></div>
+        <div class="stat-tile-label">HOW2BENCH Checklists</div>
+        <div class="stat-tile-sub">guideline for building &amp; releasing benchmarks</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-tile-icon">&#9878;</div>
+        <div class="stat-tile-num"><span data-count="3">0</span><span class="unit">R</span></div>
+        <div class="stat-tile-label">Guiding Principles</div>
+        <div class="stat-tile-sub">Rigor &middot; Reliability &middot; Reproducibility</div>
+      </div>
+    </div>
+
+    <!-- 3R principles + decade-scale finding -->
+    <div class="dash-card" style="margin-bottom:1rem;">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--primary)"></span> The 3R Principles</div>
+        <div class="dash-head-note">HOW2BENCH-aligned</div>
+      </div>
+      <div class="cat-bars" id="catBars">
+        <div class="cat-row"><span class="cat-name">Rigor</span><div class="cat-track"><div class="cat-fill" data-pct="100"></div></div><span class="cat-val">Construction</span></div>
+        <div class="cat-row"><span class="cat-name">Reliability</span><div class="cat-track"><div class="cat-fill" data-pct="100"></div></div><span class="cat-val">Evaluation</span></div>
+        <div class="cat-row"><span class="cat-name">Reproducibility</span><div class="cat-track"><div class="cat-fill" data-pct="100"></div></div><span class="cat-val">Release</span></div>
+      </div>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--primary-soft)"></span> A Decade of Code Benchmarks</div>
+        <div class="dash-head-note">2014 &ndash; 2025</div>
+      </div>
+      <div class="timeline-chart" id="timeline">
+        <div class="tl-col"><div class="tl-bar" data-h="82"><span class="tl-count">2014&ndash;24</span></div><span class="tl-year">10 years</span></div>
+        <div class="tl-col"><div class="tl-bar" data-h="82"><span class="tl-count">2025</span></div><span class="tl-year">alone</span></div>
+      </div>
+      <p class="tl-caption">Benchmarks ignoring code coverage published in 2025 alone &asymp; the total from the previous ten years combined.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 2: CruxEval-X — Multilingual -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-cruxeval">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Multilingual Reasoning</div>
+    <span class="sc-venue">ACL '25</span>
+    <h2 class="sc-title">CruxEval-X: A Benchmark for Multilingual Code Reasoning</h2>
+    <div class="sc-authors">Ruiyang Xu, <span class="me">Jialun Cao (Co-1st)</span>, Yaojie Lu, Ming Wen, Hongyu Lin, Xianpei Han, Ben He, Shing-Chi Cheung, Le Sun</div>
+    <p class="sc-desc">Can models reason about code beyond Python? CruxEval-X extends input/output prediction to <strong>19 programming languages</strong>, exposing how reasoning ability shifts across language paradigms.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/pdf/2408.13001" class="sc-link">Paper</a>
+      <a href="https://cruxeval-x.github.io/leaderboard.html" class="sc-link">Leaderboard</a>
+      <a href="https://github.com/CRUXEVAL-X/cruxeval-x" class="sc-link">Code</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> A model trained solely on Python transfers poorly — peaking at 34.4% Pass@1 in other languages — exposing the multilingual generalization gap.</div>
+
+    <div class="dash-card" style="margin-bottom:1rem;">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--c-green)"></span> Language Coverage</div>
+        <div class="dash-head-note"><span id="langCounter">0</span> / 19</div>
+      </div>
+      <div class="lang-grid" id="langGrid"></div>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--primary)"></span> Cross-Lingual Generalization Gap</div>
+        <div class="dash-head-note">24 LLMs &middot; 19,000+ tests</div>
+      </div>
+      <p class="sc-desc" style="margin-bottom:1.2rem;">A model trained solely on Python transfers poorly to other languages &mdash; peaking at just <strong>34.4% Pass@1</strong>.</p>
+      <div class="bar-chart" id="cruxBars">
+        <div class="bar-row" data-value="34.4">
+          <span class="bar-model"><span class="mdot" style="background:var(--c-red)"></span>Python&rarr;Other Langs</span>
+          <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,var(--c-red),var(--c-amber))"></div></div>
+          <span class="bar-val">0</span>
+        </div>
+      </div>
+      <div class="deflate-summary" style="margin-top:1.4rem;">
+        <div class="ds-item"><span class="ds-num" style="color:var(--c-green)">TS&harr;JS</span><span class="ds-label">Strongest correlated pair</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--c-red)">Racket</span><span class="ds-label">Least correlated language</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 3: SWE-ABS — Deflation -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-sweabs">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Adversarial Strengthening</div>
+    <span class="sc-venue">ICML '26</span>
+    <h2 class="sc-title">SWE-ABS: Adversarial Benchmark Strengthening Exposes Inflated Success Rates</h2>
+    <div class="sc-authors">Boxi Yu, Yang Cao, Yuzhong Zhang, Liting Lin, Junjielong Xu, Zhiqing Zhong, Qinghua Xu, Guancheng Wang, <span class="me">Jialun Cao</span>, Shing-Chi Cheung, Pinjia He, Lionel Briand</div>
+    <p class="sc-desc">Weak test suites let models pass without truly solving the task. SWE-ABS strengthens benchmarks adversarially — and the reported success rates <strong>deflate sharply</strong>, revealing the real gap.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2603.00520" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Roughly 1 in 5 "solved" patches from top agents are semantically incorrect — weak test suites hide the real capability gap.</div>
+
+    <div class="deflate-toggle" id="deflateToggle">
+      <button data-view="inflated" class="active">Reported (inflated)</button>
+      <button data-view="real">Strengthened (real)</button>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" id="deflateSwatch" style="background:var(--c-green)"></span> Resolve Rate &mdash; Top-Ranked Agent</div>
+        <div class="dash-head-note" id="deflateNote">before strengthening</div>
+      </div>
+      <p class="sc-desc" style="margin-bottom:1.2rem;">Two-stage adversarial strengthening (coverage-driven augmentation + mutation-driven testing) on SWE-bench Verified knocked the top-ranked agent down to <strong>5th place</strong> &mdash; roughly 1 in 5 &ldquo;solved&rdquo; patches from the top-30 agents turned out to be semantically incorrect.</p>
+      <div class="deflate-chart" id="deflateChart">
+        <div class="deflate-row" data-inflated="78.80" data-real="62.20">
+          <span class="deflate-name">Top-Ranked Agent</span>
+          <div class="deflate-barwrap">
+            <div class="deflate-track"><div class="deflate-fill inflated"><span class="deflate-tag">0%</span></div></div>
+            <div class="deflate-ghost"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="deflate-summary">
+        <div class="ds-item"><span class="ds-num down" id="dsDrop">&ndash;0</span><span class="ds-label">Resolve-rate drop (top agent)</span></div>
+        <div class="ds-item"><span class="ds-num" id="dsRejected">0%</span><span class="ds-label">Previously-passing patches rejected</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--primary)" id="dsStrengthened">0%</span><span class="ds-label">Of 500 instances strengthened</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--c-purple)" id="dsImprove">0&times;</span><span class="ds-label">Improvement over prior work</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 4: JavaBench — Leaderboard -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-javabench">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Object-Oriented Generation</div>
+    <span class="sc-venue">ASE '24</span>
+    <h2 class="sc-title">JavaBench: Object-Oriented Code Generation for Evaluating LLMs</h2>
+    <div class="sc-authors"><span class="me">Jialun Cao</span>, Zhiyong Chen*, Jiarong Wu, Shing-chi Cheung, Chang Xu</div>
+    <p class="sc-desc">Most code benchmarks stop at standalone functions. JavaBench tests <strong>object-oriented programming</strong> at project scale — inheritance, polymorphism, and design patterns — where even strong models struggle.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2406.12902" class="sc-link">Paper</a>
+      <a href="https://java-bench.github.io/leaderboard.html" class="sc-link">Leaderboard</a>
+      <a href="https://github.com/java-bench/JavaBench" class="sc-link">Code</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> No LLM could fully complete any project at the OOP level — the best achieves only 41.17% vs. human baseline of 90.93%.</div>
+
+    <div class="oop-tags" id="oopTags">
+      <span class="oop-tag">Inheritance</span>
+      <span class="oop-tag">Polymorphism</span>
+      <span class="oop-tag">Encapsulation</span>
+      <span class="oop-tag">Design Patterns</span>
+      <span class="oop-tag">Interfaces</span>
+      <span class="oop-tag">Abstraction</span>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--primary)"></span> LLM Ceiling vs. Human Baseline</div>
+        <div class="dash-head-note">pass@5, class-level</div>
+      </div>
+      <div class="leaderboard" id="leaderboard">
+        <div class="lb-head"><span>#</span><span>Evaluator</span><span>Completion</span><span>Score</span></div>
+        <div class="lb-row top" data-score="90.93" data-rank="1">
+          <span class="lb-rank">1</span>
+          <span><span class="lb-model-name">Human Baseline</span><br><span class="lb-model-sub">282 students, avg / 100</span></span>
+          <div class="lb-bar-track"><div class="lb-bar-fill"></div></div>
+          <span class="lb-score">0</span>
+        </div>
+        <div class="lb-row" data-score="41.17" data-rank="2">
+          <span class="lb-rank medal-2">2</span>
+          <span><span class="lb-model-name">Best LLM</span><br><span class="lb-model-sub">no project fully solved</span></span>
+          <div class="lb-bar-track"><div class="lb-bar-fill"></div></div>
+          <span class="lb-score">0</span>
+        </div>
+      </div>
+      <div class="deflate-summary" id="jbSummary" style="margin-top:1.4rem;">
+        <div class="ds-item"><span class="ds-num" id="jbMethods" style="color:var(--primary)">0</span><span class="ds-label">Methods to implement</span></div>
+        <div class="ds-item"><span class="ds-num" id="jbClasses" style="color:var(--primary)">0</span><span class="ds-label">Classes</span></div>
+        <div class="ds-item"><span class="ds-num" id="jbProjects" style="color:var(--primary)">0</span><span class="ds-label">Real-world projects</span></div>
+        <div class="ds-item"><span class="ds-num" id="jbCoverage" style="color:var(--primary)">0%</span><span class="ds-label">Test coverage</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAPER 5: DomainEval -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-domaineval">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">More Work &middot; Multi-Domain</div>
+    <span class="sc-venue">AAAI '25</span>
+    <h2 class="sc-title">DomainEval: An Auto-Constructed Benchmark for Multi-Domain Code Generation</h2>
+    <div class="sc-authors">Qiming Zhu, <span class="me">Jialun Cao (Co-1st)</span>, Yaojie Lu, et al.</div>
+    <p class="sc-desc">An automatically constructed benchmark that evaluates LLMs across six specialized programming domains beyond typical algorithmic tasks.</p>
+    <div class="sc-links"><a href="https://arxiv.org/pdf/2408.13204" class="sc-link">Paper</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> LLMs excel at computation but struggle with cryptography and systems coding — the gap reaches 69 percentage points in some models.</div>
+    <div class="compact-anim" id="anim-domaineval"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAPER 6: PathEval -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-patheval">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">More Work &middot; Test Generation</div>
+    <span class="sc-venue">ASE '24</span>
+    <span class="sc-award">&#127942; Distinguished Paper Award</span>
+    <h2 class="sc-title">PathEval: Towards Understanding LLMs on Directed Test Input Generation</h2>
+    <div class="sc-authors">Zongze Jiang, Ming Wen, <span class="me">Jialun Cao</span>, Xuanhua Shi, Hai Jin</div>
+    <p class="sc-desc">Evaluates whether LLMs can generate test inputs that exercise specific execution paths in programs.</p>
+    <div class="sc-links"><a href="https://github.com/CGCL-codes/PathEval/blob/main/PathEval_Preprint.pdf" class="sc-link">Paper</a><a href="https://github.com/CGCL-codes/PathEval" class="sc-link">Code</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> LLMs frequently fail to synthesize inputs for complex paths requiring constraint-solving — a fundamental gap in directed test generation.</div>
+    <div class="compact-anim" id="anim-patheval"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAPER 7: CodeCleaner -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-codecleaner">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">More Work &middot; Contamination</div>
+    <span class="sc-venue">Internetware '25</span>
+    <h2 class="sc-title">CodeCleaner: Elevating Standards with A Robust Data Contamination Mitigation Toolkit</h2>
+    <div class="sc-authors"><span class="me">Jialun Cao</span>, Songqiang Chen, Wuqi Zhang, Hau Ching Lo, Yeting Li, Shing-Chi Cheung</div>
+    <p class="sc-desc">An open-source toolkit using 11 code refactoring operators across multiple scales to mitigate data contamination in benchmarks.</p>
+    <div class="sc-links"><a href="https://arxiv.org/abs/2411.10842" class="sc-link">Paper</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Applying all 11 refactoring operators achieves a 65% reduction in overlap between benchmarks and training data.</div>
+    <div class="compact-anim" id="anim-codecleaner"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAPER 8: Data Contamination -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-contamination">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">More Work &middot; Contamination</div>
+    <span class="sc-venue">arXiv</span>
+    <h2 class="sc-title">Concerned with Data Contamination? Assessing Countermeasures in Code Language Models</h2>
+    <div class="sc-authors"><span class="me">Jialun Cao</span>, Wuqi Zhang, Shing-Chi Cheung</div>
+    <p class="sc-desc">Evaluates whether popular strategies to prevent data contamination in code LLM benchmarks actually work as intended.</p>
+    <div class="sc-links"><a href="https://arxiv.org/abs/2403.16898" class="sc-link">Paper</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Counterintuitively, code refactoring sometimes improves model performance — popular contamination countermeasures may not reliably cleanse evaluation data.</div>
+    <div class="compact-anim" id="anim-contamination"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAPER 9: PseudoEval -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-pseudoeval">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">More Work &middot; Disentangling Ability</div>
+    <span class="sc-venue">arXiv</span>
+    <h2 class="sc-title">Isolating Language-Coding from Problem-Solving: Benchmarking LLMs with PseudoEval</h2>
+    <div class="sc-authors">Jiarong Wu, Songqiang Chen, <span class="me">Jialun Cao (Corresponding)</span>, Hau Ching Lo, Shing-Chi Cheung</div>
+    <p class="sc-desc">Feeds LLMs pseudocode solutions to isolate whether code generation failures stem from weak problem-solving or weak language-specific coding.</p>
+    <div class="sc-links"><a href="https://arxiv.org/abs/2502.19149" class="sc-link">Paper</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Python struggles more with problem-solving while Rust struggles with language-coding — problem-solving transfers across languages but coding requires language-specific training.</div>
+    <div class="compact-anim" id="anim-pseudoeval"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAPER 10: FeedbackEval -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-feedbackeval">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">More Work &middot; Code Repair</div>
+    <span class="sc-venue">arXiv</span>
+    <h2 class="sc-title">FeedbackEval: A Benchmark for Evaluating LLMs in Feedback-Driven Code Repair Tasks</h2>
+    <div class="sc-authors">Dekun Dai, MingWei Liu, Anji Li, <span class="me">Jialun Cao</span>, Yanlin Wang, Chong Wang, Xin Peng, Zibin Zheng</div>
+    <p class="sc-desc">Benchmarks how well LLMs use various feedback types to iteratively repair buggy code.</p>
+    <div class="sc-links"><a href="https://arxiv.org/abs/2504.06939" class="sc-link">Paper</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Mixed feedback yields the highest repair rate (63.6%), and removing semantic cues like docstrings causes severe degradation.</div>
+    <div class="compact-anim" id="anim-feedbackeval"></div>
+  </div>
+</section>
+
+<footer class="footer">Copyright &copy; 2026 Jialun Cao &middot; <a href="index.html">Homepage</a> &middot; <a href="playground.html">Playground</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/showcase-benchmark.js"></script>
+</body>
+</html>

@@ -23,15 +23,11 @@
     <li><a href="#about" class="active">About</a></li>
     <li><a href="#news">News</a></li>
     <li><a href="#pubs">Research Topics</a></li>
-    <li><a href="#featured">Featured Works</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#teaching">Teaching</a></li>
     <li><a href="#awards">Awards</a></li>
-    <li><a href="#exp">Experience</a></li>
     <li><a href="#svc">Service</a></li>
     <li><a href="#talks">Invited Talks</a></li>
-    <li><a href="#visitors">Visitors</a></li>
-    <li><a href="playground.html" style="color:var(--primary-soft);font-style:italic;">&#9654; Playground</a></li>
   </ul>
   <div class="s-links">
     <span style="font-size:0.78rem;color:var(--gray-400)">&#9993; jialuncao [at] ust [dot] hk</span>
@@ -112,6 +108,7 @@
     </div>
     <p style="margin-top:0.85rem;"><strong style="color:var(--primary);">Let's do something interesting and impactful!</strong></p>
     <p style="margin-top:0.6rem;">&#128073;&#128231; <a href="openings.html"><strong>&rarr; Full details: project, research directions, requirements &amp; how to apply</strong></a></p>
+    <p style="margin-top:0.4rem;">&#128218; <a href="https://www.imperial.ac.uk/computing/prospective-students/courses/phd/scholarships/"><strong>&rarr; How to submit the PhD application and see more requirements</strong></a></p>
   </div>
 </div>
 
@@ -126,13 +123,13 @@
   <div class="news-item"><span class="n-date">2025.12.17</span><span>&#127881; Paper accepted by <strong>ICSE 2026</strong>. Congrats to Ruiyang!</span></div>
   <div class="news-item"><span class="n-date">2025.12.13</span><span>&#127942; Honored with <span class="n-hl">Young Scientist Award in Engineering Science</span>. <a href="https://cse.hkust.edu.hk/News/HKIS_YoungScientist2025/">[News]</a></span></div>
   <div class="news-item"><span class="n-date">2025.05.15</span><span>&#127881; <a href="https://arxiv.org/abs/2501.16207">From Informal to Formal</a> and <a href="https://arxiv.org/pdf/2408.13001">CruxEval-X</a> accepted by <strong>ACL 2025 Main</strong>!</span></div>
-  <div class="news-item"><span class="n-date">2025.03.08</span><span><a href="https://huggingface.co/fm-universe">HuggingFace repo</a> reached 1.6k+ downloads. <a href="https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg">Social media</a> reached 37k+ reads.</span></div>
+  <div class="news-item"><span class="n-date">2025.03.08</span><span><a href="https://huggingface.co/fm-universe">HuggingFace repo</a> reached 10k+ downloads. <a href="https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg">Social media</a> reached 37k+ reads.</span></div>
   <div class="news-item"><span class="n-date">2025.01.23</span><span>&#127942; Received <a href="https://www2.sigsoft.org/awards/dissertation/"><span class="n-hl">ACM SIGSOFT Outstanding Dissertation Award</span></a>. <a href="https://cse.hkust.edu.hk/News/SIGSOFT2025/">[News]</a></span></div>
   </div>
 </div>
 
 <!-- Visiting -->
-<div class="sec gsap-fade">
+<div class="sec gsap-fade" style="display:none;">
   <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Visiting & Program Experience</div></div>
   <div class="list-item"><span class="li-date">2024.10</span><span>Honored to visit <a href="https://software-lab.org/people/Michael_Pradel.html"><strong>Prof. Michael Pradel</strong></a> at the <strong>University of Stuttgart</strong>.</span></div>
   <div class="list-item"><span class="li-date">2024.03</span><span>Honored to visit <a href="https://pinjiahe.github.io/"><strong>Prof. Pinjia He</strong></a> at the <strong>Chinese University of Hong Kong, Shenzhen</strong>.</span></div>
@@ -145,6 +142,7 @@
   <div class="research-grid">
 
   <!-- TOPIC 1: LLM Benchmark -->
+  <a href="showcase-benchmark.html" class="research-topic-link">
   <div class="research-topic" id="topic-benchmark" style="--topic-color:#0000C4">
     <div class="research-topic-inner">
       <div class="topic-header">
@@ -159,13 +157,16 @@
           <button class="bench-btn" data-bench="livecodebench">LiveCodeBench</button>
           <button class="bench-btn" data-bench="swebench">SWE-bench</button>
           <button class="bench-btn" data-bench="cruxeval">CruxEval-X</button>
+          <button class="bench-btn" data-bench="embedagent">EmbedAgent</button>
         </div>
         <div id="benchRows"></div>
       </div>
     </div>
   </div>
+  </a>
 
   <!-- TOPIC 2: LLM for SE — NL → Code Generation -->
+  <a href="showcase-llm4se.html" class="research-topic-link">
   <div class="research-topic" id="topic-llm4se" style="--topic-color:#bf616a">
     <div class="research-topic-inner">
       <div class="topic-header">
@@ -198,8 +199,10 @@
       </div>
     </div>
   </div>
+  </a>
 
   <!-- TOPIC 3: LLM for Formal Methods — C → C + ACSL -->
+  <a href="showcase-fm.html" class="research-topic-link">
   <div class="research-topic" id="topic-fm" style="--topic-color:#34d399">
     <div class="research-topic-inner">
       <div class="topic-header">
@@ -240,8 +243,10 @@
       </div>
     </div>
   </div>
+  </a>
 
   <!-- TOPIC 4: SE for AI — Neural Network Bug Detection -->
+  <a href="showcase-seai.html" class="research-topic-link">
   <div class="research-topic" id="topic-se4ai" style="--topic-color:#4d6dff">
     <div class="research-topic-inner">
       <div class="topic-header">
@@ -277,31 +282,36 @@
       </div>
     </div>
   </div>
+  </a>
 
   </div>
 
   <div class="pub-grid" style="margin-top:1.5rem;">
-    <div class="pub-cat cat-bench"><div class="pc-head"><span class="pc-name">LLM Benchmark</span><span class="pc-n">7+</span></div><div class="pc-kw"><span class="kw">code generation</span><span class="kw">code reasoning</span><span class="kw">data contamination</span><span class="kw">multilingual</span><span class="kw">adversarial</span></div></div>
+    <div class="pub-cat cat-bench"><div class="pc-head"><span class="pc-name">LLM Benchmark</span><span class="pc-n">8+</span></div><div class="pc-kw"><span class="kw">code generation</span><span class="kw">code reasoning</span><span class="kw">data contamination</span><span class="kw">multilingual</span><span class="kw">adversarial</span></div></div>
     <div class="pub-cat cat-se"><div class="pc-head"><span class="pc-name">LLM for SE</span><span class="pc-n">8+</span></div><div class="pc-kw"><span class="kw">code translation</span><span class="kw">bug reproduction</span><span class="kw">program repair</span><span class="kw">embedded</span><span class="kw">API docs</span></div></div>
     <div class="pub-cat cat-fm"><div class="pc-head"><span class="pc-name">LLM for Formal Methods</span><span class="pc-n">5+</span></div><div class="pc-kw"><span class="kw">theorem proving</span><span class="kw">specification</span><span class="kw">model checking</span><span class="kw">TLA+</span><span class="kw">formal proofs</span></div></div>
     <div class="pub-cat cat-seai"><div class="pc-head"><span class="pc-name">SE for AI</span><span class="pc-n">8+</span></div><div class="pc-kw"><span class="kw">NLP testing</span><span class="kw">DL testing</span><span class="kw">fault localization</span><span class="kw">metamorphic</span><span class="kw">security</span></div></div>
   </div>
 
-  <div class="sec-head" id="featured" style="margin-top:1.5rem;"><div class="sec-bar"></div><div class="sec-title">Featured Works</div></div>
+  <div style="margin-top:1.5rem;text-align:center;">
+    <a href="playground.html" style="display:inline-block;padding:0.55rem 1.6rem;border:1.5px solid var(--primary-soft);border-radius:8px;color:var(--primary-soft);font-style:italic;font-size:0.95rem;text-decoration:none;transition:background 0.2s,color 0.2s;">&#9654; Playground</a>
+  </div>
 
-  <div class="fw-list" style="margin-bottom:1.25rem;">
+  <div class="sec-head" id="featured" style="margin-top:1.5rem;display:none;"><div class="sec-bar"></div><div class="sec-title">Featured Works</div></div>
+
+  <div class="fw-list" style="margin-bottom:1.25rem;display:none;">
     <div class="fw"><span class="fw-venue">ICML '26</span><div><h3>Position: Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility</h3><div class="fw-meta"><span class="me">Jialun Cao</span>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang&dagger;, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung</div><div class="fw-links"><a href="https://arxiv.org/abs/2501.10711" class="fw-link">Paper</a><a href="https://mp.weixin.qq.com/s/noYYnJW3PHggxt0Wex-t-Q" class="fw-link">Media</a></div></div></div>
-    <div class="fw"><span class="fw-venue">ACL '25</span><div><h3>From Informal to Formal &mdash; Incorporating and Evaluating LLMs on Natural Language Requirements to Verifiable Formal Proofs</h3><div class="fw-meta"><span class="me">Jialun Cao</span>, Yaojie Lu, Meiziniu Li, Haoyang Ma, Haokun Li, Mengda He, Cheng Wen, Le Sun, Hongyu Zhang, Shengchao Qin, Shing-Chi Cheung, Cong Tian</div><div class="fw-impact">1.6k+ HuggingFace downloads &middot; 37k+ social media reads &middot; 2k+ forwards</div><div class="fw-links"><a href="https://arxiv.org/abs/2501.16207" class="fw-link">Paper</a><a href="https://huggingface.co/fm-universe" class="fw-link">HuggingFace</a><a href="https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg" class="fw-link">Media</a></div></div></div>
+    <div class="fw"><span class="fw-venue">ACL '25</span><div><h3>From Informal to Formal &mdash; Incorporating and Evaluating LLMs on Natural Language Requirements to Verifiable Formal Proofs</h3><div class="fw-meta"><span class="me">Jialun Cao</span>, Yaojie Lu, Meiziniu Li, Haoyang Ma, Haokun Li, Mengda He, Cheng Wen, Le Sun, Hongyu Zhang, Shengchao Qin, Shing-Chi Cheung, Cong Tian</div><div class="fw-impact">10k+ HuggingFace downloads &middot; 37k+ social media reads &middot; 2k+ forwards</div><div class="fw-links"><a href="https://arxiv.org/abs/2501.16207" class="fw-link">Paper</a><a href="https://huggingface.co/fm-universe" class="fw-link">HuggingFace</a><a href="https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg" class="fw-link">Media</a></div></div></div>
     <div class="fw"><span class="fw-venue">CAV '24</span><div><h3>Enchanting Program Specification Synthesis by Large Language Models using Static Analysis and Program Verification</h3><div class="fw-meta">Cheng Wen, <span class="me">Jialun Cao (Corresponding)</span>, Jie Su, Zhiwu Xu, Shengchao Qin, Mengda He, Haokun Li, Shing-Chi Cheung, Cong Tian</div><div class="fw-links"><a href="https://arxiv.org/pdf/2404.00762" class="fw-link">Paper</a><a href="https://sites.google.com/view/autospecification" class="fw-link">Homepage</a></div></div></div>
     <div class="fw"><span class="fw-venue">ICSE '22</span><div><h3>DeepFD: Automated Fault Diagnosis and Localization for Deep Learning Programs</h3><div class="fw-meta"><span class="me">Jialun Cao</span>, Meiziniu Li, Xiao Chen, Ming Wen, Yongqiang Tian, Bo Wu, Shing-chi Cheung</div><div class="fw-links"><a href="https://dl.acm.org/doi/10.1145/3510003.3510099" class="fw-link">Paper</a><a href="https://github.com/ArabelaTso/DeepFD" class="fw-link">Code</a></div></div></div>
   </div>
 
-  <div class="sec-head" id="publications" style="margin-top:1.5rem;"><div class="sec-bar"></div><div class="sec-title">Publications</div><span class="sec-count">47</span></div>
+  <div class="sec-head" id="publications" style="margin-top:1.5rem;"><div class="sec-bar"></div><div class="sec-title">Publications</div><span class="sec-count">48</span></div>
 
   <div class="cite-badge"><a href="https://scholar.google.com/citations?user=UsLXSAEAAAAJ&hl=en"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jialuncao/jialuncao.github.io/google-scholar-stats/gs_data_shieldsio.json&logo=googlescholar&labelColor=2f55a4&color=4285f4&style=flat-square" alt="Google Scholar Citations"></a></div>
 
   <div class="year-block open">
-    <div class="year-header" onclick="this.parentElement.classList.toggle('open')"><span class="year-label">2026</span><span class="year-count">12 papers</span><div class="year-venues"><span class="year-venue-tag">ICML</span><span class="year-venue-tag">ICSE</span><span class="year-venue-tag">FSE</span><span class="year-venue-tag">ISSTA</span><span class="year-venue-tag">ACL</span><span class="year-venue-tag">FM</span><span class="year-venue-tag">TOSEM</span></div><span class="year-arrow">&#9654;</span></div>
+    <div class="year-header" onclick="this.parentElement.classList.toggle('open')"><span class="year-label">2026</span><span class="year-count">13 papers</span><div class="year-venues"><span class="year-venue-tag">ICML</span><span class="year-venue-tag">ICSE</span><span class="year-venue-tag">FSE</span><span class="year-venue-tag">ISSTA</span><span class="year-venue-tag">ACL</span><span class="year-venue-tag">FM</span><span class="year-venue-tag">TOSEM</span></div><span class="year-arrow">&#9654;</span></div>
     <div class="year-body"><div class="year-body-inner">
       <div class="pub-item">[C26] Ruiyang Xu, <span class="me">Jialun Cao (Co-1st)</span>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun. <em>EmbedAgent: Benchmarking Large Language Models in Embedded System Development.</em> In <strong>ICSE 2026</strong>. <a href="https://www.arxiv.org/abs/2506.11003">[Paper]</a></div>
       <div class="pub-item">[J5] Songqiang Chen, Congying Xu, Jingyi Chen, <span class="me">Jialun Cao (Corresponding)</span>, Jiarong Wu, Shing-Chi Cheung. <em>Can Emulating Semantic Translation Help LLMs with Code Translation? A Study Based on Pseudocode.</em> In <strong>TOSEM 2026</strong>. <a href="https://arxiv.org/abs/2510.00920">[Paper]</a></div>
@@ -315,6 +325,7 @@
       <div class="pub-item">[Pre8] Zhiyong Chen, <span class="me">Jialun Cao</span>, Jiarong Wu, Chang Xu, Shing-Chi Cheung. <em>Can Large Language Models Model Programs Formally?</em> arXiv. <a href="https://arxiv.org/abs/2604.01851">[Paper]</a></div>
       <div class="pub-item">[Pre9] Dong Xu, Jialun Cao, Guozhao Mo, Junjie Hu, Cheng Wen, Hongyu Lin, Xianpei Han, Shengchao Qin, Cong Tian, Shing-Chi Cheung, Le Sun, Yaojie Lu. <em>LiveFMBench: Unveiling the Power and Limits of Agentic Workflows in Specification Generation.</em> arXiv. <a href="https://arxiv.org/abs/2605.01394v1">[Paper]</a> <a href="https://huggingface.co/datasets/fm-universe/Live-FM-Bench">[HF]</a></div>
       <div class="pub-item">[Pre10] Yuanyi Wang, Yifan Yang, Su Lu, Yanggan Gu, Pengkai Wang, Wenjun Wang, Zhaoyi Yan, Congkai Xie, Jianmin Wu, <span class="me">Jialun Cao</span>, Shing-Chi Cheung, Hongxia Yang. <em>Geometry Conflict: Explaining and Controlling Forgetting in LLM Continual Post-Training.</em> arXiv. <a href="https://arxiv.org/abs/2605.09608v1">[Paper]</a></div>
+      <div class="pub-item">[Pre11] <span class="me">Jialun Cao</span>, Xinru Yan (Co-1st), Songqiang Chen, Yaojie Lu, Zhongxin Liu, Shing-Chi Cheung. <em>Inside the Skill Market: From Software Engineering Activities to Reusable Agent Skills.</em> arXiv. <a href="https://arxiv.org/abs/2607.09065">[Paper]</a></div>
     </div></div>
   </div>
 
@@ -415,6 +426,7 @@
 <div class="sec alt gsap-fade" id="awards">
   <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Honors and Awards</div></div>
   <ul class="awards-list">
+    <li><em>2026</em> &mdash; FSE 2026 Distinguished Reviewer Award</li>
     <li><em>2025</em> &mdash; <a href="https://www2.sigsoft.org/awards/dissertation/">ACM SIGSOFT Outstanding Doctoral Dissertation Award</a> (1~2 worldwide/yr)</li>
     <li><em>2024</em> &mdash; <a href="https://risingstarsasia.org/index.php">Rising Stars Women in Engineering Workshop</a> (Shortlisted)</li>
     <li><em>2024</em> &mdash; Hong Kong Postgraduate Studentship</li>
@@ -427,7 +439,7 @@
 </div>
 
 <!-- Working Experience -->
-<div class="sec alt gsap-fade" id="exp">
+<div class="sec alt gsap-fade" id="exp" style="display:none;">
   <div class="sec-head"><div class="sec-bar"></div><div class="sec-title">Working Experience</div></div>
   <div class="tl"><div class="tl-y">2024.08 - now</div><div class="tl-t">Research Assistant Professor</div><div class="tl-d">Department of Computer Science and Engineering, HKUST</div></div>
   <div class="tl"><div class="tl-y">2024.04 - 2024.07</div><div class="tl-t">Postdoctoral Fellow</div><div class="tl-d">HKUST, working with <a href="https://www.cse.ust.hk/faculty/scc/">Prof. Shing-Chi Cheung</a></div></div>

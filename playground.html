@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Playground — Jialun Cao</title>
+<link rel="stylesheet" href="assets/css/playground.css">
+<link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+
+<div class="page">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <a href="index.html" class="s-back">&larr; Back to Homepage</a>
+  <img src="images/avatar.jpg" alt="Jialun Cao" class="s-avatar">
+  <h1 class="s-name">Jialun Cao</h1>
+  <p class="s-role">Research Playground</p>
+  <div class="theme-toggle" onclick="toggleTheme()"><span class="t-icon" id="themeIcon">&#9790;</span><span id="themeLabel">Light</span></div>
+  <div class="s-divider"></div>
+  <ul class="s-nav">
+    <li><a href="#" data-topic="all" class="active">All Papers<span class="s-topic-count" id="navAll">42</span></a></li>
+    <li><a href="#" data-topic="bench">LLM Benchmark<span class="s-topic-count">10</span></a></li>
+    <li><a href="#" data-topic="fm">Formal Methods<span class="s-topic-count">7</span></a></li>
+    <li><a href="#" data-topic="se">LLM for SE<span class="s-topic-count">12</span></a></li>
+    <li><a href="#" data-topic="seai">SE for AI<span class="s-topic-count">8</span></a></li>
+    <li><a href="#" data-topic="sec">Security<span class="s-topic-count">5</span></a></li>
+  </ul>
+  <div class="s-links">
+    <a href="https://scholar.google.com/citations?user=UsLXSAEAAAAJ&hl=en">Google Scholar</a>
+    <a href="https://github.com/ArabelaTso">GitHub</a>
+    <a href="https://dblp.org/pid/224/1601.html">DBLP</a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">Research Playground</div>
+  <h1>Browse Papers by <span class="hl">Research Topic</span></h1>
+  <p class="hero-desc">Explore publications organized by research themes — from LLM benchmarking and formal verification to AI testing and software security.</p>
+  <div style="margin-top:1rem;display:flex;gap:0.6rem;flex-wrap:wrap;">
+    <a href="showcase-benchmark.html" style="font-size:0.82rem;font-weight:600;padding:0.45rem 1.2rem;border-radius:8px;background:rgba(0,0,196,0.06);border:1.5px solid rgba(0,0,196,0.2);color:#0000C4;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.2s;">&#9654; LLM Benchmark</a>
+    <a href="showcase-fm.html" style="font-size:0.82rem;font-weight:600;padding:0.45rem 1.2rem;border-radius:8px;background:rgba(13,148,136,0.06);border:1.5px solid rgba(13,148,136,0.2);color:#0d9488;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.2s;">&#9654; Formal Methods</a>
+    <a href="showcase-llm4se.html" style="font-size:0.82rem;font-weight:600;padding:0.45rem 1.2rem;border-radius:8px;background:rgba(191,97,106,0.06);border:1.5px solid rgba(191,97,106,0.2);color:#bf616a;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.2s;">&#9654; LLM for SE</a>
+    <a href="showcase-seai.html" style="font-size:0.82rem;font-weight:600;padding:0.45rem 1.2rem;border-radius:8px;background:rgba(124,58,237,0.06);border:1.5px solid rgba(124,58,237,0.2);color:#7c3aed;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.2s;">&#9654; SE for AI</a>
+    <a href="showcase-security.html" style="font-size:0.82rem;font-weight:600;padding:0.45rem 1.2rem;border-radius:8px;background:rgba(217,119,6,0.06);border:1.5px solid rgba(217,119,6,0.2);color:#d97706;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.2s;">&#9654; Security</a>
+  </div>
+</div>
+
+<!-- Filter Bar -->
+<div class="filter-bar" id="papers">
+  <span class="filter-label">Topic</span>
+  <button class="filter-btn active" data-topic="all">All<span class="fb-count">42</span></button>
+  <button class="filter-btn" data-topic="bench">LLM Benchmark<span class="fb-count">10</span></button>
+  <button class="filter-btn" data-topic="fm">Formal Methods<span class="fb-count">7</span></button>
+  <button class="filter-btn" data-topic="se">LLM for SE<span class="fb-count">12</span></button>
+  <button class="filter-btn" data-topic="seai">SE for AI<span class="fb-count">8</span></button>
+  <button class="filter-btn" data-topic="sec">Security<span class="fb-count">5</span></button>
+</div>
+
+<!-- Topic Banner (dynamic) -->
+<div class="topic-banner" id="topicBanner">
+  <div class="topic-banner-inner">
+    <div class="tb-icon"></div>
+    <div>
+      <div class="tb-title"></div>
+      <div class="tb-desc"></div>
+      <div class="tb-keywords"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Papers -->
+<div class="papers-section">
+  <div class="papers-count">Showing <strong id="papersCount">42</strong> papers</div>
+  <div class="paper-grid">
+
+    <!-- ===== LLM BENCHMARK ===== -->
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">ICML '26</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Position: Code Benchmarks Should Prioritize Rigor, Reliability, and Reproducibility</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Yuk-Kit Chan*, Zixuan Ling*, Wenxuan Wang&dagger;, Shuqing Li, Mingwei Liu, Ruixi Qiao, Yuting Han, Chaozheng Wang, Boxi Yu, Pinjia He, Shuai Wang, Zibin Zheng, Michael R. Lyu, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2501.10711" class="pc-link">Paper</a>
+          <a href="https://mp.weixin.qq.com/s/noYYnJW3PHggxt0Wex-t-Q" class="pc-link">Media</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">ICML '26</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">SWE-ABS: Adversarial Benchmark Strengthening Exposes Inflated Success Rates on Test-based Benchmark</div>
+        <div class="pc-authors">Boxi Yu, Yang Cao, Yuzhong Zhang, Liting Lin, Junjielong Xu, Zhiqing Zhong, Qinghua Xu, Guancheng Wang, <span class="me">Jialun Cao</span>, Shing-Chi Cheung, Pinjia He, Lionel Briand</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2603.00520" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">AAAI '25</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">DomainEval: An Auto-Constructed Benchmark for Multi-Domain Code Generation</div>
+        <div class="pc-authors">Qiming Zhu, <span class="me">Jialun Cao (Co-1st)</span>, Yaojie Lu, Hongyu Lin, Xianpei Han, Ben He, Le Sun, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/pdf/2408.13204" class="pc-link">Paper</a>
+          <a href="https://domaineval.github.io/leaderboard.html" class="pc-link">Leaderboard</a>
+          <a href="https://github.com/domaineval/DomainEval" class="pc-link">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">ACL '25</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">CruxEval-X: A Benchmark for Multilingual Code Reasoning, Understanding and Execution</div>
+        <div class="pc-authors">Ruiyang Xu, <span class="me">Jialun Cao (Co-1st)</span>, Yaojie Lu, Ming Wen, Hongyu Lin, Xianpei Han, Ben He, Shing-Chi Cheung, Le Sun</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/pdf/2408.13001" class="pc-link">Paper</a>
+          <a href="https://cruxeval-x.github.io/leaderboard.html" class="pc-link">Leaderboard</a>
+          <a href="https://github.com/CRUXEVAL-X/cruxeval-x" class="pc-link">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">ASE '24</span>
+        <span class="pc-year">2024</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">JavaBench: A Benchmark of Object-Oriented Code Generation for Evaluating Large Language Models</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Zhiyong Chen*, Jiarong Wu, Shing-chi Cheung, Chang Xu</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2406.12902" class="pc-link">Paper</a>
+          <a href="https://java-bench.github.io/leaderboard.html" class="pc-link">Leaderboard</a>
+          <a href="https://github.com/java-bench/JavaBench" class="pc-link">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">ASE '24</span>
+        <span class="pc-year">2024</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-award">&#127942; Distinguished Paper Award</div>
+        <div class="pc-title">Towards Understanding the Effectiveness of Large Language Models on Directed Test Input Generation</div>
+        <div class="pc-authors">Zongze Jiang, Ming Wen, <span class="me">Jialun Cao</span>, Xuanhua Shi, Hai Jin</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://github.com/CGCL-codes/PathEval/blob/main/PathEval_Preprint.pdf" class="pc-link">Paper</a>
+          <a href="https://github.com/CGCL-codes/PathEval" class="pc-link">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">Internetware '25</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">CodeCleaner: Elevating Standards with A Robust Data Contamination Mitigation Toolkit</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Songqiang Chen, Wuqi Zhang, Hau Ching Lo, Yeting Li, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2411.10842" class="pc-link">Paper</a>
+          <a href="https://github.com/ArabelaTso/CodeCleaner-v1" class="pc-link">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">arXiv</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Concerned with Data Contamination? Assessing Countermeasures in Code Language Model</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Wuqi Zhang, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2403.16898" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">arXiv</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Isolating Language-Coding from Problem-Solving: Benchmarking LLMs with PseudoEval</div>
+        <div class="pc-authors">Jiarong Wu, Songqiang Chen, <span class="me">Jialun Cao (Corresponding)</span>, Hau Ching Lo, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2502.19149" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="bench">
+      <div class="pc-left">
+        <span class="pc-venue v-bench">arXiv</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">FeedbackEval: A Benchmark for Evaluating Large Language Models in Feedback-Driven Code Repair Tasks</div>
+        <div class="pc-authors">Dekun Dai, MingWei Liu, Anji Li, <span class="me">Jialun Cao</span>, Yanlin Wang, Chong Wang, Xin Peng, Zibin Zheng</div>
+        <span class="pc-topic-tag t-bench">Benchmark</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2504.06939" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== LLM FOR FORMAL METHODS ===== -->
+
+    <div class="paper-card" data-topics="fm">
+      <div class="pc-left">
+        <span class="pc-venue v-fm">ACL '25</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">From Informal to Formal — Incorporating and Evaluating LLMs on Natural Language Requirements to Verifiable Formal Proofs</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Yaojie Lu, Meiziniu Li, Haoyang Ma, Haokun Li, Mengda He, Cheng Wen, Le Sun, Hongyu Zhang, Shengchao Qin, Shing-Chi Cheung, Cong Tian</div>
+        <div class="pc-impact">10k+ HuggingFace downloads &middot; 37k+ social media reads</div>
+        <span class="pc-topic-tag t-fm">Formal Methods</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2501.16207" class="pc-link">Paper</a>
+          <a href="https://huggingface.co/fm-universe" class="pc-link">HuggingFace</a>
+          <a href="https://mp.weixin.qq.com/s/oyhICTRo2fJL5MZkDrutXg" class="pc-link">Media</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="fm">
+      <div class="pc-left">
+        <span class="pc-venue v-fm">CAV '24</span>
+        <span class="pc-year">2024</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Enchanting Program Specification Synthesis by Large Language Models using Static Analysis and Program Verification</div>
+        <div class="pc-authors">Cheng Wen, <span class="me">Jialun Cao (Corresponding)</span>, Jie Su, Zhiwu Xu, Shengchao Qin, Mengda He, Haokun Li, Shing-Chi Cheung, Cong Tian</div>
+        <span class="pc-topic-tag t-fm">Formal Methods</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/pdf/2404.00762" class="pc-link">Paper</a>
+          <a href="https://sites.google.com/view/autospecification" class="pc-link">Homepage</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="fm">
+      <div class="pc-left">
+        <span class="pc-venue v-fm">FM '26</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">ModelWisdom: An Integrated Toolkit for TLA+ Model Visualization, Digest and Repair</div>
+        <div class="pc-authors">Zhiyong Chen, <span class="me">Jialun Cao</span>, Chang Xu, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-fm">Formal Methods</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2602.12058" class="pc-link">Paper</a>
+          <a href="https://modelwisdom-staging.pacificstudio.ai/" class="pc-link">Website</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="fm">
+      <div class="pc-left">
+        <span class="pc-venue v-fm">arXiv</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Can Large Language Models Model Programs Formally?</div>
+        <div class="pc-authors">Zhiyong Chen, <span class="me">Jialun Cao</span>, Jiarong Wu, Chang Xu, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-fm">Formal Methods</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2604.01851" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="fm">
+      <div class="pc-left">
+        <span class="pc-venue v-fm">arXiv</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">LiveFMBench: Unveiling the Power and Limits of Agentic Workflows in Specification Generation</div>
+        <div class="pc-authors">Dong Xu, Jialun Cao, Guozhao Mo, Junjie Hu, Cheng Wen, Hongyu Lin, Xianpei Han, Shengchao Qin, Cong Tian, Shing-Chi Cheung, Le Sun, Yaojie Lu</div>
+        <span class="pc-topic-tag t-fm">Formal Methods</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2605.01394v1" class="pc-link">Paper</a>
+          <a href="https://huggingface.co/datasets/fm-universe/Live-FM-Bench" class="pc-link">HuggingFace</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== LLM FOR SE ===== -->
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">ICSE '26</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">EmbedAgent: Benchmarking Large Language Models in Embedded System Development</div>
+        <div class="pc-authors">Ruiyang Xu, <span class="me">Jialun Cao (Co-1st)</span>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://www.arxiv.org/abs/2506.11003" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">TOSEM '26</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Can Emulating Semantic Translation Help LLMs with Code Translation? A Study Based on Pseudocode</div>
+        <div class="pc-authors">Songqiang Chen, Congying Xu, Jingyi Chen, <span class="me">Jialun Cao (Corresponding)</span>, Jiarong Wu, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2510.00920" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">ACL '26</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Across Programming Language Silos: A Study on Cross-Lingual Retrieval-augmented Code Generation</div>
+        <div class="pc-authors">Qiming Zhu, <span class="me">Jialun Cao</span>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2506.03535" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">FSE '26</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">iCoRe: Iterative Correlation-Aware Retriever for Bug Reproduction</div>
+        <div class="pc-authors">Junyi Wang, <span class="me">Jialun Cao</span>, Zhongxin Liu</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2604.19224" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">TOSEM '26</span>
+        <span class="pc-year">2026</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">When Retrieval Augmentation Meets API Documentation: Can LLMs Code with Less-Common Libraries?</div>
+        <div class="pc-authors">Jingyi Chen, Songqiang Chen, <span class="me">Jialun Cao (Corresponding)</span>, Jiasi Shen, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2503.15231" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">ASEJ '25</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">A Study on Prompt Design, Advantages and Limitations of ChatGPT for Deep Learning Program Repair</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Meiziniu Li, Ming Wen, Shing-chi Cheung</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2304.08191" class="pc-link">Paper</a>
+          <a href="https://link.springer.com/article/10.1007/s10515-025-00492-x" class="pc-link">Official</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">arXiv</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">NoCode-bench: A Benchmark for NL-Driven Feature Addition</div>
+        <div class="pc-authors">Le Deng, Zhonghao Jiang, <span class="me">Jialun Cao</span>, Michael Pradel, Zhongxin Liu</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://www.arxiv.org/abs/2507.18130" class="pc-link">Paper</a>
+          <a href="https://nocodebench.org/" class="pc-link">Leaderboard</a>
+          <a href="https://huggingface.co/NoCode-bench" class="pc-link">HuggingFace</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">arXiv</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">What Builds Effective In-Context Examples for Code Generation?</div>
+        <div class="pc-authors">Dongze Li, Songqiang Chen, <span class="me">Jialun Cao (Corresponding)</span>, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://www.arxiv.org/abs/2508.06414" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">arXiv</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">ReuseDroid: A VLM-empowered Android UI Test Migrator Boosted by Active Feedback</div>
+        <div class="pc-authors">Xiaolei Li, <span class="me">Jialun Cao</span>, Yepang Liu, Shing-Chi Cheung, Hailong Wang</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2504.02357" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">arXiv</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Geometry Conflict: Explaining and Controlling Forgetting in LLM Continual Post-Training</div>
+        <div class="pc-authors">Yuanyi Wang, Yifan Yang, Su Lu, Yanggan Gu, Pengkai Wang, Wenjun Wang, Zhaoyi Yan, Congkai Xie, Jianmin Wu, <span class="me">Jialun Cao</span>, Shing-Chi Cheung, Hongxia Yang</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2605.09608v1" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SE FOR AI ===== -->
+
+    <div class="paper-card" data-topics="seai">
+      <div class="pc-left">
+        <span class="pc-venue v-seai">ICSE '22</span>
+        <span class="pc-year">2022</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">DeepFD: Automated Fault Diagnosis and Localization for Deep Learning Programs</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Meiziniu Li, Xiao Chen, Ming Wen, Yongqiang Tian, Bo Wu, Shing-chi Cheung</div>
+        <span class="pc-topic-tag t-seai">SE for AI</span>
+        <div class="pc-links">
+          <a href="https://dl.acm.org/doi/10.1145/3510003.3510099" class="pc-link">Paper</a>
+          <a href="https://github.com/ArabelaTso/DeepFD" class="pc-link">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="seai">
+      <div class="pc-left">
+        <span class="pc-venue v-seai">FSE '23</span>
+        <span class="pc-year">2023</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Testing Coreference Resolution Systems without Labeled Test Sets</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Yaojie Lu, Ming Wen, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-seai">SE for AI</span>
+        <div class="pc-links">
+          <a href="https://dl.acm.org/doi/pdf/10.1145/4211643.4216258" class="pc-link">Paper</a>
+          <a href="https://github.com/ArabelaTso/Crest-artifacts" class="pc-link">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="seai">
+      <div class="pc-left">
+        <span class="pc-venue v-seai">TOSEM '22</span>
+        <span class="pc-year">2022</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">SemMT: A Semantic-Based Testing Approach for Machine Translation Systems</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Meiziniu Li, Yeting Li, Ming Wen, Shing-chi Cheung</div>
+        <span class="pc-topic-tag t-seai">SE for AI</span>
+        <div class="pc-links">
+          <a href="https://dl.acm.org/doi/10.1145/3490488" class="pc-link">Paper</a>
+          <a href="https://github.com/ArabelaTso/SemMT" class="pc-link">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="seai">
+      <div class="pc-left">
+        <span class="pc-venue v-seai">ASE '24</span>
+        <span class="pc-year">2024</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">MR-Adopt: Automatic Deduction of Input Transformation Function for Metamorphic Testing</div>
+        <div class="pc-authors">Congying Xu, Songqiang Chen, Jiarong Wu, Valerio Terragni, Shing-chi Cheung, Hengcheng Zhu, <span class="me">Jialun Cao (Corresponding)</span></div>
+        <span class="pc-topic-tag t-seai">SE for AI</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/pdf/2408.15815" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="seai">
+      <div class="pc-left">
+        <span class="pc-venue v-seai">FSE '25</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">SemBIC: Semantic-aware Identification of Bug-inducing Commits</div>
+        <div class="pc-authors">Xiao Chen, Hengcheng Zhu, <span class="me">Jialun Cao (Corresponding)</span>, Ming Wen, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-seai">SE for AI</span>
+        <div class="pc-links">
+          <a href="https://scholar.henryhc.net/files/publications/2025/FSE2025-SemBIC.pdf" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="seai">
+      <div class="pc-left">
+        <span class="pc-venue v-seai">TOSEM '23</span>
+        <span class="pc-year">2023</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">COMET: Coverage-guided Model Generation For Deep Learning Library Testing</div>
+        <div class="pc-authors">Meiziniu Li, <span class="me">Jialun Cao</span>, Yongqiang Tian, Tsz On Li, Ming Wen, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-seai">SE for AI</span>
+        <div class="pc-links">
+          <a href="https://dl.acm.org/doi/10.1145/3583566" class="pc-link">Paper</a>
+          <a href="https://github.com/maybeLee/COMET" class="pc-link">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="seai">
+      <div class="pc-left">
+        <span class="pc-venue v-seai">TOSEM '25</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Enhancing Differential Testing With LLMs For Testing Deep Learning Libraries</div>
+        <div class="pc-authors">Meiziniu Li, Dongze Li, Jianmeng Liu, <span class="me">Jialun Cao</span>, Yongqiang Tian, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-seai">SE for AI</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2406.07944" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="seai">
+      <div class="pc-left">
+        <span class="pc-venue v-seai">AAAI '25</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">ICM-Assistant: Instruction-tuning Multimodal Large Language Models for Rule-based Explainable Image Content Moderation</div>
+        <div class="pc-authors">Mengyang Wu, Yuzhi Zhao, <span class="me">Jialun Cao</span>, Mingjie Xu, Zhongming Jiang, Xuehui Wang, Qinbin Li, Guangneng Hu, Shengchao Qin, Chi-Wing Fu</div>
+        <span class="pc-topic-tag t-seai">SE for AI</span>
+        <div class="pc-links">
+          <a href="https://arxiv.org/abs/2412.18216" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECURITY ===== -->
+
+    <div class="paper-card" data-topics="sec">
+      <div class="pc-left">
+        <span class="pc-venue v-sec">USENIX Sec '22</span>
+        <span class="pc-year">2022</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">RegexScalpel: Regular Expression Denial of Service (ReDoS) Defense by Localize-and-Fix</div>
+        <div class="pc-authors">Yeting Li, Yecheng Sun, Zhiwu Xu, <span class="me">Jialun Cao</span>, Yuekang Li, Rongchen Li, Haiming Chen, Shing-Chi Cheung, Yang Liu, Yang Xiao</div>
+        <span class="pc-topic-tag t-sec">Security</span>
+        <div class="pc-links">
+          <a href="https://www.usenix.org/conference/usenixsecurity22/presentation/li-yeting" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="sec">
+      <div class="pc-left">
+        <span class="pc-venue v-sec">USENIX Sec '21</span>
+        <span class="pc-year">2021</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">ReDoSHunter: A Combined Static and Dynamic Approach for Regular Expression DoS Detection</div>
+        <div class="pc-authors">Yeting Li, Zixuan Chen, <span class="me">Jialun Cao</span>, Zhiwu Xu, Qiancheng Peng, Haiming Chen, Liyuan Chen, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-sec">Security</span>
+        <div class="pc-links">
+          <a href="https://www.usenix.org/conference/usenixsecurity21/presentation/li-yeting" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="sec">
+      <div class="pc-left">
+        <span class="pc-venue v-sec">TASE '24</span>
+        <span class="pc-year">2024</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Fuzzing for Stateful Protocol Implementations: Are We There Yet?</div>
+        <div class="pc-authors">Kunpeng Jian, Yanyan Zou, Yeting Li, <span class="me">Jialun Cao</span>, Menghao Li, Jian Sun, Jingyi Shi, Wei Huo</div>
+        <span class="pc-topic-tag t-sec">Security</span>
+        <div class="pc-links"></div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="sec">
+      <div class="pc-left">
+        <span class="pc-venue v-sec">ASE '25</span>
+        <span class="pc-year">2025</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Vulnerability-Affected Versions Identification: How Far Are We?</div>
+        <div class="pc-authors">Xingchu Chen, Chengwei Liu, <span class="me">Jialun Cao</span>, Yang Xiao, Xinyue Cai, Yeting Li, Jingyi Shi, Tianqi Sun, Haiming Chen, Wei Huo</div>
+        <span class="pc-topic-tag t-sec">Security</span>
+        <div class="pc-links"></div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="sec">
+      <div class="pc-left">
+        <span class="pc-venue v-sec">APSEC '24</span>
+        <span class="pc-year">2024</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">SDEFL: A Lightweight Fault Detection and Localization Method for Deep Neural Networks</div>
+        <div class="pc-authors">Bo Yang, Jiawei Hu, <span class="me">Jialun Cao (Corresponding)</span></div>
+        <span class="pc-topic-tag t-sec">Security</span>
+        <div class="pc-links"></div>
+      </div>
+    </div>
+
+    <!-- ===== ADDITIONAL PAPERS (multi-topic or other) ===== -->
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">FSE '23</span>
+        <span class="pc-year">2023</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Understanding the Bug Characteristics and Fix Strategies of Federated Learning Systems</div>
+        <div class="pc-authors">Xiaohu Du, Xiao Chen, <span class="me">Jialun Cao</span>, Ming Wen, Shing-Chi Cheung, Hai Jin</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://dl.acm.org/doi/pdf/10.1145/4211643.4216347" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="se">
+      <div class="pc-left">
+        <span class="pc-venue v-se">ICSE '21</span>
+        <span class="pc-year">2021</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">TransRegex: Multi-modal Regular Expression Synthesis by Generate-and-Repair</div>
+        <div class="pc-authors">Yeting Li, Shuaimin Li, Zhiwu Xu, <span class="me">Jialun Cao</span>, Zixuan Chen, Yun Hu, Haiming Chen, Shing-Chi Cheung</div>
+        <span class="pc-topic-tag t-se">LLM for SE</span>
+        <div class="pc-links">
+          <a href="https://ieeexplore.ieee.org/document/9401951" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="fm">
+      <div class="pc-left">
+        <span class="pc-venue v-fm">ICCD '19</span>
+        <span class="pc-year">2019</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">A Learning-Based Framework for Automatic Parameterized Verification</div>
+        <div class="pc-authors">Yongjian Li, <span class="me">Jialun Cao (1st student author)</span>, Jun Pang</div>
+        <span class="pc-topic-tag t-fm">Formal Methods</span>
+        <div class="pc-links">
+          <a href="https://ieeexplore.ieee.org/document/8988606" class="pc-link">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card" data-topics="fm">
+      <div class="pc-left">
+        <span class="pc-venue v-fm">ASE '18</span>
+        <span class="pc-year">2018</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">L-CMP: An Automatic Learning-based Parameterized Verification Tool</div>
+        <div class="pc-authors"><span class="me">Jialun Cao</span>, Yongjian Li, Jun Pang</div>
+        <span class="pc-topic-tag t-fm">Formal Methods</span>
+        <div class="pc-links">
+          <a href="https://dl.acm.org/doi/10.1145/3238147.3240487" class="pc-link">Paper</a>
+          <a href="https://github.com/ArabelaTso/Learning-Based-ParaVerifer" class="pc-link">Code</a>
+          <a href="https://www.youtube.com/watch?v=6Dl2HiiiS4E" class="pc-link">Video</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">Copyright &copy; 2026 Jialun Cao &middot; <a href="index.html">Homepage</a></footer>
+
+</div><!-- /main -->
+</div><!-- /page -->
+
+<script src="assets/js/playground.js"></script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM for Software Engineering — Jialun Cao</title>
+<link rel="stylesheet" href="assets/css/showcase-llm4se.css">
+<link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a href="playground.html" class="nav-back">&larr; Playground</a>
+  <span class="nav-title">LLM for Software Engineering</span>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#sec-translation" class="nav-link">Translation</a>
+      <a href="#sec-embed" class="nav-link">EmbedAgent</a>
+      <a href="#sec-icore" class="nav-link">iCoRe</a>
+      <a href="#sec-rag" class="nav-link">RAG</a>
+      <a href="#sec-ragapi" class="nav-link">RAG+API</a>
+      <a href="#sec-dlrepair" class="nav-link">DL Repair</a>
+      <a href="#sec-nocode" class="nav-link">NoCode</a>
+      <a href="#sec-incontext" class="nav-link">In-Context</a>
+    </div>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9790; Light</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">&#9670; Research Topic 02</div>
+    <h1>LLM for <span class="hl">Software Engineering</span></h1>
+    <p class="hero-sub">Leveraging large language models to automate code translation, generation, bug reproduction, and API-driven development.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">12</div><div class="hero-stat-label">Papers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Venues</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Featured</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to explore<br>&#9660;</div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 1: Code Translation via Pseudocode -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-translation">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work</div>
+    <span class="sc-venue">TOSEM '26</span>
+    <h2 class="sc-title">Can Emulating Semantic Translation Help LLMs with Code Translation?</h2>
+    <div class="sc-authors">Songqiang Chen, Congying Xu, Jingyi Chen, <span class="me">Jialun Cao (Corresponding)</span>, Jiarong Wu, Shing-Chi Cheung</div>
+    <p class="sc-desc">Pseudocode-based translation emulates how humans perform semantic translation &mdash; first decomposing a program&rsquo;s logic into pseudocode, then recomposing it in the target language. This approach complements direct translation, especially when moving from flexible to rigid languages or handling low-training-resource PLs.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2510.00920" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Pseudocode-based translation complements direct translation — combining both with test-based selection leverages their complementary strengths.</div>
+    <div class="sc-facts"><span class="fact-chip">6 languages</span><span class="fact-chip">9,690 tasks</span></div>
+
+    <div class="pipeline-wrap">
+      <div class="pipe-step active">
+        <div class="pipe-label"><span class="dot" style="background:#dc2626"></span> <span style="color:#dc2626">Java (Source)</span></div>
+        <div class="code-panel" id="javaCode"></div>
+      </div>
+      <div class="pipe-arrow">
+        <div class="pipe-arrow-line"></div>
+        <span class="pipe-arrow-label">Decompose</span>
+        <div class="pipe-arrow-line"></div>
+      </div>
+      <div class="pipe-step inactive">
+        <div class="pipe-label"><span class="dot" style="background:#7c3aed"></span> <span style="color:#7c3aed">Pseudocode</span></div>
+        <div class="code-panel" id="pseudoCode"></div>
+      </div>
+      <div class="pipe-arrow">
+        <div class="pipe-arrow-line"></div>
+        <span class="pipe-arrow-label">Recompose</span>
+        <div class="pipe-arrow-line"></div>
+      </div>
+      <div class="pipe-step inactive">
+        <div class="pipe-label"><span class="dot" style="background:#0d9488"></span> <span style="color:#0d9488">Python (Target)</span></div>
+        <div class="code-panel" id="pythonCode"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 2: EmbedAgent -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-embed">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work</div>
+    <span class="sc-venue">ICSE '26</span>
+    <h2 class="sc-title">EmbedAgent: Benchmarking LLMs in Embedded System Development</h2>
+    <div class="sc-authors">Ruiyang Xu, <span class="me">Jialun Cao (Co-1st)</span>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun</div>
+    <p class="sc-desc">Can LLMs handle the unique challenges of embedded development — register-level programming, hardware constraints, and real-time requirements? EmbedAgent puts them to the test.</p>
+    <div class="sc-links">
+      <a href="https://www.arxiv.org/abs/2506.11003" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> LLMs achieve 73.8% pass@1 on Pico but struggle with register-level programming on more complex boards — embedded development remains challenging.</div>
+    <div class="sc-facts"><span class="fact-chip">126 cases</span><span class="fact-chip">9 components</span><span class="fact-chip">73.8% pass@1 (Pico)</span></div>
+
+    <div class="embed-grid">
+      <div>
+        <div class="embed-prompt">
+          <div class="embed-prompt-label">User Prompt</div>
+          <div class="embed-prompt-text">"Initialize GPIO pin 5 as output for LED control, and set up UART at 115200 baud for serial communication on ESP32 (ESP-IDF)."</div>
+        </div>
+        <div class="embed-code-panel" id="embedCode"></div>
+      </div>
+      <div class="mcu-board">
+        <svg class="mcu-svg" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+          <!-- Board outline -->
+          <rect x="20" y="20" width="260" height="280" rx="8" fill="none" stroke="var(--gray-200)" stroke-width="2"/>
+          <!-- MCU chip -->
+          <rect class="mcu-chip" x="80" y="90" width="140" height="140" rx="6" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="2"/>
+          <text x="150" y="155" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" font-weight="700" fill="var(--gray-500)">ESP32</text>
+          <text x="150" y="172" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="var(--gray-400)">Xtensa LX6</text>
+          <!-- GPIO Pins (left) -->
+          <rect class="mcu-pin" x="40" y="110" width="36" height="10" rx="2" fill="var(--gray-200)"/>
+          <rect class="mcu-pin" x="40" y="130" width="36" height="10" rx="2" fill="var(--gray-200)"/>
+          <text x="56" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="var(--gray-400)">GPIO5</text>
+          <text x="56" y="148" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="var(--gray-400)">GPIO18</text>
+          <text class="mcu-label-active" x="30" y="165">GPIO &#10003;</text>
+          <!-- UART Pins (right) -->
+          <rect class="mcu-pin" x="224" y="110" width="36" height="10" rx="2" fill="var(--gray-200)"/>
+          <rect class="mcu-pin" x="224" y="130" width="36" height="10" rx="2" fill="var(--gray-200)"/>
+          <text x="244" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="var(--gray-400)">TX1</text>
+          <text x="244" y="148" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="var(--gray-400)">RX1</text>
+          <text class="mcu-label-active" x="226" y="165">UART &#10003;</text>
+          <!-- Peripheral labels -->
+          <text x="150" y="195" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="var(--gray-400)">Peripherals</text>
+          <rect x="95" y="200" width="50" height="18" rx="3" fill="var(--gray-200)" stroke="none"/>
+          <text x="120" y="213" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" font-weight="600" fill="var(--gray-500)">GPIO</text>
+          <rect x="155" y="200" width="50" height="18" rx="3" fill="var(--gray-200)" stroke="none"/>
+          <text x="180" y="213" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" font-weight="600" fill="var(--gray-500)">UART</text>
+          <!-- LED indicator -->
+          <circle cx="56" cy="56" r="8" fill="var(--gray-200)" stroke="var(--gray-300)" stroke-width="1"/>
+          <text x="56" y="76" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="var(--gray-400)">LED</text>
+          <!-- USB connector -->
+          <rect x="130" y="270" width="40" height="16" rx="3" fill="var(--gray-200)" stroke="var(--gray-300)" stroke-width="1"/>
+          <text x="150" y="300" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="var(--gray-400)">USB</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 3: iCoRe Bug Reproduction -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-icore">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work</div>
+    <span class="sc-venue">FSE '26</span>
+    <h2 class="sc-title">iCoRe: Iterative Correlation-Aware Retriever for Bug Reproduction</h2>
+    <div class="sc-authors">Junyi Wang, <span class="me">Jialun Cao</span>, Zhongxin Liu</div>
+    <p class="sc-desc">Generating a bug reproduction test (BRT) from an issue description requires finding the right code context iteratively. iCoRe correlates textual semantics with call-graph structure across retrieval rounds, closing a retrieval&harr;generation feedback loop that progressively converges on a working BRT.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2604.19224" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Iterative correlation-aware retrieval improves bug reproduction by 19.7%–31.7% over single-round retrieval methods.</div>
+    <div class="sc-facts"><span class="fact-chip">SWT-bench Lite: 42.0% F2P</span><span class="fact-chip">TDD-bench Verified: 52.8%</span></div>
+
+    <div class="icore-flow">
+      <div class="icore-node node-report">
+        <div class="icore-icon">&#128196;</div>
+        <div><div class="icore-text-title">Bug Report</div><div class="icore-text-desc">NullPointerException in UserService.getProfile() when session expires</div></div>
+      </div>
+      <div class="icore-connector"></div>
+
+      <div class="icore-round-badge">Round 1</div>
+
+      <div class="icore-node node-query">
+        <div class="icore-icon">&#128269;</div>
+        <div><div class="icore-text-title">Initial Query</div><div class="icore-text-desc">Extract key terms: UserService, getProfile, NullPointerException, session</div></div>
+      </div>
+      <div class="icore-connector"></div>
+      <div class="icore-node node-retrieve">
+        <div class="icore-icon">&#128193;</div>
+        <div><div class="icore-text-title">Retrieve Files</div><div class="icore-text-desc">UserService.java, SessionManager.java (partial match)</div></div>
+      </div>
+      <div class="icore-connector"></div>
+      <div class="icore-node node-correlate">
+        <div class="icore-icon">&#128279;</div>
+        <div><div class="icore-text-title">Correlation Analysis</div><div class="icore-text-desc">Detect dependency: UserService &rarr; SessionManager &rarr; CacheProvider</div></div>
+      </div>
+      <div class="icore-connector"></div>
+
+      <div class="icore-round-badge">Round 2</div>
+
+      <div class="icore-node node-refine">
+        <div class="icore-icon">&#128260;</div>
+        <div><div class="icore-text-title">Refined Query</div><div class="icore-text-desc">Add correlated context: CacheProvider, session expiry handling</div></div>
+      </div>
+      <div class="icore-connector"></div>
+      <div class="icore-node node-retrieve">
+        <div class="icore-icon">&#128193;</div>
+        <div><div class="icore-text-title">Retrieve More</div><div class="icore-text-desc">CacheProvider.java, SessionConfig.java — full context recovered</div></div>
+      </div>
+      <div class="icore-connector"></div>
+      <div class="icore-node node-result">
+        <div class="icore-icon">&#10004;</div>
+        <div><div class="icore-text-title" style="color:#0d9488">Bug Reproduced</div><div class="icore-text-desc">Complete test case generated with all necessary context files</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 4: Cross-Lingual RAG -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-rag">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work</div>
+    <span class="sc-venue">ACL '26</span>
+    <h2 class="sc-title">Across Programming Language Silos: Cross-Lingual Retrieval-augmented Code Generation</h2>
+    <div class="sc-authors">Qiming Zhu, <span class="me">Jialun Cao</span>, Xuanang Chen, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Shing-Chi Cheung</div>
+    <p class="sc-desc">Can retrieving code examples from other programming languages help generation? This study probes cross-lingual retrieval-augmented code generation across language silos, finding that transfer is real but non-trivial and unequal across language pairs.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2506.03535" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Cross-lingual code retrieval helps generation but the transfer is non-trivial and unequal across language pairs.</div>
+    <div class="sc-facts"><span class="fact-chip">13 languages</span><span class="fact-chip">~14K instances</span></div>
+
+    <div class="rag-grid">
+      <div class="rag-panel">
+        <div class="rag-panel-header">&#128218; Retrieved Examples (Cross-Lingual)</div>
+        <div class="rag-panel-body">
+          <div class="rag-doc">
+            <span class="doc-lang lang-java">Java</span>
+            <div>Arrays.sort(arr); <span class="s-cm">// built-in TimSort</span></div>
+          </div>
+          <div class="rag-doc">
+            <span class="doc-lang lang-cpp">C++</span>
+            <div>void quickSort(vector&lt;int&gt;&amp; v, int lo, int hi) {<br>&nbsp; if (lo &gt;= hi) return;<br>&nbsp; int pivot = partition(v, lo, hi);<br>&nbsp; quickSort(v, lo, pivot-1);<br>&nbsp; quickSort(v, pivot+1, hi);<br>}</div>
+          </div>
+          <div class="rag-doc">
+            <span class="doc-lang lang-js">JavaScript</span>
+            <div>arr.sort((a, b) =&gt; a - b);</div>
+          </div>
+          <div class="rag-doc">
+            <span class="doc-lang lang-py">Python</span>
+            <div>sorted_list = sorted(arr, key=lambda x: x)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rag-arrows">
+        <div class="rag-arrow-line"></div>
+        <div class="rag-arrow-icon">&#10132;</div>
+        <div class="rag-arrow-line"></div>
+      </div>
+
+      <div class="rag-panel">
+        <div class="rag-panel-header">&#9997; Generated Code (Python)</div>
+        <div class="rag-panel-body">
+          <div class="rag-output" id="ragOutput"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED 5: RAG + API Documentation -->
+<section class="showcase" id="sec-ragapi">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work</div>
+    <span class="sc-venue">TOSEM '26</span>
+    <h2 class="sc-title">When RAG Meets API Documentation: Can LLMs Code with Less-Common Libraries?</h2>
+    <div class="sc-authors">Jingyi Chen, Songqiang Chen, <span class="me">Jialun Cao</span>, Jiasi Shen, Shing-Chi Cheung</div>
+    <p class="sc-desc">Examines how RAG-enhanced LLMs utilize API documentation from less common libraries to improve code generation.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2503.15231" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Example code contributes the most — not descriptive texts or parameter lists — and RAG boosts performance by 83–220%.</div>
+
+    <div class="compact-anim" id="anim-ragapi">
+      <div class="mini-pipe">
+        <div class="mini-pipe-stage" data-idx="0">API Docs</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="1">RAG Retrieval</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="2">LLM</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="3">Code</div>
+      </div>
+      <div class="mini-stat" id="stat-ragapi">+83–220%</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED 6: ChatGPT for DL Program Repair -->
+<section class="showcase alt" id="sec-dlrepair">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work</div>
+    <span class="sc-venue">ASEJ '25</span>
+    <h2 class="sc-title">A Study on Prompt Design, Advantages and Limitations of ChatGPT for Deep Learning Program Repair</h2>
+    <div class="sc-authors"><span class="me">Jialun Cao</span>, Meiziniu Li, Ming Wen, Shing-chi Cheung</div>
+    <p class="sc-desc">Investigates ChatGPT's ability to repair bugs in deep learning programs through strategic prompt design and dialogue strategies.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2304.08191" class="sc-link">Paper</a>
+      <a href="https://link.springer.com/article/10.1007/s10515-025-00492-x" class="sc-link">Official</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> ChatGPT can detect bad code smell, API misuse, and deprecation in DL programs — but prior fault localization tools only achieve ~30% accuracy.</div>
+
+    <div class="compact-anim" id="anim-dlrepair">
+      <div class="mini-pipe">
+        <div class="mini-pipe-stage" data-idx="0">Zero-shot</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="1">Few-shot</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="2">Dialogue</div>
+      </div>
+      <div class="mini-stat" id="stat-dlrepair"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED 7: NoCode-bench -->
+<section class="showcase" id="sec-nocode">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work</div>
+    <span class="sc-venue">arXiv</span>
+    <h2 class="sc-title">NoCode-bench: A Benchmark for NL-Driven Feature Addition</h2>
+    <div class="sc-authors">Le Deng, Zhonghao Jiang, <span class="me">Jialun Cao</span>, Michael Pradel, Zhongxin Liu</div>
+    <p class="sc-desc">Tests how well LLMs can implement software features described in natural language documentation rather than explicit code instructions.</p>
+    <div class="sc-links">
+      <a href="https://www.arxiv.org/abs/2507.18130" class="sc-link">Paper</a>
+      <a href="https://nocodebench.org/" class="sc-link">Leaderboard</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Top LLMs achieve only 28.07% task success rate — LLMs remain unready for fully natural language-driven development.</div>
+
+    <div class="compact-anim" id="anim-nocode">
+      <div class="mini-pipe">
+        <div class="mini-pipe-stage" data-idx="0">NL Description</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="1">LLM Agent</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="2">Result</div>
+      </div>
+      <div class="mini-progress"><div class="mini-progress-fill" id="progress-nocode"></div></div>
+      <div class="mini-badge warning" id="badge-nocode">28.07% &mdash; Not ready</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED 8: In-Context Examples -->
+<section class="showcase alt" id="sec-incontext">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work</div>
+    <span class="sc-venue">arXiv</span>
+    <h2 class="sc-title">What Builds Effective In-Context Examples for Code Generation?</h2>
+    <div class="sc-authors">Dongze Li, Songqiang Chen, <span class="me">Jialun Cao</span>, Shing-Chi Cheung</div>
+    <p class="sc-desc">Investigates which code features (naming, formatting, structure) most influence effectiveness of in-context learning for code generation.</p>
+    <div class="sc-links">
+      <a href="https://www.arxiv.org/abs/2508.06414" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Appropriate variable/function naming is crucial — their elimination causes up to 30 percentage points performance decrease.</div>
+
+    <div class="compact-anim" id="anim-incontext">
+      <div class="feature-tags">
+        <div class="feature-tag" data-idx="0">Naming &#9733;&#9733;&#9733;</div>
+        <div class="feature-tag" data-idx="1">Structure &#9733;&#9733;</div>
+        <div class="feature-tag" data-idx="2">Formatting &#9733;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">Copyright &copy; 2026 Jialun Cao &middot; <a href="index.html">Homepage</a> &middot; <a href="playground.html">Playground</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/showcase-llm4se.js"></script>
+</body>
+</html>

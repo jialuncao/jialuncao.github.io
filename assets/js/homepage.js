@@ -228,6 +228,13 @@ const benchData = {
     { name: 'Llama', score: 68.5, color: '#fb923c' },
     { name: 'DeepSeek', score: 82.1, color: '#f87171' },
   ],
+  embedagent: [
+    { name: 'Claude', score: 45.2, color: '#4d6dff' },
+    { name: 'GPT', score: 42.8, color: '#60a5fa' },
+    { name: 'Gemini', score: 38.6, color: '#34d399' },
+    { name: 'Llama', score: 28.3, color: '#fb923c' },
+    { name: 'DeepSeek', score: 40.1, color: '#f87171' },
+  ],
 };
 
 function buildBenchRows() {

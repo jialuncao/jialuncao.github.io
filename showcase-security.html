@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security &amp; Reliability — Jialun Cao</title>
+<link rel="stylesheet" href="assets/css/showcase-security.css">
+<link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a href="playground.html" class="nav-back">&larr; Playground</a>
+  <span class="nav-title">sec_reliability.sh</span>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#sec-regexscalpel" class="nav-link">RegexScalpel</a>
+      <a href="#sec-redoshunter" class="nav-link">ReDoSHunter</a>
+      <a href="#sec-fuzzing" class="nav-link">Fuzzing</a>
+      <a href="#sec-vulnver" class="nav-link">VulnVersions</a>
+      <a href="#sec-sdefl" class="nav-link">SDEFL</a>
+    </div>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9790; Light</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="matrixCanvas"></canvas>
+  <div class="hero-scanbar"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">&#9672; Research Topic 03 &middot; root@sec<span class="blink">_</span></div>
+    <h1><span class="prompt">$</span> Security &amp; <span class="hl">Reliability</span></h1>
+    <p class="hero-sub">Hunting ReDoS vulnerabilities, fuzzing stateful protocols, and tracing vulnerable versions &mdash; hardening software at the intersection of security and reliability.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Papers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Venues</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2</div><div class="hero-stat-label">USENIX Security</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll">scroll to scan<br>&#9660;</div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 1: RegexScalpel -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-regexscalpel">
+  <div class="showcase-inner gsap-fade">
+    <div class="ascii-divider">// ═══════════════════════ [ 01 &middot; REGEXSCALPEL ] ═══════════════════════════════════</div>
+    <div class="sc-prompt"><span class="p-user">root@sec</span>:<span class="p-path">~/redos</span>$ <span class="p-cmd">regexscalpel --localize-and-fix pattern.re</span><span class="cursor-inline"></span></div>
+    <div class="sc-eyebrow">&#9670; Featured Work</div>
+    <span class="sc-venue">USENIX Security '22</span>
+    <h2 class="sc-title">RegexScalpel: ReDoS Defense by Localize-and-Fix</h2>
+    <div class="sc-authors">Yeting Li, Yecheng Sun, Zhiwu Xu, <span class="me">Jialun Cao</span>, Yuekang Li, Rongchen Li, Haiming Chen, Shing-Chi Cheung, Yang Liu, Yang Xiao</div>
+    <p class="sc-desc">Regular-expression Denial of Service (ReDoS) hides in nested quantifiers that trigger catastrophic backtracking. RegexScalpel <b>localizes</b> the vulnerable sub-pattern, then <b>fixes</b> it in place &mdash; preserving semantics while killing the exponential blow-up.</p>
+    <div class="sc-links">
+      <a href="https://www.usenix.org/conference/usenixsecurity22/presentation/li-yeting" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Localize-and-fix repairs 98.88% of vulnerable regexes (vs. 21.20% for best prior work), producing semantics-preserving patches that eliminate exponential backtracking.</div>
+
+    <div class="rs-grid">
+      <!-- left: scan + fix -->
+      <div>
+        <div class="rs-regexbox">
+          <div class="rs-scan" id="rsScan"></div>
+          <div class="rs-label">// scanning pattern.re</div>
+          <div class="rs-regex" id="rsRegex"><span class="rc">^</span><span class="rc" data-v="1">(</span><span class="rc" data-v="1">a</span><span class="rc" data-v="1">+</span><span class="rc" data-v="1">)</span><span class="rc" data-v="1">+</span><span class="rs-fixpart hidden" id="rsFix">a+</span><span class="rc">$</span></div>
+        </div>
+        <div class="rs-verdict bad" id="rsVerdictBad">&#9888; VULNERABILITY LOCALIZED &mdash; nested quantifier <b>(a+)+</b> &rarr; exponential backtracking</div>
+        <div class="rs-verdict good" id="rsVerdictGood">&#10003; FIXED &mdash; replaced with atomic <b>a+</b> &middot; semantics preserved</div>
+
+        <div class="rs-timing">
+          <div class="rs-time-card before">
+            <div class="rs-time-label">Before</div>
+            <div class="rs-time-val" id="rsBefore">&mdash;</div>
+            <div class="rs-time-tag">DoS! &#9888;</div>
+          </div>
+          <div class="rs-arrow">&#10230;</div>
+          <div class="rs-time-card after">
+            <div class="rs-time-label">After</div>
+            <div class="rs-time-val" id="rsAfter">&mdash;</div>
+            <div class="rs-time-tag">Safe &#10003;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right: backtracking growth -->
+      <div class="bt-panel">
+        <div class="bt-caption">// matching attempts on "aaaa&hellip;a!" &mdash; doubling per char</div>
+        <div class="bt-wrap" id="btWrap">
+          <div class="bt-col"><div class="bt-bar" data-h="8"></div><div class="bt-exp">2&sup1;</div><div class="bt-num">n=1</div></div>
+          <div class="bt-col"><div class="bt-bar" data-h="14"></div><div class="bt-exp">2&sup2;</div><div class="bt-num">n=2</div></div>
+          <div class="bt-col"><div class="bt-bar" data-h="24"></div><div class="bt-exp">2&sup3;</div><div class="bt-num">n=3</div></div>
+          <div class="bt-col"><div class="bt-bar" data-h="40"></div><div class="bt-exp">2&#8308;</div><div class="bt-num">n=4</div></div>
+          <div class="bt-col"><div class="bt-bar" data-h="64"></div><div class="bt-exp">2&#8309;</div><div class="bt-num">n=5</div></div>
+          <div class="bt-col"><div class="bt-bar" data-h="95"></div><div class="bt-exp">2&#8310;</div><div class="bt-num">n=6</div></div>
+          <div class="bt-col"><div class="bt-bar" data-h="130"></div><div class="bt-exp">2&#8311;</div><div class="bt-num">n=7</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-stats">
+      <div class="paper-stat"><div class="paper-stat-lbl">Repaired</div><div class="paper-stat-val">443 / 448 (98.88%)</div><div class="paper-stat-sub">of vulnerable regexes</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">Best prior work</div><div class="paper-stat-val">95 (21.20%)</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">Confirmed CVEs</div><div class="paper-stat-val">8</div><div class="paper-stat-sub">incl. Python, NLTK</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 2: ReDoSHunter -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-redoshunter">
+  <div class="showcase-inner gsap-fade">
+    <div class="ascii-divider">// ═══════════════════════ [ 02 &middot; REDOSHUNTER ] ════════════════════════════════════</div>
+    <div class="sc-prompt"><span class="p-user">root@sec</span>:<span class="p-path">~/redos</span>$ <span class="p-cmd">redoshunter --static --dynamic ./pattern.re</span><span class="cursor-inline"></span></div>
+    <div class="sc-eyebrow">&#9670; Featured Work</div>
+    <span class="sc-venue">USENIX Security '21</span>
+    <h2 class="sc-title">ReDoSHunter: Combined Static &amp; Dynamic ReDoS Detection</h2>
+    <div class="sc-authors">Yeting Li, Zixuan Chen, <span class="me">Jialun Cao</span>, Zhiwu Xu, Qiancheng Peng, Haiming Chen, Liyuan Chen, Shing-Chi Cheung</div>
+    <p class="sc-desc">A two-phase pipeline: <b>static</b> analysis parses the regex into an NFA and flags ambiguous, self-overlapping paths across five vulnerability patterns; <b>dynamic</b> analysis then feeds crafted attack strings, assessing the exponential-vs-polynomial degree of blow-up as the execution-time meter climbs past the danger threshold.</p>
+    <div class="sc-links">
+      <a href="https://www.usenix.org/conference/usenixsecurity21/presentation/li-yeting" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Combined static+dynamic analysis achieves 100% precision and recall on 37,651 regexes, identifying all 35 known ReDoS CVEs and assigning 26 new ones.</div>
+
+    <div class="rh-phases">
+      <!-- PHASE 1: static NFA -->
+      <div class="rh-phase">
+        <div class="rh-phase-tag"><span class="num">1</span> Static &middot; NFA construction</div>
+        <svg class="rh-nfa" id="rhNfa" viewBox="0 0 380 190" xmlns="http://www.w3.org/2000/svg">
+          <!-- edges -->
+          <path class="nfa-edge" data-i="0" d="M62 110 L118 110" marker-end="url(#arrow)"/>
+          <path class="nfa-edge ambiguous" data-i="2" d="M138 92 C138 55, 172 55, 172 88" marker-end="url(#arrowA)"/>
+          <path class="nfa-edge ambiguous" data-i="3" d="M178 110 L242 110" marker-end="url(#arrowA)"/>
+          <path class="nfa-edge" data-i="4" d="M262 92 C262 55, 296 55, 296 88" marker-end="url(#arrow)"/>
+          <path class="nfa-edge" data-i="5" d="M302 110 L338 110" marker-end="url(#arrow)"/>
+          <!-- edge labels -->
+          <text class="nfa-elabel" data-i="0" x="82" y="102">a</text>
+          <text class="nfa-elabel amb" data-i="2" x="150" y="48">a</text>
+          <text class="nfa-elabel amb" data-i="3" x="205" y="102">a</text>
+          <text class="nfa-elabel" data-i="4" x="274" y="48">a</text>
+          <text class="nfa-elabel" data-i="5" x="316" y="102">$</text>
+          <!-- nodes -->
+          <g class="nfa-node" data-i="0"><circle cx="45" cy="110" r="17"/><text x="45" y="114" text-anchor="middle">q0</text></g>
+          <g class="nfa-node" data-i="1"><circle cx="158" cy="110" r="17"/><text x="158" y="114" text-anchor="middle">q1</text></g>
+          <g class="nfa-node" data-i="4"><circle cx="282" cy="110" r="17"/><text x="282" y="114" text-anchor="middle">q2</text></g>
+          <g class="nfa-node accept" data-i="6"><circle cx="355" cy="110" r="17"/><circle cx="355" cy="110" r="13" fill="none"/><text x="355" y="114" text-anchor="middle">qf</text></g>
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8c8268"/></marker>
+            <marker id="arrowA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f2a53c"/></marker>
+          </defs>
+        </svg>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.66rem;color:var(--warn);margin-top:8px;">&#9888; ambiguous overlap at <b>q1</b>: loop vs. advance both consume <code>a</code></div>
+      </div>
+
+      <!-- PHASE 2: dynamic meter -->
+      <div class="rh-phase">
+        <div class="rh-phase-tag"><span class="num">2</span> Dynamic &middot; attack-string probe</div>
+        <div class="rh-teststr">test = <b>"a"&times;32 + "!"</b> &nbsp;// forces max backtracking</div>
+        <div class="rh-meter-wrap">
+          <div class="rh-meter-top">
+            <span class="rh-meter-label">exec time</span>
+            <span class="rh-meter-val" id="rhMeterVal">0.000s</span>
+          </div>
+          <div class="rh-meter">
+            <div class="rh-meter-fill" id="rhMeterFill"></div>
+            <div class="rh-threshold"></div>
+          </div>
+        </div>
+        <div class="term rh-log">
+          <div class="term-head"><span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span><span class="term-title">redoshunter.log</span></div>
+          <div class="term-body" id="rhLog"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-stats">
+      <div class="paper-stat"><div class="paper-stat-lbl">Precision / Recall</div><div class="paper-stat-val">100% / 100%</div><div class="paper-stat-sub">37,651 regexes &middot; 3 datasets</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">Known ReDoS CVEs</div><div class="paper-stat-val">35 / 35</div><div class="paper-stat-sub">all identified</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">New CVEs assigned</div><div class="paper-stat-val">26</div><div class="paper-stat-sub">28 vulns &middot; 26 projects</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 3: Fuzzing Stateful Protocols -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-fuzzing">
+  <div class="showcase-inner gsap-fade">
+    <div class="ascii-divider">// ═══════════════════════ [ 03 &middot; STATEFUL FUZZING ] ═══════════════════════════════</div>
+    <div class="sc-prompt"><span class="p-user">root@sec</span>:<span class="p-path">~/fuzz</span>$ <span class="p-cmd">./statefuzz --proto ftp --send-random</span><span class="cursor-inline"></span></div>
+    <div class="sc-eyebrow">&#9670; Featured Work</div>
+    <span class="sc-venue">TASE '24</span>
+    <h2 class="sc-title">Fuzzing for Stateful Protocol Implementations: Are We There Yet?</h2>
+    <div class="sc-authors">Kunpeng Jian, Yanyan Zou, Yeting Li, <span class="me">Jialun Cao</span>, Menghao Li, Jian Sun, Jingyi Shi, Wei Huo</div>
+    <p class="sc-desc">Stateful protocols only reveal bugs deep in their state machine. This empirical study puts <b>6 state-of-the-art fuzzers</b> (including AFLNet) through their paces on <b>13 widely-used programs</b> across the FTP, SIP, and RTSP protocols &mdash; finding that state-coverage guidance helps navigate the state space but yields limited code-coverage gains, while <b>sequence mutation</b> proves pivotal. The demo below illustrates the general idea: walking legal transitions until a malformed packet forces an <b>unexpected</b> transition, here jumping straight to <b>DATA</b>, bypassing <b>AUTH</b>.</p>
+    <div class="sc-links"></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> State-coverage guidance helps navigate protocol state spaces but yields limited code-coverage gains — sequence mutation proves pivotal for finding deep bugs.</div>
+
+    <div class="fuzz-wrap">
+      <div class="fuzz-stage">
+        <svg class="fuzz-svg" id="fuzzSvg" viewBox="0 0 540 240" xmlns="http://www.w3.org/2000/svg">
+          <!-- normal edges -->
+          <path class="fsm-edge" d="M92 120 L157 68" marker-end="url(#farrow)"/>
+          <path class="fsm-edge" d="M223 55 L297 55" marker-end="url(#farrow)"/>
+          <path class="fsm-edge" d="M363 68 L438 108" marker-end="url(#farrow)"/>
+          <path class="fsm-edge" d="M448 138 L372 178" marker-end="url(#farrow)"/>
+          <path class="fsm-edge" d="M292 190 C200 215, 110 180, 78 138" marker-end="url(#farrow)"/>
+          <!-- crash edge: CONNECT -> DATA (skips AUTH) -->
+          <path class="fsm-edge crash" id="crashEdge" d="M215 48 C320 20, 430 60, 462 105" marker-end="url(#farrowR)"/>
+          <text class="fsm-elabel" x="103" y="88">syn</text>
+          <text class="fsm-elabel" x="252" y="46">hello</text>
+          <text class="fsm-elabel" x="405" y="82">ok</text>
+          <text class="fsm-elabel" x="405" y="168">send</text>
+          <text class="fsm-elabel" x="150" y="185">fin</text>
+          <text class="fsm-elabel" id="crashLabel" x="330" y="24" style="fill:var(--danger);font-weight:700;opacity:0;">malformed!</text>
+
+          <!-- nodes: state boxes -->
+          <g class="fsm-node" data-s="0"><rect x="22" y="105" width="76" height="30" rx="15"/><text x="60" y="124">INIT</text></g>
+          <g class="fsm-node" data-s="1"><rect x="152" y="40" width="76" height="30" rx="15"/><text x="190" y="59">CONNECT</text></g>
+          <g class="fsm-node" data-s="2"><rect x="298" y="40" width="70" height="30" rx="15"/><text x="333" y="59">AUTH</text></g>
+          <g class="fsm-node" data-s="3"><rect x="440" y="105" width="76" height="30" rx="15"/><text x="478" y="124">DATA</text></g>
+          <g class="fsm-node" data-s="4"><rect x="296" y="170" width="74" height="30" rx="15"/><text x="333" y="189">CLOSE</text></g>
+
+          <defs>
+            <marker id="farrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8c8268"/></marker>
+            <marker id="farrowR" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#dc2626"/></marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="fuzz-side">
+        <div class="fuzz-counter">
+          <div class="fuzz-stat"><div class="fuzz-stat-num" id="fuzzSent">0</div><div class="fuzz-stat-lbl">Packets sent</div></div>
+          <div class="fuzz-stat crash"><div class="fuzz-stat-num" id="fuzzCrash">0</div><div class="fuzz-stat-lbl">Crashes</div></div>
+        </div>
+        <div class="term fuzz-log">
+          <div class="term-head"><span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span><span class="term-title">statefuzz.log</span></div>
+          <div class="term-body" id="fuzzLog"></div>
+        </div>
+        <div class="fuzz-alert" id="fuzzAlert">&#10007; CRASH FOUND &mdash; unexpected transition<br>CONNECT &rarr; DATA (AUTH bypassed)</div>
+      </div>
+    </div>
+
+    <div class="paper-stats">
+      <div class="paper-stat"><div class="paper-stat-lbl">Fuzzers evaluated</div><div class="paper-stat-val">6</div><div class="paper-stat-sub">incl. AFLNet</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">Programs tested</div><div class="paper-stat-val">13</div><div class="paper-stat-sub">widely-used</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">Protocols</div><div class="paper-stat-val">FTP &middot; SIP &middot; RTSP</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 4: Vulnerable Versions -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-vulnver">
+  <div class="showcase-inner gsap-fade">
+    <div class="ascii-divider">// ═══════════════════════ [ 04 &middot; VULN VERSIONS ] ══════════════════════════════════</div>
+    <div class="sc-prompt"><span class="p-user">root@sec</span>:<span class="p-path">~/cve</span>$ <span class="p-cmd">vaffident --cve CVE-2024-XXXX --trace-range</span><span class="cursor-inline"></span></div>
+    <div class="sc-eyebrow">&#9670; Featured Work</div>
+    <span class="sc-venue">ASE '25</span>
+    <h2 class="sc-title">Vulnerability-Affected Versions Identification: How Far Are We?</h2>
+    <div class="sc-authors">Xingchu Chen, Chengwei Liu, <span class="me">Jialun Cao</span>, Yang Xiao, Xinyue Cai, Yeting Li, Jingyi Shi, Tianqi Sun, Haiming Chen, Wei Huo</div>
+    <p class="sc-desc">A CVE rarely affects a single release. Starting from the version that <b>introduced</b> the flaw, the vulnerability propagates forward across every release until a patch lands &mdash; identifying that precise affected range is the crux of accurate vulnerability triage.</p>
+    <div class="sc-links"></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> No existing tool exceeds 45% accuracy in identifying vulnerability-affected version ranges — a critical gap in vulnerability triage.</div>
+
+    <div class="ver-panel">
+      <div class="ver-timeline">
+        <div class="ver-track"></div>
+        <div class="ver-track-fill" id="verFill"></div>
+        <div class="ver-dots" id="verDots">
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.0"></div><div class="ver-label">v1.0</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.1"></div><div class="ver-label">v1.1</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.2"></div><div class="ver-label">v1.2</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.3"></div><div class="ver-label">v1.3</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.4"></div><div class="ver-label">v1.4</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.5"></div><div class="ver-label">v1.5</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.6"></div><div class="ver-label">v1.6</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.7"></div><div class="ver-label">v1.7</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.8"></div><div class="ver-label">v1.8</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v1.9"></div><div class="ver-label">v1.9</div></div>
+          <div class="ver-dot-col"><div class="ver-dot" data-v="v2.0"></div><div class="ver-label">v2.0</div></div>
+        </div>
+      </div>
+      <div class="ver-bracket" id="verBracket">
+        <div class="ver-bracket-line" id="verBracketLine"></div>
+        <div class="ver-bracket-label" id="verBracketLabel">vulnerable range</div>
+      </div>
+
+      <div class="ver-stats">
+        <div class="ver-stat a"><div class="ver-stat-lbl">Affected</div><div class="ver-stat-val" id="verAffected">&mdash;</div></div>
+        <div class="ver-stat f"><div class="ver-stat-lbl">Fixed in</div><div class="ver-stat-val" id="verFixed">&mdash;</div></div>
+        <div class="ver-stat i"><div class="ver-stat-lbl">Impact</div><div class="ver-stat-val" id="verImpact">&mdash;</div></div>
+      </div>
+    </div>
+
+    <div class="paper-stats">
+      <div class="paper-stat"><div class="paper-stat-lbl">Benchmark</div><div class="paper-stat-val">1,128 CVEs</div><div class="paper-stat-sub">real-world C/C++</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">Tools evaluated</div><div class="paper-stat-val">12</div><div class="paper-stat-sub">tracing + matching</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">Best tool accuracy</div><div class="paper-stat-val">&lt; 45.0%</div><div class="paper-stat-sub">no tool exceeds</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 5: SDEFL -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-sdefl">
+  <div class="showcase-inner gsap-fade">
+    <div class="ascii-divider">// ═══════════════════════ [ 05 &middot; SDEFL ] ═══════════════════════════════════════════</div>
+    <div class="sc-prompt"><span class="p-user">root@sec</span>:<span class="p-path">~/dnn</span>$ <span class="p-cmd">sdefl --detect --localize model.h5</span><span class="cursor-inline"></span></div>
+    <div class="sc-eyebrow">&#9670; Featured Work</div>
+    <span class="sc-venue">APSEC '24</span>
+    <h2 class="sc-title">SDEFL: A Lightweight Fault Detection and Localization Method for Deep Neural Networks</h2>
+    <div class="sc-authors">Bo Yang, Jiawei Hu, <span class="me">Jialun Cao (Corresponding)</span></div>
+    <p class="sc-desc">A lightweight method that detects and localizes faults in deep neural networks without requiring expensive retraining or mutation-based analysis.</p>
+    <div class="sc-links"></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Lightweight statistical analysis of neuron activations can effectively detect and localize DNN faults at a fraction of the cost of mutation-based approaches.</div>
+
+    <div class="compact-anim" id="sdeflAnim">
+      <div class="mini-pipe" id="sdeflPipe">
+        <div class="mini-pipe-stage" data-stage="0">DNN Model</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-stage="1">Activation Analysis</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-stage="2">Fault Detected</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-stage="3">Layer 3 Localized</div>
+      </div>
+      <div class="scan-bar"><div class="scan-bar-fill" id="sdeflScanFill"></div></div>
+      <div class="mini-pipe-result" id="sdeflResult" style="margin-top:0.8rem;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--term-green);opacity:0;transition:opacity 0.4s;">&#10003; Fault localized to Layer 3 &mdash; neuron activation deviation &gt; 3&sigma;</div>
+    </div>
+
+    <div class="paper-stats">
+      <div class="paper-stat"><div class="paper-stat-lbl">Approach</div><div class="paper-stat-val">Statistical</div><div class="paper-stat-sub">neuron activation analysis</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">Advantage</div><div class="paper-stat-val">Lightweight</div><div class="paper-stat-sub">no retraining required</div></div>
+      <div class="paper-stat"><div class="paper-stat-lbl">Venue</div><div class="paper-stat-val">APSEC '24</div><div class="paper-stat-sub">conference paper</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><span class="prompt">$</span> Copyright &copy; 2026 Jialun Cao &middot; <a href="index.html">Homepage</a> &middot; <a href="playground.html">Playground</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/showcase-security.js"></script>
+</body>
+</html>

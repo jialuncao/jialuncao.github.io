@@ -1,0 +1,693 @@
+// ══════════════════════════════════════════
+// Theme
+// ══════════════════════════════════════════
+function toggleTheme() {
+  var d = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (d) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+  else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  updateThemeIcon();
+}
+function updateThemeIcon() {
+  var d = document.documentElement.getAttribute('data-theme') === 'dark';
+  var el = document.getElementById('themeBtn');
+  if (el) el.textContent = d ? '☀ Dark' : '☾ Light';
+}
+(function() {
+  if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  updateThemeIcon();
+})();
+
+var PREFERS_REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ══════════════════════════════════════════
+// Count-up engine
+// ══════════════════════════════════════════
+function countUp(el, target, duration, suffix) {
+  suffix = suffix || '';
+  if (PREFERS_REDUCED) { el.textContent = target + suffix; return; }
+  var start = null;
+  var startVal = 0;
+  duration = duration || 1200;
+  function step(ts) {
+    if (start === null) start = ts;
+    var p = Math.min((ts - start) / duration, 1);
+    var eased = 1 - Math.pow(1 - p, 3);
+    var val = Math.round(startVal + (target - startVal) * eased);
+    el.textContent = val + suffix;
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+function countUpAll(root, duration) {
+  root.querySelectorAll('[data-count]').forEach(function(el) {
+    var t = parseInt(el.getAttribute('data-count'), 10);
+    countUp(el, t, duration || 1200, '');
+  });
+}
+
+// ══════════════════════════════════════════
+// Hero stats
+// ══════════════════════════════════════════
+var heroStatsStarted = false;
+function startHeroStats() {
+  if (heroStatsStarted) return; heroStatsStarted = true;
+  document.querySelectorAll('.hero-stat-num').forEach(function(el) {
+    countUp(el, parseInt(el.getAttribute('data-count'), 10), 1400, '');
+  });
+}
+
+// ══════════════════════════════════════════
+// Featured 1: Survey — stats, 3R principles, decade finding
+// ══════════════════════════════════════════
+var surveyTimers = [];
+function surveyLater(fn, ms) { var id = setTimeout(fn, ms); surveyTimers.push(id); return id; }
+function surveyClearTimers() { surveyTimers.forEach(clearTimeout); surveyTimers = []; }
+var SURVEY_TOTAL_MS = 2200;
+
+function startSurvey() {
+  // stat tiles
+  var stats = document.getElementById('surveyStats');
+  if (stats) countUpAll(stats, 1500);
+
+  // 3R principle bars
+  document.querySelectorAll('#catBars .cat-row').forEach(function(row, i) {
+    var fill = row.querySelector('.cat-fill');
+    var pct = fill.getAttribute('data-pct');
+    surveyLater(function() {
+      fill.style.width = pct + '%';
+    }, 120 * i);
+  });
+
+  // decade comparison bars
+  document.querySelectorAll('#timeline .tl-bar').forEach(function(bar, i) {
+    var h = bar.getAttribute('data-h');
+    surveyLater(function() {
+      bar.style.height = h + '%';
+      bar.classList.add('grown');
+    }, 100 * i);
+  });
+}
+
+function resetSurvey() {
+  surveyClearTimers();
+  var stats = document.getElementById('surveyStats');
+  if (stats) stats.querySelectorAll('[data-count]').forEach(function(el) { el.textContent = '0'; });
+  document.querySelectorAll('#catBars .cat-fill').forEach(function(fill) { fill.style.width = ''; });
+  document.querySelectorAll('#timeline .tl-bar').forEach(function(bar) {
+    bar.style.height = '';
+    bar.classList.remove('grown');
+  });
+}
+
+var surveyRunning = false;
+function triggerSurvey() {
+  if (surveyRunning) resetSurvey();
+  surveyRunning = true;
+  startSurvey();
+  surveyLater(function() { surveyRunning = false; }, SURVEY_TOTAL_MS);
+}
+
+// ══════════════════════════════════════════
+// Featured 2: CruxEval-X — language grid + cross-lingual gap
+// ══════════════════════════════════════════
+var LANGS = ['Python','Java','C++','C#','D','Go','JavaScript','TypeScript','Rust',
+             'Ruby','PHP','Swift','Scala','Perl','R','Julia','Lua','Shell','Racket'];
+
+(function buildLangGrid() {
+  var grid = document.getElementById('langGrid');
+  if (!grid) return;
+  LANGS.forEach(function(lang) {
+    var chip = document.createElement('div');
+    chip.className = 'lang-chip';
+    chip.innerHTML = '<span class="lang-check">✓</span><span>' + lang + '</span>';
+    grid.appendChild(chip);
+  });
+})();
+
+var cruxTimers = [];
+function cruxLater(fn, ms) { var id = setTimeout(fn, ms); cruxTimers.push(id); return id; }
+function cruxClearTimers() { cruxTimers.forEach(clearTimeout); cruxTimers = []; }
+var CRUX_TOTAL_MS = 3200;
+
+function startCrux() {
+  var chips = document.querySelectorAll('#langGrid .lang-chip');
+  var counter = document.getElementById('langCounter');
+  var shown = 0;
+  chips.forEach(function(chip, i) {
+    cruxLater(function() {
+      chip.classList.add('on');
+      shown++;
+      if (counter) counter.textContent = shown;
+    }, 70 * i);
+  });
+
+  // cross-lingual gap bar — start after languages roughly finish
+  var barDelay = 70 * chips.length + 200;
+  document.querySelectorAll('#cruxBars .bar-row').forEach(function(row, i) {
+    var fill = row.querySelector('.bar-fill');
+    var val = row.querySelector('.bar-val');
+    var target = parseFloat(row.getAttribute('data-value'));
+    cruxLater(function() {
+      fill.style.width = target + '%';
+      countUp(val, target, 1300, '%');
+    }, barDelay + 140 * i);
+  });
+}
+
+function resetCrux() {
+  cruxClearTimers();
+  document.querySelectorAll('#langGrid .lang-chip').forEach(function(chip) { chip.classList.remove('on'); });
+  var counter = document.getElementById('langCounter');
+  if (counter) counter.textContent = '0';
+  document.querySelectorAll('#cruxBars .bar-row').forEach(function(row) {
+    var fill = row.querySelector('.bar-fill');
+    var val = row.querySelector('.bar-val');
+    if (fill) fill.style.width = '';
+    if (val) val.textContent = '0';
+  });
+}
+
+var cruxRunning = false;
+function triggerCrux() {
+  if (cruxRunning) resetCrux();
+  cruxRunning = true;
+  startCrux();
+  cruxLater(function() { cruxRunning = false; }, CRUX_TOTAL_MS);
+}
+
+// ══════════════════════════════════════════
+// Featured 3: SWE-ABS deflation
+// ══════════════════════════════════════════
+function renderDeflate(view, animate) {
+  var rows = document.querySelectorAll('#deflateChart .deflate-row');
+  var swatch = document.getElementById('deflateSwatch');
+  var note = document.getElementById('deflateNote');
+  var isReal = view === 'real';
+
+  rows.forEach(function(row) {
+    var inflated = parseFloat(row.getAttribute('data-inflated'));
+    var real = parseFloat(row.getAttribute('data-real'));
+    var target = isReal ? real : inflated;
+    var fill = row.querySelector('.deflate-fill');
+    var tag = row.querySelector('.deflate-tag');
+    var ghost = row.querySelector('.deflate-ghost');
+
+    fill.classList.toggle('real', isReal);
+    fill.classList.toggle('inflated', !isReal);
+    fill.style.width = target + '%';
+
+    // ghost marks the previous (inflated) level so the deflation is visible
+    if (ghost) {
+      if (isReal) { ghost.style.left = inflated + '%'; ghost.classList.add('show'); }
+      else { ghost.classList.remove('show'); }
+    }
+
+    if (animate) countUp(tag, target, 900, '%');
+    else tag.textContent = target + '%';
+  });
+
+  if (swatch) swatch.style.background = isReal ? 'var(--c-red)' : 'var(--c-green)';
+  if (note) note.textContent = isReal ? 'after adversarial strengthening' : 'before strengthening';
+}
+
+var deflateTimers = [];
+function deflateLater(fn, ms) { var id = setTimeout(fn, ms); deflateTimers.push(id); return id; }
+function deflateClearTimers() { deflateTimers.forEach(clearTimeout); deflateTimers = []; }
+var DEFLATE_TOTAL_MS = 5200;
+
+function startDeflate() {
+  renderDeflate('inflated', true);
+
+  // summary tiles
+  var drop = document.getElementById('dsDrop');
+  var rejected = document.getElementById('dsRejected');
+  var strengthened = document.getElementById('dsStrengthened');
+  var improve = document.getElementById('dsImprove');
+  deflateLater(function() {
+    if (drop) countUp(drop, 16.6, 1000, ' pts');
+    if (rejected) countUp(rejected, 19.71, 1000, '%');
+    if (strengthened) countUp(strengthened, 50.2, 1000, '%');
+    if (improve) countUp(improve, 25.1, 1000, '×');
+  }, 400);
+
+  // auto-demo the deflation once, then settle back to inflated view
+  deflateLater(function() {
+    setDeflateView('real');
+    deflateLater(function() { setDeflateView('inflated'); }, 2200);
+  }, 1600);
+}
+
+function resetDeflate() {
+  deflateClearTimers();
+  document.querySelectorAll('#deflateChart .deflate-row').forEach(function(row) {
+    var fill = row.querySelector('.deflate-fill');
+    var tag = row.querySelector('.deflate-tag');
+    var ghost = row.querySelector('.deflate-ghost');
+    if (fill) { fill.classList.remove('real'); fill.classList.add('inflated'); fill.style.width = ''; }
+    if (tag) tag.textContent = '0%';
+    if (ghost) { ghost.classList.remove('show'); ghost.style.left = ''; }
+  });
+  var swatch = document.getElementById('deflateSwatch');
+  if (swatch) swatch.style.background = 'var(--c-green)';
+  var note = document.getElementById('deflateNote');
+  if (note) note.textContent = 'before strengthening';
+  document.querySelectorAll('#deflateToggle button').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-view') === 'inflated');
+  });
+  var drop = document.getElementById('dsDrop');
+  var rejected = document.getElementById('dsRejected');
+  var strengthened = document.getElementById('dsStrengthened');
+  var improve = document.getElementById('dsImprove');
+  if (drop) drop.textContent = '–0';
+  if (rejected) rejected.textContent = '0%';
+  if (strengthened) strengthened.textContent = '0%';
+  if (improve) improve.textContent = '0×';
+}
+
+var deflateRunning = false;
+function triggerDeflate() {
+  if (deflateRunning) resetDeflate();
+  deflateRunning = true;
+  startDeflate();
+  deflateLater(function() { deflateRunning = false; }, DEFLATE_TOTAL_MS);
+}
+
+function setDeflateView(view) {
+  var btns = document.querySelectorAll('#deflateToggle button');
+  btns.forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-view') === view); });
+  renderDeflate(view, true);
+}
+
+(function bindDeflateToggle() {
+  var toggle = document.getElementById('deflateToggle');
+  if (!toggle) return;
+  toggle.querySelectorAll('button').forEach(function(b) {
+    b.addEventListener('click', function() { setDeflateView(b.getAttribute('data-view')); });
+  });
+})();
+
+// ══════════════════════════════════════════
+// Featured 4: JavaBench — LLM ceiling vs. human baseline
+// ══════════════════════════════════════════
+var lbTimers = [];
+function lbLater(fn, ms) { var id = setTimeout(fn, ms); lbTimers.push(id); return id; }
+function lbClearTimers() { lbTimers.forEach(clearTimeout); lbTimers = []; }
+var LB_TOTAL_MS = 2600;
+
+function startLeaderboard() {
+  document.querySelectorAll('#oopTags .oop-tag').forEach(function(tag, i) {
+    lbLater(function() { tag.classList.add('on'); }, 90 * i);
+  });
+
+  var rows = document.querySelectorAll('#leaderboard .lb-row');
+  rows.forEach(function(row, i) {
+    lbLater(function() {
+      row.classList.add('on');
+      var fill = row.querySelector('.lb-bar-fill');
+      var score = row.querySelector('.lb-score');
+      var target = parseFloat(row.getAttribute('data-score'));
+      if (fill) fill.style.width = (target / 90.93 * 100) + '%';
+      if (score) countUp(score, target, 1100, '%');
+    }, 220 * i + 200);
+  });
+
+  // benchmark composition tiles
+  var m = document.getElementById('jbMethods');
+  var c = document.getElementById('jbClasses');
+  var p = document.getElementById('jbProjects');
+  var cov = document.getElementById('jbCoverage');
+  lbLater(function() {
+    if (m) countUp(m, 389, 1000, '');
+    if (c) countUp(c, 106, 900, '');
+    if (p) countUp(p, 4, 700, '');
+    if (cov) countUp(cov, 92, 1000, '%');
+  }, 220 * rows.length + 400);
+}
+
+function resetLeaderboard() {
+  lbClearTimers();
+  document.querySelectorAll('#oopTags .oop-tag').forEach(function(tag) { tag.classList.remove('on'); });
+  document.querySelectorAll('#leaderboard .lb-row').forEach(function(row) {
+    row.classList.remove('on');
+    var fill = row.querySelector('.lb-bar-fill');
+    var score = row.querySelector('.lb-score');
+    if (fill) fill.style.width = '';
+    if (score) score.textContent = '0';
+  });
+  var m = document.getElementById('jbMethods');
+  var c = document.getElementById('jbClasses');
+  var p = document.getElementById('jbProjects');
+  var cov = document.getElementById('jbCoverage');
+  if (m) m.textContent = '0';
+  if (c) c.textContent = '0';
+  if (p) p.textContent = '0';
+  if (cov) cov.textContent = '0%';
+}
+
+var lbRunning = false;
+function triggerLeaderboard() {
+  if (lbRunning) resetLeaderboard();
+  lbRunning = true;
+  startLeaderboard();
+  lbLater(function() { lbRunning = false; }, LB_TOTAL_MS);
+}
+
+// ══════════════════════════════════════════
+// Hover triggers
+// ══════════════════════════════════════════
+(function() {
+  startHeroStats();
+
+  var triggers = [
+    { sel: '#sec-survey', fn: triggerSurvey, reset: resetSurvey },
+    { sel: '#sec-cruxeval', fn: triggerCrux, reset: resetCrux },
+    { sel: '#sec-sweabs', fn: triggerDeflate, reset: resetDeflate },
+    { sel: '#sec-javabench', fn: triggerLeaderboard, reset: resetLeaderboard }
+  ];
+
+  triggers.forEach(function(t) {
+    var el = document.querySelector(t.sel);
+    if (!el) return;
+    el.addEventListener('mouseenter', t.fn);
+    el.addEventListener('mouseleave', function() {
+      t.reset();
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        obs.unobserve(e.target);
+        var match = triggers.find(function(t) { return document.querySelector(t.sel) === e.target; });
+        if (match) match.fn();
+      });
+    }, { threshold: 0.3 });
+    triggers.forEach(function(t) {
+      var el = document.querySelector(t.sel);
+      if (el) obs.observe(el);
+    });
+  }
+})();
+
+// ══════════════════════════════════════════
+// COMPACT PAPER ANIMATIONS
+// ══════════════════════════════════════════
+
+// DomainEval - domain pills
+var DOMAINS = [
+  { name: 'Computation', weak: false },
+  { name: 'Web', weak: false },
+  { name: 'Database', weak: false },
+  { name: 'Networking', weak: false },
+  { name: 'Cryptography', weak: true },
+  { name: 'Systems', weak: true }
+];
+
+(function buildDomainEval() {
+  var container = document.getElementById('anim-domaineval');
+  if (!container) return;
+  var pills = document.createElement('div');
+  pills.className = 'domain-pills';
+  DOMAINS.forEach(function(d) {
+    var pill = document.createElement('div');
+    pill.className = 'domain-pill' + (d.weak ? ' weak' : '');
+    pill.textContent = d.name;
+    pills.appendChild(pill);
+  });
+  container.appendChild(pills);
+})();
+
+function triggerDomainEval() {
+  var pills = document.querySelectorAll('#anim-domaineval .domain-pill');
+  pills.forEach(function(p, i) {
+    setTimeout(function() { p.classList.add('on'); }, i * 180);
+  });
+}
+function resetDomainEval() {
+  document.querySelectorAll('#anim-domaineval .domain-pill').forEach(function(p) { p.classList.remove('on'); });
+}
+
+// PathEval - path indicators
+(function buildPathEval() {
+  var container = document.getElementById('anim-patheval');
+  if (!container) return;
+  var paths = [
+    { label: 'Simple path (linear)', color: 'green', status: '✓ Generated' },
+    { label: 'Medium path (branch)', color: 'amber', status: '~ Partial' },
+    { label: 'Complex path (constraint)', color: 'red', status: '✗ Failed' }
+  ];
+  var wrap = document.createElement('div');
+  wrap.className = 'path-indicators';
+  paths.forEach(function(p) {
+    var row = document.createElement('div');
+    row.className = 'path-row';
+    row.innerHTML = '<div class="path-dot ' + p.color + '"></div><span class="path-label">' + p.label + '</span><span class="path-status" style="color:var(--c-' + p.color + ')">' + p.status + '</span>';
+    wrap.appendChild(row);
+  });
+  container.appendChild(wrap);
+})();
+
+function triggerPathEval() {
+  var rows = document.querySelectorAll('#anim-patheval .path-row');
+  rows.forEach(function(r, i) {
+    setTimeout(function() { r.classList.add('on'); }, i * 350);
+  });
+}
+function resetPathEval() {
+  document.querySelectorAll('#anim-patheval .path-row').forEach(function(r) { r.classList.remove('on'); });
+}
+
+// CodeCleaner - mini pipeline + progress
+(function buildCodeCleaner() {
+  var container = document.getElementById('anim-codecleaner');
+  if (!container) return;
+  container.innerHTML = '<div class="mini-pipe"><span class="mini-pipe-stage">Benchmark</span><span class="mini-pipe-sep">&rarr;</span><span class="mini-pipe-stage">11 Refactoring Ops</span><span class="mini-pipe-sep">&rarr;</span><span class="mini-pipe-stage">Clean Benchmark</span></div><div class="mini-progress"><div class="mini-progress-fill" id="ccProgress"></div></div><div class="mini-progress-label">Contamination removed: <span id="ccPct">0</span>%</div>';
+})();
+
+function triggerCodeCleaner() {
+  var stages = document.querySelectorAll('#anim-codecleaner .mini-pipe-stage');
+  var seps = document.querySelectorAll('#anim-codecleaner .mini-pipe-sep');
+  var fill = document.getElementById('ccProgress');
+  var pct = document.getElementById('ccPct');
+  stages.forEach(function(s, i) { setTimeout(function() { s.classList.add('on'); }, i * 400); });
+  seps.forEach(function(s, i) { setTimeout(function() { s.classList.add('on'); }, i * 400 + 200); });
+  setTimeout(function() {
+    if (fill) fill.style.width = '65%';
+    if (pct) countUp(pct, 65, 1000, '');
+  }, 1200);
+}
+function resetCodeCleaner() {
+  document.querySelectorAll('#anim-codecleaner .mini-pipe-stage').forEach(function(s) { s.classList.remove('on'); });
+  document.querySelectorAll('#anim-codecleaner .mini-pipe-sep').forEach(function(s) { s.classList.remove('on'); });
+  var fill = document.getElementById('ccProgress');
+  var pct = document.getElementById('ccPct');
+  if (fill) fill.style.width = '0';
+  if (pct) pct.textContent = '0';
+}
+
+// Data Contamination - comparison bars
+(function buildContamination() {
+  var container = document.getElementById('anim-contamination');
+  if (!container) return;
+  container.innerHTML = '<div class="compare-bars"><div class="compare-row"><span class="compare-label">Expected</span><div class="compare-track"><div class="compare-fill expected" id="contExp"></div></div><span class="compare-val" id="contExpVal">0%</span></div><div class="compare-row"><span class="compare-label">Actual</span><div class="compare-track"><div class="compare-fill actual" id="contAct"></div></div><span class="compare-val" id="contActVal">0%</span></div></div><div class="compare-warning" id="contWarn">&#9888; Counterintuitive: refactoring sometimes improves model performance</div>';
+})();
+
+function triggerContamination() {
+  var exp = document.getElementById('contExp');
+  var act = document.getElementById('contAct');
+  var warn = document.getElementById('contWarn');
+  setTimeout(function() { if (exp) exp.style.width = '35%'; document.getElementById('contExpVal').textContent = '↓ 35%'; }, 300);
+  setTimeout(function() { if (act) act.style.width = '48%'; document.getElementById('contActVal').textContent = '↑ 48%'; }, 800);
+  setTimeout(function() { if (warn) warn.classList.add('on'); }, 1400);
+}
+function resetContamination() {
+  var exp = document.getElementById('contExp');
+  var act = document.getElementById('contAct');
+  var warn = document.getElementById('contWarn');
+  if (exp) exp.style.width = '0';
+  if (act) act.style.width = '0';
+  if (warn) warn.classList.remove('on');
+  var v1 = document.getElementById('contExpVal');
+  var v2 = document.getElementById('contActVal');
+  if (v1) v1.textContent = '0%';
+  if (v2) v2.textContent = '0%';
+}
+
+// PseudoEval - split diagram
+(function buildPseudoEval() {
+  var container = document.getElementById('anim-pseudoeval');
+  if (!container) return;
+  container.innerHTML = '<div class="split-diagram"><div class="split-side" id="splitLeft"><div class="split-label">Problem-Solving Bottleneck</div><div class="split-lang">Python</div><div class="split-note">Struggles with algorithmic reasoning</div></div><div class="split-side" id="splitRight"><div class="split-label">Language-Coding Bottleneck</div><div class="split-lang">Rust</div><div class="split-note">Struggles with type system &amp; ownership</div></div></div>';
+})();
+
+function triggerPseudoEval() {
+  setTimeout(function() { var el = document.getElementById('splitLeft'); if (el) el.classList.add('on'); }, 200);
+  setTimeout(function() { var el = document.getElementById('splitRight'); if (el) el.classList.add('on'); }, 600);
+}
+function resetPseudoEval() {
+  var l = document.getElementById('splitLeft'); if (l) l.classList.remove('on');
+  var r = document.getElementById('splitRight'); if (r) r.classList.remove('on');
+}
+
+// FeedbackEval - feedback loop
+(function buildFeedbackEval() {
+  var container = document.getElementById('anim-feedbackeval');
+  if (!container) return;
+  container.innerHTML = '<div class="feedback-loop"><span class="fb-node">Bug</span><span class="fb-arrow">&rarr;</span><span class="fb-node">Feedback</span><span class="fb-arrow">&rarr;</span><span class="fb-node">LLM</span><span class="fb-arrow">&rarr;</span><span class="fb-node success">Fix</span></div><div class="fb-rate" id="fbRate">63.6% success (mixed feedback)</div>';
+})();
+
+function triggerFeedbackEval() {
+  var nodes = document.querySelectorAll('#anim-feedbackeval .fb-node');
+  var arrows = document.querySelectorAll('#anim-feedbackeval .fb-arrow');
+  nodes.forEach(function(n, i) { setTimeout(function() { n.classList.add('on'); }, i * 300); });
+  arrows.forEach(function(a, i) { setTimeout(function() { a.classList.add('on'); }, i * 300 + 150); });
+  setTimeout(function() { var r = document.getElementById('fbRate'); if (r) r.classList.add('on'); }, 1400);
+}
+function resetFeedbackEval() {
+  document.querySelectorAll('#anim-feedbackeval .fb-node').forEach(function(n) { n.classList.remove('on'); });
+  document.querySelectorAll('#anim-feedbackeval .fb-arrow').forEach(function(a) { a.classList.remove('on'); });
+  var r = document.getElementById('fbRate'); if (r) r.classList.remove('on');
+}
+
+// Register compact triggers
+(function() {
+  var compactTriggers = [
+    { sel: '#sec-domaineval', fn: triggerDomainEval, reset: resetDomainEval },
+    { sel: '#sec-patheval', fn: triggerPathEval, reset: resetPathEval },
+    { sel: '#sec-codecleaner', fn: triggerCodeCleaner, reset: resetCodeCleaner },
+    { sel: '#sec-contamination', fn: triggerContamination, reset: resetContamination },
+    { sel: '#sec-pseudoeval', fn: triggerPseudoEval, reset: resetPseudoEval },
+    { sel: '#sec-feedbackeval', fn: triggerFeedbackEval, reset: resetFeedbackEval }
+  ];
+  compactTriggers.forEach(function(t) {
+    var el = document.querySelector(t.sel);
+    if (!el) return;
+    el.addEventListener('mouseenter', function() { t.reset(); t.fn(); });
+    el.addEventListener('mouseleave', t.reset);
+  });
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        obs.unobserve(e.target);
+        var match = compactTriggers.find(function(t) { return document.querySelector(t.sel) === e.target; });
+        if (match) match.fn();
+      });
+    }, { threshold: 0.3 });
+    compactTriggers.forEach(function(t) { var el = document.querySelector(t.sel); if (el) obs.observe(el); });
+  }
+})();
+
+// ══════════════════════════════════════════
+// Nav active-link highlight on scroll
+// ══════════════════════════════════════════
+(function() {
+  var sections = ['sec-survey','sec-cruxeval','sec-sweabs','sec-javabench','sec-domaineval','sec-patheval','sec-codecleaner','sec-contamination','sec-pseudoeval','sec-feedbackeval'];
+  var links = {};
+  document.querySelectorAll('.nav-link').forEach(function(a) {
+    var id = a.getAttribute('href').slice(1);
+    links[id] = a;
+  });
+  if (!('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      var link = links[e.target.id];
+      if (!link) return;
+      if (e.isIntersecting) {
+        Object.keys(links).forEach(function(k) { links[k].classList.remove('active'); });
+        link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(function(id) { var el = document.getElementById(id); if (el) obs.observe(el); });
+})();
+
+// ══════════════════════════════════════════
+// GSAP entrance animations
+// ══════════════════════════════════════════
+(function() {
+  if (typeof gsap === 'undefined') return;
+  if (PREFERS_REDUCED) {
+    document.querySelectorAll('.gsap-fade').forEach(function(el) { el.style.opacity = 1; el.style.transform = 'none'; });
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.hero-badge', { opacity: 0, y: 15, duration: 0.6, delay: 0.2 });
+  gsap.from('.hero h1', { opacity: 0, y: 20, duration: 0.7, delay: 0.4 });
+  gsap.from('.hero-sub', { opacity: 0, y: 15, duration: 0.6, delay: 0.7 });
+  gsap.from('.hero-stat', { opacity: 0, y: 18, duration: 0.5, stagger: 0.12, delay: 0.9 });
+
+  document.querySelectorAll('.gsap-fade').forEach(function(el) {
+    gsap.to(el, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+  });
+
+  setTimeout(function() {
+    document.querySelectorAll('.gsap-fade').forEach(function(el) {
+      if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
+        gsap.to(el, { opacity: 1, y: 0, duration: 0.4 });
+      }
+    });
+  }, 3000);
+})();
+
+// ══════════════════════════════════════════
+// Hero animated dot-grid background (canvas)
+// ══════════════════════════════════════════
+(function() {
+  var canvas = document.getElementById('heroCanvas');
+  if (!canvas || PREFERS_REDUCED) return;
+  var ctx = canvas.getContext('2d');
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var w, h, cols, rows, dots = [];
+  var GAP = 40, R = 1.6;
+
+  function accentColor() {
+    return getComputedStyle(document.documentElement).getPropertyValue('--primary').trim() || '#0000C4';
+  }
+
+  function resize() {
+    var rect = canvas.getBoundingClientRect();
+    w = rect.width; h = rect.height;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = Math.ceil(w / GAP) + 1;
+    rows = Math.ceil(h / GAP) + 1;
+    dots = [];
+    for (var y = 0; y < rows; y++) {
+      for (var x = 0; x < cols; x++) {
+        dots.push({ x: x * GAP, y: y * GAP, phase: (x + y) * 0.35 });
+      }
+    }
+  }
+
+  var t = 0;
+  function frame() {
+    if (!w) { requestAnimationFrame(frame); return; }
+    ctx.clearRect(0, 0, w, h);
+    t += 0.02;
+    var col = accentColor();
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      // ripple wave across the grid
+      var wave = Math.sin(t - d.phase);
+      var a = 0.06 + 0.10 * (wave * 0.5 + 0.5);
+      var rr = R + 0.9 * (wave * 0.5 + 0.5);
+      ctx.beginPath();
+      ctx.fillStyle = col;
+      ctx.globalAlpha = a;
+      ctx.arc(d.x, d.y, rr, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  frame();
+})();

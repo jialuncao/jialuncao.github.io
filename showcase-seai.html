@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SE for AI — Jialun Cao</title>
+<link rel="stylesheet" href="assets/css/showcase-seai.css">
+<link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a href="playground.html" class="nav-back">&larr; Playground</a>
+  <span class="nav-title"><span class="pulse-dot"></span> SE for AI</span>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#sec-deepfd" class="nav-link">DeepFD</a>
+      <a href="#sec-semmt" class="nav-link">SemMT</a>
+      <a href="#sec-crest" class="nav-link">Coreference</a>
+      <a href="#sec-comet" class="nav-link">COMET</a>
+      <a href="#sec-mradopt" class="nav-link">MR-Adopt</a>
+      <a href="#sec-sembic" class="nav-link">SemBIC</a>
+      <a href="#sec-dllens" class="nav-link">DLLens</a>
+      <a href="#sec-icm" class="nav-link">ICM</a>
+    </div>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9790; Light</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="live-dot"></span> Research Topic 03 &middot; Diagnostics Online</div>
+    <h1>Software Engineering <span class="hl">for AI</span></h1>
+    <p class="hero-sub">Testing, diagnosing, and localizing faults in AI systems &mdash; from deep learning programs and libraries to machine translation and coreference resolution.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Papers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Venues</div></div>
+      <div class="hero-stat"><div class="hero-stat-num sm">ACM SIGSOFT<br>Outstanding Dissertation</div><div class="hero-stat-label">Award</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to run diagnostics<br>&#9660;</div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 1: DeepFD -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-deepfd">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Fault Diagnosis</div>
+    <span class="sc-venue">ICSE '22</span>
+    <h2 class="sc-title">DeepFD: Automated Fault Diagnosis and Localization for Deep Learning Programs</h2>
+    <div class="sc-authors"><span class="me">Jialun Cao</span>, Meiziniu Li, Xiao Chen, Ming Wen, Yongqiang Tian, Bo Wu, Shing-chi Cheung</div>
+    <p class="sc-desc">Deep learning programs fail in silent, non-crashing ways &mdash; a wrong loss function, a learning rate that's too large, or a mismatched activation. DeepFD frames diagnosis as a three-step learning problem &mdash; diagnostic feature extraction, fault diagnosis, and fault localization &mdash; correctly diagnosing 52% of faulty programs (vs. 27% for prior state-of-the-art) and localizing 42% (vs. 23%).</p>
+    <div class="sc-links">
+      <a href="https://dl.acm.org/doi/10.1145/3510003.3510099" class="sc-link">Paper</a>
+      <a href="https://github.com/ArabelaTso/DeepFD" class="sc-link">Code</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> DeepFD correctly diagnoses 52% of faulty DL programs (vs. 27% SOTA) and localizes 42% of faults (vs. 23%) using a learning-based three-step pipeline.</div>
+
+    <div class="nn-wrap">
+      <svg class="nn-diag-svg" id="nnSvg" viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg">
+        <rect class="nn-scanbar" id="nnScanbar" x="0" y="0" width="120" height="320"/>
+        <g id="nnEdges"></g>
+        <g id="nnNodes"></g>
+        <g id="nnLabels"></g>
+      </svg>
+
+      <div class="diag-panel">
+        <div class="diag-panel-header">
+          <span class="diag-dots"><span></span><span></span><span></span></span>
+          DeepFD Diagnostic Console
+          <span class="diag-status" id="diagStatus">idle</span>
+        </div>
+        <div class="diag-log" id="diagLog"></div>
+        <div class="diag-progress"><div class="diag-progress-bar" id="diagBar"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 2: SemMT -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-semmt">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Metamorphic Testing</div>
+    <span class="sc-venue">TOSEM '22</span>
+    <h2 class="sc-title">SemMT: Semantic-Based Testing for Machine Translation Systems</h2>
+    <div class="sc-authors"><span class="me">Jialun Cao</span>, Meiziniu Li, Yeting Li, Ming Wen, Shing-chi Cheung</div>
+    <p class="sc-desc">Without reference translations, how do you know a translator is wrong? SemMT round-trips a sentence through a translation system and measures the <em>semantic</em> distance between input and output &mdash; capturing logical and numeric constraints via regex and DFA &mdash; when meaning drifts, a bug is exposed. SemMT improves accuracy by 21% and F-score by 23% over prior work.</p>
+    <div class="sc-links">
+      <a href="https://dl.acm.org/doi/10.1145/3490488" class="sc-link">Paper</a>
+      <a href="https://github.com/ArabelaTso/SemMT" class="sc-link">Code</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Round-trip semantic distance — capturing logical and numeric constraints via regex and DFA — exposes translation bugs with 21% better accuracy and 23% better F-score.</div>
+
+    <div class="semmt-input">
+      <span class="lbl">Source (EN)</span>
+      The <span class="amb">bank</span> is by the river.
+    </div>
+    <div class="semmt-fork">&#9601;&#9601;&#9601; round-trip translation &#9601;&#9601;&#9601;</div>
+
+    <div class="semmt-paths">
+      <!-- Path A: correct -->
+      <div class="trans-path" id="pathA">
+        <div class="trans-engine">
+          <span class="eng-ico" style="background:#4285f4">G</span> Translator A
+        </div>
+        <div class="trans-body">
+          <div class="trans-round">EN &rarr; ZH &rarr; EN</div>
+          <div class="trans-line"><span class="step">ZH</span><span class="txt">河岸边有一家银行... &rarr; 河边有<span class="diff-ok">河岸</span></span></div>
+          <div class="trans-line"><span class="step">EN'</span><span class="txt">The <span class="diff-ok">riverbank</span> is by the river.</span></div>
+          <div class="sem-meter">
+            <div class="sem-meter-top"><span>semantic similarity</span><span class="sem-meter-val" id="simA">&mdash;</span></div>
+            <div class="sem-meter-track"><div class="sem-meter-fill good" id="fillA"></div></div>
+          </div>
+          <div class="trans-verdict pass" id="verdictA">&#10003; Meaning preserved</div>
+        </div>
+      </div>
+
+      <!-- Path B: buggy -->
+      <div class="trans-path" id="pathB">
+        <div class="trans-engine">
+          <span class="eng-ico" style="background:#0f2b46">D</span> Translator B
+        </div>
+        <div class="trans-body">
+          <div class="trans-round">EN &rarr; ZH &rarr; EN</div>
+          <div class="trans-line"><span class="step">ZH</span><span class="txt">银行在河边 &rarr; <span class="diff-bad">银行</span> (financial)</span></div>
+          <div class="trans-line"><span class="step">EN'</span><span class="txt">The <span class="diff-bad">financial institution</span> is by the river.</span></div>
+          <div class="sem-meter">
+            <div class="sem-meter-top"><span>semantic similarity</span><span class="sem-meter-val" id="simB">&mdash;</span></div>
+            <div class="sem-meter-track"><div class="sem-meter-fill bad" id="fillB"></div></div>
+          </div>
+          <div class="trans-verdict fail" id="verdictB">&#9888; Semantic drift &mdash; bug found</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 3: Crest / Coreference -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-crest">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Unlabeled Testing</div>
+    <span class="sc-venue">FSE '23</span>
+    <h2 class="sc-title">Testing Coreference Resolution Systems without Labeled Test Sets</h2>
+    <div class="sc-authors"><span class="me">Jialun Cao</span>, Yaojie Lu, Ming Wen, Shing-Chi Cheung</div>
+    <p class="sc-desc">Coreference systems link pronouns to the entities they refer to. Crest builds metamorphic test pairs from constituency and dependency relations that must preserve the same coreference &mdash; with no labeled test set required &mdash; and flags a bug whenever the predicted links become inconsistent across the pair. On 1,000 CoNLL-2012 sentences, Crest reaches 100% precision, versus 63&ndash;75% for prior baselines.</p>
+    <div class="sc-links">
+      <a href="https://dl.acm.org/doi/pdf/10.1145/3611643.3616258" class="sc-link">Paper</a>
+      <a href="https://github.com/ArabelaTso/Crest-artifacts" class="sc-link">Code</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Metamorphic test pairs built from constituency and dependency relations achieve 100% precision on coreference bugs with zero labeled test data.</div>
+
+    <div class="crest-wrap">
+      <div class="crest-toolbar">
+        <span class="crest-state-badge" id="crestBadge">Original passage</span>
+        <span class="crest-bugcount">bugs found: <b id="crestBugs">0</b></span>
+      </div>
+
+      <div class="crest-stage">
+        <svg class="crest-links" id="crestLinks" preserveAspectRatio="none"></svg>
+        <div class="crest-passage" id="crestPassage">
+          <span class="mention e1" data-id="john">John</span> hired
+          <span class="mention e2" data-id="mary">Mary</span> because
+          <span class="mention pro" data-id="he">he</span> believed
+          <span class="mention pro" data-id="she">she</span> was the most talented engineer on the team.
+        </div>
+      </div>
+
+      <div class="crest-legend">
+        <span><span class="sw" style="background:var(--primary)"></span> Entity A links</span>
+        <span><span class="sw" style="background:var(--pass)"></span> Entity B links</span>
+        <span><span class="sw" style="background:var(--bug)"></span> Inconsistency (bug)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 4: COMET -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-comet">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Coverage-guided Generation</div>
+    <span class="sc-venue">TOSEM '23</span>
+    <h2 class="sc-title">COMET: Coverage-guided Model Generation for DL Library Testing</h2>
+    <div class="sc-authors">Meiziniu Li, <span class="me">Jialun Cao</span>, Yongqiang Tian, Tsz On Li, Ming Wen, Shing-Chi Cheung</div>
+    <p class="sc-desc">Deep learning libraries are tested by feeding them models &mdash; but random models cover little. COMET generates DL models guided by coverage feedback, steadily exercising more layer inputs, parameter values, and layer sequences &mdash; surfacing 32 new bugs across 8 DL libraries, including TensorFlow and MXNet.</p>
+    <div class="sc-links">
+      <a href="https://dl.acm.org/doi/10.1145/3583566" class="sc-link">Paper</a>
+      <a href="https://github.com/maybeLee/COMET" class="sc-link">Code</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Coverage-guided model generation surfaces 32 new bugs across 8 DL libraries including TensorFlow and MXNet.</div>
+
+    <div class="comet-grid-wrap">
+      <div class="comet-panel">
+        <div class="comet-panel-head">
+          <div class="comet-panel-title">&#9638; Test Matrix</div>
+          <div class="comet-cov-pill"><span id="covPct">0</span>% layer-input cov.</div>
+        </div>
+        <div class="cov-grid" id="covGrid"></div>
+        <div class="cov-legend">
+          <span><span class="sw" style="background:var(--pass)"></span> passed</span>
+          <span><span class="sw" style="background:var(--bug)"></span> bug found</span>
+          <span><span class="sw" style="background:var(--gray-200)"></span> pending</span>
+        </div>
+        <div class="cov-counter-row">
+          <div class="cov-counter-item">
+            <div class="cov-counter" id="covModels">0</div>
+            <div class="cov-counter-label">models (6h)</div>
+          </div>
+          <div class="cov-counter-item">
+            <div class="cov-counter cov-counter-bug" id="covBugs">0</div>
+            <div class="cov-counter-label">new bugs (8 libs)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="comet-panel">
+        <div class="comet-panel-head">
+          <div class="comet-panel-title">&#9776; Coverage by Dimension</div>
+        </div>
+        <div class="bar-chart" id="barChart">
+          <div class="bar-row"><span class="bar-label">Layer Inputs</span><div class="bar-track"><div class="bar-fill" data-pct="69.7"></div></div><span class="bar-val">0%</span></div>
+          <div class="bar-row"><span class="bar-label">Layer Params</span><div class="bar-track"><div class="bar-fill" data-pct="50.2"></div></div><span class="bar-val">0%</span></div>
+          <div class="bar-row"><span class="bar-label">Layer Seqs</span><div class="bar-track"><div class="bar-fill" data-pct="39.0"></div></div><span class="bar-val">0%</span></div>
+        </div>
+        <div class="bar-note">COMET vs. baseline &mdash; 34.1% / 25.9% / 15.6%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 5: MR-Adopt -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-mradopt">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Metamorphic Testing</div>
+    <span class="sc-venue">ASE '24</span>
+    <h2 class="sc-title">MR-Adopt: Automatic Deduction of Input Transformation Function for Metamorphic Testing</h2>
+    <div class="sc-authors">Congying Xu, Songqiang Chen, Jiarong Wu, Valerio Terragni, Shing-chi Cheung, Hengcheng Zhu, <span class="me">Jialun Cao (Corresponding)</span></div>
+    <p class="sc-desc">Uses LLMs to automatically generate input transformations for encoded metamorphic relations, making them reusable with new source inputs.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/pdf/2408.15815" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Successfully produces transformations for 72% of encoded MRs, outperforming vanilla GPT-3.5 by 33.33% and boosting mutation scores by ~19%.</div>
+
+    <div class="compact-anim" id="mradoptAnim">
+      <div class="mini-pipe" id="mradoptPipe">
+        <div class="mini-pipe-stage" data-idx="0">Encoded MR</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-idx="1">LLM Deduction</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-idx="2">Transformation Function</div>
+      </div>
+      <div class="mini-stat" id="mradoptStat">72% applicable</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 6: SemBIC -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-sembic">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Bug-inducing Commits</div>
+    <span class="sc-venue">FSE '25</span>
+    <h2 class="sc-title">SemBIC: Semantic-aware Identification of Bug-inducing Commits</h2>
+    <div class="sc-authors">Xiao Chen, Hengcheng Zhu, <span class="me">Jialun Cao (Corresponding)</span>, Ming Wen, Shing-Chi Cheung</div>
+    <p class="sc-desc">Identifies bug-inducing commits using semantic analysis rather than relying solely on syntactic diff or traditional SZZ algorithms.</p>
+    <div class="sc-links">
+      <a href="https://scholar.henryhc.net/files/publications/2025/FSE2025-SemBIC.pdf" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Semantic-aware analysis significantly outperforms syntactic-only approaches in pinpointing the exact commit that introduced a bug.</div>
+
+    <div class="compact-anim" id="sembicAnim">
+      <div class="commit-timeline" id="sembicTimeline"></div>
+      <div class="mini-pipe" id="sembicPipe" style="margin-top:1rem;">
+        <div class="mini-pipe-stage" data-idx="0">Semantic Analysis</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-idx="1">Bug-inducing Commit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 7: DLLens -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-dllens">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Differential Testing</div>
+    <span class="sc-venue">TOSEM '25</span>
+    <h2 class="sc-title">Enhancing Differential Testing with LLMs for Testing Deep Learning Libraries</h2>
+    <div class="sc-authors">Meiziniu Li, Dongze Li, Jianmeng Liu, <span class="me">Jialun Cao</span>, Yongqiang Tian, Shing-Chi Cheung</div>
+    <p class="sc-desc">DLLens uses LLMs to find equivalent API implementations across DL libraries and generate diverse test inputs to uncover bugs.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2406.07944" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Synthesized counterparts for 1.84&times; more APIs than prior methods and discovered 71 bugs (46 confirmed new, 10 already patched).</div>
+
+    <div class="compact-anim" id="dllensAnim">
+      <div class="lib-boxes" id="dllensBoxes">
+        <div class="lib-box" data-idx="0">TensorFlow</div>
+        <div class="lib-arrow">&harr;</div>
+        <div class="lib-box" data-idx="1">PyTorch</div>
+      </div>
+      <div class="mini-pipe" id="dllensPipe">
+        <div class="mini-pipe-stage" data-idx="0">API Mapping</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-idx="1">Test Generation</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-idx="2">Bug Detection</div>
+      </div>
+      <div class="mini-badge bug" id="dllensBugs">71 bugs found</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 8: ICM-Assistant -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-icm">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Content Moderation</div>
+    <span class="sc-venue">AAAI '25</span>
+    <h2 class="sc-title">ICM-Assistant: Instruction-tuning Multimodal LLMs for Rule-based Explainable Image Content Moderation</h2>
+    <div class="sc-authors">Mengyang Wu, Yuzhi Zhao, <span class="me">Jialun Cao</span>, Mingjie Xu, Zhongming Jiang, Xuehui Wang, Qinbin Li, Guangneng Hu, Shengchao Qin, Chi-Wing Fu</div>
+    <p class="sc-desc">A multimodal AI system that applies human-defined moderation rules to classify and explain controversial online images.</p>
+    <div class="sc-links">
+      <a href="https://arxiv.org/abs/2412.18216" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> ICM-Assistant boosts moderation classification by 36.8% and explanation quality by 26.6% over existing MLLMs.</div>
+
+    <div class="compact-anim" id="icmAnim">
+      <div class="mini-pipe" id="icmPipe">
+        <div class="mini-pipe-stage" data-idx="0">Image</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-idx="1">Rules</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-idx="2">MLLM</div>
+        <span class="mini-pipe-sep">&rarr;</span>
+        <div class="mini-pipe-stage" data-idx="3">Classification + Explanation</div>
+      </div>
+      <div class="mini-stat" id="icmStat">+36.8%</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">Copyright &copy; 2026 Jialun Cao &middot; <a href="index.html">Homepage</a> &middot; <a href="playground.html">Playground</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/showcase-seai.js"></script>
+</body>
+</html>
