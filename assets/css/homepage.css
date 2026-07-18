@@ -1086,10 +1086,10 @@
   .kl-pill--method { border-color: hsla(204,100%,57%,0.3); background: hsla(204,100%,57%,0.1); color: hsl(204,100%,42%); }
   .kl-pill--finding { border-color: hsla(152,56%,39%,0.3); background: hsla(152,56%,39%,0.1); color: hsl(152,56%,30%); }
   .kl-divider {
-    position: absolute; top: -10%; bottom: -10%; left: 3%; width: 60px;
+    position: absolute; top: 0; bottom: 0; left: 3%; width: 2px;
     transform: translateX(-50%); pointer-events: none; z-index: 3;
-    background: linear-gradient(90deg, rgba(31,57,255,0) 0%, rgba(31,57,255,0.15) 30%, rgba(31,57,255,0.4) 50%, rgba(31,57,255,0.15) 70%, rgba(31,57,255,0) 100%);
-    box-shadow: 0 0 16px rgba(31,57,255,0.25), 0 0 40px rgba(31,57,255,0.12);
+    background: rgba(31,57,255,0.6);
+    box-shadow: 0 0 8px rgba(31,57,255,0.5), 0 0 20px rgba(31,57,255,0.25);
     transition: left 0.06s linear;
   }
 
@@ -1122,9 +1122,9 @@
   .vf-acsl-placeholder { visibility: hidden; height: 1.65em; }
   .vf-cm { color: #34d399; }
   .vf-divider {
-    position: absolute; top: -10%; bottom: -10%; left: 3%; width: 50px;
+    position: absolute; top: 0; bottom: 0; left: 3%; width: 2px;
     transform: translateX(-50%); pointer-events: none; z-index: 3;
-    background: linear-gradient(90deg, rgba(52,211,153,0) 0%, rgba(52,211,153,0.12) 30%, rgba(52,211,153,0.35) 50%, rgba(52,211,153,0.12) 70%, rgba(52,211,153,0) 100%);
-    box-shadow: 0 0 14px rgba(52,211,153,0.2);
+    background: rgba(52,211,153,0.6);
+    box-shadow: 0 0 8px rgba(52,211,153,0.5), 0 0 20px rgba(52,211,153,0.25);
     transition: left 0.06s linear;
   }
