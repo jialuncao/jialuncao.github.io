@@ -425,6 +425,7 @@
   .pub-item {
     padding: 0.35rem 0; border-bottom: 1px solid var(--gray-100);
     font-size: 0.85rem; line-height: 1.55;
+    display: flex; align-items: baseline; gap: 0;
   }
   .pub-item:last-child { border-bottom: none; }
   .pub-item a { font-size: 0.78rem; }
@@ -434,10 +435,7 @@
     border-radius: 4px; background: rgba(52,211,153,0.08); color: #2a9d6a;
     border: 1px solid rgba(52,211,153,0.2); margin-right: 0.4rem;
     vertical-align: middle; letter-spacing: 0.2px;
-    width: 5.8rem; text-align: center; flex-shrink: 0;
-  }
-  .pub-item {
-    display: flex; align-items: baseline; gap: 0;
+    min-width: 5.8rem; width: 5.8rem; text-align: center; flex-shrink: 0;
   }
   .me { color: var(--accent-warm); font-weight: 600; }
 
