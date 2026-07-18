@@ -437,7 +437,7 @@
     align-self: baseline; margin: 0.35rem 0.5rem 0.35rem 0;
     line-height: 1.4;
   }
-  .pub-venue-arxiv { background: #2a9d6a; }
+  .pub-venue-arxiv { background: #6b9d85; }
   .pub-text {
     text-align: left; padding: 0.35rem 0;
     border-bottom: 1px solid var(--gray-100);
