@@ -460,32 +460,54 @@ function resetPathEval() {
   document.querySelectorAll('#anim-patheval .path-row').forEach(function(r) { r.classList.remove('on'); });
 }
 
-// CodeCleaner - mini pipeline + progress
-(function buildCodeCleaner() {
-  var container = document.getElementById('anim-codecleaner');
-  if (!container) return;
-  container.innerHTML = '<div class="mini-pipe"><span class="mini-pipe-stage">Benchmark</span><span class="mini-pipe-sep">&rarr;</span><span class="mini-pipe-stage">11 Refactoring Ops</span><span class="mini-pipe-sep">&rarr;</span><span class="mini-pipe-stage">Clean Benchmark</span></div><div class="mini-progress"><div class="mini-progress-fill" id="ccProgress"></div></div><div class="mini-progress-label">Contamination removed: <span id="ccPct">0</span>%</div>';
-})();
+// CodeCleaner - refactoring example + operator grid + reduction bars
+var ccTimers = [];
+function ccLater(fn, ms) { var id = setTimeout(fn, ms); ccTimers.push(id); return id; }
+function ccClearTimers() { ccTimers.forEach(clearTimeout); ccTimers = []; }
 
 function triggerCodeCleaner() {
-  var stages = document.querySelectorAll('#anim-codecleaner .mini-pipe-stage');
-  var seps = document.querySelectorAll('#anim-codecleaner .mini-pipe-sep');
-  var fill = document.getElementById('ccProgress');
-  var pct = document.getElementById('ccPct');
-  stages.forEach(function(s, i) { setTimeout(function() { s.classList.add('on'); }, i * 400); });
-  seps.forEach(function(s, i) { setTimeout(function() { s.classList.add('on'); }, i * 400 + 200); });
-  setTimeout(function() {
-    if (fill) fill.style.width = '65%';
-    if (pct) countUp(pct, 65, 1000, '');
-  }, 1200);
+  // Example transform steps
+  var steps = ['ccOrig', 'ccArr1', 'ccStyl', 'ccArr2', 'ccIff'];
+  steps.forEach(function(id, i) {
+    ccLater(function() { var el = document.getElementById(id); if (el) el.classList.add('on'); }, 200 + i * 500);
+  });
+
+  // Operator chips
+  var chips = document.querySelectorAll('#ccOps .cc-op-chip');
+  chips.forEach(function(chip, i) {
+    ccLater(function() { chip.classList.add('on'); }, 2800 + i * 120);
+  });
+
+  // Before/after bars
+  ccLater(function() {
+    var before = document.getElementById('ccBefore');
+    var after = document.getElementById('ccAfter');
+    var bVal = document.getElementById('ccBeforeVal');
+    var aVal = document.getElementById('ccAfterVal');
+    var drop = document.getElementById('ccDrop');
+    if (before) before.style.width = '87%';
+    if (bVal) countUp(bVal, 87, 900, '%');
+    ccLater(function() {
+      if (after) after.style.width = '22%';
+      if (aVal) countUp(aVal, 22, 900, '%');
+      if (drop) countUp(drop, 65, 900, '%');
+    }, 600);
+  }, 4200);
 }
+
 function resetCodeCleaner() {
-  document.querySelectorAll('#anim-codecleaner .mini-pipe-stage').forEach(function(s) { s.classList.remove('on'); });
-  document.querySelectorAll('#anim-codecleaner .mini-pipe-sep').forEach(function(s) { s.classList.remove('on'); });
-  var fill = document.getElementById('ccProgress');
-  var pct = document.getElementById('ccPct');
-  if (fill) fill.style.width = '0';
-  if (pct) pct.textContent = '0';
+  ccClearTimers();
+  ['ccOrig','ccArr1','ccStyl','ccArr2','ccIff'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.classList.remove('on');
+  });
+  document.querySelectorAll('#ccOps .cc-op-chip').forEach(function(c) { c.classList.remove('on'); });
+  ['ccBefore','ccAfter'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.style.width = '0';
+  });
+  ['ccBeforeVal','ccAfterVal'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.textContent = '0%';
+  });
+  var drop = document.getElementById('ccDrop'); if (drop) drop.textContent = '0%';
 }
 
 // Data Contamination - comparison bars

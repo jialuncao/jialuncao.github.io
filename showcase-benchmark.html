@@ -265,7 +265,7 @@
     <div class="sc-eyebrow">More Work &middot; Multi-Domain</div>
     <span class="sc-venue">AAAI '25</span>
     <h2 class="sc-title">DomainEval: An Auto-Constructed Benchmark for Multi-Domain Code Generation</h2>
-    <div class="sc-authors">Qiming Zhu, <span class="me">Jialun Cao (Co-1st)</span>, Yaojie Lu, et al.</div>
+    <div class="sc-authors">Qiming Zhu, <span class="me">Jialun Cao (Co-1st)</span>, Yaojie Lu, Hongyu Lin, Xianpei Han, Ben He, Le Sun, Shing-Chi Cheung</div>
     <p class="sc-desc">An automatically constructed benchmark that evaluates LLMs across six specialized programming domains beyond typical algorithmic tasks.</p>
     <div class="sc-links"><a href="https://arxiv.org/pdf/2408.13204" class="sc-link">Paper</a></div>
     <div class="sc-takeaway"><span class="takeaway-icon">💡</span> LLMs excel at computation but struggle with cryptography and systems coding — the gap reaches 69 percentage points in some models.</div>
@@ -299,10 +299,97 @@
     <span class="sc-venue">Internetware '25</span>
     <h2 class="sc-title">CodeCleaner: Elevating Standards with A Robust Data Contamination Mitigation Toolkit</h2>
     <div class="sc-authors"><span class="me">Jialun Cao</span>, Songqiang Chen, Wuqi Zhang, Hau Ching Lo, Yeting Li, Shing-Chi Cheung</div>
-    <p class="sc-desc">An open-source toolkit using 11 code refactoring operators across multiple scales to mitigate data contamination in benchmarks.</p>
-    <div class="sc-links"><a href="https://arxiv.org/abs/2411.10842" class="sc-link">Paper</a></div>
-    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Applying all 11 refactoring operators achieves a 65% reduction in overlap between benchmarks and training data.</div>
-    <div class="compact-anim" id="anim-codecleaner"></div>
+    <p class="sc-desc">An open-source toolkit using <strong>11 code refactoring operators</strong> across method, class, and cross-class scales to mitigate data contamination in code LLM benchmarks. Overlap drops from 87% to 22%.</p>
+    <div class="sc-links"><a href="https://arxiv.org/abs/2411.10842" class="sc-link">Paper</a><a href="https://github.com/ArabelaTso/CodeCleaner-v1" class="sc-link">Code</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">&#128161;</span> Applying all 11 refactoring operators achieves a 65% reduction in overlap between benchmarks and training data.</div>
+
+    <!-- Motivating example: code transform -->
+    <div class="dash-card" style="margin-bottom:1rem;">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--primary)"></span> Refactoring Example</div>
+        <div class="dash-head-note">overlap &darr; step by step</div>
+      </div>
+      <div class="cc-example" id="ccExample">
+        <div class="cc-step" id="ccOrig">
+          <div class="cc-step-head"><span class="cc-step-tag">Original</span><span class="cc-overlap" id="ccOv1" style="color:var(--c-red)">40.98% overlap</span></div>
+          <div class="cc-code">
+            <div class="cc-code-line"><span class="syn-kw">def</span> <span class="fn">find_max</span>(items):</div>
+            <div class="cc-code-line">&nbsp; <span class="syn-kw">if</span> <span class="syn-kw">len</span>(items) == <span class="num">0</span>:</div>
+            <div class="cc-code-line">&nbsp;&nbsp;&nbsp; <span class="syn-kw">return</span> <span class="num">None</span></div>
+            <div class="cc-code-line">&nbsp; max_val = items[<span class="num">0</span>]</div>
+          </div>
+        </div>
+        <div class="cc-arrow" id="ccArr1">&darr; <span class="cc-op-tag">Styl</span></div>
+        <div class="cc-step" id="ccStyl">
+          <div class="cc-step-head"><span class="cc-step-tag" style="background:rgba(251,146,60,0.1);color:var(--c-amber)">+ Style Switch</span><span class="cc-overlap" id="ccOv2" style="color:var(--c-amber)">20.78% overlap</span></div>
+          <div class="cc-code">
+            <div class="cc-code-line"><span class="syn-kw">def</span> <span class="fn">findMax</span>(<span class="cc-hl">itemList</span>):</div>
+            <div class="cc-code-line">&nbsp; <span class="syn-kw">if</span> <span class="syn-kw">len</span>(<span class="cc-hl">itemList</span>) == <span class="num">0</span>:</div>
+            <div class="cc-code-line">&nbsp;&nbsp;&nbsp; <span class="syn-kw">return</span> <span class="num">None</span></div>
+            <div class="cc-code-line">&nbsp; <span class="cc-hl">maxVal</span> = <span class="cc-hl">itemList</span>[<span class="num">0</span>]</div>
+          </div>
+        </div>
+        <div class="cc-arrow" id="ccArr2">&darr; <span class="cc-op-tag">IFF</span></div>
+        <div class="cc-step" id="ccIff">
+          <div class="cc-step-head"><span class="cc-step-tag" style="background:rgba(52,211,153,0.1);color:var(--c-green)">+ If-Flip</span><span class="cc-overlap" id="ccOv3" style="color:var(--c-green)">0.0% overlap</span></div>
+          <div class="cc-code">
+            <div class="cc-code-line"><span class="syn-kw">def</span> <span class="fn">findMax</span>(itemList):</div>
+            <div class="cc-code-line">&nbsp; <span class="syn-kw">if</span> <span class="cc-hl"><span class="syn-kw">not</span> (<span class="syn-kw">len</span>(itemList) == 0)</span>:</div>
+            <div class="cc-code-line">&nbsp;&nbsp;&nbsp; maxVal = itemList[<span class="num">0</span>]</div>
+            <div class="cc-code-line">&nbsp; <span class="syn-kw">else</span>: <span class="syn-kw">return</span> <span class="num">None</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 operators grid -->
+    <div class="dash-card" style="margin-bottom:1rem;">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--c-green)"></span> 11 Refactoring Operators</div>
+        <div class="dash-head-note">3 scales</div>
+      </div>
+      <div class="cc-ops" id="ccOps">
+        <div class="cc-op-group">
+          <div class="cc-op-group-label">Syntactic</div>
+          <div class="cc-op-chip" id="ccOpIFF">IFF <span class="cc-op-desc">If-Flip</span></div>
+          <div class="cc-op-chip" id="ccOpLoop">Loop <span class="cc-op-desc">for&harr;while</span></div>
+          <div class="cc-op-chip" id="ccOpIter">Iter <span class="cc-op-desc">index&harr;elem</span></div>
+          <div class="cc-op-chip" id="ccOpComm">Comm <span class="cc-op-desc">swap ops</span></div>
+          <div class="cc-op-chip cc-class" id="ccOpShuf">Shuf <span class="cc-op-desc">class-lvl</span></div>
+        </div>
+        <div class="cc-op-group">
+          <div class="cc-op-group-label">Semantic</div>
+          <div class="cc-op-chip" id="ccOpParam">Param <span class="cc-op-desc">+*args</span></div>
+          <div class="cc-op-chip" id="ccOpDeco">Deco <span class="cc-op-desc">@timing</span></div>
+          <div class="cc-op-chip" id="ccOpRenm">Renm <span class="cc-op-desc">synonyms</span></div>
+          <div class="cc-op-chip cc-cross" id="ccOpInhr">Inhr <span class="cc-op-desc">cross-cls</span></div>
+        </div>
+        <div class="cc-op-group">
+          <div class="cc-op-group-label">Style</div>
+          <div class="cc-op-chip" id="ccOpNorm">Norm <span class="cc-op-desc">normalize</span></div>
+          <div class="cc-op-chip" id="ccOpStyl">Styl <span class="cc-op-desc">case flip</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contamination reduction progress -->
+    <div class="dash-card">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--c-red)"></span> Contamination Reduction</div>
+        <div class="dash-head-note">87% &rarr; 22% overlap</div>
+      </div>
+      <div class="cc-reduction" id="ccReduction">
+        <div class="cc-before-after">
+          <div class="cc-ba-item"><span class="cc-ba-label">Before</span><div class="cc-ba-bar-track"><div class="cc-ba-bar before" id="ccBefore"></div></div><span class="cc-ba-val" id="ccBeforeVal">0%</span></div>
+          <div class="cc-ba-item"><span class="cc-ba-label">After</span><div class="cc-ba-bar-track"><div class="cc-ba-bar after" id="ccAfter"></div></div><span class="cc-ba-val" id="ccAfterVal">0%</span></div>
+        </div>
+        <div class="deflate-summary" style="margin-top:1rem;">
+          <div class="ds-item"><span class="ds-num" style="color:var(--c-green)" id="ccDrop">0%</span><span class="ds-label">Overlap reduction</span></div>
+          <div class="ds-item"><span class="ds-num" style="color:var(--primary)">11</span><span class="ds-label">Python operators</span></div>
+          <div class="ds-item"><span class="ds-num" style="color:var(--c-amber)">4</span><span class="ds-label">Java operators migrated</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
