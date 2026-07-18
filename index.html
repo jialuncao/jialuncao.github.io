@@ -297,6 +297,112 @@
     <a href="playground.html" style="display:inline-block;padding:0.55rem 1.6rem;border:1.5px solid var(--primary-soft);border-radius:8px;color:var(--primary-soft);font-style:italic;font-size:0.95rem;text-decoration:none;transition:background 0.2s,color 0.2s;">&#9654; Playground</a>
   </div>
 
+  <div class="sec-head" style="margin-top:2rem;"><div class="sec-bar"></div><div class="sec-title">Products</div></div>
+
+  <div class="product-grid">
+
+    <!-- KeyLight -->
+    <a href="https://keylight.pacificstudio.ai/" class="product-card" id="productKeylight" target="_blank">
+      <div class="product-card-inner">
+        <h3 class="product-name">KeyLight</h3>
+        <p class="product-tagline">Read less, understand more</p>
+        <p class="product-desc">AI-powered academic PDF reader that auto-highlights key insights so you can grasp a paper in minutes.</p>
+        <div class="product-tags">
+          <span class="product-tag">Paper Reading</span>
+          <span class="product-tag">Auto-highlight</span>
+          <span class="product-tag">PDF</span>
+        </div>
+        <!-- Paper compare animation (from KeyLight landing) -->
+        <div class="kl-compare" id="klCompare">
+          <div class="kl-paper kl-paper--mono">
+            <div class="kl-paper-head"><span class="kl-chip">PDF</span><span class="kl-chip kl-chip--quiet">Auto-highlight</span></div>
+            <div class="kl-paper-title">Read less, understand more.</div>
+            <div class="kl-lines">
+              <div class="kl-line kl-line--problem"></div>
+              <div class="kl-line kl-line--idea"></div>
+              <div class="kl-line kl-line--base kl-line--wide"></div>
+              <div class="kl-line kl-line--challenge"></div>
+              <div class="kl-line kl-line--method"></div>
+              <div class="kl-line kl-line--base kl-line--mid"></div>
+              <div class="kl-line kl-line--finding"></div>
+              <div class="kl-line kl-line--base kl-line--short"></div>
+            </div>
+            <div class="kl-labels">
+              <span class="kl-pill kl-pill--problem">Problem</span>
+              <span class="kl-pill kl-pill--idea">Idea</span>
+              <span class="kl-pill kl-pill--challenge">Challenge</span>
+              <span class="kl-pill kl-pill--method">Solution</span>
+              <span class="kl-pill kl-pill--finding">Finding</span>
+            </div>
+          </div>
+          <div class="kl-paper kl-paper--color">
+            <div class="kl-paper-head"><span class="kl-chip">PDF</span><span class="kl-chip kl-chip--quiet">Auto-highlight</span></div>
+            <div class="kl-paper-title">Read less, understand more.</div>
+            <div class="kl-lines">
+              <div class="kl-line kl-line--problem"></div>
+              <div class="kl-line kl-line--idea"></div>
+              <div class="kl-line kl-line--base kl-line--wide"></div>
+              <div class="kl-line kl-line--challenge"></div>
+              <div class="kl-line kl-line--method"></div>
+              <div class="kl-line kl-line--base kl-line--mid"></div>
+              <div class="kl-line kl-line--finding"></div>
+              <div class="kl-line kl-line--base kl-line--short"></div>
+            </div>
+            <div class="kl-labels">
+              <span class="kl-pill kl-pill--problem">Problem</span>
+              <span class="kl-pill kl-pill--idea">Idea</span>
+              <span class="kl-pill kl-pill--challenge">Challenge</span>
+              <span class="kl-pill kl-pill--method">Solution</span>
+              <span class="kl-pill kl-pill--finding">Finding</span>
+            </div>
+          </div>
+          <div class="kl-divider"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- VeriFormal -->
+    <a href="https://veriformal.pacificstudio.ai/" class="product-card" id="productVeriformal" target="_blank">
+      <div class="product-card-inner">
+        <h3 class="product-name">VeriFormal</h3>
+        <p class="product-tagline">AI-powered formal verification</p>
+        <p class="product-desc">Combines LLMs with static analysis to automatically generate and verify formal specifications for C programs.</p>
+        <div class="product-tags">
+          <span class="product-tag">Formal Methods</span>
+          <span class="product-tag">ACSL</span>
+          <span class="product-tag">Frama-C</span>
+        </div>
+        <!-- Code compare animation (from VeriFormal landing) -->
+        <div class="vf-compare" id="vfCompare">
+          <div class="vf-code vf-code--plain">
+            <div class="vf-code-head"><span class="vf-chip">C Code</span></div>
+            <div class="vf-code-body">
+              <div class="vf-code-line"><span class="vf-kw">int</span> <span class="vf-fn">abs_val</span>(<span class="vf-kw">int</span> x) {</div>
+              <div class="vf-code-line">  <span class="vf-kw">if</span> (x &lt; <span class="vf-num">0</span>)</div>
+              <div class="vf-code-line">    <span class="vf-kw">return</span> -x;</div>
+              <div class="vf-code-line">  <span class="vf-kw">return</span> x;</div>
+              <div class="vf-code-line">}</div>
+            </div>
+          </div>
+          <div class="vf-code vf-code--annotated">
+            <div class="vf-code-head"><span class="vf-chip vf-chip--green">C + ACSL</span><span class="vf-verified">Verified</span></div>
+            <div class="vf-code-body">
+              <div class="vf-code-line vf-acsl"><span class="vf-cm">/*@ requires x &gt; INT_MIN;</span></div>
+              <div class="vf-code-line vf-acsl"><span class="vf-cm">  @ ensures \result &gt;= 0;</span></div>
+              <div class="vf-code-line vf-acsl"><span class="vf-cm">  @ ensures \result == x</span></div>
+              <div class="vf-code-line vf-acsl"><span class="vf-cm">  @      || \result == -x; @*/</span></div>
+              <div class="vf-code-line"><span class="vf-kw">int</span> <span class="vf-fn">abs_val</span>(<span class="vf-kw">int</span> x) {</div>
+              <div class="vf-code-line">  <span class="vf-kw">if</span> (x &lt; <span class="vf-num">0</span>) <span class="vf-kw">return</span> -x;</div>
+              <div class="vf-code-line">  <span class="vf-kw">return</span> x; }</div>
+            </div>
+          </div>
+          <div class="vf-divider"></div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
   <div class="sec-head" id="featured" style="margin-top:1.5rem;display:none;"><div class="sec-bar"></div><div class="sec-title">Featured Works</div></div>
 
   <div class="fw-list" style="margin-bottom:1.25rem;display:none;">
