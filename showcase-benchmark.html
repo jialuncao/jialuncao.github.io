@@ -21,6 +21,7 @@
       <a href="#sec-javabench" class="nav-link">JavaBench</a>
       <a href="#sec-domaineval" class="nav-link">DomainEval</a>
       <a href="#sec-patheval" class="nav-link">PathEval</a>
+      <a href="#sec-embedagent" class="nav-link">EmbedAgent</a>
     </div>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9790; Light</button>
   </div>
@@ -35,7 +36,7 @@
     <h1>Measuring What <span class="hl">Code Models</span> Really Know</h1>
     <p class="hero-sub">Rigorous, reliable, reproducible benchmarks for code generation, reasoning, and multilingual understanding — turning claims into evidence.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num" data-count="10">0</div><div class="hero-stat-label">Papers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" data-count="11">0</div><div class="hero-stat-label">Papers</div></div>
       <div class="hero-stat"><div class="hero-stat-num" data-count="7">0</div><div class="hero-stat-label">Venues</div></div>
       <div class="hero-stat"><div class="hero-stat-num" data-count="572">0</div><div class="hero-stat-label">Benchmarks Surveyed</div></div>
     </div>
@@ -350,6 +351,84 @@
     <div class="sc-links"><a href="https://arxiv.org/abs/2504.06939" class="sc-link">Paper</a></div>
     <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Mixed feedback yields the highest repair rate (63.6%), and removing semantic cues like docstrings causes severe degradation.</div>
     <div class="compact-anim" id="anim-feedbackeval"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAPER 11: EmbedAgent -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-embedagent">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Embedded Systems</div>
+    <span class="sc-venue">ICSE '26</span>
+    <h2 class="sc-title">EmbedAgent: Benchmarking Large Language Models in Embedded System Development</h2>
+    <div class="sc-authors">Ruiyang Xu, <span class="me">Jialun Cao (Co-1st)</span>, Mingyuan Wu, Wenliang Zhong, Yaojie Lu, Ben He, Xianpei Han, Shing-Chi Cheung, Le Sun</div>
+    <p class="sc-desc">Can LLMs handle the unique challenges of embedded system development? EmbedAgent benchmarks code generation for resource-constrained environments — hardware interaction, real-time constraints, and cross-compilation.</p>
+    <div class="sc-links">
+      <a href="https://www.arxiv.org/abs/2506.11003" class="sc-link">Paper</a>
+    </div>
+    <div class="sc-takeaway"><span class="takeaway-icon">&#128161;</span> LLMs struggle significantly with embedded-specific tasks like peripheral configuration and interrupt handling — exposing a critical gap beyond general-purpose code generation.</div>
+
+    <div class="stat-grid" id="embedStats">
+      <div class="stat-tile">
+        <div class="stat-tile-icon">&#128187;</div>
+        <div class="stat-tile-num"><span data-count="126">0</span></div>
+        <div class="stat-tile-label">Test Cases</div>
+        <div class="stat-tile-sub">across 3 task categories</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-tile-icon">&#9881;</div>
+        <div class="stat-tile-num"><span data-count="9">0</span></div>
+        <div class="stat-tile-label">Electronic Components</div>
+        <div class="stat-tile-sub">LEDs, motors, sensors, etc.</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-tile-icon">&#128268;</div>
+        <div class="stat-tile-num"><span data-count="3">0</span></div>
+        <div class="stat-tile-label">Hardware Platforms</div>
+        <div class="stat-tile-sub">Raspberry Pi Pico &middot; ESP32 &middot; ESP-IDF</div>
+      </div>
+    </div>
+
+    <div class="dash-card" style="margin-bottom:1rem;">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--primary)"></span> Agent Roles</div>
+        <div class="dash-head-note">3 embedded dev roles</div>
+      </div>
+      <div class="embed-roles" id="embedRoles">
+        <div class="embed-role"><span class="embed-role-icon">&#128187;</span><span class="embed-role-name">Programmer</span></div>
+        <div class="embed-role"><span class="embed-role-icon">&#128736;</span><span class="embed-role-name">Architect</span></div>
+        <div class="embed-role"><span class="embed-role-icon">&#128279;</span><span class="embed-role-name">Integrator</span></div>
+      </div>
+    </div>
+
+    <div class="dash-card">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--c-green)"></span> Cross-Platform Pass@1</div>
+        <div class="dash-head-note">DeepSeek-R1 &middot; best model</div>
+      </div>
+      <div class="bar-chart" id="embedBars">
+        <div class="bar-row" data-value="73.8">
+          <span class="bar-model"><span class="mdot" style="background:var(--c-green)"></span>MicroPython (Pico)</span>
+          <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,var(--c-green),#34d399)"></div></div>
+          <span class="bar-val">0</span>
+        </div>
+        <div class="bar-row" data-value="55.6">
+          <span class="bar-model"><span class="mdot" style="background:var(--primary)"></span>With Schematic</span>
+          <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,var(--primary),var(--primary-soft))"></div></div>
+          <span class="bar-val">0</span>
+        </div>
+        <div class="bar-row" data-value="29.4">
+          <span class="bar-model"><span class="mdot" style="background:var(--c-red)"></span>ESP-IDF</span>
+          <div class="bar-track"><div class="bar-fill" style="background:linear-gradient(90deg,var(--c-red),var(--c-amber))"></div></div>
+          <span class="bar-val">0</span>
+        </div>
+      </div>
+      <div class="deflate-summary" style="margin-top:1.4rem;">
+        <div class="ds-item"><span class="ds-num" style="color:var(--c-green)">65.1%</span><span class="ds-label">With RAG + compiler feedback</span></div>
+        <div class="ds-item"><span class="ds-num" style="color:var(--c-red)">27.8%</span><span class="ds-label">Arduino &rarr; ESP32 migration</span></div>
+      </div>
+    </div>
   </div>
 </section>
 

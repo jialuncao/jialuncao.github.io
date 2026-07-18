@@ -516,18 +516,124 @@ function resetContamination() {
   if (v2) v2.textContent = '0%';
 }
 
-// PseudoEval - split diagram
+// PseudoEval - pseudocode transformation + bottleneck comparison
 (function buildPseudoEval() {
   var container = document.getElementById('anim-pseudoeval');
   if (!container) return;
-  container.innerHTML = '<div class="split-diagram"><div class="split-side" id="splitLeft"><div class="split-label">Problem-Solving Bottleneck</div><div class="split-lang">Python</div><div class="split-note">Struggles with algorithmic reasoning</div></div><div class="split-side" id="splitRight"><div class="split-label">Language-Coding Bottleneck</div><div class="split-lang">Rust</div><div class="split-note">Struggles with type system &amp; ownership</div></div></div>';
+  container.innerHTML =
+    '<div class="pseudo-transform" id="pseudoTransform">' +
+      '<div class="pseudo-block pseudo-nl" id="pseudoNL">' +
+        '<span class="pseudo-label">Natural Language</span>' +
+        '<div class="pseudo-code-line">"Sort the array and return the second largest unique element"</div>' +
+      '</div>' +
+      '<div class="pseudo-arrow" id="pseudoArrow">&darr;</div>' +
+      '<div class="pseudo-block pseudo-pc" id="pseudoPC">' +
+        '<span class="pseudo-label" style="color:var(--c-green)">Pseudocode</span>' +
+        '<div class="pseudo-code-line"><span class="syn-kw">unique</span> &larr; remove_duplicates(arr)</div>' +
+        '<div class="pseudo-code-line"><span class="syn-kw">sort</span>(unique, descending)</div>' +
+        '<div class="pseudo-code-line"><span class="syn-kw">return</span> unique[1]</div>' +
+      '</div>' +
+      '<div class="pseudo-arrow" id="pseudoArrow2">&darr;</div>' +
+      '<div class="pseudo-langs" id="pseudoLangs">' +
+        '<div class="pseudo-lang-chip" data-lang="Python">Python</div>' +
+        '<div class="pseudo-lang-chip" data-lang="C++">C++</div>' +
+        '<div class="pseudo-lang-chip" data-lang="Rust">Rust</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="pseudo-bars" id="pseudoBars">' +
+      '<div class="pseudo-bar-group">' +
+        '<span class="pseudo-bar-label">Python</span>' +
+        '<div class="pseudo-bar-pair">' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag">Problem</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill prob" id="pyProb" data-w="38"></div></div><span class="pseudo-bar-val" id="pyProbVal">0%</span></div>' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag" style="color:var(--c-green)">Pseudo</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill pseudo" id="pyPseudo" data-w="75"></div></div><span class="pseudo-bar-val" id="pyPseudoVal">0%</span></div>' +
+        '</div>' +
+        '<span class="pseudo-boost" id="pyBoost">+97%</span>' +
+      '</div>' +
+      '<div class="pseudo-bar-group">' +
+        '<span class="pseudo-bar-label">C++</span>' +
+        '<div class="pseudo-bar-pair">' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag">Problem</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill prob" id="cppProb" data-w="35"></div></div><span class="pseudo-bar-val" id="cppProbVal">0%</span></div>' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag" style="color:var(--c-green)">Pseudo</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill pseudo" id="cppPseudo" data-w="66"></div></div><span class="pseudo-bar-val" id="cppPseudoVal">0%</span></div>' +
+        '</div>' +
+        '<span class="pseudo-boost" id="cppBoost">+87%</span>' +
+      '</div>' +
+      '<div class="pseudo-bar-group">' +
+        '<span class="pseudo-bar-label">Rust</span>' +
+        '<div class="pseudo-bar-pair">' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag">Problem</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill prob" id="rustProb" data-w="28"></div></div><span class="pseudo-bar-val" id="rustProbVal">0%</span></div>' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag" style="color:var(--c-green)">Pseudo</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill pseudo" id="rustPseudo" data-w="46"></div></div><span class="pseudo-bar-val" id="rustPseudoVal">0%</span></div>' +
+        '</div>' +
+        '<span class="pseudo-boost" id="rustBoost">+67%</span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="pseudo-insight" id="pseudoInsight">' +
+      '<div class="split-diagram">' +
+        '<div class="split-side" id="splitLeft"><div class="split-label">Problem-Solving Bottleneck</div><div class="split-lang">Python</div><div class="split-note">+97% gain from pseudocode &mdash; problem-solving was the wall</div></div>' +
+        '<div class="split-side" id="splitRight"><div class="split-label">Language-Coding Bottleneck</div><div class="split-lang">Rust</div><div class="split-note">+67% gain &mdash; type system &amp; ownership remain hard</div></div>' +
+      '</div>' +
+    '</div>';
 })();
 
 function triggerPseudoEval() {
-  setTimeout(function() { var el = document.getElementById('splitLeft'); if (el) el.classList.add('on'); }, 200);
-  setTimeout(function() { var el = document.getElementById('splitRight'); if (el) el.classList.add('on'); }, 600);
+  var nl = document.getElementById('pseudoNL');
+  var arr1 = document.getElementById('pseudoArrow');
+  var pc = document.getElementById('pseudoPC');
+  var arr2 = document.getElementById('pseudoArrow2');
+  var langs = document.getElementById('pseudoLangs');
+
+  if (nl) setTimeout(function() { nl.classList.add('on'); }, 100);
+  if (arr1) setTimeout(function() { arr1.classList.add('on'); }, 400);
+  if (pc) setTimeout(function() { pc.classList.add('on'); }, 700);
+  if (arr2) setTimeout(function() { arr2.classList.add('on'); }, 1000);
+
+  var chips = document.querySelectorAll('#pseudoLangs .pseudo-lang-chip');
+  chips.forEach(function(c, i) { setTimeout(function() { c.classList.add('on'); }, 1200 + i * 200); });
+
+  // bars animate
+  var pairs = [
+    { prob: 'pyProb', pseudo: 'pyPseudo', probVal: 'pyProbVal', pseudoVal: 'pyPseudoVal', boost: 'pyBoost', pv: 38, sv: 75 },
+    { prob: 'cppProb', pseudo: 'cppPseudo', probVal: 'cppProbVal', pseudoVal: 'cppPseudoVal', boost: 'cppBoost', pv: 35, sv: 66 },
+    { prob: 'rustProb', pseudo: 'rustPseudo', probVal: 'rustProbVal', pseudoVal: 'rustPseudoVal', boost: 'rustBoost', pv: 28, sv: 46 }
+  ];
+  pairs.forEach(function(p, i) {
+    var delay = 1800 + i * 350;
+    setTimeout(function() {
+      var prob = document.getElementById(p.prob);
+      var pseudo = document.getElementById(p.pseudo);
+      var probVal = document.getElementById(p.probVal);
+      var pseudoVal = document.getElementById(p.pseudoVal);
+      var boost = document.getElementById(p.boost);
+      if (prob) prob.style.width = p.pv + '%';
+      if (pseudo) pseudo.style.width = p.sv + '%';
+      if (probVal) countUp(probVal, p.pv, 800, '%');
+      if (pseudoVal) countUp(pseudoVal, p.sv, 800, '%');
+      if (boost) setTimeout(function() { boost.classList.add('on'); }, 600);
+    }, delay);
+  });
+
+  // insight at the end
+  setTimeout(function() {
+    var el = document.getElementById('splitLeft'); if (el) el.classList.add('on');
+  }, 3400);
+  setTimeout(function() {
+    var el = document.getElementById('splitRight'); if (el) el.classList.add('on');
+  }, 3800);
 }
+
 function resetPseudoEval() {
+  ['pseudoNL','pseudoArrow','pseudoPC','pseudoArrow2'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.classList.remove('on');
+  });
+  document.querySelectorAll('#pseudoLangs .pseudo-lang-chip').forEach(function(c) { c.classList.remove('on'); });
+  ['pyProb','cppProb','rustProb','pyPseudo','cppPseudo','rustPseudo'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.style.width = '0';
+  });
+  ['pyProbVal','cppProbVal','rustProbVal','pyPseudoVal','cppPseudoVal','rustPseudoVal'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.textContent = '0%';
+  });
+  ['pyBoost','cppBoost','rustBoost'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.classList.remove('on');
+  });
   var l = document.getElementById('splitLeft'); if (l) l.classList.remove('on');
   var r = document.getElementById('splitRight'); if (r) r.classList.remove('on');
 }
@@ -552,6 +658,45 @@ function resetFeedbackEval() {
   var r = document.getElementById('fbRate'); if (r) r.classList.remove('on');
 }
 
+// EmbedAgent - platform bars + role chips
+var embedTimers = [];
+function embedLater(fn, ms) { var id = setTimeout(fn, ms); embedTimers.push(id); return id; }
+function embedClearTimers() { embedTimers.forEach(clearTimeout); embedTimers = []; }
+
+function triggerEmbedAgent() {
+  var stats = document.getElementById('embedStats');
+  if (stats) countUpAll(stats, 1200);
+
+  var roles = document.querySelectorAll('#embedRoles .embed-role');
+  roles.forEach(function(r, i) {
+    embedLater(function() { r.classList.add('on'); }, 200 + i * 250);
+  });
+
+  var barDelay = 1000;
+  document.querySelectorAll('#embedBars .bar-row').forEach(function(row, i) {
+    var fill = row.querySelector('.bar-fill');
+    var val = row.querySelector('.bar-val');
+    var target = parseFloat(row.getAttribute('data-value'));
+    embedLater(function() {
+      if (fill) fill.style.width = target + '%';
+      if (val) countUp(val, target, 1000, '%');
+    }, barDelay + 200 * i);
+  });
+}
+
+function resetEmbedAgent() {
+  embedClearTimers();
+  var stats = document.getElementById('embedStats');
+  if (stats) stats.querySelectorAll('[data-count]').forEach(function(el) { el.textContent = '0'; });
+  document.querySelectorAll('#embedRoles .embed-role').forEach(function(r) { r.classList.remove('on'); });
+  document.querySelectorAll('#embedBars .bar-row').forEach(function(row) {
+    var fill = row.querySelector('.bar-fill');
+    var val = row.querySelector('.bar-val');
+    if (fill) fill.style.width = '';
+    if (val) val.textContent = '0';
+  });
+}
+
 // Register compact triggers
 (function() {
   var compactTriggers = [
@@ -560,7 +705,8 @@ function resetFeedbackEval() {
     { sel: '#sec-codecleaner', fn: triggerCodeCleaner, reset: resetCodeCleaner },
     { sel: '#sec-contamination', fn: triggerContamination, reset: resetContamination },
     { sel: '#sec-pseudoeval', fn: triggerPseudoEval, reset: resetPseudoEval },
-    { sel: '#sec-feedbackeval', fn: triggerFeedbackEval, reset: resetFeedbackEval }
+    { sel: '#sec-feedbackeval', fn: triggerFeedbackEval, reset: resetFeedbackEval },
+    { sel: '#sec-embedagent', fn: triggerEmbedAgent, reset: resetEmbedAgent }
   ];
   compactTriggers.forEach(function(t) {
     var el = document.querySelector(t.sel);
@@ -585,7 +731,7 @@ function resetFeedbackEval() {
 // Nav active-link highlight on scroll
 // ══════════════════════════════════════════
 (function() {
-  var sections = ['sec-survey','sec-cruxeval','sec-sweabs','sec-javabench','sec-domaineval','sec-patheval','sec-codecleaner','sec-contamination','sec-pseudoeval','sec-feedbackeval'];
+  var sections = ['sec-survey','sec-cruxeval','sec-sweabs','sec-javabench','sec-domaineval','sec-patheval','sec-codecleaner','sec-contamination','sec-pseudoeval','sec-feedbackeval','sec-embedagent'];
   var links = {};
   document.querySelectorAll('.nav-link').forEach(function(a) {
     var id = a.getAttribute('href').slice(1);
