@@ -432,11 +432,12 @@
   .pub-venue {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.62rem; font-weight: 600; padding: 0.1rem 0.35rem;
-    border-radius: 4px; background: transparent; color: #2a9d6a;
-    border: 1px solid rgba(52,211,153,0.2);
+    border-radius: 4px; background: transparent; color: var(--primary);
+    border: 1px solid var(--primary-20);
     letter-spacing: 0.2px; text-align: left; white-space: nowrap;
     align-self: baseline; margin: 0.35rem 0.4rem 0.35rem 0;
   }
+  .pub-venue-arxiv { color: #2a9d6a; border-color: rgba(52,211,153,0.2); }
   .pub-text {
     text-align: left; padding: 0.35rem 0;
     border-bottom: 1px solid var(--gray-100);
