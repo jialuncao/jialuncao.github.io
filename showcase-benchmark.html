@@ -331,9 +331,9 @@
     <span class="sc-venue">arXiv</span>
     <h2 class="sc-title">Isolating Language-Coding from Problem-Solving: Benchmarking LLMs with PseudoEval</h2>
     <div class="sc-authors">Jiarong Wu, Songqiang Chen, <span class="me">Jialun Cao (Corresponding)</span>, Hau Ching Lo, Shing-Chi Cheung</div>
-    <p class="sc-desc">Feeds LLMs pseudocode solutions to isolate whether code generation failures stem from weak problem-solving or weak language-specific coding.</p>
+    <p class="sc-desc">Instead of natural language prompts, PseudoEval feeds LLMs <strong>pseudocode solutions</strong> — isolating whether failures come from weak problem-solving or weak language-specific coding. Code reduction: &minus;42% LoC, &minus;32% tokens.</p>
     <div class="sc-links"><a href="https://arxiv.org/abs/2502.19149" class="sc-link">Paper</a></div>
-    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Python struggles more with problem-solving while Rust struggles with language-coding — problem-solving transfers across languages but coding requires language-specific training.</div>
+    <div class="sc-takeaway"><span class="takeaway-icon">&#128161;</span> Python struggles more with problem-solving while Rust struggles with language-coding — problem-solving transfers across languages but coding requires language-specific training.</div>
     <div class="compact-anim" id="anim-pseudoeval"></div>
   </div>
 </section>
@@ -390,18 +390,115 @@
       </div>
     </div>
 
+    <!-- Three Settings Pipeline -->
     <div class="dash-card" style="margin-bottom:1rem;">
       <div class="dash-head">
-        <div class="dash-head-title"><span class="swatch" style="background:var(--primary)"></span> Agent Roles</div>
-        <div class="dash-head-note">3 embedded dev roles</div>
+        <div class="dash-head-title"><span class="swatch" style="background:var(--primary)"></span> Three Agent Settings</div>
+        <div class="dash-head-note">Programmer &middot; Architect &middot; Integrator</div>
       </div>
-      <div class="embed-roles" id="embedRoles">
-        <div class="embed-role"><span class="embed-role-icon">&#128187;</span><span class="embed-role-name">Programmer</span></div>
-        <div class="embed-role"><span class="embed-role-icon">&#128736;</span><span class="embed-role-name">Architect</span></div>
-        <div class="embed-role"><span class="embed-role-icon">&#128279;</span><span class="embed-role-name">Integrator</span></div>
+      <div class="embed-settings" id="embedSettings">
+        <div class="embed-setting" id="embedS1">
+          <div class="embed-setting-num">&#10122;</div>
+          <div class="embed-setting-title">Programmer</div>
+          <div class="embed-setting-desc">Task + Schematic &rarr; Code</div>
+        </div>
+        <div class="embed-setting" id="embedS2">
+          <div class="embed-setting-num">&#10123;</div>
+          <div class="embed-setting-title">Architect</div>
+          <div class="embed-setting-desc">Task &rarr; Circuit + Code</div>
+        </div>
+        <div class="embed-setting" id="embedS3">
+          <div class="embed-setting-num">&#10124;</div>
+          <div class="embed-setting-title">Integrator</div>
+          <div class="embed-setting-desc">Source &rarr; Migrate Platform</div>
+        </div>
       </div>
     </div>
 
+    <!-- Circuit Diagram + Code -->
+    <div class="dash-card" style="margin-bottom:1rem;">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--c-green)"></span> Circuit &amp; Code Example</div>
+        <div class="dash-head-note">LED + Button on Arduino</div>
+      </div>
+      <div class="embed-circuit-code" id="embedCircuit">
+        <div class="embed-circuit-side">
+          <svg viewBox="0 0 320 200" class="embed-svg" id="embedSvg">
+            <!-- Arduino board -->
+            <rect x="20" y="40" width="100" height="130" rx="6" class="embed-board" id="eBoard"/>
+            <text x="70" y="62" text-anchor="middle" class="embed-board-label">Arduino</text>
+            <text x="70" y="78" text-anchor="middle" class="embed-board-label" style="font-size:8px">UNO</text>
+            <!-- Pin labels -->
+            <text x="122" y="100" class="embed-pin-label" id="ePin13">D13</text>
+            <text x="122" y="120" class="embed-pin-label" id="ePin2">D2</text>
+            <text x="122" y="140" class="embed-pin-label" id="ePinGnd">GND</text>
+            <!-- LED component -->
+            <g id="eLed" class="embed-component">
+              <circle cx="230" cy="70" r="14" class="embed-led-body"/>
+              <text x="230" y="74" text-anchor="middle" class="embed-comp-label">LED</text>
+              <line x1="216" y1="70" x2="200" y2="70" class="embed-lead"/>
+              <line x1="244" y1="70" x2="260" y2="70" class="embed-lead"/>
+            </g>
+            <!-- Resistor -->
+            <g id="eResistor" class="embed-component">
+              <rect x="175" y="90" width="30" height="10" rx="2" class="embed-resistor"/>
+              <text x="190" y="115" text-anchor="middle" class="embed-comp-label" style="font-size:7px">220&#8486;</text>
+            </g>
+            <!-- Button component -->
+            <g id="eButton" class="embed-component">
+              <rect x="215" y="130" width="30" height="18" rx="3" class="embed-button-body"/>
+              <text x="230" y="143" text-anchor="middle" class="embed-comp-label">BTN</text>
+              <line x1="215" y1="139" x2="200" y2="139" class="embed-lead"/>
+              <line x1="245" y1="139" x2="260" y2="139" class="embed-lead"/>
+            </g>
+            <!-- Wires -->
+            <path d="M120,96 L175,95" class="embed-wire wire-1" id="eWire1"/>
+            <path d="M205,95 L230,95 L230,84" class="embed-wire wire-2" id="eWire2"/>
+            <path d="M200,70 L160,70 L160,95 L175,95" class="embed-wire wire-3" id="eWire3"/>
+            <path d="M120,118 L200,139" class="embed-wire wire-4" id="eWire4"/>
+            <path d="M260,139 L280,139 L280,180 L70,180 L70,170" class="embed-wire wire-gnd" id="eWireGnd"/>
+            <path d="M260,70 L280,70 L280,139" class="embed-wire wire-gnd2" id="eWireGnd2"/>
+            <!-- GND symbol -->
+            <g id="eGndSym" class="embed-component">
+              <line x1="60" y1="170" x2="80" y2="170" class="embed-gnd-line"/>
+              <line x1="64" y1="174" x2="76" y2="174" class="embed-gnd-line"/>
+              <line x1="67" y1="178" x2="73" y2="178" class="embed-gnd-line"/>
+            </g>
+          </svg>
+        </div>
+        <div class="embed-code-side" id="embedCode">
+          <span class="embed-code-label">Arduino C++</span>
+          <div class="embed-code-line" id="eCL1"><span class="syn-kw">#define</span> LED_PIN <span class="num">13</span></div>
+          <div class="embed-code-line" id="eCL2"><span class="syn-kw">#define</span> BTN_PIN <span class="num">2</span></div>
+          <div class="embed-code-line" id="eCL3">&nbsp;</div>
+          <div class="embed-code-line" id="eCL4"><span class="syn-kw">void</span> <span class="fn">setup</span>() {</div>
+          <div class="embed-code-line" id="eCL5">&nbsp; pinMode(LED_PIN, <span class="num">OUTPUT</span>);</div>
+          <div class="embed-code-line" id="eCL6">&nbsp; pinMode(BTN_PIN, <span class="num">INPUT</span>);</div>
+          <div class="embed-code-line" id="eCL7">}</div>
+          <div class="embed-code-line" id="eCL8">&nbsp;</div>
+          <div class="embed-code-line" id="eCL9"><span class="syn-kw">void</span> <span class="fn">loop</span>() {</div>
+          <div class="embed-code-line" id="eCL10">&nbsp; <span class="syn-kw">if</span>(digitalRead(BTN_PIN))</div>
+          <div class="embed-code-line" id="eCL11">&nbsp;&nbsp;&nbsp; digitalWrite(LED_PIN, <span class="num">HIGH</span>);</div>
+          <div class="embed-code-line" id="eCL12">}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wiring JSON -->
+    <div class="dash-card" style="margin-bottom:1rem;">
+      <div class="dash-head">
+        <div class="dash-head-title"><span class="swatch" style="background:var(--c-amber)"></span> Wokwi Wiring (diagram.json)</div>
+        <div class="dash-head-note">pin-to-pin connections</div>
+      </div>
+      <div class="embed-wiring" id="embedWiring">
+        <div class="embed-wire-entry" id="eW1">[ "<span style="color:var(--primary)">uno:13</span>", "<span style="color:var(--c-green)">led1:A</span>" ]</div>
+        <div class="embed-wire-entry" id="eW2">[ "<span style="color:var(--primary)">uno:GND</span>", "<span style="color:var(--c-green)">led1:C</span>" ]</div>
+        <div class="embed-wire-entry" id="eW3">[ "<span style="color:var(--primary)">uno:2</span>", "<span style="color:var(--c-amber)">btn1:1</span>" ]</div>
+        <div class="embed-wire-entry" id="eW4">[ "<span style="color:var(--primary)">uno:GND</span>", "<span style="color:var(--c-amber)">btn1:2</span>" ]</div>
+      </div>
+    </div>
+
+    <!-- Performance bars -->
     <div class="dash-card">
       <div class="dash-head">
         <div class="dash-head-title"><span class="swatch" style="background:var(--c-green)"></span> Cross-Platform Pass@1</div>

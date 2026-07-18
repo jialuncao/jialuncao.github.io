@@ -516,52 +516,80 @@ function resetContamination() {
   if (v2) v2.textContent = '0%';
 }
 
-// PseudoEval - pseudocode transformation + bottleneck comparison
+// PseudoEval - source code → pseudocode → target language transformation
 (function buildPseudoEval() {
   var container = document.getElementById('anim-pseudoeval');
   if (!container) return;
   container.innerHTML =
-    '<div class="pseudo-transform" id="pseudoTransform">' +
-      '<div class="pseudo-block pseudo-nl" id="pseudoNL">' +
-        '<span class="pseudo-label">Natural Language</span>' +
-        '<div class="pseudo-code-line">"Sort the array and return the second largest unique element"</div>' +
+    '<div class="pseudo-pipeline" id="pseudoPipeline">' +
+      // Step 1: Source code (Python)
+      '<div class="pseudo-step" id="pseudoStep1">' +
+        '<div class="pseudo-block pseudo-src">' +
+          '<span class="pseudo-label" style="color:var(--primary)">Source Code (Python)</span>' +
+          '<div class="pseudo-code-line"><span class="syn-kw">def</span> <span class="fn">second_largest</span>(nums):</div>' +
+          '<div class="pseudo-code-line">&nbsp; unique = <span class="syn-kw">list</span>(<span class="syn-kw">set</span>(nums))</div>' +
+          '<div class="pseudo-code-line">&nbsp; <span class="syn-kw">if len</span>(unique) &lt; <span class="num">2</span>:</div>' +
+          '<div class="pseudo-code-line">&nbsp;&nbsp;&nbsp; <span class="syn-kw">return</span> <span class="num">None</span></div>' +
+          '<div class="pseudo-code-line">&nbsp; unique.sort(<span class="syn-kw">reverse</span>=<span class="num">True</span>)</div>' +
+          '<div class="pseudo-code-line">&nbsp; <span class="syn-kw">return</span> unique[<span class="num">1</span>]</div>' +
+        '</div>' +
+        '<div class="pseudo-step-label">-42% LoC</div>' +
       '</div>' +
-      '<div class="pseudo-arrow" id="pseudoArrow">&darr;</div>' +
-      '<div class="pseudo-block pseudo-pc" id="pseudoPC">' +
-        '<span class="pseudo-label" style="color:var(--c-green)">Pseudocode</span>' +
-        '<div class="pseudo-code-line"><span class="syn-kw">unique</span> &larr; remove_duplicates(arr)</div>' +
-        '<div class="pseudo-code-line"><span class="syn-kw">sort</span>(unique, descending)</div>' +
-        '<div class="pseudo-code-line"><span class="syn-kw">return</span> unique[1]</div>' +
+      // Arrow 1
+      '<div class="pseudo-arrow-h" id="pseudoArr1">&rarr;</div>' +
+      // Step 2: Pseudocode (language-agnostic)
+      '<div class="pseudo-step" id="pseudoStep2">' +
+        '<div class="pseudo-block pseudo-pc">' +
+          '<span class="pseudo-label" style="color:var(--c-green)">Pseudocode</span>' +
+          '<div class="pseudo-code-line"><span class="syn-kw">FUNCTION</span> second_largest(nums)</div>' +
+          '<div class="pseudo-code-line">&nbsp; unique &larr; REMOVE_DUPS(nums)</div>' +
+          '<div class="pseudo-code-line">&nbsp; <span class="syn-kw">IF</span> |unique| &lt; 2: <span class="syn-kw">RETURN</span> null</div>' +
+          '<div class="pseudo-code-line">&nbsp; SORT_DESC(unique)</div>' +
+          '<div class="pseudo-code-line">&nbsp; <span class="syn-kw">RETURN</span> unique[1]</div>' +
+        '</div>' +
+        '<div class="pseudo-step-label">LLM input</div>' +
       '</div>' +
-      '<div class="pseudo-arrow" id="pseudoArrow2">&darr;</div>' +
-      '<div class="pseudo-langs" id="pseudoLangs">' +
-        '<div class="pseudo-lang-chip" data-lang="Python">Python</div>' +
-        '<div class="pseudo-lang-chip" data-lang="C++">C++</div>' +
-        '<div class="pseudo-lang-chip" data-lang="Rust">Rust</div>' +
+      // Arrow 2
+      '<div class="pseudo-arrow-h" id="pseudoArr2">&rarr;</div>' +
+      // Step 3: Target languages
+      '<div class="pseudo-step pseudo-targets" id="pseudoStep3">' +
+        '<div class="pseudo-block pseudo-tgt" id="pseudoTgtCpp">' +
+          '<span class="pseudo-label" style="color:var(--c-amber)">C++ Output</span>' +
+          '<div class="pseudo-code-line"><span class="syn-kw">int</span> second_largest(vector&lt;<span class="syn-kw">int</span>&gt;&amp; v){</div>' +
+          '<div class="pseudo-code-line">&nbsp; <span class="syn-kw">set</span>&lt;<span class="syn-kw">int</span>&gt; s(v.begin(),v.end());</div>' +
+          '<div class="pseudo-code-line">&nbsp; ...}</div>' +
+        '</div>' +
+        '<div class="pseudo-block pseudo-tgt" id="pseudoTgtRust">' +
+          '<span class="pseudo-label" style="color:var(--c-red)">Rust Output</span>' +
+          '<div class="pseudo-code-line"><span class="syn-kw">fn</span> second_largest(v: &amp;[<span class="syn-kw">i32</span>])</div>' +
+          '<div class="pseudo-code-line">&nbsp; -&gt; <span class="syn-kw">Option</span>&lt;<span class="syn-kw">i32</span>&gt; {</div>' +
+          '<div class="pseudo-code-line">&nbsp; ...}</div>' +
+        '</div>' +
       '</div>' +
     '</div>' +
+    // Performance comparison bars
     '<div class="pseudo-bars" id="pseudoBars">' +
       '<div class="pseudo-bar-group">' +
         '<span class="pseudo-bar-label">Python</span>' +
         '<div class="pseudo-bar-pair">' +
-          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag">Problem</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill prob" id="pyProb" data-w="38"></div></div><span class="pseudo-bar-val" id="pyProbVal">0%</span></div>' +
-          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag" style="color:var(--c-green)">Pseudo</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill pseudo" id="pyPseudo" data-w="75"></div></div><span class="pseudo-bar-val" id="pyPseudoVal">0%</span></div>' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag">Problem</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill prob" id="pyProb"></div></div><span class="pseudo-bar-val" id="pyProbVal">0%</span></div>' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag" style="color:var(--c-green)">Pseudo</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill pseudo" id="pyPseudo"></div></div><span class="pseudo-bar-val" id="pyPseudoVal">0%</span></div>' +
         '</div>' +
         '<span class="pseudo-boost" id="pyBoost">+97%</span>' +
       '</div>' +
       '<div class="pseudo-bar-group">' +
         '<span class="pseudo-bar-label">C++</span>' +
         '<div class="pseudo-bar-pair">' +
-          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag">Problem</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill prob" id="cppProb" data-w="35"></div></div><span class="pseudo-bar-val" id="cppProbVal">0%</span></div>' +
-          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag" style="color:var(--c-green)">Pseudo</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill pseudo" id="cppPseudo" data-w="66"></div></div><span class="pseudo-bar-val" id="cppPseudoVal">0%</span></div>' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag">Problem</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill prob" id="cppProb"></div></div><span class="pseudo-bar-val" id="cppProbVal">0%</span></div>' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag" style="color:var(--c-green)">Pseudo</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill pseudo" id="cppPseudo"></div></div><span class="pseudo-bar-val" id="cppPseudoVal">0%</span></div>' +
         '</div>' +
         '<span class="pseudo-boost" id="cppBoost">+87%</span>' +
       '</div>' +
       '<div class="pseudo-bar-group">' +
         '<span class="pseudo-bar-label">Rust</span>' +
         '<div class="pseudo-bar-pair">' +
-          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag">Problem</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill prob" id="rustProb" data-w="28"></div></div><span class="pseudo-bar-val" id="rustProbVal">0%</span></div>' +
-          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag" style="color:var(--c-green)">Pseudo</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill pseudo" id="rustPseudo" data-w="46"></div></div><span class="pseudo-bar-val" id="rustPseudoVal">0%</span></div>' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag">Problem</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill prob" id="rustProb"></div></div><span class="pseudo-bar-val" id="rustProbVal">0%</span></div>' +
+          '<div class="pseudo-bar-row"><span class="pseudo-bar-tag" style="color:var(--c-green)">Pseudo</span><div class="pseudo-bar-track"><div class="pseudo-bar-fill pseudo" id="rustPseudo"></div></div><span class="pseudo-bar-val" id="rustPseudoVal">0%</span></div>' +
         '</div>' +
         '<span class="pseudo-boost" id="rustBoost">+67%</span>' +
       '</div>' +
@@ -575,28 +603,29 @@ function resetContamination() {
 })();
 
 function triggerPseudoEval() {
-  var nl = document.getElementById('pseudoNL');
-  var arr1 = document.getElementById('pseudoArrow');
-  var pc = document.getElementById('pseudoPC');
-  var arr2 = document.getElementById('pseudoArrow2');
-  var langs = document.getElementById('pseudoLangs');
+  var step1 = document.getElementById('pseudoStep1');
+  var arr1 = document.getElementById('pseudoArr1');
+  var step2 = document.getElementById('pseudoStep2');
+  var arr2 = document.getElementById('pseudoArr2');
+  var step3 = document.getElementById('pseudoStep3');
 
-  if (nl) setTimeout(function() { nl.classList.add('on'); }, 100);
-  if (arr1) setTimeout(function() { arr1.classList.add('on'); }, 400);
-  if (pc) setTimeout(function() { pc.classList.add('on'); }, 700);
-  if (arr2) setTimeout(function() { arr2.classList.add('on'); }, 1000);
+  if (step1) setTimeout(function() { step1.classList.add('on'); }, 100);
+  if (arr1) setTimeout(function() { arr1.classList.add('on'); }, 600);
+  if (step2) setTimeout(function() { step2.classList.add('on'); }, 900);
+  if (arr2) setTimeout(function() { arr2.classList.add('on'); }, 1400);
+  var tgtCpp = document.getElementById('pseudoTgtCpp');
+  var tgtRust = document.getElementById('pseudoTgtRust');
+  if (tgtCpp) setTimeout(function() { tgtCpp.classList.add('on'); }, 1700);
+  if (tgtRust) setTimeout(function() { tgtRust.classList.add('on'); }, 2000);
+  if (step3) setTimeout(function() { step3.classList.add('on'); }, 1700);
 
-  var chips = document.querySelectorAll('#pseudoLangs .pseudo-lang-chip');
-  chips.forEach(function(c, i) { setTimeout(function() { c.classList.add('on'); }, 1200 + i * 200); });
-
-  // bars animate
   var pairs = [
     { prob: 'pyProb', pseudo: 'pyPseudo', probVal: 'pyProbVal', pseudoVal: 'pyPseudoVal', boost: 'pyBoost', pv: 38, sv: 75 },
     { prob: 'cppProb', pseudo: 'cppPseudo', probVal: 'cppProbVal', pseudoVal: 'cppPseudoVal', boost: 'cppBoost', pv: 35, sv: 66 },
     { prob: 'rustProb', pseudo: 'rustPseudo', probVal: 'rustProbVal', pseudoVal: 'rustPseudoVal', boost: 'rustBoost', pv: 28, sv: 46 }
   ];
   pairs.forEach(function(p, i) {
-    var delay = 1800 + i * 350;
+    var delay = 2400 + i * 350;
     setTimeout(function() {
       var prob = document.getElementById(p.prob);
       var pseudo = document.getElementById(p.pseudo);
@@ -611,20 +640,21 @@ function triggerPseudoEval() {
     }, delay);
   });
 
-  // insight at the end
   setTimeout(function() {
     var el = document.getElementById('splitLeft'); if (el) el.classList.add('on');
-  }, 3400);
+  }, 4000);
   setTimeout(function() {
     var el = document.getElementById('splitRight'); if (el) el.classList.add('on');
-  }, 3800);
+  }, 4400);
 }
 
 function resetPseudoEval() {
-  ['pseudoNL','pseudoArrow','pseudoPC','pseudoArrow2'].forEach(function(id) {
+  ['pseudoStep1','pseudoArr1','pseudoStep2','pseudoArr2','pseudoStep3'].forEach(function(id) {
     var el = document.getElementById(id); if (el) el.classList.remove('on');
   });
-  document.querySelectorAll('#pseudoLangs .pseudo-lang-chip').forEach(function(c) { c.classList.remove('on'); });
+  ['pseudoTgtCpp','pseudoTgtRust'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.classList.remove('on');
+  });
   ['pyProb','cppProb','rustProb','pyPseudo','cppPseudo','rustPseudo'].forEach(function(id) {
     var el = document.getElementById(id); if (el) el.style.width = '0';
   });
@@ -658,7 +688,7 @@ function resetFeedbackEval() {
   var r = document.getElementById('fbRate'); if (r) r.classList.remove('on');
 }
 
-// EmbedAgent - platform bars + role chips
+// EmbedAgent - circuit, code, wiring, bars
 var embedTimers = [];
 function embedLater(fn, ms) { var id = setTimeout(fn, ms); embedTimers.push(id); return id; }
 function embedClearTimers() { embedTimers.forEach(clearTimeout); embedTimers = []; }
@@ -667,12 +697,50 @@ function triggerEmbedAgent() {
   var stats = document.getElementById('embedStats');
   if (stats) countUpAll(stats, 1200);
 
-  var roles = document.querySelectorAll('#embedRoles .embed-role');
-  roles.forEach(function(r, i) {
-    embedLater(function() { r.classList.add('on'); }, 200 + i * 250);
+  // Settings pipeline
+  ['embedS1','embedS2','embedS3'].forEach(function(id, i) {
+    embedLater(function() { var el = document.getElementById(id); if (el) el.classList.add('on'); }, 200 + i * 300);
   });
 
-  var barDelay = 1000;
+  // Circuit animation
+  var t = 1100;
+  embedLater(function() {
+    var board = document.getElementById('eBoard'); if (board) board.classList.add('on');
+    document.querySelectorAll('.embed-board-label').forEach(function(l) { l.classList.add('on'); });
+  }, t);
+  ['ePin13','ePin2','ePinGnd'].forEach(function(id, i) {
+    embedLater(function() { var el = document.getElementById(id); if (el) el.classList.add('on'); }, t + 200 + i * 100);
+  });
+  ['eLed','eResistor','eButton'].forEach(function(id, i) {
+    embedLater(function() { var el = document.getElementById(id); if (el) el.classList.add('on'); }, t + 500 + i * 250);
+  });
+  embedLater(function() {
+    var gs = document.getElementById('eGndSym'); if (gs) gs.classList.add('on');
+    document.querySelectorAll('.embed-gnd-line').forEach(function(l) { l.classList.add('on'); });
+  }, t + 1250);
+  ['eWire1','eWire2','eWire3','eWire4','eWireGnd','eWireGnd2'].forEach(function(id, i) {
+    embedLater(function() { var el = document.getElementById(id); if (el) el.classList.add('on'); }, t + 1500 + i * 200);
+  });
+  // LED glow
+  embedLater(function() {
+    var led = document.querySelector('.embed-led-body'); if (led) led.classList.add('glow');
+  }, t + 2800);
+
+  // Code lines
+  var codeStart = t + 1000;
+  for (var i = 1; i <= 12; i++) {
+    (function(idx) {
+      embedLater(function() { var el = document.getElementById('eCL' + idx); if (el) el.classList.add('on'); }, codeStart + idx * 120);
+    })(i);
+  }
+
+  // Wiring JSON entries
+  ['eW1','eW2','eW3','eW4'].forEach(function(id, i) {
+    embedLater(function() { var el = document.getElementById(id); if (el) el.classList.add('on'); }, codeStart + 1600 + i * 200);
+  });
+
+  // Performance bars
+  var barDelay = codeStart + 2600;
   document.querySelectorAll('#embedBars .bar-row').forEach(function(row, i) {
     var fill = row.querySelector('.bar-fill');
     var val = row.querySelector('.bar-val');
@@ -688,7 +756,28 @@ function resetEmbedAgent() {
   embedClearTimers();
   var stats = document.getElementById('embedStats');
   if (stats) stats.querySelectorAll('[data-count]').forEach(function(el) { el.textContent = '0'; });
-  document.querySelectorAll('#embedRoles .embed-role').forEach(function(r) { r.classList.remove('on'); });
+  ['embedS1','embedS2','embedS3'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.classList.remove('on');
+  });
+  var board = document.getElementById('eBoard'); if (board) board.classList.remove('on');
+  document.querySelectorAll('.embed-board-label').forEach(function(l) { l.classList.remove('on'); });
+  ['ePin13','ePin2','ePinGnd'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.classList.remove('on');
+  });
+  ['eLed','eResistor','eButton','eGndSym'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.classList.remove('on');
+  });
+  document.querySelectorAll('.embed-gnd-line').forEach(function(l) { l.classList.remove('on'); });
+  ['eWire1','eWire2','eWire3','eWire4','eWireGnd','eWireGnd2'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.classList.remove('on');
+  });
+  var led = document.querySelector('.embed-led-body'); if (led) led.classList.remove('glow');
+  for (var i = 1; i <= 12; i++) {
+    var el = document.getElementById('eCL' + i); if (el) el.classList.remove('on');
+  }
+  ['eW1','eW2','eW3','eW4'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.classList.remove('on');
+  });
   document.querySelectorAll('#embedBars .bar-row').forEach(function(row) {
     var fill = row.querySelector('.bar-fill');
     var val = row.querySelector('.bar-val');
