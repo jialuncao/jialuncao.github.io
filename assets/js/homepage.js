@@ -430,4 +430,41 @@ async function sendChat(){var input=document.getElementById('chatInput'),body=do
   window.addEventListener('resize', update);
 })();
 
+// Product compare-sweep animations (JS-driven)
+(function() {
+  function sweepLoop(colorEl, dividerEl, duration, easeIn, holdHigh, easeOut, holdLow) {
+    if (!colorEl) return;
+    var total = easeIn + holdHigh + easeOut + holdLow;
+    var start = null;
+    function ease(t) { return t < 0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+    function frame(ts) {
+      if (!start) start = ts;
+      var elapsed = (ts - start) % total;
+      var pct;
+      if (elapsed < easeIn) {
+        pct = ease(elapsed / easeIn) * 100;
+      } else if (elapsed < easeIn + holdHigh) {
+        pct = 100;
+      } else if (elapsed < easeIn + holdHigh + easeOut) {
+        pct = (1 - ease((elapsed - easeIn - holdHigh) / easeOut)) * 100;
+      } else {
+        pct = 0;
+      }
+      colorEl.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      if (dividerEl) dividerEl.style.left = pct + '%';
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  sweepLoop(
+    document.querySelector('.kl-paper--color'),
+    document.querySelector('.kl-divider'),
+    8000, 3200, 1200, 2800, 800
+  );
+  sweepLoop(
+    document.querySelector('.vf-code--annotated'),
+    document.querySelector('.vf-divider'),
+    9600, 3800, 1400, 3200, 1200
+  );
+})();
 
