@@ -422,21 +422,26 @@
   .year-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
   .year-block.open .year-body { max-height: 5000px; }
   .year-body-inner { padding: 0.4rem 0.85rem 0.65rem; }
-  .pub-item {
-    padding: 0.35rem 0; border-bottom: 1px solid var(--gray-100);
-    font-size: 0.85rem; line-height: 1.55; text-align: left;
-    display: flex; align-items: baseline; gap: 0.4rem;
+  .year-body-inner {
+    display: grid; grid-template-columns: auto 1fr;
   }
-  .pub-item:last-child { border-bottom: none; }
+  .pub-item {
+    display: contents; font-size: 0.85rem; line-height: 1.55; text-align: left;
+  }
   .pub-item a { font-size: 0.78rem; }
   .pub-venue {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.62rem; font-weight: 600; padding: 0.1rem 0.35rem;
     border-radius: 4px; background: transparent; color: #2a9d6a;
     border: 1px solid rgba(52,211,153,0.2);
-    letter-spacing: 0.2px; text-align: left; white-space: nowrap; flex-shrink: 0;
+    letter-spacing: 0.2px; text-align: left; white-space: nowrap;
+    align-self: baseline; margin: 0.35rem 0.4rem 0.35rem 0;
   }
-  .pub-text { text-align: left; }
+  .pub-text {
+    text-align: left; padding: 0.35rem 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .pub-item:last-child .pub-text { border-bottom: none; }
   .me { color: var(--accent-warm); font-weight: 600; }
 
   /* ===== STATS ROW ===== */
