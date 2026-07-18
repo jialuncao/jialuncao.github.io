@@ -428,6 +428,13 @@
   }
   .pub-item:last-child { border-bottom: none; }
   .pub-item a { font-size: 0.78rem; }
+  .pub-venue {
+    display: inline-block; font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem; font-weight: 600; padding: 0.1rem 0.45rem;
+    border-radius: 4px; background: var(--primary-10); color: var(--primary);
+    border: 1px solid var(--primary-20); margin-right: 0.4rem;
+    vertical-align: middle; letter-spacing: 0.2px;
+  }
   .me { color: var(--accent-warm); font-weight: 600; }
 
   /* ===== STATS ROW ===== */
