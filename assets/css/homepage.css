@@ -1119,6 +1119,7 @@
   .vf-fn { color: #34d399; font-weight: 600; }
   .vf-num { color: #fb923c; }
   .vf-acsl { background: rgba(0,143,93,0.06); border-left: 3px solid #34d399; padding-left: 6px; }
+  .vf-acsl-placeholder { visibility: hidden; height: 1.65em; }
   .vf-cm { color: #34d399; }
   .vf-divider {
     position: absolute; top: -10%; bottom: -10%; left: 3%; width: 50px;
