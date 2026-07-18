@@ -1052,7 +1052,7 @@
   [data-theme="dark"] .kl-compare { background: linear-gradient(180deg, #1a1a2e, #16213e); }
   .kl-paper { position: absolute; inset: 0; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
   .kl-paper--mono { filter: grayscale(1) saturate(0.25) contrast(0.95); }
-  .kl-paper--color { clip-path: inset(0 97% 0 0); will-change: clip-path; transition: clip-path 0.06s linear; }
+  .kl-paper--color { clip-path: inset(0 97% 0 0); will-change: clip-path; transition: clip-path 0.06s linear; z-index: 1; }
   .kl-paper-head { display: flex; gap: 6px; }
   .kl-chip {
     font-size: 0.58rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;
@@ -1087,7 +1087,7 @@
   .kl-pill--finding { border-color: hsla(152,56%,39%,0.3); background: hsla(152,56%,39%,0.1); color: hsl(152,56%,30%); }
   .kl-divider {
     position: absolute; top: 0; bottom: 0; left: 3%; width: 2px;
-    transform: translateX(-50%); pointer-events: none; z-index: 3;
+    transform: translateX(-50%); pointer-events: none; z-index: 5;
     background: rgba(31,57,255,0.6);
     box-shadow: 0 0 8px rgba(31,57,255,0.5), 0 0 20px rgba(31,57,255,0.25);
     transition: left 0.06s linear;
@@ -1099,9 +1099,9 @@
     min-height: 220px; background: var(--card-bg); border: 1px solid var(--border);
   }
   .vf-code { position: absolute; inset: 0; padding: 12px; }
-  .vf-code--plain { background: var(--card-bg); }
+  .vf-code--plain { background: #fff; }
   [data-theme="dark"] .vf-code--plain { background: #1a1a2e; }
-  .vf-code--annotated { clip-path: inset(0 97% 0 0); will-change: clip-path; transition: clip-path 0.06s linear; background: var(--card-bg); }
+  .vf-code--annotated { clip-path: inset(0 97% 0 0); will-change: clip-path; transition: clip-path 0.06s linear; background: #fff; z-index: 1; }
   [data-theme="dark"] .vf-code--annotated { background: #1a1a2e; }
   .vf-code-head { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
   .vf-chip {
@@ -1123,7 +1123,7 @@
   .vf-cm { color: #34d399; }
   .vf-divider {
     position: absolute; top: 0; bottom: 0; left: 3%; width: 2px;
-    transform: translateX(-50%); pointer-events: none; z-index: 3;
+    transform: translateX(-50%); pointer-events: none; z-index: 5;
     background: rgba(52,211,153,0.6);
     box-shadow: 0 0 8px rgba(52,211,153,0.5), 0 0 20px rgba(52,211,153,0.25);
     transition: left 0.06s linear;
