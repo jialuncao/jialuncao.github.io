@@ -23,6 +23,10 @@
       <a href="#sec-dlrepair" class="nav-link">DL Repair</a>
       <a href="#sec-nocode" class="nav-link">NoCode</a>
       <a href="#sec-incontext" class="nav-link">In-Context</a>
+      <a href="#sec-mradopt" class="nav-link">MR-Adopt</a>
+      <a href="#sec-sembic" class="nav-link">SemBIC</a>
+      <a href="#sec-comet" class="nav-link">COMET</a>
+      <a href="#sec-dllens" class="nav-link">DLLens</a>
     </div>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9790; Light</button>
   </div>
@@ -36,9 +40,9 @@
     <h1>LLM for <span class="hl">Software Engineering</span></h1>
     <p class="hero-sub">Leveraging large language models to automate code translation, generation, bug reproduction, and API-driven development.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num">12</div><div class="hero-stat-label">Papers</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Venues</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Featured</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">16</div><div class="hero-stat-label">Papers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Venues</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">12</div><div class="hero-stat-label">Featured</div></div>
     </div>
   </div>
   <div class="hero-scroll">Scroll to explore<br>&#9660;</div>
@@ -366,6 +370,114 @@
         <div class="feature-tag" data-idx="0">Naming &#9733;&#9733;&#9733;</div>
         <div class="feature-tag" data-idx="1">Structure &#9733;&#9733;</div>
         <div class="feature-tag" data-idx="2">Formatting &#9733;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 9: MR-Adopt -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-mradopt">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Metamorphic Testing</div>
+    <span class="sc-venue">ASE '24</span>
+    <h2 class="sc-title">MR-Adopt: Automatic Deduction of Input Transformation Function for Metamorphic Testing</h2>
+    <div class="sc-authors">Congying Xu, Songqiang Chen, Jiarong Wu, Valerio Terragni, Shing-chi Cheung, Hengcheng Zhu, <span class="me">Jialun Cao (Corresponding)</span></div>
+    <p class="sc-desc">Uses LLMs to automatically generate input transformations for encoded metamorphic relations, making them reusable with new source inputs.</p>
+    <div class="sc-links"><a href="https://arxiv.org/pdf/2408.15815" class="sc-link">Paper</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">&#128161;</span> Successfully produces transformations for 72% of encoded MRs, outperforming vanilla GPT-3.5 by 33.33% and boosting mutation scores by ~19%.</div>
+    <div class="sc-facts"><span class="fact-chip">72% applicable</span><span class="fact-chip">+33.33% over GPT-3.5</span><span class="fact-chip">+19% mutation score</span></div>
+
+    <div class="compact-anim" id="anim-mradopt">
+      <div class="mini-pipe">
+        <div class="mini-pipe-stage" data-idx="0">Encoded MR</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="1">LLM Deduction</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="2">Transformation Function</div>
+      </div>
+      <div class="mini-stat" id="stat-mradopt">72% applicable</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 10: SemBIC -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-sembic">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Bug-inducing Commits</div>
+    <span class="sc-venue">FSE '25</span>
+    <h2 class="sc-title">SemBIC: Semantic-aware Identification of Bug-inducing Commits</h2>
+    <div class="sc-authors">Xiao Chen, Hengcheng Zhu, <span class="me">Jialun Cao (Corresponding)</span>, Ming Wen, Shing-Chi Cheung</div>
+    <p class="sc-desc">Identifies bug-inducing commits using semantic analysis rather than relying solely on syntactic diff or traditional SZZ algorithms.</p>
+    <div class="sc-links"><a href="https://scholar.henryhc.net/files/publications/2025/FSE2025-SemBIC.pdf" class="sc-link">Paper</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">&#128161;</span> Semantic-aware analysis significantly outperforms syntactic-only approaches in pinpointing the exact commit that introduced a bug.</div>
+
+    <div class="compact-anim" id="anim-sembic">
+      <div class="mini-pipe">
+        <div class="mini-pipe-stage" data-idx="0">Commit History</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="1">Semantic Analysis</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="2">Bug-inducing Commit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 11: COMET -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase" id="sec-comet">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; DL Library Testing</div>
+    <span class="sc-venue">TOSEM '23</span>
+    <h2 class="sc-title">COMET: Coverage-guided Model Generation for DL Library Testing</h2>
+    <div class="sc-authors">Meiziniu Li, <span class="me">Jialun Cao</span>, Yongqiang Tian, Tsz On Li, Ming Wen, Shing-Chi Cheung</div>
+    <p class="sc-desc">Generates DL models guided by coverage feedback, exercising more layer inputs, parameter values, and layer sequences &mdash; surfacing 32 new bugs across 8 DL libraries including TensorFlow and MXNet.</p>
+    <div class="sc-links"><a href="https://dl.acm.org/doi/10.1145/3583566" class="sc-link">Paper</a><a href="https://github.com/maybeLee/COMET" class="sc-link">Code</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">&#128161;</span> Coverage-guided model generation surfaces 32 new bugs across 8 DL libraries including TensorFlow and MXNet.</div>
+    <div class="sc-facts"><span class="fact-chip">32 new bugs</span><span class="fact-chip">8 DL libraries</span><span class="fact-chip">69.7% layer-input cov.</span></div>
+
+    <div class="compact-anim" id="anim-comet">
+      <div class="mini-pipe">
+        <div class="mini-pipe-stage" data-idx="0">Random Model</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="1">Coverage Feedback</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="2">Guided Generation</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="3">32 Bugs Found</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FEATURED 12: DLLens -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="showcase alt" id="sec-dllens">
+  <div class="showcase-inner gsap-fade">
+    <div class="sc-eyebrow">Featured Work &middot; Differential Testing</div>
+    <span class="sc-venue">TOSEM '25</span>
+    <h2 class="sc-title">Enhancing Differential Testing with LLMs for Testing Deep Learning Libraries</h2>
+    <div class="sc-authors">Meiziniu Li, Dongze Li, Jianmeng Liu, <span class="me">Jialun Cao</span>, Yongqiang Tian, Shing-Chi Cheung</div>
+    <p class="sc-desc">DLLens uses LLMs to find equivalent API implementations across DL libraries and generate diverse test inputs to uncover bugs.</p>
+    <div class="sc-links"><a href="https://arxiv.org/abs/2406.07944" class="sc-link">Paper</a></div>
+    <div class="sc-takeaway"><span class="takeaway-icon">&#128161;</span> Synthesized counterparts for 1.84&times; more APIs than prior methods and discovered 71 bugs (46 confirmed new, 10 already patched).</div>
+    <div class="sc-facts"><span class="fact-chip">71 bugs</span><span class="fact-chip">1.84&times; more APIs</span><span class="fact-chip">46 confirmed new</span></div>
+
+    <div class="compact-anim" id="anim-dllens">
+      <div class="mini-pipe">
+        <div class="mini-pipe-stage" data-idx="0">TensorFlow API</div>
+        <div class="mini-pipe-sep">&harr;</div>
+        <div class="mini-pipe-stage" data-idx="1">PyTorch API</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="2">Diff Test</div>
+        <div class="mini-pipe-sep">&rarr;</div>
+        <div class="mini-pipe-stage" data-idx="3">71 Bugs</div>
       </div>
     </div>
   </div>
