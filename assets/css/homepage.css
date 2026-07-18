@@ -432,7 +432,7 @@
   .pub-venue {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.62rem; font-weight: 600; padding: 0.1rem 0.35rem;
-    border-radius: 4px; background: rgba(52,211,153,0.08); color: #2a9d6a;
+    border-radius: 4px; background: transparent; color: #2a9d6a;
     border: 1px solid rgba(52,211,153,0.2);
     letter-spacing: 0.2px; text-align: left; white-space: nowrap;
   }
