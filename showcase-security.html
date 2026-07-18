@@ -19,7 +19,6 @@
       <a href="#sec-redoshunter" class="nav-link">ReDoSHunter</a>
       <a href="#sec-fuzzing" class="nav-link">Fuzzing</a>
       <a href="#sec-vulnver" class="nav-link">VulnVersions</a>
-      <a href="#sec-sdefl" class="nav-link">SDEFL</a>
     </div>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9790; Light</button>
   </div>
@@ -34,7 +33,7 @@
     <h1><span class="prompt">$</span> Security &amp; <span class="hl">Reliability</span></h1>
     <p class="hero-sub">Hunting ReDoS vulnerabilities, fuzzing stateful protocols, and tracing vulnerable versions &mdash; hardening software at the intersection of security and reliability.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Papers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Papers</div></div>
       <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Venues</div></div>
       <div class="hero-stat"><div class="hero-stat-num">2</div><div class="hero-stat-label">USENIX Security</div></div>
     </div>
@@ -301,43 +300,6 @@
       <div class="paper-stat"><div class="paper-stat-lbl">Benchmark</div><div class="paper-stat-val">1,128 CVEs</div><div class="paper-stat-sub">real-world C/C++</div></div>
       <div class="paper-stat"><div class="paper-stat-lbl">Tools evaluated</div><div class="paper-stat-val">12</div><div class="paper-stat-sub">tracing + matching</div></div>
       <div class="paper-stat"><div class="paper-stat-lbl">Best tool accuracy</div><div class="paper-stat-val">&lt; 45.0%</div><div class="paper-stat-sub">no tool exceeds</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- FEATURED 5: SDEFL -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="showcase" id="sec-sdefl">
-  <div class="showcase-inner gsap-fade">
-    <div class="ascii-divider">// ═══════════════════════ [ 05 &middot; SDEFL ] ═══════════════════════════════════════════</div>
-    <div class="sc-prompt"><span class="p-user">root@sec</span>:<span class="p-path">~/dnn</span>$ <span class="p-cmd">sdefl --detect --localize model.h5</span><span class="cursor-inline"></span></div>
-    <div class="sc-eyebrow">&#9670; Featured Work</div>
-    <span class="sc-venue">APSEC '24</span>
-    <h2 class="sc-title">SDEFL: A Lightweight Fault Detection and Localization Method for Deep Neural Networks</h2>
-    <div class="sc-authors">Bo Yang, Jiawei Hu, <span class="me">Jialun Cao (Corresponding)</span></div>
-    <p class="sc-desc">A lightweight method that detects and localizes faults in deep neural networks without requiring expensive retraining or mutation-based analysis.</p>
-    <div class="sc-links"></div>
-    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> Lightweight statistical analysis of neuron activations can effectively detect and localize DNN faults at a fraction of the cost of mutation-based approaches.</div>
-
-    <div class="compact-anim" id="sdeflAnim">
-      <div class="mini-pipe" id="sdeflPipe">
-        <div class="mini-pipe-stage" data-stage="0">DNN Model</div>
-        <span class="mini-pipe-sep">&rarr;</span>
-        <div class="mini-pipe-stage" data-stage="1">Activation Analysis</div>
-        <span class="mini-pipe-sep">&rarr;</span>
-        <div class="mini-pipe-stage" data-stage="2">Fault Detected</div>
-        <span class="mini-pipe-sep">&rarr;</span>
-        <div class="mini-pipe-stage" data-stage="3">Layer 3 Localized</div>
-      </div>
-      <div class="scan-bar"><div class="scan-bar-fill" id="sdeflScanFill"></div></div>
-      <div class="mini-pipe-result" id="sdeflResult" style="margin-top:0.8rem;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--term-green);opacity:0;transition:opacity 0.4s;">&#10003; Fault localized to Layer 3 &mdash; neuron activation deviation &gt; 3&sigma;</div>
-    </div>
-
-    <div class="paper-stats">
-      <div class="paper-stat"><div class="paper-stat-lbl">Approach</div><div class="paper-stat-val">Statistical</div><div class="paper-stat-sub">neuron activation analysis</div></div>
-      <div class="paper-stat"><div class="paper-stat-lbl">Advantage</div><div class="paper-stat-val">Lightweight</div><div class="paper-stat-sub">no retraining required</div></div>
-      <div class="paper-stat"><div class="paper-stat-lbl">Venue</div><div class="paper-stat-val">APSEC '24</div><div class="paper-stat-sub">conference paper</div></div>
     </div>
   </div>
 </section>
