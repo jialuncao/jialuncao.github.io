@@ -522,6 +522,56 @@ function triggerIncontext() {
 // ══════════════════════════════════════════
 // Hover Triggers (replay on every hover)
 // ══════════════════════════════════════════
+// Generic mini-pipe animation factory
+function makeMiniPipeTrigger(animId, statId) {
+  var timers = [];
+  var running = false;
+  function reset() {
+    timers.forEach(clearTimeout); timers = [];
+    var wrap = document.getElementById(animId);
+    if (!wrap) return;
+    wrap.querySelectorAll('.mini-pipe-stage').forEach(function(s) { s.classList.remove('on'); });
+    wrap.querySelectorAll('.mini-pipe-sep').forEach(function(s) { s.classList.remove('on'); });
+    if (statId) { var stat = document.getElementById(statId); if (stat) stat.classList.remove('on'); }
+    running = false;
+  }
+  function trigger() {
+    if (running) reset();
+    running = true;
+    var wrap = document.getElementById(animId);
+    if (!wrap) { running = false; return; }
+    var stages = wrap.querySelectorAll('.mini-pipe-stage');
+    var seps = wrap.querySelectorAll('.mini-pipe-sep');
+    var delay = 0;
+    stages.forEach(function(s, i) {
+      var id = setTimeout(function() { s.classList.add('on'); }, delay);
+      timers.push(id);
+      if (i < seps.length) {
+        var id2 = setTimeout(function() { seps[i].classList.add('on'); }, delay + 150);
+        timers.push(id2);
+      }
+      delay += 350;
+    });
+    if (statId) {
+      var id3 = setTimeout(function() {
+        var stat = document.getElementById(statId);
+        if (stat) stat.classList.add('on');
+        running = false;
+      }, delay + 300);
+      timers.push(id3);
+    } else {
+      var id4 = setTimeout(function() { running = false; }, delay);
+      timers.push(id4);
+    }
+  }
+  return { trigger: trigger, reset: reset };
+}
+
+var mradoptAnim = makeMiniPipeTrigger('anim-mradopt', 'stat-mradopt');
+var sembicAnim = makeMiniPipeTrigger('anim-sembic', null);
+var cometAnim = makeMiniPipeTrigger('anim-comet', null);
+var dllensAnim = makeMiniPipeTrigger('anim-dllens', null);
+
 (function() {
   var triggers = [
     { sel: '#sec-translation', fn: triggerPipeline, reset: resetPipeline },
@@ -531,7 +581,11 @@ function triggerIncontext() {
     { sel: '#sec-ragapi', fn: triggerRagapi, reset: resetRagapi },
     { sel: '#sec-dlrepair', fn: triggerDlrepair, reset: resetDlrepair },
     { sel: '#sec-nocode', fn: triggerNocode, reset: resetNocode },
-    { sel: '#sec-incontext', fn: triggerIncontext, reset: resetIncontext }
+    { sel: '#sec-incontext', fn: triggerIncontext, reset: resetIncontext },
+    { sel: '#sec-mradopt', fn: mradoptAnim.trigger, reset: mradoptAnim.reset },
+    { sel: '#sec-sembic', fn: sembicAnim.trigger, reset: sembicAnim.reset },
+    { sel: '#sec-comet', fn: cometAnim.trigger, reset: cometAnim.reset },
+    { sel: '#sec-dllens', fn: dllensAnim.trigger, reset: dllensAnim.reset }
   ];
   triggers.forEach(function(t) {
     var el = document.querySelector(t.sel);
