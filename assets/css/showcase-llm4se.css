@@ -202,6 +202,7 @@ a:hover { text-decoration: underline; }
   font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.8;
   color: var(--code-fg); min-height: 240px; overflow: hidden;
   border: 1px solid rgba(255,255,255,0.06); position: relative;
+  white-space: pre-wrap; word-break: break-word;
 }
 .code-panel .cursor {
   display: inline-block; width: 7px; height: 14px; background: var(--accent-se);
@@ -231,6 +232,7 @@ a:hover { text-decoration: underline; }
   font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 1.8;
   color: var(--code-fg); min-height: 300px; overflow: hidden;
   border: 1px solid rgba(255,255,255,0.06);
+  white-space: pre-wrap; word-break: break-word;
 }
 .embed-code-panel .cursor {
   display: inline-block; width: 7px; height: 14px; background: #60a5fa;
@@ -353,6 +355,7 @@ a:hover { text-decoration: underline; }
   font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 1.8;
   color: var(--code-fg); padding: 12px; background: var(--code-bg);
   border-radius: 8px; min-height: 160px;
+  white-space: pre-wrap; word-break: break-word;
 }
 .rag-output .cursor {
   display: inline-block; width: 7px; height: 14px; background: #a78bfa;

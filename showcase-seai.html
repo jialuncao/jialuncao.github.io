@@ -18,8 +18,6 @@
       <a href="#sec-deepfd" class="nav-link">DeepFD</a>
       <a href="#sec-semmt" class="nav-link">SemMT</a>
       <a href="#sec-crest" class="nav-link">Coreference</a>
-      <a href="#sec-icm" class="nav-link">ICM</a>
-      <a href="#sec-sdefl" class="nav-link">SDEFL</a>
     </div>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9790; Light</button>
   </div>
@@ -33,7 +31,7 @@
     <h1>Software Engineering <span class="hl">for AI</span></h1>
     <p class="hero-sub">Testing, diagnosing, and localizing faults in AI systems &mdash; from deep learning programs and libraries to machine translation and coreference resolution.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Papers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Papers</div></div>
       <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Venues</div></div>
       <div class="hero-stat"><div class="hero-stat-num sm">ACM SIGSOFT<br>Outstanding Dissertation</div><div class="hero-stat-label">Award</div></div>
     </div>
@@ -175,69 +173,6 @@
         <span><span class="sw" style="background:var(--pass)"></span> Entity B links</span>
         <span><span class="sw" style="background:var(--bug)"></span> Inconsistency (bug)</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- FEATURED 4: ICM-Assistant -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="showcase alt" id="sec-icm">
-  <div class="showcase-inner gsap-fade">
-    <div class="sc-eyebrow">Featured Work &middot; Content Moderation</div>
-    <span class="sc-venue">AAAI '25</span>
-    <h2 class="sc-title">ICM-Assistant: Instruction-tuning Multimodal LLMs for Rule-based Explainable Image Content Moderation</h2>
-    <div class="sc-authors">Mengyang Wu, Yuzhi Zhao, <span class="me">Jialun Cao</span>, Mingjie Xu, Zhongming Jiang, Xuehui Wang, Qinbin Li, Guangneng Hu, Shengchao Qin, Chi-Wing Fu</div>
-    <p class="sc-desc">A multimodal AI system that applies human-defined moderation rules to classify and explain controversial online images.</p>
-    <div class="sc-links">
-      <a href="https://arxiv.org/abs/2412.18216" class="sc-link">Paper</a>
-    </div>
-    <div class="sc-takeaway"><span class="takeaway-icon">💡</span> ICM-Assistant boosts moderation classification by 36.8% and explanation quality by 26.6% over existing MLLMs.</div>
-
-    <div class="compact-anim" id="icmAnim">
-      <div class="mini-pipe" id="icmPipe">
-        <div class="mini-pipe-stage" data-idx="0">Image</div>
-        <span class="mini-pipe-sep">&rarr;</span>
-        <div class="mini-pipe-stage" data-idx="1">Rules</div>
-        <span class="mini-pipe-sep">&rarr;</span>
-        <div class="mini-pipe-stage" data-idx="2">MLLM</div>
-        <span class="mini-pipe-sep">&rarr;</span>
-        <div class="mini-pipe-stage" data-idx="3">Classification + Explanation</div>
-      </div>
-      <div class="mini-stat" id="icmStat">+36.8%</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- FEATURED 9: SDEFL -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="showcase" id="sec-sdefl">
-  <div class="showcase-inner gsap-fade">
-    <div class="sc-eyebrow">Featured Work &middot; DNN Fault Localization</div>
-    <span class="sc-venue">APSEC '24</span>
-    <h2 class="sc-title">SDEFL: A Lightweight Fault Detection and Localization Method for Deep Neural Networks</h2>
-    <div class="sc-authors">Bo Yang, Jiawei Hu, <span class="me">Jialun Cao (Corresponding)</span></div>
-    <p class="sc-desc">A lightweight method that detects and localizes faults in deep neural networks using statistical analysis of neuron activations — no expensive retraining or mutation-based analysis needed.</p>
-    <div class="sc-takeaway"><span class="takeaway-icon">&#128161;</span> Lightweight statistical analysis of neuron activations can effectively detect and localize DNN faults at a fraction of the cost of mutation-based approaches.</div>
-
-    <div class="compact-anim" id="anim-sdefl">
-      <div class="mini-pipe" id="sdeflPipe">
-        <div class="mini-pipe-stage" data-idx="0">DNN Model</div>
-        <span class="mini-pipe-sep">&rarr;</span>
-        <div class="mini-pipe-stage" data-idx="1">Activation Analysis</div>
-        <span class="mini-pipe-sep">&rarr;</span>
-        <div class="mini-pipe-stage" data-idx="2">Fault Detected</div>
-        <span class="mini-pipe-sep">&rarr;</span>
-        <div class="mini-pipe-stage" data-idx="3">Layer Localized</div>
-      </div>
-      <div class="mini-stat" id="sdeflStat">&#10003; Fault localized to Layer 3 — deviation &gt; 3&sigma;</div>
-    </div>
-
-    <div class="paper-stats" style="margin-top:1rem;">
-      <div class="paper-stat"><div class="paper-stat-lbl">Approach</div><div class="paper-stat-val">Statistical</div></div>
-      <div class="paper-stat"><div class="paper-stat-lbl">Advantage</div><div class="paper-stat-val">Lightweight</div></div>
-      <div class="paper-stat"><div class="paper-stat-lbl">Cost</div><div class="paper-stat-val">No retraining</div></div>
     </div>
   </div>
 </section>
