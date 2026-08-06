@@ -10,9 +10,15 @@ on:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
+# A slow scheduled run should never block a later one for 6 hours.
+concurrency:
+  group: citation-data
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
@@ -21,12 +27,23 @@ jobs:
     - name: Install dependencies
       run: pip install -r google_scholar_crawler/requirements.txt
     - name: Crawl Google Scholar
+      timeout-minutes: 10
       run: |
         cd google_scholar_crawler
         python main.py
       env:
         GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+    - name: Check for results
+      id: results
+      run: |
+        if [ -f google_scholar_crawler/results/gs_data.json ]; then
+          echo "found=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "found=false" >> "$GITHUB_OUTPUT"
+          echo "::warning::No citation data produced; keeping the previously published data."
+        fi
     - name: Push results
+      if: steps.results.outputs.found == 'true'
       run: |
         cd google_scholar_crawler/results
         git init
