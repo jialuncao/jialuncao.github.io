@@ -468,3 +468,94 @@ async function sendChat(){var input=document.getElementById('chatInput'),body=do
   );
 })();
 
+// EasyTODO check-off animation
+(function() {
+  var demo = document.getElementById('etDemo');
+  if (!demo) return;
+  var tasks = [].slice.call(demo.querySelectorAll('.et-task'));
+  var countEl = document.getElementById('etCount');
+  var barEl = document.getElementById('etBar');
+  if (!tasks.length) return;
+
+  var STEP = 1100, HOLD = 2200, i = 0;
+  function render(done) {
+    if (countEl) countEl.textContent = done + ' / ' + tasks.length;
+    if (barEl) barEl.style.width = (done / tasks.length * 100) + '%';
+  }
+  function tick() {
+    if (i < tasks.length) {
+      tasks[i].classList.add('done');
+      i++;
+      render(i);
+      setTimeout(tick, i === tasks.length ? HOLD : STEP);
+    } else {
+      tasks.forEach(function(t) { t.classList.remove('done'); });
+      i = 0;
+      render(0);
+      setTimeout(tick, STEP);
+    }
+  }
+  render(0);
+  setTimeout(tick, STEP);
+})();
+
+// Skills-4-SE manager UI animation
+(function() {
+  var demo = document.getElementById('skDemo');
+  if (!demo) return;
+  var pills = [].slice.call(demo.querySelectorAll('.sk-pill'));
+  var cards = [].slice.call(demo.querySelectorAll('.sk-card'));
+  var queryEl = document.getElementById('skQuery');
+  var countEl = document.getElementById('skCount');
+  var btnEl = document.getElementById('skBtn');
+  if (!pills.length || !cards.length) return;
+
+  var CATS = [
+    { cat: 'test', query: 'test', skills: [
+      'Unit Test Gen', 'Fuzzing Harness', 'Metamorphic Test', 'Regression Suite'] },
+    { cat: 'verify', query: 'verif', skills: [
+      'ACSL Annotator', 'Dafny Prover', 'TLA+ Modeler', 'Invariant Gen'] },
+    { cat: 'quality', query: 'quality', skills: [
+      'Bug Localization', 'CVE Analyzer', 'Code Reviewer', 'Code Optimizer'] },
+    { cat: 'devops', query: 'deploy', skills: [
+      'CI/CD Pipeline', 'Containerizer', 'Release Manager', 'Instrumentation'] }
+  ];
+  var TYPE = 90, PICK = 340, HOLD = 1600, i = 0;
+
+  function setCount(n) {
+    if (countEl) countEl.textContent = '180 skills \u00b7 ' + n + ' selected';
+    if (btnEl) btnEl.classList.toggle('ready', n > 0);
+  }
+  function reset() {
+    cards.forEach(function(c) { c.classList.remove('sel'); });
+    if (queryEl) queryEl.textContent = '';
+    setCount(0);
+  }
+  function type(text, done) {
+    var k = 0;
+    (function next() {
+      if (k > text.length) { done(); return; }
+      if (queryEl) queryEl.textContent = text.slice(0, k);
+      k++;
+      setTimeout(next, TYPE);
+    })();
+  }
+  function pick(n) {
+    if (n >= cards.length) { setTimeout(cycle, HOLD); return; }
+    cards[n].classList.add('sel');
+    setCount(n + 1);
+    setTimeout(function() { pick(n + 1); }, PICK);
+  }
+  function cycle() {
+    var c = CATS[i];
+    i = (i + 1) % CATS.length;
+    reset();
+    pills.forEach(function(p) { p.classList.toggle('active', p.getAttribute('data-cat') === c.cat); });
+    cards.forEach(function(card, n) {
+      card.querySelector('.sk-card-name').textContent = c.skills[n];
+    });
+    type(c.query, function() { setTimeout(function() { pick(0); }, 400); });
+  }
+  cycle();
+})();
+

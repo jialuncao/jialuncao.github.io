@@ -299,7 +299,7 @@
     <a href="playground.html" style="display:inline-block;padding:0.55rem 1.6rem;border:1.5px solid var(--primary-soft);border-radius:8px;color:var(--primary-soft);font-style:italic;font-size:0.95rem;text-decoration:none;transition:background 0.2s,color 0.2s;">&#9654; Browse all</a>
   </div>
 
-  <div class="sec-head" id="products" style="margin-top:2rem;"><div class="sec-bar"></div><div class="sec-title">Products</div></div>
+  <div class="sec-head" id="products" style="margin-top:2rem;"><div class="sec-bar"></div><div class="sec-title">Open-Source Projects/Products</div></div>
 
   <div class="product-grid">
 
@@ -406,6 +406,92 @@
             </div>
           </div>
           <div class="vf-divider"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- EasyTODO -->
+    <a href="https://github.com/ArabelaTso/easytodo-on-macos" class="product-card" id="productEasytodo" target="_blank">
+      <div class="product-card-inner">
+        <h3 class="product-name">EasyTODO</h3>
+        <p class="product-tagline">Simple. Free. Always on your desktop.</p>
+        <p class="product-desc">A native macOS todo app built to stay visible and make capture instant — global quick add, color-coded priorities, menu bar progress, and a floating widget that follows you across spaces. Local-first, no account, no setup.</p>
+        <div class="product-tags">
+          <span class="product-tag">macOS</span>
+          <span class="product-tag">SwiftUI</span>
+          <span class="product-tag">Menu Bar</span>
+          <span class="product-tag">Quick Add</span>
+        </div>
+        <!-- Checklist animation -->
+        <div class="et-demo" id="etDemo">
+          <div class="et-menubar">
+            <span class="et-mb-glyph">&#9745;</span>
+            <span class="et-mb-name">EasyTODO</span>
+            <span class="et-mb-count" id="etCount">0 / 5</span>
+          </div>
+          <div class="et-window">
+            <div class="et-titlebar">
+              <span class="et-tl et-tl--r"></span><span class="et-tl et-tl--y"></span><span class="et-tl et-tl--g"></span>
+              <span class="et-win-title">Today</span>
+            </div>
+            <ul class="et-list">
+              <li class="et-task"><span class="et-check"></span><span class="et-text">Submit ISSTA camera-ready</span><span class="et-pri et-pri--red"></span></li>
+              <li class="et-task"><span class="et-check"></span><span class="et-text">Review student draft</span><span class="et-pri et-pri--red"></span></li>
+              <li class="et-task"><span class="et-check"></span><span class="et-text">Reply to reviewer #2</span><span class="et-pri et-pri--yellow"></span></li>
+              <li class="et-task"><span class="et-check"></span><span class="et-text">Prepare group meeting slides</span><span class="et-pri et-pri--green"></span></li>
+              <li class="et-task"><span class="et-check"></span><span class="et-text">Book flight to conference</span><span class="et-pri et-pri--gray"></span></li>
+            </ul>
+            <div class="et-progress"><div class="et-progress-bar" id="etBar"></div></div>
+            <div class="et-quickadd">
+              <span class="et-kbd">Cmd</span><span class="et-kbd">+</span>
+              <span class="et-qa-text">Quick Add &mdash; from any app</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Skills-4-SE -->
+    <a href="https://github.com/ArabelaTso/Skills-4-SE" class="product-card" id="productSkills4se" target="_blank">
+      <div class="product-card-inner">
+        <h3 class="product-name">Skills-4-SE</h3>
+        <p class="product-tagline">Browse, search and install skills for software engineering</p>
+        <p class="product-desc">A curated collection of 180+ Claude Skills spanning the full development lifecycle, with a Skills Manager web interface to search, filter by category or stage, and install everything or just the skills you pick &mdash; plus 8 curated Skill Packs.</p>
+        <div class="product-tags">
+          <span class="product-tag">Skills Manager UI</span>
+          <span class="product-tag">180+ Skills</span>
+          <span class="product-tag">Skill Packs</span>
+          <span class="product-tag">One-click Install</span>
+        </div>
+        <!-- Skills Manager web UI animation -->
+        <div class="sk-demo" id="skDemo">
+          <div class="sk-topbar">
+            <span class="sk-tl sk-tl--r"></span><span class="sk-tl sk-tl--y"></span><span class="sk-tl sk-tl--g"></span>
+            <span class="sk-url">ArabelaTso.github.io/Skills-4-SE</span>
+          </div>
+          <div class="sk-hero">
+            <div class="sk-hero-title">Skills-4-SE Manager</div>
+            <div class="sk-hero-sub">Manage and install Claude Code skills</div>
+          </div>
+          <div class="sk-body">
+            <div class="sk-search"><span class="sk-search-ico">&#9906;</span><span class="sk-query" id="skQuery"></span><span class="sk-caret"></span></div>
+            <div class="sk-pills">
+              <span class="sk-pill" data-cat="test">Testing</span>
+              <span class="sk-pill" data-cat="verify">Verification</span>
+              <span class="sk-pill" data-cat="quality">Quality</span>
+              <span class="sk-pill" data-cat="devops">DevOps</span>
+            </div>
+            <div class="sk-cards" id="skCards">
+              <div class="sk-card"><span class="sk-cb"></span><span class="sk-card-name"></span></div>
+              <div class="sk-card"><span class="sk-cb"></span><span class="sk-card-name"></span></div>
+              <div class="sk-card"><span class="sk-cb"></span><span class="sk-card-name"></span></div>
+              <div class="sk-card"><span class="sk-cb"></span><span class="sk-card-name"></span></div>
+            </div>
+            <div class="sk-foot">
+              <span class="sk-count" id="skCount">180 skills &middot; 0 selected</span>
+              <span class="sk-btn" id="skBtn">Install Selected</span>
+            </div>
+          </div>
         </div>
       </div>
     </a>
